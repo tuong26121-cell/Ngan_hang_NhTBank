@@ -15,7 +15,9 @@
 
 ## VietQR
 
-Chỉ gọi img.vietqr.io khi người dùng chọn tạo mã. Dùng MB Bank BIN 970422 và tài khoản mẫu `0000000000`; nội dung luôn có tiền tố `MO PHONG KHONG CHUYEN TIEN`. Nội dung và số tiền được dịch vụ hình ảnh bên ngoài nhận qua URL, không nhập dữ liệu nhạy cảm. Mã được phủ nhãn DEMO; tuyệt đối không quét bằng ứng dụng ngân hàng thật. Không có cơ chế xác nhận tiền về hoặc tăng số dư bằng QR. Nếu dịch vụ lỗi, giao diện cho phép tải lại và vẫn hiển thị thông tin mẫu.
+Màn Nạp tiền tự tạo ảnh từ img.vietqr.io với dữ liệu mẫu ban đầu, rồi cập nhật sau khi ngừng nhập 400 ms. Timer cũ được hủy khi sửa tiếp hoặc rời màn hình. QR cũ và nút sao chép được ẩn ngay khi đầu vào thay đổi, tránh hiển thị mã khác với số tiền/nội dung đang nhập. Chỉ số tiền nguyên từ 1.000 đến 500.000.000 VNĐ được tạo mã; nút tạo mã vẫn cho phép cập nhật ngay.
+
+Dùng MB Bank BIN 970422 và tài khoản mẫu `0000000000`; nội dung luôn có tiền tố `MO PHONG KHONG CHUYEN TIEN`. Nội dung và số tiền được dịch vụ hình ảnh bên ngoài nhận qua URL, không nhập dữ liệu nhạy cảm. Mã được phủ nhãn DEMO; tuyệt đối không quét bằng ứng dụng ngân hàng thật. Không có cơ chế xác nhận tiền về hoặc tăng số dư bằng QR. Nếu dịch vụ lỗi, giao diện cho phép tải lại và vẫn hiển thị thông tin mẫu. Kết quả tải lỗi và sao chép gắn với URL cụ thể để phản hồi của mã cũ không ảnh hưởng đến mã mới.
 
 ## Phạm vi
 

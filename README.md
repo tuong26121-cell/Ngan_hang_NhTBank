@@ -30,7 +30,7 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 - Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
 - Dashboard: ẩn/hiện số dư, bộ đếm từ 0, bốn tiện ích và giao dịch gần đây.
 - Chuyển tiền: thông tin → kiểm tra → xác nhận PIN → biên nhận, confetti và cập nhật lịch sử. Kiểm tra số dư, số tiền và chống xác nhận lặp.
-- Nạp tiền: tạo ảnh VietQR động từ `img.vietqr.io`, số tiền và nội dung tùy chọn; tài khoản mẫu **0000000000**, nhãn **DEMO**. Cần Internet cho ảnh QR, không cần API key. Không dùng QR để thanh toán thật; không có xác nhận tiền về.
+- Nạp tiền: VietQR từ `img.vietqr.io` tự xuất hiện và cập nhật khi ngừng nhập số tiền/nội dung. QR cũ được ẩn ngay khi chỉnh sửa; đầu vào không hợp lệ không tạo mã. Tài khoản mẫu **0000000000**, nhãn **DEMO**. Cần Internet cho ảnh QR, không cần API key. Không dùng QR để thanh toán thật; không có xác nhận tiền về.
 - Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất.
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
 

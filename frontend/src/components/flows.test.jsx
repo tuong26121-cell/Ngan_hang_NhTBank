@@ -61,7 +61,7 @@ describe("User flows", () => {
     expect(transfer.mock.calls[0][0].amount).toBe("100000");
     expect(screen.getByRole("status")).toHaveTextContent("NHT-TEST");
   });
-  it("creates dynamic demo QR and handles an image failure", () => {
+  it("automatically creates dynamic demo QR and handles an image failure", async () => {
     render(<Deposit navigate={vi.fn()} />);
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     fireEvent.change(screen.getByLabelText("Số tiền (VNĐ)"), {
@@ -72,12 +72,44 @@ describe("User flows", () => {
     fireEvent.change(screen.getByLabelText("Số tiền (VNĐ)"), {
       target: { value: "250000" },
     });
-    fireEvent.click(screen.getByText("Tạo mã QR mẫu"));
-    const image = screen.getByRole("img");
+    const image = await screen.findByRole("img");
     expect(new URL(image.src).searchParams.get("amount")).toBe("250000");
     fireEvent.error(image);
     expect(screen.getByText("Chưa tải được VietQR.")).toBeInTheDocument();
     fireEvent.click(screen.getByText("Tải lại mã"));
     expect(screen.getByRole("img")).toBeInTheDocument();
+  });
+  it("hides stale QR during rapid edits and uses only the latest amount and note", async () => {
+    render(<Deposit navigate={vi.fn()} />);
+    await screen.findByRole("img");
+    const amount = screen.getByLabelText("Số tiền (VNĐ)");
+    fireEvent.change(amount, { target: { value: "200000" } });
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    fireEvent.change(amount, { target: { value: "350000" } });
+    fireEvent.change(screen.getByLabelText("Nội dung"), {
+      target: { value: "TIET KIEM DEMO" },
+    });
+    const image = await screen.findByRole("img");
+    const url = new URL(image.src);
+    expect(url.searchParams.get("amount")).toBe("350000");
+    expect(url.searchParams.get("addInfo")).toBe(
+      "MO PHONG KHONG CHUYEN TIEN TIET KIEM DEMO",
+    );
+    expect(screen.getByText("TIET KIEM DEMO")).toBeInTheDocument();
+  });
+  it("does not leave a previous QR available for invalid amounts", async () => {
+    render(<Deposit navigate={vi.fn()} />);
+    await screen.findByRole("img");
+    fireEvent.change(screen.getByLabelText("Số tiền (VNĐ)"), {
+      target: { value: "1e4" },
+    });
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    expect(screen.queryByText("Sao chép nội dung mẫu")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Nhập số tiền để xem mã QR" }),
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText("Tạo mã QR mẫu"));
+    expect(screen.getByRole("alert")).toHaveTextContent("1.000");
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 });

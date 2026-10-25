@@ -64,10 +64,6 @@ test("complete Sandbox journey without console errors", async ({
   await expect(page.getByLabel("7.729.890 VNĐ", { exact: true })).toHaveText(
     "7.729.890",
   );
-  await page
-    .getByRole("button", { name: /Nạp tiền/ })
-    .first()
-    .click();
   // Deterministic external image boundary; real API connectivity is checked separately.
   await page.route("https://img.vietqr.io/**", (route) =>
     route.fulfill({
@@ -75,12 +71,17 @@ test("complete Sandbox journey without console errors", async ({
       body: '<svg xmlns="http://www.w3.org/2000/svg" width="240" height="300"><rect width="240" height="300" fill="white"/><text x="20" y="100">VietQR test fixture</text></svg>',
     }),
   );
+  await page
+    .getByRole("button", { name: /Nạp tiền/ })
+    .first()
+    .click();
+  const qr = page.getByRole("img", { name: /VietQR mô phỏng/ });
+  await expect(qr).toHaveAttribute("src", /amount=100000/);
   await page.getByLabel("Số tiền (VNĐ)").fill("250000");
   await page.getByLabel("Nội dung", { exact: true }).fill("NAP DEMO");
-  await page.getByRole("button", { name: "Tạo mã QR mẫu" }).click();
-  const qr = page.getByRole("img", { name: /VietQR mô phỏng/ });
   await expect(qr).toBeVisible();
   await expect(qr).toHaveAttribute("src", /amount=250000/);
+  await expect(qr).toHaveAttribute("src", /NAP\+DEMO/);
   await expect(
     page.getByText("DEMO · KHÔNG THANH TOÁN", { exact: true }),
   ).toBeVisible();

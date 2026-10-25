@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -13,30 +13,63 @@ export default function Deposit({ navigate }) {
   const [amount, setAmount] = useState("100000");
   const [note, setNote] = useState("NAP TIEN DEMO");
   const [qr, setQr] = useState(null);
-  const [failed, setFailed] = useState(false);
+  const [failedUrl, setFailedUrl] = useState(null);
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copiedUrl, setCopiedUrl] = useState(null);
+  const timer = useRef(null);
+  const validAmount =
+    /^\d+$/.test(amount) &&
+    Number.isSafeInteger(Number(amount)) &&
+    Number(amount) >= 1000 &&
+    Number(amount) <= 500000000;
+  const qrNote = note.trim() || "NAP TIEN DEMO";
+
+  // Hide a previous QR immediately when editing; only the latest valid input
+  // may produce a preview after a short pause, avoiding requests per keystroke.
+  const preview =
+    validAmount && qr?.amount === Number(amount) && qr.note === qrNote
+      ? qr
+      : null;
+  const failed = preview && failedUrl === preview.url;
+  const copied = preview && copiedUrl === preview.url;
+  useEffect(() => {
+    setError("");
+    if (!validAmount) return;
+    timer.current = setTimeout(() => {
+      setQr({
+        amount: Number(amount),
+        note: qrNote,
+        url: vietQrUrl(amount, qrNote),
+      });
+    }, 400);
+    return () => clearTimeout(timer.current);
+  }, [amount, qrNote, validAmount]);
+
   function generate(e) {
     e.preventDefault();
-    if (
-      !/^\d+$/.test(amount) ||
-      !Number.isSafeInteger(Number(amount)) ||
-      Number(amount) < 1000 ||
-      Number(amount) > 500000000
-    ) {
+    if (!validAmount) {
       setError("Nhập số tiền nguyên từ 1.000 đến 500.000.000 VNĐ.");
       return;
     }
+    clearTimeout(timer.current);
     setError("");
-    setFailed(false);
-    setQr({ amount: Number(amount), note, url: vietQrUrl(amount, note) });
+    setFailedUrl(null);
+    setCopiedUrl(null);
+    setQr({
+      amount: Number(amount),
+      note: qrNote,
+      url: vietQrUrl(amount, qrNote),
+    });
   }
   async function copy() {
+    if (!preview) return;
+    const current = preview;
     try {
       await navigator.clipboard.writeText(
-        `MÔ PHỎNG — KHÔNG CHUYỂN TIỀN\nSố tiền: ${money(qr.amount)} VNĐ\nNội dung: ${qr.note}`,
+        `MÔ PHỎNG — KHÔNG CHUYỂN TIỀN\nSố tiền: ${money(current.amount)} VNĐ\nNội dung: ${current.note}`,
       );
-      setCopied(true);
+      // A delayed clipboard result must not mark a newer QR as copied.
+      setCopiedUrl(current.url);
     } catch {
       setError(
         "Không thể sao chép. Bạn có thể chọn nội dung và sao chép thủ công.",
@@ -76,7 +109,6 @@ export default function Deposit({ navigate }) {
                 value={amount}
                 onChange={(e) => {
                   setAmount(e.target.value);
-                  setCopied(false);
                 }}
                 placeholder="100000"
               />
@@ -100,12 +132,11 @@ export default function Deposit({ navigate }) {
                 maxLength={60}
                 onChange={(e) => {
                   setNote(e.target.value);
-                  setCopied(false);
                 }}
               />
             </label>
             <p className="muted text-xs mb-5">
-              Khi tạo mã, số tiền và nội dung mẫu được gửi đến img.vietqr.io.
+              Mã tự cập nhật theo số tiền và nội dung mẫu qua img.vietqr.io.
               Không nhập thông tin nhạy cảm.
             </p>
             {error && (
@@ -120,7 +151,7 @@ export default function Deposit({ navigate }) {
         </section>
         <section className="panel qr-panel" aria-live="polite">
           <span className="eyebrow">VIETQR · SANDBOX</span>
-          {qr ? (
+          {preview ? (
             <>
               <div className="qr-image">
                 {failed ? (
@@ -133,18 +164,18 @@ export default function Deposit({ navigate }) {
                   </div>
                 ) : (
                   <img
-                    key={qr.url}
-                    src={qr.url}
-                    alt={`VietQR mô phỏng ${money(qr.amount)} VNĐ — không dùng thanh toán`}
-                    onError={() => setFailed(true)}
+                    key={preview.url}
+                    src={preview.url}
+                    alt={`VietQR mô phỏng ${money(preview.amount)} VNĐ — không dùng thanh toán`}
+                    onError={() => setFailedUrl(preview.url)}
                   />
                 )}
                 <span className="qr-watermark">DEMO · KHÔNG THANH TOÁN</span>
               </div>
               <strong className="qr-amount">
-                {money(qr.amount)} <small>VNĐ</small>
+                {money(preview.amount)} <small>VNĐ</small>
               </strong>
-              <p className="muted">{qr.note || "NAP TIEN DEMO"}</p>
+              <p className="muted">{preview.note}</p>
               <span className="tag mt-3">
                 MB Bank · 0000000000 · Tài khoản mẫu
               </span>
@@ -156,10 +187,9 @@ export default function Deposit({ navigate }) {
                 <Button
                   className="text-button mt-3"
                   onClick={() => {
-                    setFailed(false);
                     setQr({
-                      ...qr,
-                      url: `${vietQrUrl(qr.amount, qr.note)}&retry=${Date.now()}`,
+                      ...preview,
+                      url: `${vietQrUrl(preview.amount, preview.note)}&retry=${Date.now()}`,
                     });
                   }}
                 >
@@ -170,8 +200,16 @@ export default function Deposit({ navigate }) {
           ) : (
             <div className="qr-placeholder">
               <QrCode size={72} strokeWidth={1} />
-              <h3>Mã QR của bạn ở đây</h3>
-              <p>Chọn số tiền và tạo mã để xem trước.</p>
+              <h3>
+                {validAmount
+                  ? "Đang tạo mã QR mẫu…"
+                  : "Nhập số tiền để xem mã QR"}
+              </h3>
+              <p>
+                {validAmount
+                  ? "Mã sẽ tự cập nhật khi bạn ngừng nhập."
+                  : "Số tiền nguyên từ 1.000 đến 500.000.000 VNĐ."}
+              </p>
             </div>
           )}
         </section>

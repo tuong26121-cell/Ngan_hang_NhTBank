@@ -1,0 +1,11 @@
+# Tệp chứa thông tin bí mật
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+
+# Tệp tạm
+*.log
+.DS_Store
+Thumbs.db

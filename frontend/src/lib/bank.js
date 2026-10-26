@@ -1,5 +1,5 @@
 export const OWNER = "Nguyễn Nhựt Tường";
-export const INITIAL_BALANCE = 7829890;
+export const INITIAL_BALANCE = 4056000;
 export const DEMO_PIN = "123456";
 export const money = (value) => new Intl.NumberFormat("vi-VN").format(value);
 export const initialTransactions = [

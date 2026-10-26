@@ -1,0 +1,95 @@
+name: Build NhTBank iOS unsigned IPA
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/nhtbank-unsigned-ipa-20261027
+    paths:
+      - 'frontend/**'
+      - 'package*.json'
+      - 'capacitor.config.json'
+      - '.github/workflows/build-ios-unsigned-ipa.yml'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'package*.json'
+      - 'capacitor.config.json'
+      - '.github/workflows/build-ios-unsigned-ipa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-ios-unsigned:
+    name: Compile iPhone app and package unsigned IPA
+    runs-on: macos-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out application
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Show build environment
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          node --version
+
+      - name: Install and build web application
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      - name: Set up Capacitor for iOS
+        run: |
+          npm install --no-save --package-lock=false @capacitor/core@7 @capacitor/cli@7 @capacitor/ios@7
+          npx cap add ios
+          npx cap sync ios
+
+      - name: Compile app for physical iPhone architecture WITHOUT code signing
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath ios-build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package and verify unsigned IPA
+        run: |
+          set -euo pipefail
+          APP="ios-build/Build/Products/Release-iphoneos/App.app"
+          test -d "$APP"
+          test -f "$APP/Info.plist"
+          test -f "$APP/App"
+          mkdir -p ipa-staging/Payload
+          cp -R "$APP" ipa-staging/Payload/App.app
+          (
+            cd ipa-staging
+            zip -qry "$GITHUB_WORKSPACE/NhTBank-iOS-unsigned.ipa" Payload
+          )
+          unzip -tq NhTBank-iOS-unsigned.ipa
+          echo "Bundle ID:"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist"
+          echo "WARNING: Unsigned IPA needs signing and provisioning before physical iPhone installation."
+          ls -lh NhTBank-iOS-unsigned.ipa
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: NhTBank-iOS-unsigned-IPA
+          path: NhTBank-iOS-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 14

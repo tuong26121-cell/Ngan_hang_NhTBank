@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Delete,
@@ -11,6 +11,7 @@ import { Brand, Button, SecurityNote } from "./ui";
 import { DEMO_PIN, OWNER } from "../lib/bank";
 
 export default function Login({ onLogin }) {
+  const reduce = useReducedMotion();
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -82,7 +83,7 @@ export default function Login({ onLogin }) {
             <motion.div
               key="loading"
               className="login-loading"
-              initial={{ opacity: 0 }}
+              initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               <div className="loading-cube">
@@ -94,7 +95,7 @@ export default function Login({ onLogin }) {
           ) : (
             <motion.div
               key="pin"
-              initial={{ opacity: 0 }}
+              initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               className="pin-panel"
             >

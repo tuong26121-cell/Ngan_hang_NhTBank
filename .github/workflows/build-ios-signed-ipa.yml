@@ -41,8 +41,8 @@ jobs:
           set -euo pipefail
           TEMP_DIR="$RUNNER_TEMP/nhtbank-signing"
           mkdir -p "$TEMP_DIR"
-          echo "$IOS_CERTIFICATE_P12_BASE64" | base64 --decode > "$TEMP_DIR/certificate.p12"
-          echo "$IOS_ADHOC_PROFILE_BASE64" | base64 --decode > "$TEMP_DIR/profile.mobileprovision"
+          echo "$IOS_CERTIFICATE_P12_BASE64" | base64 -D > "$TEMP_DIR/certificate.p12"
+          echo "$IOS_ADHOC_PROFILE_BASE64" | base64 -D > "$TEMP_DIR/profile.mobileprovision"
           KEYCHAIN="$TEMP_DIR/nhtbank.keychain-db"
           KC_PASSWORD="${IOS_KEYCHAIN_PASSWORD:-$(openssl rand -hex 28)}"
           security create-keychain -p "$KC_PASSWORD" "$KEYCHAIN"

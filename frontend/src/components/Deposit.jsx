@@ -8,7 +8,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { Button, SecurityNote } from "./ui";
-import { money, vietQrUrl } from "../lib/bank";
+import { money, demoQrUrl } from "../lib/bank";
 export default function Deposit({ navigate }) {
   const [amount, setAmount] = useState("100000");
   const [note, setNote] = useState("NAP TIEN DEMO");
@@ -25,7 +25,7 @@ export default function Deposit({ navigate }) {
   const qrNote = note.trim() || "NAP TIEN DEMO";
 
   // Hide a previous QR immediately when editing; only the latest valid input
-  // may produce a preview after a short pause, avoiding requests per keystroke.
+  // may produce a preview after a short pause, avoiding unnecessary local QR generation.
   const preview =
     validAmount && qr?.amount === Number(amount) && qr.note === qrNote
       ? qr
@@ -39,7 +39,7 @@ export default function Deposit({ navigate }) {
       setQr({
         amount: Number(amount),
         note: qrNote,
-        url: vietQrUrl(amount, qrNote),
+        url: demoQrUrl(amount, qrNote),
       });
     }, 400);
     return () => clearTimeout(timer.current);
@@ -58,7 +58,7 @@ export default function Deposit({ navigate }) {
     setQr({
       amount: Number(amount),
       note: qrNote,
-      url: vietQrUrl(amount, qrNote),
+      url: demoQrUrl(amount, qrNote),
     });
   }
   async function copy() {
@@ -93,12 +93,12 @@ export default function Deposit({ navigate }) {
       </div>
       <div className="deposit-grid">
         <section className="panel form-panel">
-          <h2>Tạo VietQR mô phỏng</h2>
+          <h2>Tạo QR mô phỏng</h2>
           <div className="demo-notice">
             <Info size={18} />
             <span>
-              Không quét để thanh toán. Tài khoản 0000000000 chỉ là dữ liệu mẫu;
-              không có tiền được nạp vào ứng dụng.
+              Mã chỉ chứa dữ liệu demo, không phải VietQR thanh toán; không có
+              tiền được nạp vào ứng dụng.
             </span>
           </div>
           <form onSubmit={generate} noValidate>
@@ -136,7 +136,7 @@ export default function Deposit({ navigate }) {
               />
             </label>
             <p className="muted text-xs mb-5">
-              Mã tự cập nhật theo số tiền và nội dung mẫu qua img.vietqr.io.
+              Mã tự cập nhật trên thiết bị, không gửi nội dung ra dịch vụ ngoài.
               Không nhập thông tin nhạy cảm.
             </p>
             {error && (
@@ -150,35 +150,31 @@ export default function Deposit({ navigate }) {
           </form>
         </section>
         <section className="panel qr-panel" aria-live="polite">
-          <span className="eyebrow">VIETQR · SANDBOX</span>
+          <span className="eyebrow">QR · SANDBOX</span>
           {preview ? (
             <>
               <div className="qr-image">
                 {failed ? (
                   <div className="qr-fallback">
                     <QrCode size={64} />
-                    <p>Chưa tải được VietQR.</p>
-                    <small>
-                      Kiểm tra kết nối đến img.vietqr.io rồi tạo lại mã.
-                    </small>
+                    <p>Chưa hiển thị được QR mô phỏng.</p>
+                    <small>Thử tạo lại mã mô phỏng trên thiết bị.</small>
                   </div>
                 ) : (
                   <img
                     key={preview.url}
                     src={preview.url}
-                    alt={`VietQR mô phỏng ${money(preview.amount)} VNĐ — không dùng thanh toán`}
+                    referrerPolicy="no-referrer"
+                    alt={`QR mô phỏng ${money(preview.amount)} VNĐ — không dùng thanh toán`}
                     onError={() => setFailedUrl(preview.url)}
                   />
                 )}
-                <span className="qr-watermark">DEMO · KHÔNG THANH TOÁN</span>
               </div>
               <strong className="qr-amount">
                 {money(preview.amount)} <small>VNĐ</small>
               </strong>
               <p className="muted">{preview.note}</p>
-              <span className="tag mt-3">
-                MB Bank · 0000000000 · Tài khoản mẫu
-              </span>
+              <span className="tag mt-3">DEMO · KHÔNG THANH TOÁN</span>
               <Button className="secondary mt-5" onClick={copy}>
                 <Copy size={16} />
                 {copied ? "Đã sao chép" : "Sao chép nội dung mẫu"}
@@ -187,9 +183,10 @@ export default function Deposit({ navigate }) {
                 <Button
                   className="text-button mt-3"
                   onClick={() => {
+                    setFailedUrl(null);
                     setQr({
                       ...preview,
-                      url: `${vietQrUrl(preview.amount, preview.note)}&retry=${Date.now()}`,
+                      url: demoQrUrl(preview.amount, preview.note),
                     });
                   }}
                 >

@@ -83,7 +83,7 @@ export function SecurityNote() {
   return (
     <div className="security-note">
       <ShieldCheck size={15} />
-      <span>Sandbox an toàn · Không có giao dịch tiền thật</span>
+      <span>Ứng dụng mô phỏng · Không nhập thông tin ngân hàng thật</span>
     </div>
   );
 }

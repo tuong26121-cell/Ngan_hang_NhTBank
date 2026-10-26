@@ -1,5 +1,6 @@
+import { decodeQr } from "../test/decodeQr";
 import { describe, expect, it } from "vitest";
-import { INITIAL_BALANCE, money, validateTransfer, vietQrUrl } from "./bank";
+import { INITIAL_BALANCE, money, validateTransfer, demoQrUrl } from "./bank";
 const valid = {
   bank: "MB Bank",
   account: "123456789",
@@ -34,7 +35,10 @@ describe("Sandbox transfer validation", () => {
   );
   it("rejects overspending", () =>
     expect(
-      validateTransfer({ ...valid, amount: "7829891" }, INITIAL_BALANCE),
+      validateTransfer(
+        { ...valid, amount: String(INITIAL_BALANCE + 1) },
+        INITIAL_BALANCE,
+      ),
     ).toMatch(/không đủ/));
   it.each([
     { bank: "" },
@@ -48,14 +52,28 @@ describe("Sandbox transfer validation", () => {
       "",
     ),
   );
-  it("formats VND", () => expect(money(INITIAL_BALANCE)).toBe("7.829.890"));
-  it("encodes QR content without allowing query injection", () => {
-    const url = new URL(vietQrUrl(100000, "DEMO & amount=9000"));
-    expect(url.hostname).toBe("img.vietqr.io");
-    expect(url.pathname).toContain("0000000000");
-    expect(url.searchParams.get("amount")).toBe("100000");
-    expect(url.searchParams.get("addInfo")).toBe(
-      "MO PHONG KHONG CHUYEN TIEN DEMO & amount=9000",
+  it("formats VND", () => expect(money(INITIAL_BALANCE)).toBe("4.056.000"));
+  it("creates a local non-payment QR with an embedded demo label", () => {
+    const note = 'DEMO & amount=9000 <svg onload="alert(1)">';
+    const url = demoQrUrl(100000, note);
+    expect(url).toMatch(/^data:image\/svg\+xml;charset=utf-8,/);
+    const svg = decodeURIComponent(url.slice(url.indexOf(",") + 1));
+    expect(svg).toContain("DEMO · KHÔNG THANH TOÁN");
+    expect(svg).not.toContain("onload");
+    expect(decodeQr(url)).toBe(
+      `NHTBANK_SANDBOX:${JSON.stringify({ amount: 100000, note })}`,
     );
   });
+  it("round-trips Vietnamese notes without XML injection", () => {
+    const note = "Nạp thử — tiếng Việt <>&";
+    expect(decodeQr(demoQrUrl(500000000, note))).toBe(
+      `NHTBANK_SANDBOX:${JSON.stringify({ amount: 500000000, note })}`,
+    );
+  });
+  it.each(["999", "1e4", "500000001", "1000.5"])(
+    "rejects invalid QR amount %s",
+    (amount) => expect(() => demoQrUrl(amount, "DEMO")).toThrow(),
+  );
+  it("rejects excessive QR notes", () =>
+    expect(() => demoQrUrl(100000, "a".repeat(61))).toThrow());
 });

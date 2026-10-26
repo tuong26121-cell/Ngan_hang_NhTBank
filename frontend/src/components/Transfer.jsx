@@ -93,8 +93,9 @@ export default function Transfer({ balance, onTransfer, navigate }) {
       )}
       <motion.section
         key={step}
-        initial={{ opacity: 0, y: 10 }}
+        initial={reduce ? false : { opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={reduce ? { duration: 0 } : undefined}
         className="panel form-panel"
       >
         {step === 1 && (

@@ -94,3 +94,10 @@ Tính từ sRGB của các màu đặc; không thay thế phép đo nền gradie
 | `#52627c` | `#edf3ff` | 5.55:1 |
 | `#edf3ff` | `#2354ad` | 6.41:1 |
 | `#08725b` | `#ffffff` | 5.89:1 |
+
+## Tiếp tục sau PR #5 — giảm chuyển động (26/10/2026)
+
+- Nền mới nhất khi bắt đầu: `3a9cdab03a432299a7de59e2940750a14148e2b0` trên main. Bản cục bộ `c1bd856` không được ghi đè lên phiên bản đã gộp. Bản sửa tiếp theo nằm trên nhánh `codex/ui-motion-followup-20261026`; commit xác định bằng `git log -1 --format=%H -- frontend/src/components/Login.jsx frontend/src/components/Transfer.jsx`.
+- D05: tắt fade khởi tạo của vùng nhập PIN/vùng chờ đăng nhập và tắt fade/dịch chuyển giữa các bước chuyển tiền khi `prefers-reduced-motion: reduce`. Khi không bật giảm chuyển động, giữ hiệu ứng mặc định trước đó. Không đổi thời gian xử lý PIN, dữ liệu hoặc nghiệp vụ.
+- H01/H02/H06: chạy lại 31 unit/component (đạt), build production (đạt), và E2E bằng cấu hình chính thức với `NHT_CHROMIUM_PATH` trỏ Chromium 153 Linux: 10 đạt, 4 bỏ qua có chủ đích do ma trận responsive chỉ chạy ở project desktop. Hai project vẫn chạy hành trình chính; không phải thử Android hoặc Safari thật.
+- Rà soát React: hook gọi ở cấp component, không thay thứ tự hook hoặc thêm effect/listener; không thêm phụ thuộc. `git diff --check` đạt. Các mục thiết bị thật, tương phản toàn diện và hiệu suất chưa có bằng chứng mới giữ nguyên trạng thái. Không coi việc đẩy nhánh/PR là đã cập nhật website.

@@ -40,7 +40,7 @@ describe("User flows", () => {
     }
     await unlock();
     fireEvent.click(
-      screen.getAllByRole("button", { name: "Chuyển tiền", exact: true })[0],
+      screen.getAllByRole("button", { name: "Giao dịch", exact: true })[0],
     );
     await screen.findByLabelText("Ngân hàng nhận");
     fillTransfer();
@@ -63,7 +63,7 @@ describe("User flows", () => {
       screen.getByLabelText(`${money(INITIAL_BALANCE)} VNĐ`, { exact: true }),
     ).toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Lịch sử giao dịch", exact: true }),
+      screen.getByRole("button", { name: "Lịch sử", exact: true }),
     );
     await screen.findByLabelText("Tìm giao dịch");
     expect(screen.getByLabelText("Tìm giao dịch")).toHaveValue("");

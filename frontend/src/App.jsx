@@ -15,6 +15,7 @@ import {
   X,
   CircleHelp,
   Sparkles,
+  QrCode,
 } from "lucide-react";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -30,9 +31,10 @@ import {
 } from "./components/ui";
 import { INITIAL_BALANCE, OWNER, initialTransactions, money } from "./lib/bank";
 const navigation = [
-  ["dashboard", "Tổng quan", LayoutDashboard],
-  ["transfer", "Chuyển tiền", ArrowLeftRight],
-  ["history", "Lịch sử giao dịch", Clock3],
+  ["dashboard", "Trang chủ", LayoutDashboard],
+  ["transfer", "Giao dịch", ArrowLeftRight],
+  ["deposit", "QR", QrCode],
+  ["history", "Lịch sử", Clock3],
   ["profile", "Cá nhân", UserRound],
 ];
 export default function App() {
@@ -93,6 +95,7 @@ export default function App() {
           {navigation.map(([id, label, Icon]) => (
             <Button
               key={id}
+              aria-label={label}
               className={`nav-item ${page === id ? "selected" : ""}`}
               aria-current={page === id ? "page" : undefined}
               onClick={() => navigate(id)}
@@ -134,8 +137,12 @@ export default function App() {
       </aside>
       <div className="workspace">
         <header className="topbar">
-          <div className="breadcrumb">
-            NhTBank <span>/</span> <strong>{title}</strong>
+          <div className="header-identity">
+            <Brand />
+            <div className="breadcrumb">
+              <span>/</span>
+              <strong>{title}</strong>
+            </div>
           </div>
           <div className="topbar-right">
             <span className="sandbox-pill">
@@ -171,7 +178,13 @@ export default function App() {
               className="profile-button"
               onClick={() => navigate("profile")}
             >
-              <span className="avatar">NT</span>
+              <span
+                className="avatar"
+                role="img"
+                aria-label="Ảnh đại diện Nhựt Tường"
+              >
+                NT
+              </span>
               <span>
                 Nhựt Tường<small>Tài khoản cá nhân</small>
               </span>
@@ -179,7 +192,11 @@ export default function App() {
             </Button>
           </div>
         </header>
-        <main>
+        <div className="simulation-banner">
+          <ShieldCheck size={16} />
+          <span>Ngân hàng mô phỏng · Không giao dịch tiền thật</span>
+        </div>
+        <main id="main-content">
           <AnimatePresence mode="wait">
             <Page key={page}>
               {page === "dashboard" && (

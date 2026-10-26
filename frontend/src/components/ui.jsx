@@ -15,7 +15,13 @@ export function Brand({ light = false }) {
   return (
     <div className={`brand ${light ? "brand-light" : ""}`}>
       <span className="brand-mark">
-        N<span>↗︎</span>
+        <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <path
+            d="M10 29V11h5l10 14V11h5v18h-5L15 15v14z"
+            fill="currentColor"
+          />
+          <path d="M24 5h11v11l-4-4-5 5-3-3 5-5z" fill="currentColor" />
+        </svg>
       </span>
       <span>
         NhT<span className="font-normal">Bank</span>
@@ -141,13 +147,14 @@ export function TransactionList({ transactions, compact = false }) {
   );
 }
 export function Page({ children, className = "" }) {
+  const reduce = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 12 }}
+      initial={reduce ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.22 }}
+      exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
+      transition={{ duration: reduce ? 0 : 0.22 }}
     >
       {children}
     </motion.div>

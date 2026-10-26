@@ -5,7 +5,10 @@ export default defineConfig({
   workers: 2,
   retries: 0,
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: process.env.NHT_TEST_URL || "http://127.0.0.1:4173",
+    launchOptions: process.env.NHT_CHROMIUM_PATH
+      ? { executablePath: process.env.NHT_CHROMIUM_PATH }
+      : {},
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
@@ -22,9 +25,11 @@ export default defineConfig({
       use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" },
     },
   ],
-  webServer: {
-    command: "npm run dev -- --port 4173 --strictPort",
-    url: "http://127.0.0.1:4173",
-    reuseExistingServer: false,
-  },
+  webServer: process.env.NHT_TEST_URL
+    ? undefined
+    : {
+        command: "npm run dev -- --port 4173 --strictPort",
+        url: "http://127.0.0.1:4173",
+        reuseExistingServer: false,
+      },
 });

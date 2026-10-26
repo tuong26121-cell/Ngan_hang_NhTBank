@@ -1,5 +1,13 @@
 # Kết quả kiểm tra
 
+## Cập nhật bảo mật ngày 26/10/2026
+
+Xem [phạm vi và kết quả cập nhật](security-update.md). Unit/component: **31 đạt**; build đạt; audit toàn bộ phụ thuộc báo **0**; CSS build giống từng byte so với bản nền. E2E được cập nhật để kiểm tra QR cục bộ, giải mã ảnh và đăng xuất không reload; **6/6 đạt** trên Chromium 153 tương thích, desktop và viewport iPhone 13. Lệnh chuẩn bị chặn bởi Chromium 149 chưa cài trong môi trường; lần chạy đạt dùng cấu hình tạm trỏ tới Chromium 153, không sửa launch options của repository. Không phải Safari/thiết bị thật.
+
+## Biên bản trước cập nhật bảo mật
+
+Các kết quả bên dưới thuộc phiên bản trước, khi QR còn dùng dịch vụ ảnh ngoài; không đại diện hành vi QR hiện tại.
+
 Kiểm tra trong môi trường Linux, Node.js 24.19.0, npm 11.9.0 và Chromium 149 (Playwright).
 
 - `npm test`: **24 đạt**, gồm 19 ca logic ngân hàng và 5 ca tương tác component.

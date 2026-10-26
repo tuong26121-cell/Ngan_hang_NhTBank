@@ -10,18 +10,20 @@ async function login(page) {
 test("complete Sandbox journey without console errors", async ({
   page,
 }, testInfo) => {
+  test.setTimeout(60000);
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
   });
   await login(page);
-  await expect(page.getByLabel("7.829.890 VNĐ", { exact: true })).toHaveText(
-    "7.829.890",
+  await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
+    "4.056.000",
   );
   await page.screenshot({
     path: `test-results/dashboard-${testInfo.project.name}.png`,
     fullPage: true,
+    animations: "disabled",
   });
   await page.getByRole("button", { name: "Ẩn số dư" }).click();
   await expect(page.getByLabel("Số dư đã ẩn")).toBeVisible();
@@ -61,27 +63,47 @@ test("complete Sandbox journey without console errors", async ({
   await page.getByLabel("Tìm giao dịch").fill("Demo");
   await expect(page.locator(".transaction")).toHaveCount(1);
   await page.getByRole("button", { name: "Tổng quan", exact: true }).click();
-  await expect(page.getByLabel("7.729.890 VNĐ", { exact: true })).toHaveText(
-    "7.729.890",
+  await expect(page.getByLabel("3.956.000 VNĐ", { exact: true })).toHaveText(
+    "3.956.000",
   );
-  // Deterministic external image boundary; real API connectivity is checked separately.
-  await page.route("https://img.vietqr.io/**", (route) =>
-    route.fulfill({
-      contentType: "image/svg+xml",
-      body: '<svg xmlns="http://www.w3.org/2000/svg" width="240" height="300"><rect width="240" height="300" fill="white"/><text x="20" y="100">VietQR test fixture</text></svg>',
-    }),
-  );
+  const externalRequests = [];
+  page.on("request", (request) => {
+    if (new URL(request.url()).origin !== new URL(page.url()).origin)
+      externalRequests.push(request.url());
+  });
   await page
     .getByRole("button", { name: /Nạp tiền/ })
     .first()
     .click();
-  const qr = page.getByRole("img", { name: /VietQR mô phỏng/ });
-  await expect(qr).toHaveAttribute("src", /amount=100000/);
+  const qr = page.getByRole("img", { name: /QR mô phỏng/ });
+  await expect(qr).toHaveAttribute("src", /^data:image\/svg\+xml/);
   await page.getByLabel("Số tiền (VNĐ)").fill("250000");
   await page.getByLabel("Nội dung", { exact: true }).fill("NAP DEMO");
   await expect(qr).toBeVisible();
-  await expect(qr).toHaveAttribute("src", /amount=250000/);
-  await expect(qr).toHaveAttribute("src", /NAP\+DEMO/);
+  await expect(qr).toHaveAttribute("src", /^data:image\/svg\+xml/);
+  await expect(page.getByText("NAP DEMO", { exact: true })).toBeVisible();
+  await page.addScriptTag({ path: "node_modules/jsqr/dist/jsQR.js" });
+  const payload = await qr.evaluate(async (image) => {
+    if (!image.complete)
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = reject;
+      });
+    const canvas = document.createElement("canvas");
+    canvas.width = 720;
+    canvas.height = 852;
+    const context = canvas.getContext("2d");
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+    return window.jsQR(pixels.data, pixels.width, pixels.height)?.data;
+  });
+  expect(payload).toBe('NHTBANK_SANDBOX:{"amount":250000,"note":"NAP DEMO"}');
+  await page.screenshot({
+    path: `test-results/qr-${testInfo.project.name}.png`,
+    fullPage: true,
+    animations: "disabled",
+  });
+  expect(externalRequests).toEqual([]);
   await expect(
     page.getByText("DEMO · KHÔNG THANH TOÁN", { exact: true }),
   ).toBeVisible();
@@ -95,14 +117,28 @@ test("complete Sandbox journey without console errors", async ({
   await expect(
     page.getByRole("heading", { name: "Nguyễn Nhựt Tường" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Đăng xuất an toàn" }).click();
+  await page
+    .getByRole("button", { name: "Đăng xuất và xóa dữ liệu phiên" })
+    .click();
   await expect(
     page.getByRole("button", { name: "Số 1", exact: true }),
   ).toBeVisible();
-  await login(page); // Reload restores all initial sample data.
-  await expect(page.getByLabel("7.829.890 VNĐ", { exact: true })).toHaveText(
-    "7.829.890",
+  for (const number of "123456")
+    await page
+      .getByRole("button", { name: `Số ${number}`, exact: true })
+      .click();
+  await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+  await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
+    "4.056.000",
   );
+  await page
+    .getByRole("button", { name: "Lịch sử giao dịch", exact: true })
+    .click();
+  await expect(page.getByLabel("Tìm giao dịch")).toHaveValue("");
+  await expect(
+    page.getByText("Trần Minh Anh Demo", { exact: true }),
+  ).toHaveCount(0);
+  await expect(page.getByText("Lương tháng 10", { exact: true })).toBeVisible();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -119,13 +155,14 @@ test("keyboard login, notifications and reduced motion", async ({ page }) => {
   await page.screenshot({
     path: `test-results/login-${test.info().project.name}.png`,
     fullPage: true,
+    animations: "disabled",
   });
   await page.keyboard.type("000000");
   await expect(page.getByRole("alert")).toContainText("PIN chưa đúng");
   await page.keyboard.type("123456");
   await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
-  await expect(page.getByLabel("7.829.890 VNĐ", { exact: true })).toHaveText(
-    "7.829.890",
+  await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
+    "4.056.000",
   );
   await page.getByRole("button", { name: "Thông báo", exact: true }).click();
   await expect(page.getByText("Một khởi đầu tốt đẹp ✦")).toBeVisible();

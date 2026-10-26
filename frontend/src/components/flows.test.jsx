@@ -1,9 +1,17 @@
+import App from "../App";
+import { INITIAL_BALANCE, money } from "../lib/bank";
+import { decodeQr } from "../test/decodeQr";
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Login from "./Login";
 import Transfer from "./Transfer";
 import Deposit from "./Deposit";
 vi.mock("canvas-confetti", () => ({ default: vi.fn() }));
+// Session-state checks do not depend on animation-frame scheduling in jsdom.
+vi.mock("./ui", async (importOriginal) => ({
+  ...(await importOriginal()),
+  Page: ({ children }) => <div>{children}</div>,
+}));
 function fillTransfer() {
   fireEvent.change(screen.getByLabelText("Ngân hàng nhận"), {
     target: { value: "MB Bank" },
@@ -20,6 +28,49 @@ function fillTransfer() {
   fireEvent.click(screen.getByText("Tiếp tục"));
 }
 describe("User flows", () => {
+  it("clears transactions, balance and search on logout without a reload", async () => {
+    render(<App />);
+    async function unlock() {
+      for (const key of "123456") fireEvent.keyDown(window, { key });
+      await screen.findByRole(
+        "heading",
+        { name: /Xin chào/ },
+        { timeout: 3000 },
+      );
+    }
+    await unlock();
+    fireEvent.click(
+      screen.getAllByRole("button", { name: "Chuyển tiền", exact: true })[0],
+    );
+    await screen.findByLabelText("Ngân hàng nhận");
+    fillTransfer();
+    fireEvent.click(screen.getByText("Xác nhận thông tin"));
+    fireEvent.change(screen.getByLabelText("Mã PIN xác nhận"), {
+      target: { value: "123456" },
+    });
+    fireEvent.click(screen.getByText("Chuyển tiền mô phỏng"));
+    fireEvent.click(screen.getByText("Xem lịch sử giao dịch"));
+    const search = await screen.findByLabelText("Tìm giao dịch");
+    fireEvent.change(search, { target: { value: "Trần Minh Anh" } });
+    expect(screen.getAllByText("Trần Minh Anh", { exact: true })).toHaveLength(
+      2,
+    );
+    fireEvent.click(
+      screen.getByRole("button", { name: "Đăng xuất", exact: true }),
+    );
+    await unlock();
+    expect(
+      screen.getByLabelText(`${money(INITIAL_BALANCE)} VNĐ`, { exact: true }),
+    ).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lịch sử giao dịch", exact: true }),
+    );
+    await screen.findByLabelText("Tìm giao dịch");
+    expect(screen.getByLabelText("Tìm giao dịch")).toHaveValue("");
+    expect(screen.getAllByText("Trần Minh Anh", { exact: true })).toHaveLength(
+      1,
+    );
+  }, 10000);
   it("rejects wrong login PIN and accepts correct keyboard PIN", async () => {
     const login = vi.fn();
     render(<Login onLogin={login} />);
@@ -35,7 +86,11 @@ describe("User flows", () => {
   it("validates and commits a transfer only once after correct confirmation PIN", () => {
     const transfer = vi.fn(() => ({ id: "NHT-TEST" }));
     render(
-      <Transfer balance={7829890} onTransfer={transfer} navigate={vi.fn()} />,
+      <Transfer
+        balance={INITIAL_BALANCE}
+        onTransfer={transfer}
+        navigate={vi.fn()}
+      />,
     );
     fireEvent.click(screen.getByText("Tiếp tục"));
     expect(screen.getByRole("alert")).toHaveTextContent("ngân hàng");
@@ -73,9 +128,13 @@ describe("User flows", () => {
       target: { value: "250000" },
     });
     const image = await screen.findByRole("img");
-    expect(new URL(image.src).searchParams.get("amount")).toBe("250000");
+    expect(decodeQr(image.src)).toBe(
+      'NHTBANK_SANDBOX:{"amount":250000,"note":"NAP TIEN DEMO"}',
+    );
     fireEvent.error(image);
-    expect(screen.getByText("Chưa tải được VietQR.")).toBeInTheDocument();
+    expect(
+      screen.getByText("Chưa hiển thị được QR mô phỏng."),
+    ).toBeInTheDocument();
     fireEvent.click(screen.getByText("Tải lại mã"));
     expect(screen.getByRole("img")).toBeInTheDocument();
   });
@@ -90,10 +149,8 @@ describe("User flows", () => {
       target: { value: "TIET KIEM DEMO" },
     });
     const image = await screen.findByRole("img");
-    const url = new URL(image.src);
-    expect(url.searchParams.get("amount")).toBe("350000");
-    expect(url.searchParams.get("addInfo")).toBe(
-      "MO PHONG KHONG CHUYEN TIEN TIET KIEM DEMO",
+    expect(decodeQr(image.src)).toBe(
+      'NHTBANK_SANDBOX:{"amount":350000,"note":"TIET KIEM DEMO"}',
     );
     expect(screen.getByText("TIET KIEM DEMO")).toBeInTheDocument();
   });

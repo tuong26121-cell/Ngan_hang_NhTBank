@@ -66,6 +66,10 @@ export default function App() {
   }
   function logout() {
     setAuthenticated(false);
+    setBalance(INITIAL_BALANCE);
+    setTransactions(initialTransactions);
+    setFilter("all");
+    setQuery("");
     setPage("dashboard");
     setNotifications(false);
     setHelp(false);
@@ -240,8 +244,8 @@ export default function App() {
                       )}
                     />
                     <p className="muted text-xs mt-5">
-                      Dữ liệu mẫu và giao dịch của phiên hiện tại. Tải lại trang
-                      sẽ đặt lại dữ liệu.
+                      Dữ liệu mẫu và giao dịch của phiên hiện tại. Đăng xuất
+                      hoặc tải lại trang sẽ đặt lại dữ liệu.
                     </p>
                   </section>
                 </>
@@ -293,7 +297,7 @@ export default function App() {
                         Trung tâm hỗ trợ <CircleHelp size={16} />
                       </Button>
                       <Button className="secondary mt-6" onClick={logout}>
-                        <LogOut size={17} /> Đăng xuất an toàn
+                        <LogOut size={17} /> Đăng xuất và xóa dữ liệu phiên
                       </Button>
                     </div>
                   </section>
@@ -326,8 +330,9 @@ export default function App() {
             Chuyển tiền chỉ cập nhật số dư mô phỏng trong phiên này.
           </p>
           <p>
-            Tải lại trang để khôi phục dữ liệu mẫu. VietQR là hình ảnh từ dịch
-            vụ bên ngoài, chỉ dùng xem trước. Không dùng mã để chuyển tiền thật.
+            Đăng xuất hoặc tải lại trang để khôi phục dữ liệu mẫu. QR được tạo
+            ngay trên thiết bị, chỉ chứa dữ liệu mô phỏng và không dùng thanh
+            toán.
           </p>
           <Button className="primary full" onClick={() => setHelp(false)}>
             Mình hiểu rồi

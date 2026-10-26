@@ -1,3 +1,5 @@
+import QRCode from "qrcode";
+
 export const OWNER = "Nguyễn Nhựt Tường";
 export const INITIAL_BALANCE = 4056000;
 export const DEMO_PIN = "123456";
@@ -61,11 +63,31 @@ export function validateTransfer(
   if (note.length > 120) return "Nội dung tối đa 120 ký tự.";
   return "";
 }
-export function vietQrUrl(amount, note) {
-  const params = new URLSearchParams({
-    amount: String(amount),
-    addInfo: `MO PHONG KHONG CHUYEN TIEN ${note}`.slice(0, 100),
-    accountName: "NHTBANK SANDBOX",
-  });
-  return `https://img.vietqr.io/image/970422-0000000000-compact2.png?${params}`;
+// This is deliberately not an EMV/VietQR payment payload. No bank account,
+// payment URL or external image service is involved, including after saving.
+export function demoQrUrl(amount, note) {
+  const value = Number(amount);
+  if (
+    !/^\d+$/.test(String(amount)) ||
+    !Number.isSafeInteger(value) ||
+    value < 1000 ||
+    value > 500000000 ||
+    typeof note !== "string" ||
+    note.length > 60
+  )
+    throw new Error("Dữ liệu QR mô phỏng không hợp lệ.");
+  const payload = `NHTBANK_SANDBOX:${JSON.stringify({
+    amount: value,
+    note: note.trim() || "NAP TIEN DEMO",
+  })}`;
+  const { modules } = QRCode.create(payload, { errorCorrectionLevel: "M" });
+  const cells = [];
+  for (let y = 0; y < modules.size; y++)
+    for (let x = 0; x < modules.size; x++)
+      if (modules.get(y, x)) cells.push(`M${x + 4} ${y + 4}h1v1h-1z`);
+  // Only integer matrix coordinates are inserted into SVG; input text is
+  // encoded inside the QR, never interpolated into XML markup.
+  const size = modules.size + 8;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="284" viewBox="0 0 240 284"><rect width="240" height="284" fill="white"/><svg width="240" height="240" viewBox="0 0 ${size} ${size}"><path fill="black" shape-rendering="crispEdges" d="${cells.join("")}"/></svg><rect y="240" width="240" height="44" fill="#0c3699"/><text x="120" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="white">DEMO · KHÔNG THANH TOÁN</text><text x="120" y="276" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">NhTBank Sandbox</text></svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }

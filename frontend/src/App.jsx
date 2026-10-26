@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   ArrowLeftRight,
   Clock3,
+  QrCode,
   UserRound,
   LogOut,
   Bell,
@@ -30,9 +31,10 @@ import {
 } from "./components/ui";
 import { INITIAL_BALANCE, OWNER, initialTransactions, money } from "./lib/bank";
 const navigation = [
-  ["dashboard", "Tổng quan", LayoutDashboard],
-  ["transfer", "Chuyển tiền", ArrowLeftRight],
-  ["history", "Lịch sử giao dịch", Clock3],
+  ["dashboard", "Trang chủ", LayoutDashboard],
+  ["transfer", "Giao dịch", ArrowLeftRight],
+  ["deposit", "QR", QrCode],
+  ["history", "Lịch sử", Clock3],
   ["profile", "Cá nhân", UserRound],
 ];
 export default function App() {
@@ -94,6 +96,7 @@ export default function App() {
             <Button
               key={id}
               className={`nav-item ${page === id ? "selected" : ""}`}
+              aria-label={label}
               aria-current={page === id ? "page" : undefined}
               onClick={() => navigate(id)}
             >
@@ -134,6 +137,15 @@ export default function App() {
       </aside>
       <div className="workspace">
         <header className="topbar">
+          <div className="mobile-header-brand" aria-label="NhTBank - Nguyễn Nhựt Tường">
+            <span className="brand-mark" aria-hidden="true">
+              N<span>↗︎</span>
+            </span>
+            <span className="mobile-header-text">
+              <strong>NhTBank</strong>
+              <small>Nhựt Tường</small>
+            </span>
+          </div>
           <div className="breadcrumb">
             NhTBank <span>/</span> <strong>{title}</strong>
           </div>

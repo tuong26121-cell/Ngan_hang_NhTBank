@@ -1,0 +1,128 @@
+name: Build signed NhTBank iPhone IPA (Ad Hoc)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  signed-ipa:
+    name: Signed IPA for registered iPhone
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Validate required signing configuration
+        env:
+          IOS_CERTIFICATE_P12_BASE64: ${{ secrets.IOS_CERTIFICATE_P12_BASE64 }}
+          IOS_CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          IOS_ADHOC_PROFILE_BASE64: ${{ secrets.IOS_ADHOC_PROFILE_BASE64 }}
+          IOS_APPLE_TEAM_ID: ${{ secrets.IOS_APPLE_TEAM_ID }}
+          IOS_PROFILE_NAME: ${{ secrets.IOS_PROFILE_NAME }}
+        run: |
+          set -euo pipefail
+          for KEY in IOS_CERTIFICATE_P12_BASE64 IOS_CERTIFICATE_PASSWORD IOS_ADHOC_PROFILE_BASE64 IOS_APPLE_TEAM_ID IOS_PROFILE_NAME; do
+            if [ -z "${!KEY:-}" ]; then
+              echo "::error::Missing encrypted GitHub Actions secret: $KEY"
+              exit 1
+            fi
+          done
+      - name: Install signing certificate and provisioning profile
+        env:
+          IOS_CERTIFICATE_P12_BASE64: ${{ secrets.IOS_CERTIFICATE_P12_BASE64 }}
+          IOS_CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          IOS_ADHOC_PROFILE_BASE64: ${{ secrets.IOS_ADHOC_PROFILE_BASE64 }}
+          IOS_KEYCHAIN_PASSWORD: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+        run: |
+          set -euo pipefail
+          TEMP_DIR="$RUNNER_TEMP/nhtbank-signing"
+          mkdir -p "$TEMP_DIR"
+          echo "$IOS_CERTIFICATE_P12_BASE64" | base64 --decode > "$TEMP_DIR/certificate.p12"
+          echo "$IOS_ADHOC_PROFILE_BASE64" | base64 --decode > "$TEMP_DIR/profile.mobileprovision"
+          KEYCHAIN="$TEMP_DIR/nhtbank.keychain-db"
+          KC_PASSWORD="${IOS_KEYCHAIN_PASSWORD:-$(openssl rand -hex 28)}"
+          security create-keychain -p "$KC_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KC_PASSWORD" "$KEYCHAIN"
+          security import "$TEMP_DIR/certificate.p12" -P "$IOS_CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KC_PASSWORD" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN"
+          PROFILE_UUID=$(/usr/bin/security cms -D -i "$TEMP_DIR/profile.mobileprovision" | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin)
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          cp "$TEMP_DIR/profile.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$PROFILE_UUID.mobileprovision"
+          echo "NHT_SIGNING_KEYCHAIN=$KEYCHAIN" >> "$GITHUB_ENV"
+          echo "NHT_PROFILE_UUID=$PROFILE_UUID" >> "$GITHUB_ENV"
+      - name: Build web bundle
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Create iOS native project
+        run: |
+          npm install --no-save --package-lock=false @capacitor/core@7 @capacitor/cli@7 @capacitor/ios@7
+          npx cap add ios
+          npx cap sync ios
+      - name: Archive signed iOS app
+        env:
+          IOS_APPLE_TEAM_ID: ${{ secrets.IOS_APPLE_TEAM_ID }}
+          IOS_PROFILE_NAME: ${{ secrets.IOS_PROFILE_NAME }}
+        run: |
+          set -euo pipefail
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/NhTBank.xcarchive" \
+            DEVELOPMENT_TEAM="$IOS_APPLE_TEAM_ID" \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="Apple Distribution" \
+            PROVISIONING_PROFILE_SPECIFIER="$IOS_PROFILE_NAME" \
+            CODE_SIGNING_ALLOWED=YES
+      - name: Export signed IPA
+        env:
+          IOS_APPLE_TEAM_ID: ${{ secrets.IOS_APPLE_TEAM_ID }}
+          IOS_PROFILE_NAME: ${{ secrets.IOS_PROFILE_NAME }}
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>release-testing</string>
+            <key>destination</key><string>export</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>teamID</key><string>$IOS_APPLE_TEAM_ID</string>
+            <key>provisioningProfiles</key><dict>
+              <key>vn.nhtbank.demo</key><string>$IOS_PROFILE_NAME</string>
+            </dict>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/NhTBank.xcarchive" \
+            -exportPath "$RUNNER_TEMP/NhTBank-export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+          IPA_FILE=$(find "$RUNNER_TEMP/NhTBank-export" -maxdepth 1 -name '*.ipa' -type f -print -quit)
+          test -n "$IPA_FILE"
+          cp "$IPA_FILE" "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
+          unzip -tq "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NhTBank-iOS-signed-IPA
+          path: NhTBank-iOS-signed.ipa
+          if-no-files-found: error
+          retention-days: 14
+      - name: Remove temporary signing assets
+        if: always()
+        run: |
+          if [ -n "${NHT_SIGNING_KEYCHAIN:-}" ]; then
+            security delete-keychain "$NHT_SIGNING_KEYCHAIN" || true
+          fi
+          if [ -n "${NHT_PROFILE_UUID:-}" ]; then
+            rm -f "$HOME/Library/MobileDevice/Provisioning Profiles/$NHT_PROFILE_UUID.mobileprovision"
+          fi
+          rm -rf "$RUNNER_TEMP/nhtbank-signing"

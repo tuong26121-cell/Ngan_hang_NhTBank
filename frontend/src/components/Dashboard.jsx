@@ -113,7 +113,7 @@ export default function Dashboard({ balance, transactions, navigate }) {
           <div className="balance-bottom">
             <div>
               <span>NGUYỄN NHỰT TƯỜNG</span>
-              <small>•••• &nbsp; •••• &nbsp; 2612</small>
+              <small>0788818374</small>
             </div>
             <Button
               className="card-deposit"

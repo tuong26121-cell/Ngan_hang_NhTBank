@@ -1,0 +1,11 @@
+{
+  "appId": "vn.nhtbank.demo",
+  "appName": "NhTBank Demo",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "automatic"
+  }
+}

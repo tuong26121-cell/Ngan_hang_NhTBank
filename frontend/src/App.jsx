@@ -270,7 +270,7 @@ export default function App() {
                         </div>
                         <div>
                           <dt>Số tài khoản mẫu</dt>
-                          <dd>•••• 2612</dd>
+                          <dd>0788818374</dd>
                         </div>
                         <div>
                           <dt>Số dư mô phỏng</dt>

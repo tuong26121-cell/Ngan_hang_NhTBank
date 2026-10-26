@@ -22,7 +22,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
+      - name: Check Android SDK on runner
+        run: |
+          test -n "$ANDROID_HOME"
+          test -d "$ANDROID_HOME"
+          echo "Android SDK: $ANDROID_HOME"
       - name: Build web
         run: |
           npm ci

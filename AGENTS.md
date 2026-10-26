@@ -8,3 +8,9 @@
 - Số tiền là số nguyên VNĐ. Giao dịch chỉ lưu trong bộ nhớ; tải lại trang khôi phục dữ liệu mẫu.
 - Kiểm tra trước bàn giao: `npm test`, `npm run build`, `npm run test:e2e`. E2E cần `npx playwright install chromium` và các thư viện hệ thống của Chromium.
 - Duy trì hỗ trợ điện thoại, bàn phím, focus hiển thị và `prefers-reduced-motion`. Không tuyên bố đã chạy kiểm thử khi chưa chạy.
+
+## Chuẩn giao diện bắt buộc
+
+- Dùng `docs/ui-standard.md` làm chuẩn trung tâm cho mọi sửa đổi UI/UX; đối chiếu đủ 45 mã A01–H06.
+- Cập nhật `docs/ui-acceptance.md` sau mỗi lần thay đổi; ghi bằng chứng, commit và mục còn chưa kiểm tra. Không gán đạt cho thiết bị thật, bàn phím ảo hoặc chỉ số chưa đo.
+- Chưa nghiệm thu chính thức khi còn P0 chưa đạt hoặc chưa xác minh. Giữ nguyên dữ liệu, luồng mô phỏng và các chức năng ngoài phạm vi UI/UX.

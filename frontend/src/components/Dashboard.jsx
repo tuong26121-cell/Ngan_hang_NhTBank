@@ -67,7 +67,7 @@ export default function Dashboard({ balance, transactions, navigate }) {
           </h1>
           <p>Mọi điều bạn cần, trong một chạm.</p>
         </div>
-        <span className="date-label">Chủ nhật, 25 tháng 10, 2026</span>
+        <span className="date-label">Dữ liệu mẫu · Tháng 10/2026</span>
       </div>
       <div className="overview-grid">
         <motion.section
@@ -113,7 +113,7 @@ export default function Dashboard({ balance, transactions, navigate }) {
           <div className="balance-bottom">
             <div>
               <span>NGUYỄN NHỰT TƯỜNG</span>
-              <small>0788818374</small>
+              <small>0788 818 374 · Tài khoản mẫu</small>
             </div>
             <Button
               className="card-deposit"

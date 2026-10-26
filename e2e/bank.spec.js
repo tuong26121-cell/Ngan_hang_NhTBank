@@ -29,7 +29,7 @@ test("complete Sandbox journey without console errors", async ({
   await expect(page.getByLabel("Số dư đã ẩn")).toBeVisible();
   await page.getByRole("button", { name: "Hiện số dư" }).click();
   await page
-    .getByRole("button", { name: "Chuyển tiền", exact: true })
+    .getByRole("button", { name: "Giao dịch", exact: true })
     .first()
     .click();
   await page.getByLabel("Ngân hàng nhận").selectOption("MB Bank");
@@ -62,7 +62,7 @@ test("complete Sandbox journey without console errors", async ({
   await page.getByRole("button", { name: "Tiền ra", exact: true }).click();
   await page.getByLabel("Tìm giao dịch").fill("Demo");
   await expect(page.locator(".transaction")).toHaveCount(1);
-  await page.getByRole("button", { name: "Tổng quan", exact: true }).click();
+  await page.getByRole("button", { name: "Trang chủ", exact: true }).click();
   await expect(page.getByLabel("3.956.000 VNĐ", { exact: true })).toHaveText(
     "3.956.000",
   );
@@ -131,9 +131,7 @@ test("complete Sandbox journey without console errors", async ({
   await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
     "4.056.000",
   );
-  await page
-    .getByRole("button", { name: "Lịch sử giao dịch", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Lịch sử", exact: true }).click();
   await expect(page.getByLabel("Tìm giao dịch")).toHaveValue("");
   await expect(
     page.getByText("Trần Minh Anh Demo", { exact: true }),

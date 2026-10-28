@@ -82,3 +82,9 @@ Chỉ hỗ trợ sửa **bộ đệm số dư** từ sổ gốc. Mọi lỗi bú
 Đối soát độc lập về cách tính, chưa phải hệ thống ngân hàng/đơn vị kiểm toán bên ngoài. Worker và API có thể cùng tiến trình, không phải hạ tầng HA. SQLite phù hợp bản thử một nút; chưa có PostgreSQL, khóa phân tán, HSM/KMS, lưu audit WORM, sao lưu ngoài máy, đăng nhập thật, OTP hay kiểm toán tuân thủ. Không tự động công bố backend hoặc thay đổi quy tắc GitHub Pages.
 
 Xem [bản đồ mã](workspace-map.md), [hợp đồng giao dịch](transaction-contract.md), [API](platform-api.md), [vận hành](operations-runbook.md), [mô hình an toàn](sandbox-security.md) và [kiểm chứng](platform-validation.md).
+
+## Phần nâng cấp v2
+
+[System v2](design/system-v2.md) là chi tiết thực thi mới nhất, bổ sung hai máy trạng thái và 9 sơ đồ. Receipt tiếp nhận được lưu bền trước transaction ghi sổ; trạng thái accepted khác posted. Lõi ghi sổ vẫn giữ toàn bộ số dư/bút toán/kết quả/audit/outbox nguyên tử. UI server lưu mã qua tải lại, tra cứu trước retry và không gán timeout thành thất bại.
+
+Schema v2 migration từ v1 không sửa sổ gốc. Chuyển nội bộ cập nhật nguồn/đích trong cùng unit of work. Đảo có đề xuất/người duyệt riêng, thêm giao dịch bù; đối soát kiểm quan hệ chi tiết. Diễn tập khôi phục so cả dữ liệu/yêu cầu quanh mốc và chặn kết luận sẵn sàng khi còn dữ liệu thiếu. Chưa có thao tác thay DB thật hoặc mở lại DB phục hồi.

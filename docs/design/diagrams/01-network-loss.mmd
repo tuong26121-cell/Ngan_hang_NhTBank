@@ -1,0 +1,28 @@
+flowchart TD
+    A["Xác nhận nội dung; lưu mã trên thiết bị"]
+    B["Gửi đúng mã và nội dung"]
+    C{"Nhận được kết quả?"}
+    D["Hiển thị trạng thái máy chủ xác nhận"]
+    E["Chưa rõ kết quả"]
+    F["Tra cứu mã cũ sau tải lại / đăng nhập lại"]
+    G{"Trạng thái máy chủ"}
+    H["Đã ghi sổ: hiển thị biên nhận"]
+    I["Đã từ chối: không thực hiện"]
+    J["Đã tiếp nhận: tối đa 3 lần kiểm tra tự động"]
+    K["Chưa thấy: nhập PIN; gửi lại mã và nội dung cũ"]
+    L["Hết lượt: người dùng kiểm tra thủ công"]
+    A --> B
+    B --> C
+    C -->|Có| D
+    C -->|Không| E
+    E --> F
+    F --> G
+    G -->|posted| H
+    G -->|rejected| I
+    G -->|accepted| J
+    J -->|Còn lượt| F
+    J -->|Đủ 3 lần| L
+    L -->|Thủ công| F
+    G -->|not_found| K
+    K -->|Cùng mã| B
+    F -->|Vẫn mất mạng| E

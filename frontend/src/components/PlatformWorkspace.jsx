@@ -334,7 +334,8 @@ export default function PlatformWorkspace({
             {proposals.map((p) => (
               <article className="platform-record" key={p.id}>
                 <strong>
-                  Đề xuất ·{" "}
+                  {p.type === "reverse-transfer" ? "Đảo giao dịch" : "Đề xuất"}{" "}
+                  ·{" "}
                   {p.status === "pending"
                     ? "Chờ duyệt"
                     : p.status === "applied"
@@ -342,6 +343,12 @@ export default function PlatformWorkspace({
                       : "Đã từ chối"}
                 </strong>
                 <p>{p.reason}</p>
+                {p.transactionId && (
+                  <p className="platform-caption">
+                    Gốc: {p.transactionId} · Bút toán bù:{" "}
+                    {p.reversalId || "Chưa ghi sổ"}
+                  </p>
+                )}
                 <p className="platform-caption">
                   Người lập: {p.requestedBy}
                   {p.decidedBy ? ` · Người quyết định: ${p.decidedBy}` : ""}
@@ -366,6 +373,47 @@ export default function PlatformWorkspace({
                 )}
               </article>
             ))}
+          </section>
+          <section className="panel">
+            <h2>Đảo giao dịch có phê duyệt</h2>
+            <p className="platform-caption">
+              Tạo bút toán bù toàn phần, giữ nguyên giao dịch gốc. Người khác
+              phải duyệt; bên nhận phải đủ số dư để bù.
+            </p>
+            {(snapshot.transfers || [])
+              .filter((t) => t.kind === "transfer")
+              .map((t) => {
+                const reversed = snapshot.transfers.find(
+                  (r) => r.reversesId === t.id,
+                );
+                return (
+                  <article className="platform-record" key={t.id}>
+                    <strong>
+                      {t.name} · {money(t.amount)} VNĐ
+                    </strong>
+                    <p className="platform-caption">
+                      {t.id} ·{" "}
+                      {t.internal ? "Nội bộ Sandbox" : "Đối ứng mô phỏng"}
+                    </p>
+                    {reversed ? (
+                      <p>Đã bù bằng {reversed.id}</p>
+                    ) : (
+                      operator && (
+                        <Button
+                          className="secondary"
+                          disabled={busy}
+                          onClick={() => request("reversal", t.id)}
+                        >
+                          Đề xuất đảo giao dịch
+                        </Button>
+                      )
+                    )}
+                  </article>
+                );
+              })}
+            {!(snapshot.transfers || []).some((t) => t.kind === "transfer") && (
+              <p>Chưa có giao dịch để đề xuất.</p>
+            )}
           </section>
           <section className="panel">
             <div className="section-title">
@@ -397,11 +445,37 @@ export default function PlatformWorkspace({
                 <strong>
                   {b.status === "verified"
                     ? "Đã diễn tập đạt"
-                    : "Đã tạo bản sao"}
+                    : b.status === "investigation-required"
+                      ? "Cần điều tra mốc khôi phục"
+                      : "Đã tạo bản sao"}
                 </strong>
                 <p className="platform-caption">
                   {date(b.date)} · {b.id}
                 </p>
+                {b.recovery && (
+                  <div className="platform-check">
+                    <p>
+                      {b.recovery.readyToOpen
+                        ? "Dữ liệu và mốc yêu cầu khớp trong lần diễn tập này."
+                        : "Chưa được mở lại giao dịch từ bản sao: còn dữ liệu hoặc yêu cầu cần đối chiếu."}
+                    </p>
+                    <p>
+                      {b.recovery.aroundCut.length} yêu cầu quanh mốc ·{" "}
+                      {b.recovery.missingPostings.length} bút toán ngoài bản sao
+                    </p>
+                    {b.recovery.eventsToReview?.length > 0 && (
+                      <p>
+                        {b.recovery.eventsToReview.length} sự kiện/thông báo cần
+                        đối chiếu trước phục hồi.
+                      </p>
+                    )}
+                    {b.recovery.aroundCut.map((r) => (
+                      <p className="platform-caption" key={r.id}>
+                        {r.key} · {r.atCut} → {r.current}
+                      </p>
+                    ))}
+                  </div>
+                )}
                 <Button
                   className="secondary"
                   disabled={busy || !operator}
@@ -409,7 +483,7 @@ export default function PlatformWorkspace({
                     perform(
                       "drill",
                       { id: b.id },
-                      "Diễn tập khôi phục và đối soát đạt; dữ liệu đang dùng không đổi.",
+                      "Đã diễn tập cách ly. Xem kết quả kiểm tra dữ liệu và mốc yêu cầu; dữ liệu đang dùng không đổi.",
                     )
                   }
                 >
@@ -528,7 +602,9 @@ export default function PlatformWorkspace({
                 ? "Đề xuất xử lý có dấu vết"
                 : modal.action === "approve"
                   ? "Phê duyệt bởi người khác"
-                  : "Từ chối đề xuất"
+                  : modal.action === "reversal"
+                    ? "Đề xuất đảo giao dịch"
+                    : "Từ chối đề xuất"
           }
           onClose={() => {
             if (!busy) setModal(null);
@@ -593,8 +669,9 @@ export default function PlatformWorkspace({
             ) : (
               <>
                 <p>
-                  Chỉ xây lại bộ đệm từ bút toán đã chốt. Không sửa sổ gốc hoặc
-                  tự bù thêm tiền.
+                  {modal.action === "reversal"
+                    ? "Đề xuất bút toán bù toàn phần cho giao dịch đã chọn. Giao dịch gốc được giữ nguyên; người khác phải kiểm tra và duyệt."
+                    : "Ghi lại lý do và kiểm tra đúng loại đề xuất. Chỉ đề xuất đảo được duyệt mới tạo bút toán bù; sửa bộ đệm giữ nguyên sổ gốc."}
                 </p>
                 <label>
                   Lý do và bằng chứng

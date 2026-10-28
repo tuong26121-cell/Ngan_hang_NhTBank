@@ -1,0 +1,33 @@
+digraph G {
+rankdir=LR;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Quan hệ dữ liệu"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Phiên RAM: actor + quyền"];
+B [shape=box, label="Tài khoản: owner / số dư đệm / trạng thái"];
+C [shape=box, label="Receipt: actor + key + fingerprint bất biến"];
+D [shape=box, label="Kết quả: posted hoặc rejected bất biến"];
+E [shape=box, label="Giao dịch: nguồn / đích / amount / reversesId"];
+F [shape=box, label="Bút toán: transactionId / accountId / signed amount"];
+G [shape=box, label="Outbox: eventId / transactionId / lease"];
+H [shape=box, label="Inbox: eventId duy nhất"];
+I [shape=box, label="Audit append-only"];
+J [shape=box, label="Đối soát / sự cố"];
+K [shape=box, label="Đề xuất / người lập / người duyệt"];
+L [shape=box, label="Backup / checksum / mốc yêu cầu"];
+A -> B [label="Sở hữu"];
+A -> C [label="Tạo"];
+C -> D [label="0..1 kết quả"];
+D -> E [label="posted → 1"];
+E -> F [label="2 bút toán"];
+F -> B [label="Tài khoản"];
+E -> G [label="1 sự kiện"];
+G -> H [label="0..1 mục nhận"];
+C -> I [label="Dấu vết"];
+E -> I [label="Dấu vết"];
+F -> J [label="Đối chiếu"];
+J -> K [label="Đề xuất xử lý"];
+K -> E [label="Đảo → giao dịch mới"];
+C -> L [label="Mốc tiếp nhận"];
+E -> L [label="Mốc ghi sổ"];
+}

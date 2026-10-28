@@ -20,11 +20,65 @@ export function createSQLiteStore(path, { readonly = false } = {}) {
   if (!readonly) {
     db.exec("PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;");
     const version = db.prepare("PRAGMA user_version").get().user_version;
-    if (version !== 0 && version !== SCHEMA_VERSION) {
+    if (![0, 1, SCHEMA_VERSION].includes(version)) {
       db.close();
       throw new Error("Unsupported database schema");
     }
-    db.exec(migration);
+    db.exec("BEGIN IMMEDIATE");
+    try {
+      db.exec(migration);
+      db.exec(
+        readFileSync(
+          new URL("../migrations/002-requests.sql", import.meta.url),
+          "utf8",
+        ),
+      );
+      const meta = db.prepare("SELECT body FROM metadata WHERE id=1").get();
+      if (
+        meta &&
+        ![1, SCHEMA_VERSION].includes(JSON.parse(meta.body).schemaVersion)
+      )
+        throw new Error("Unsupported metadata schema");
+      if (meta && JSON.parse(meta.body).schemaVersion === 1) {
+        const state = JSON.parse(meta.body);
+        state.schemaVersion = SCHEMA_VERSION;
+        db.prepare("UPDATE metadata SET body=? WHERE id=1").run(
+          JSON.stringify(state),
+        );
+        // Preserve historical immutable records; only append acceptance receipts.
+        for (const [position, op] of db
+          .prepare("SELECT body FROM operations ORDER BY position")
+          .all()
+          .entries()) {
+          const row = JSON.parse(op.body),
+            split = row.id.lastIndexOf(":");
+          const receipt = {
+            id: row.id,
+            actorId: row.id.slice(0, split),
+            key: row.id.slice(split + 1),
+            command: JSON.parse(row.fingerprint),
+            fingerprint: row.fingerprint,
+            date: row.date,
+            migrated: true,
+          };
+          db.prepare(
+            "INSERT INTO requests(id,position,body) VALUES(?,?,?)",
+          ).run(receipt.id, position, JSON.stringify(receipt));
+        }
+        const peer = seedState().accounts.find((a) => a.id === "peer-vnd");
+        const count = db.prepare("SELECT count(*) AS n FROM accounts").get().n;
+        db.prepare("INSERT INTO accounts(id,position,body) VALUES(?,?,?)").run(
+          peer.id,
+          count,
+          JSON.stringify(peer),
+        );
+      }
+      db.exec("COMMIT");
+    } catch (error) {
+      db.exec("ROLLBACK");
+      db.close();
+      throw error;
+    }
     for (const table of IMMUTABLE_COLLECTIONS)
       for (const action of ["UPDATE", "DELETE"])
         db.exec(

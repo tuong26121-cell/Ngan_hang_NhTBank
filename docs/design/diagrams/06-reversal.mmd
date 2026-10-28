@@ -1,0 +1,20 @@
+flowchart TD
+    A["Chọn giao dịch gốc posted"]
+    B["Operator lập đề xuất + lý do"]
+    C["Người duyệt khác kiểm tra"]
+    D["Từ chối; giữ nguyên sổ"]
+    E["Đối soát; chưa đảo; tài khoản active; bên nhận đủ tiền"]
+    F["BEGIN: đảo dấu 2 bút toán; cập nhật 2 số dư"]
+    G["Thêm kết quả bù + audit + outbox + quyết định"]
+    H["COMMIT; liên kết reversesId"]
+    I["Giao dịch gốc và lịch sử vẫn giữ nguyên"]
+    J["Không đủ bằng chứng / số dư: chưa áp dụng"]
+    A --> B
+    B --> C
+    C -->|Không duyệt| D
+    C -->|Duyệt| E
+    E -->|Đạt| F
+    E -->|Không đạt| J
+    F -->|Cùng transaction| G
+    G --> H
+    H --> I

@@ -1,5 +1,7 @@
 # Kết quả kiểm tra
 
+**Bản mới nhất:** [kiểm chứng hệ thống v2](system-v2-validation.md), [thiết kế v2](design/system-v2.md). Các kết quả bên dưới là biên bản phiên bản trước v2.
+
 ## Nâng cấp giao dịch ngày 29/10/2026
 
 Xem [biên bản nền tảng giao dịch](platform-validation.md) và [nghiệm thu UI bổ sung](ui-acceptance.md). Các kết quả bên dưới là lịch sử phiên bản trước; bản nâng cấp có thêm lõi dùng chung, SQLite cục bộ và hai chế độ vòng đời dữ liệu.

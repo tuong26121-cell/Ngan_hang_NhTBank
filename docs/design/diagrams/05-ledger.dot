@@ -1,0 +1,31 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Ghi sổ nguyên tử và thông báo"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Receipt đã tiếp nhận"];
+B [shape=box, label="BEGIN IMMEDIATE"];
+C [shape=box, label="Đọc kết quả cũ theo mã"];
+D [shape=box, label="Kiểm tra tài khoản / số dư / hạn mức / sổ"];
+E [shape=box, label="Giảm gửi và tăng nhận nội bộ hoặc clearing"];
+F [shape=box, label="Thêm 2 bút toán + kết quả + audit + outbox"];
+G [shape=box, label="COMMIT"];
+H [shape=box, label="Trả biên nhận"];
+I [shape=box, label="Worker thông báo sau commit"];
+J [shape=box, label="Inbox chống trùng theo ID sự kiện"];
+K [shape=box, label="Retry có giới hạn / dead-letter"];
+L [shape=box, label="ROLLBACK toàn bộ ghi sổ"];
+A -> B [label=""];
+B -> C [label=""];
+C -> H [label="Đã có kết quả"];
+C -> D [label="Chưa có"];
+D -> E [label="Đạt"];
+E -> F [label=""];
+F -> G [label=""];
+G -> H [label=""];
+G -> I [label=""];
+I -> J [label="Đã nhận"];
+I -> K [label="Lỗi thông báo"];
+E -> L [label="Lỗi kỹ thuật"];
+F -> L [label="Lỗi kỹ thuật"];
+}

@@ -1,0 +1,25 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Đảo giao dịch có dấu vết"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Chọn giao dịch gốc posted"];
+B [shape=box, label="Operator lập đề xuất + lý do"];
+C [shape=box, label="Người duyệt khác kiểm tra"];
+D [shape=box, label="Từ chối; giữ nguyên sổ"];
+E [shape=box, label="Đối soát; chưa đảo; tài khoản active; bên nhận đủ tiền"];
+F [shape=box, label="BEGIN: đảo dấu 2 bút toán; cập nhật 2 số dư"];
+G [shape=box, label="Thêm kết quả bù + audit + outbox + quyết định"];
+H [shape=box, label="COMMIT; liên kết reversesId"];
+I [shape=box, label="Giao dịch gốc và lịch sử vẫn giữ nguyên"];
+J [shape=box, label="Không đủ bằng chứng / số dư: chưa áp dụng"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label="Không duyệt"];
+C -> E [label="Duyệt"];
+E -> F [label="Đạt"];
+E -> J [label="Không đạt"];
+F -> G [label="Cùng transaction"];
+G -> H [label=""];
+H -> I [label=""];
+}

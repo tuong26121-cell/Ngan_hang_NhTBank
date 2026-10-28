@@ -1,0 +1,22 @@
+flowchart TD
+    A["Bản sao SQLite + checksum + version"]
+    B["Chép sang DB cách ly, chỉ đọc"]
+    C["Kiểm integrity / schema / sổ / quan hệ"]
+    D["So sánh lịch sử bất biến với nguồn hiện tại"]
+    E["Đối chiếu receipt và kết quả quanh mốc"]
+    F{"Còn accepted hoặc dữ liệu ngoài bản sao?"}
+    G["Đánh dấu cần điều tra; chưa được mở giao dịch"]
+    H["Lưu báo cáo diễn tập đạt tại mốc này"]
+    I["Đối chiếu nguồn độc lập và duyệt kế hoạch phục hồi"]
+    J["Không có endpoint tự ghi đè hoặc mở DB phục hồi"]
+    A --> B
+    B --> C
+    C -->|Đạt| D
+    C -->|Không đạt| G
+    D --> E
+    E --> F
+    F -->|Có| G
+    F -->|Không| H
+    G --> I
+    I -->|Cần công cụ riêng| J
+    H -->|Diễn tập không triển khai| J

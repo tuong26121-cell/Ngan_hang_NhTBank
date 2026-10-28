@@ -13,3 +13,7 @@ Mở `http://127.0.0.1:3001/?runtime=server`, PIN 123456. Vào Cá nhân → Kh�
 `npm run test:platform` chạy kiểm thử driver/lõi/HTTP. Mặc định `npm run dev` vẫn là bản bộ nhớ không cần server. Dùng `?runtime=server` trên Vite khi backend đang chạy để gọi proxy cục bộ; đổi port Vite cần cập nhật nguồn được phép.
 
 Xem [kiến trúc](../docs/architecture.md), [API](../docs/platform-api.md), [vận hành](../docs/operations-runbook.md) và [giới hạn an toàn](../docs/sandbox-security.md). Không chỉnh file DB bằng tay; không đưa DB/backup vào Git. Không gọi cấu hình này là backend ngân hàng sản xuất.
+
+Schema hiện tại: 2. Khởi động tự migration DB v1 trong transaction, giữ sổ và kết quả cũ, bổ sung bảng receipt. Không xóa `.data` để nâng schema. Backup v1 không được mở trực tiếp như v2; chưa có công cụ chuyển backup cũ.
+
+Worker mỗi giây tiếp tục một receipt accepted chưa có kết quả, rồi xử lý outbox độc lập. Xem [system v2](../docs/design/system-v2.md) về tra cứu sau tải lại, bút toán bù và kiểm mốc phục hồi. Không có endpoint restore ghi đè DB.

@@ -137,3 +137,25 @@ Các dòng dưới đây bổ sung trạng thái mới, không biến các giớ
 ### Bằng chứng và kết luận
 
 Xem `docs/platform-validation.md` cho lệnh chạy và phạm vi. Hai ảnh mới nằm ở `docs/screenshots/platform-mobile.png` và `platform-desktop.png`; không thay ảnh baseline cũ. Đã kiểm tra Tab/Escape và focus khôi phục cho hộp đổi vai trò. Không nghiệm thu chính thức toàn bộ P0 khi thiết bị thật, bàn phím ảo, hiệu suất và rà tương phản toàn diện chưa có bằng chứng.
+
+## Hệ thống v2 — mất mạng khi chuyển tiền, 29/10/2026
+
+Nền `cf8cc38`, nhánh `codex/resilient-transfers-v2-20261029`. Commit nguồn xác định bằng `git log -1 --format=%H -- frontend/src/lib/transfer-recovery.js packages/banking-core`. Người dùng yêu cầu đổi luồng nghiệp vụ; bản cập nhật giữ nhận diện và năm tab, thêm phục hồi mã qua tải lại, nội bộ/đảo có duyệt và kiểm mốc backup.
+
+| Mã đối chiếu (đủ 45)         | Kết quả trong phạm vi v2                                                                                                                                                            |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A01, A02, A04, A05           | Giữ màu xanh dương, logo, font và Lucide; ảnh phục hồi mobile/desktop đã xem. Không thiết kế lại thương hiệu.                                                                       |
+| A03                          | axe không phát hiện vi phạm trên vùng `.transfer-recovery` ở 390/1440 px. Chưa rà tương phản toàn bộ mọi màn/trạng thái; giữ giới hạn nghiệm thu cũ.                                |
+| B01, B02, B03, B04           | Luồng trang chủ, số dư/ẩn hiện và thao tác chính qua hồi quy E2E; giao dịch chưa rõ kết quả có lối mở lại, không đổi giá trị tiền từ trạng thái UI.                                 |
+| B05, B06                     | Màn phục hồi không tràn ngang ở 8 độ rộng 320–1920; key UUID tự xuống dòng, các nhóm cách rõ. Bảng vận hành cuộn ngang có nhãn khi cần.                                             |
+| C01, C02, C03, C04, C05, C06 | Nút phục hồi đo ≥44 × 44; busy/khóa gửi; có focus rõ và Enter; kiểm tra/nhập PIN/gửi lại là hành động thật. Đồng bộ bo góc/kiểu nút cũ.                                             |
+| D01, D02, D03, D04, D05, D06 | Giữ hiệu ứng cũ và reduced-motion; biên nhận focus đầu, không cuộn xuống ô nhập. Giao dịch server không dùng hiệu ứng để suy diễn thành công. Chưa đo FPS trên thiết bị thật.       |
+| E01, E02, E03, E04, E05      | Giữ 5 tab/trạng thái chọn/thanh cố định và đệm cũ, hồi quy E2E đạt. Vùng an toàn hệ thống Android/iPhone thật vẫn chưa xác minh.                                                    |
+| F01, F02, F03, F04, F05      | Chromium viewport mobile/desktop và đổi độ rộng đạt; có 320/360/390/430 và ma trận bổ sung. Android/Safari thật, xoay thiết bị thật và bàn phím ảo chưa kiểm.                       |
+| G01, G02, G03, G04           | Chưa có phép đo mới về LCP, INP, CLS, heap; không nâng thành đạt.                                                                                                                   |
+| G05, G06                     | 37 frontend + 46 lõi/API + 20 E2E đạt; kiểm bổ sung phục hồi không có pageerror chưa xử lý. Lỗi mạng chủ ý có thông báo. Chưa suy rộng sang mọi thiết bị/điều kiện mạng.            |
+| H01, H02                     | Hồi quy chức năng giữ hoạt động; số dư đầu kỳ/lịch sử mẫu/QR giữ nguyên. Thêm receipt, tài khoản nội bộ 0 đồng, bút toán bù và schema v2 theo yêu cầu, có kiểm migration giữ sổ cũ. |
+| H03                          | Đường bình thường vẫn nhập → kiểm tra → PIN → biên nhận. Chỉ đường chưa rõ kết quả mới cần tra cứu/đăng nhập lại/resend đúng mã; không bắt tạo lại nội dung.                        |
+| H04, H05, H06                | Có nhãn minh họa/không tiền thật; key và lệnh mẫu có lưu localStorage, PIN/cookie/CSRF không được lưu vào hồ sơ. Không thêm API ngân hàng hoặc payload QR thanh toán thật.          |
+
+Bằng chứng chi tiết: [system-v2-validation](system-v2-validation.md). Các tiêu chí P0 chưa xác minh vẫn chưa đủ điều kiện nghiệm thu chính thức; không gọi đây là ứng dụng ngân hàng sản xuất.

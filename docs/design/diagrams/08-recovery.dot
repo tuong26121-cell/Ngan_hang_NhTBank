@@ -1,0 +1,27 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Kiểm tra mốc khôi phục"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Bản sao SQLite + checksum + version"];
+B [shape=box, label="Chép sang DB cách ly, chỉ đọc"];
+C [shape=box, label="Kiểm integrity / schema / sổ / quan hệ"];
+D [shape=box, label="So sánh lịch sử bất biến với nguồn hiện tại"];
+E [shape=box, label="Đối chiếu receipt và kết quả quanh mốc"];
+F [shape=diamond, label="Còn accepted hoặc dữ liệu ngoài bản sao?"];
+G [shape=box, label="Đánh dấu cần điều tra; chưa được mở giao dịch"];
+H [shape=box, label="Lưu báo cáo diễn tập đạt tại mốc này"];
+I [shape=box, label="Đối chiếu nguồn độc lập và duyệt kế hoạch phục hồi"];
+J [shape=box, label="Không có endpoint tự ghi đè hoặc mở DB phục hồi"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label="Đạt"];
+C -> G [label="Không đạt"];
+D -> E [label=""];
+E -> F [label=""];
+F -> G [label="Có"];
+F -> H [label="Không"];
+G -> I [label=""];
+I -> J [label="Cần công cụ riêng"];
+H -> J [label="Diễn tập không triển khai"];
+}

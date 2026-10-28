@@ -9,6 +9,8 @@ import {
 } from "node:fs";
 import { resolve, join } from "node:path";
 import { createSQLiteStore } from "./sqlite-store.js";
+import { inspectRecovery } from "../../packages/banking-core/recovery.js";
+import { SCHEMA_VERSION } from "../../packages/banking-core/model.js";
 import { inspectLedger } from "../../packages/banking-core/reconciliation.js";
 import {
   BankingError,
@@ -31,11 +33,12 @@ export function createBackupService(store, directory) {
         file = fileFor(id);
       await store.backupTo(file);
       const candidate = createSQLiteStore(file, { readonly: true });
-      let check;
+      let check, captured;
       try {
         if (candidate.integrity() !== "ok")
           throw new Error("SQLite integrity failure");
-        check = inspectLedger(candidate.read());
+        captured = candidate.read();
+        check = inspectLedger(captured);
       } finally {
         candidate.close();
       }
@@ -52,7 +55,11 @@ export function createBackupService(store, directory) {
         status: "created",
         checksum: hash(file),
         date: new Date().toISOString(),
-        schemaVersion: 1,
+        schemaVersion: SCHEMA_VERSION,
+        snapshotVersion: captured.version,
+        requestCount: captured.requests.length,
+        resultCount: captured.operations.length,
+        ledgerCount: captured.ledger.length,
       };
       writeFileSync(file + ".json", JSON.stringify(record, null, 2), {
         mode: 0o600,
@@ -82,6 +89,15 @@ export function createBackupService(store, directory) {
         );
       const manifest = JSON.parse(readFileSync(file + ".json", "utf8"));
       if (
+        manifest.schemaVersion !== SCHEMA_VERSION ||
+        original.schemaVersion !== SCHEMA_VERSION
+      )
+        throw new BankingError(
+          "BACKUP_SCHEMA_UNSUPPORTED",
+          "Bản sao dùng schema khác. Cần chuyển đổi bản sao riêng và kiểm tra lại; chưa khôi phục dữ liệu.",
+          409,
+        );
+      if (
         manifest.checksum !== original.checksum ||
         hash(file) !== original.checksum
       )
@@ -91,13 +107,15 @@ export function createBackupService(store, directory) {
           409,
         );
       const target = join(folder, "drill-" + randomUUID() + ".sqlite");
-      let candidate, check;
+      let candidate, check, recovery;
       try {
         copyFileSync(file, target);
         candidate = createSQLiteStore(target, { readonly: true });
         if (candidate.integrity() !== "ok")
           throw new Error("SQLite integrity failure");
-        check = inspectLedger(candidate.read());
+        const restored = candidate.read();
+        check = inspectLedger(restored);
+        recovery = inspectRecovery(restored, store.read());
         if (!check.balanced)
           throw new BankingError(
             "DRILL_FAILED",
@@ -111,11 +129,16 @@ export function createBackupService(store, directory) {
       return store.transact((s) => {
         const row = s.backups.find((b) => b.id === id);
         row.lastDrillAt = new Date().toISOString();
-        row.status = "verified";
+        row.status = recovery.readyToOpen
+          ? "verified"
+          : "investigation-required";
+        row.recovery = recovery;
         s.audit.push({
           id: randomUUID(),
           actorId: actor.id,
-          action: "backup.drill-passed",
+          action: recovery.readyToOpen
+            ? "backup.drill-passed"
+            : "backup.boundary-blocked",
           subjectId: id,
           date: row.lastDrillAt,
           detail:

@@ -1,5 +1,7 @@
 # Kiểm chứng nền tảng giao dịch
 
+**Bản mới nhất:** [kiểm chứng hệ thống v2](system-v2-validation.md), [thiết kế v2](design/system-v2.md). Các kết quả bên dưới là biên bản phiên bản trước v2.
+
 Ngày 29/10/2026, nền `main` **db6b58e**, nhánh `codex/transaction-platform-20261029`. Node 24.19.0, Linux, SQLite tích hợp Node, Chromium hệ thống. Commit bàn giao xác định bằng `git log -1 --format=%H -- packages/banking-core backend frontend/src/components/PlatformWorkspace.jsx`.
 
 ## Phạm vi đã kiểm tra

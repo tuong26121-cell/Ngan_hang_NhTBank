@@ -51,6 +51,25 @@ export default function App() {
   const [runtime] = useState(createPlatformClient);
   const [platformSnapshot, setPlatformSnapshot] = useState(null);
   const [sessionError, setSessionError] = useState("");
+  const [recoveryNotice, setRecoveryNotice] = useState(false);
+  useEffect(
+    () =>
+      runtime.subscribeRecovery(() => {
+        try {
+          setRecoveryNotice(Boolean(runtime.getRecovery()?.read()));
+        } catch {
+          setRecoveryNotice(true);
+        }
+      }),
+    [runtime],
+  );
+  function recoveryPage() {
+    try {
+      return Boolean(runtime.getRecovery()?.read());
+    } catch {
+      return true;
+    }
+  }
   const applySnapshot = useCallback((next) => {
     setPlatformSnapshot(next);
     setBalance(
@@ -58,9 +77,15 @@ export default function App() {
     );
     setTransactions([
       ...next.transfers
-        .filter((t) => t.kind === "transfer")
+        .filter((t) => t.kind === "transfer" || t.kind === "reversal")
         .reverse()
-        .map((t) => ({ ...t, amount: -t.amount })),
+        .map((t) => ({
+          ...t,
+          amount:
+            (t.kind === "reversal" ? 1 : -1) *
+            (t.accountId === PRIMARY_ACCOUNT ? 1 : -1) *
+            t.amount,
+        })),
       ...initialTransactions,
     ]);
     return next;
@@ -70,7 +95,9 @@ export default function App() {
       applySnapshot(next);
       setAuthenticated(true);
       setSessionError("");
-      if (
+      setRecoveryNotice(recoveryPage());
+      if (recoveryPage()) setPage("transfer");
+      else if (
         new URLSearchParams(window.location.search).get("workspace") ===
         "operations"
       )
@@ -88,7 +115,9 @@ export default function App() {
         if (active) {
           applySnapshot(next);
           setAuthenticated(true);
-          if (
+          setRecoveryNotice(recoveryPage());
+          if (recoveryPage()) setPage("transfer");
+          else if (
             new URLSearchParams(window.location.search).get("workspace") ===
             "operations"
           )
@@ -123,7 +152,11 @@ export default function App() {
     const result = runtime.transfer(form, key, pin);
     if (result?.then)
       return result.then(async (entry) => {
-        await refreshPlatform();
+        try {
+          await refreshPlatform();
+        } catch {
+          setSessionError("Đã ghi sổ; chưa tải lại được số dư.");
+        }
         return entry;
       });
     refreshPlatform();
@@ -322,10 +355,28 @@ export default function App() {
                   navigate={navigate}
                 />
               )}{" "}
+              {recoveryNotice &&
+                page !== "transfer" &&
+                platformSnapshot?.actor.role === "customer" && (
+                  <div className="recovery-banner" role="status">
+                    <p>
+                      Có yêu cầu chuyển tiền đã lưu trên thiết bị. Kiểm tra kết
+                      quả trước khi tạo lệnh khác.
+                    </p>
+                    <Button
+                      className="secondary"
+                      onClick={() => navigate("transfer")}
+                    >
+                      Mở yêu cầu đã lưu
+                    </Button>
+                  </div>
+                )}
               {page === "transfer" && (
                 <Transfer
                   balance={balance}
                   onTransfer={transfer}
+                  runtime={runtime}
+                  onRefresh={refreshPlatform}
                   navigate={navigate}
                 />
               )}{" "}

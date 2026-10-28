@@ -84,7 +84,18 @@ for (const kind of ["memory", "sqlite"]) {
           platform.transfer(actor("customer"), command, crypto.randomUUID()),
         /disk fault/,
       );
-      assert.deepEqual(store.read(), before);
+      const after = store.read();
+      for (const collection of [
+        "accounts",
+        "transfers",
+        "ledger",
+        "operations",
+        "outbox",
+        "notifications",
+      ])
+        assert.deepEqual(after[collection], before[collection]);
+      assert.equal(after.requests.length, 1);
+      assert.equal(after.audit.at(-1).action, "request.accepted");
     }
   });
   test(`${kind}: expiry, account ownership, role, receiver and rejected-result replay`, (t) => {

@@ -1,0 +1,28 @@
+flowchart LR
+    A["Nhập thông tin"]
+    B["Kiểm tra"]
+    C["PIN"]
+    D["Đang gửi"]
+    E["Chưa rõ kết quả"]
+    F["Đang tra cứu"]
+    G["Đang chờ / đã tiếp nhận"]
+    H["Chưa tìm thấy"]
+    I["Biên nhận đã ghi sổ"]
+    J["Kết quả bị từ chối"]
+    K["Đóng kết quả"]
+    A -->|Hợp lệ| B
+    B -->|Xác nhận| C
+    C -->|Lưu mã trước gửi| D
+    D -->|Mất phản hồi| E
+    E -->|Kiểm tra / tải lại| F
+    F -->|accepted| G
+    G -->|Tối đa 3 lần| F
+    F -->|not_found| H
+    H -->|Cùng mã + nội dung| D
+    F -->|posted| I
+    F -->|rejected| J
+    D -->|posted| I
+    D -->|rejected đã tra cứu| J
+    I -->|Chủ động đóng| K
+    J -->|Chủ động đóng| K
+    K -->|Ý định mới| A

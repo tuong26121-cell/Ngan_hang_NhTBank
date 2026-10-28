@@ -1,0 +1,27 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Đối soát và cô lập"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Đọc snapshot nhất quán"];
+B [shape=box, label="Tính lại số dư bằng BigInt"];
+C [shape=box, label="Kiểm số tiền, dấu, tài khoản, giao dịch / receipt / kết quả / event"];
+D [shape=diamond, label="Có sai lệch?"];
+E [shape=box, label="Lưu kết quả khớp"];
+F [shape=box, label="Cô lập phạm vi; lưu sự cố và audit"];
+G [shape=diamond, label="Chỉ sai bộ đệm?"];
+H [shape=box, label="Đề xuất xây lại bộ đệm"];
+I [shape=box, label="Người khác duyệt bằng chứng không đổi"];
+J [shape=box, label="Đối soát lại; bỏ cô lập nếu đạt"];
+K [shape=box, label="Điều tra sổ gốc; không tự bù"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label=""];
+D -> E [label="Không"];
+D -> F [label="Có"];
+F -> G [label=""];
+G -> H [label="Có"];
+G -> K [label="Không"];
+H -> I [label=""];
+I -> J [label="Đạt"];
+}

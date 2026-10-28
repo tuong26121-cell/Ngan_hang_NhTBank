@@ -1,0 +1,33 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Mất mạng khi chuyển tiền"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Xác nhận nội dung; lưu mã trên thiết bị"];
+B [shape=box, label="Gửi đúng mã và nội dung"];
+C [shape=diamond, label="Nhận được kết quả?"];
+D [shape=box, label="Hiển thị trạng thái máy chủ xác nhận"];
+E [shape=box, label="Chưa rõ kết quả"];
+F [shape=box, label="Tra cứu mã cũ sau tải lại / đăng nhập lại"];
+G [shape=diamond, label="Trạng thái máy chủ"];
+H [shape=box, label="Đã ghi sổ: hiển thị biên nhận"];
+I [shape=box, label="Đã từ chối: không thực hiện"];
+J [shape=box, label="Đã tiếp nhận: tối đa 3 lần kiểm tra tự động"];
+K [shape=box, label="Chưa thấy: nhập PIN; gửi lại mã và nội dung cũ"];
+L [shape=box, label="Hết lượt: người dùng kiểm tra thủ công"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label="Có"];
+C -> E [label="Không"];
+E -> F [label=""];
+F -> G [label=""];
+G -> H [label="posted"];
+G -> I [label="rejected"];
+G -> J [label="accepted"];
+J -> F [label="Còn lượt"];
+J -> L [label="Đủ 3 lần"];
+L -> F [label="Thủ công"];
+G -> K [label="not_found"];
+K -> B [label="Cùng mã"];
+F -> E [label="Vẫn mất mạng"];
+}

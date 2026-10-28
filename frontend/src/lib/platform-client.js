@@ -1,3 +1,4 @@
+import { createTransferRecovery } from "./transfer-recovery.js";
 import {
   createMemoryStore,
   DEMO_IDENTITIES,
@@ -17,11 +18,41 @@ export function createPlatformClient({
     snapshots = createMemorySnapshots(store),
     actor = null,
     csrf = null;
+  const listeners = new Set();
+  const notify = () => listeners.forEach((fn) => fn());
+  let recovery;
+  function getRecovery() {
+    if (mode !== "server" || !actor || actor.role !== "customer") return null;
+    if (recovery?.actorId === actor.id) return recovery.manager;
+    let storage;
+    try {
+      storage = window.localStorage;
+    } catch {
+      storage = {
+        getItem() {
+          throw Error();
+        },
+      };
+    }
+    const manager = createTransferRecovery({
+      storage,
+      scope: window.location.origin + ":" + actor.id,
+      locks: navigator.locks,
+      send: (form, key, pin) => client.transfer(form, key, pin),
+      lookup: (key) => client.lookup(key),
+      notify,
+    });
+    recovery = { actorId: actor.id, manager };
+    return manager;
+  }
   async function request(path, method = "GET", body, key) {
     let response;
+    const controller = new AbortController(),
+      timeout = setTimeout(() => controller.abort(), 12000);
     try {
       response = await fetch("/api/v1" + path, {
         method,
+        signal: controller.signal,
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
@@ -31,6 +62,7 @@ export function createPlatformClient({
         ...(body ? { body: JSON.stringify(body) } : {}),
       });
     } catch {
+      clearTimeout(timeout);
       throw new BankingError(
         "CONNECTION_UNKNOWN",
         "Chưa nhận được kết quả máy chủ. Gửi lại cùng nội dung sẽ dùng lại mã chống lặp; đừng tạo lệnh khác khi chưa kiểm tra.",
@@ -41,12 +73,14 @@ export function createPlatformClient({
     try {
       data = await response.json();
     } catch {
+      clearTimeout(timeout);
       throw new BankingError(
         "INVALID_RESPONSE",
         "Máy chủ chưa trả JSON hợp lệ. Kiểm tra backend và chế độ kết nối.",
         503,
       );
     }
+    clearTimeout(timeout);
     if (!response.ok)
       throw new BankingError(
         data.error?.code || "REQUEST_FAILED",
@@ -57,6 +91,20 @@ export function createPlatformClient({
   }
   const client = {
     mode,
+    getRecovery,
+    subscribeRecovery(fn) {
+      listeners.add(fn);
+      window.addEventListener("storage", fn);
+      return () => {
+        listeners.delete(fn);
+        window.removeEventListener("storage", fn);
+      };
+    },
+    lookup(key) {
+      return mode === "server"
+        ? request("/transfer-requests/" + encodeURIComponent(key))
+        : platform.lookup(actor, key);
+    },
     login(identity = "customer", pin = "123456") {
       if (mode === "server")
         return request("/session", "POST", { identity, pin }).then((data) => {
@@ -101,6 +149,10 @@ export function createPlatformClient({
     action(name, args = {}) {
       if (mode === "server") {
         const routes = {
+          reversal: [
+            `/transfers/${args.id}/reversal-proposals`,
+            { reason: args.reason },
+          ],
           reconcile: ["/reconciliations", {}],
           dispatch: ["/outbox/dispatch", {}],
           inject: ["/lab/projection-drift", {}],
@@ -114,6 +166,8 @@ export function createPlatformClient({
         return request(routes[name][0], "POST", routes[name][1]);
       }
       switch (name) {
+        case "reversal":
+          return platform.proposeReversal(actor, args.id, args.reason);
         case "reconcile":
           return platform.reconcile(actor);
         case "dispatch":

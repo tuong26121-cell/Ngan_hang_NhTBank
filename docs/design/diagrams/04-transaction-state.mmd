@@ -1,0 +1,19 @@
+flowchart LR
+    A["not_found: chưa có receipt"]
+    B["accepted: receipt bất biến đã commit"]
+    C["Kiểm tra trong transaction ghi sổ"]
+    D["posted: kết quả bất biến"]
+    E["rejected: kết quả bất biến"]
+    F["accepted còn nguyên; không ghi nợ dở"]
+    G["Worker tiếp tục đúng lệnh"]
+    H["Đảo bằng giao dịch bù riêng"]
+    A -->|Đúng phiên / quyền / mã| B
+    B -->|API hoặc worker| C
+    C -->|COMMIT toàn bộ| D
+    C -->|Từ chối nghiệp vụ| E
+    C -->|Rollback lỗi kỹ thuật| F
+    F -->|Khởi động lại| G
+    G --> C
+    D -->|Gửi lại cùng mã| D
+    E -->|Gửi lại cùng mã| E
+    D -->|Gốc vẫn posted| H

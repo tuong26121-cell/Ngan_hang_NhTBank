@@ -9,6 +9,7 @@ import { createPlatform } from "../../packages/banking-core/platform.js";
 import {
   BankingError,
   DEMO_IDENTITIES,
+  SCHEMA_VERSION,
 } from "../../packages/banking-core/model.js";
 const root = resolve(fileURLToPath(new URL("../../", import.meta.url)));
 const digest = (value) => createHash("sha256").update(value).digest("hex");
@@ -155,7 +156,7 @@ export function createServerApp({
           status: "ok",
           mode: "sandbox",
           storage: "sqlite",
-          schemaVersion: 1,
+          schemaVersion: SCHEMA_VERSION,
         });
       if (
         req.method !== "GET" &&
@@ -255,6 +256,22 @@ export function createServerApp({
       }
       if (req.method === "GET" && url.pathname === "/api/v1/snapshot")
         return response(res, 200, platform.snapshot(auth.actor));
+      let requestMatch = url.pathname.match(
+        /^\/api\/v1\/transfer-requests\/([A-Za-z0-9_-]{16,100})$/,
+      );
+      if (req.method === "GET" && requestMatch)
+        return response(res, 200, platform.lookup(auth.actor, requestMatch[1]));
+      const reversalMatch = url.pathname.match(
+        /^\/api\/v1\/transfers\/([A-Za-z0-9-]+)\/reversal-proposals$/,
+      );
+      if (req.method === "POST" && reversalMatch) {
+        const body = await json(req);
+        return response(
+          res,
+          200,
+          platform.proposeReversal(auth.actor, reversalMatch[1], body.reason),
+        );
+      }
       if (req.method === "POST" && url.pathname === "/api/v1/transfers") {
         const body = await json(req);
         if (body.pin !== "123456")
@@ -329,6 +346,14 @@ export function createServerApp({
   const timer = worker
     ? setInterval(() => {
         inFlight = inFlight
+          .then(() =>
+            platform.settleAccepted({
+              id: "system-settlement",
+              role: "operator",
+              expiresAt: clock() + 60000,
+            }),
+          )
+          .catch(() => {})
           .then(() =>
             platform.dispatch({
               id: "system-outbox",

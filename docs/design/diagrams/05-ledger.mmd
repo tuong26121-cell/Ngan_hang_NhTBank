@@ -1,0 +1,26 @@
+flowchart TD
+    A["Receipt đã tiếp nhận"]
+    B["BEGIN IMMEDIATE"]
+    C["Đọc kết quả cũ theo mã"]
+    D["Kiểm tra tài khoản / số dư / hạn mức / sổ"]
+    E["Giảm gửi và tăng nhận nội bộ hoặc clearing"]
+    F["Thêm 2 bút toán + kết quả + audit + outbox"]
+    G["COMMIT"]
+    H["Trả biên nhận"]
+    I["Worker thông báo sau commit"]
+    J["Inbox chống trùng theo ID sự kiện"]
+    K["Retry có giới hạn / dead-letter"]
+    L["ROLLBACK toàn bộ ghi sổ"]
+    A --> B
+    B --> C
+    C -->|Đã có kết quả| H
+    C -->|Chưa có| D
+    D -->|Đạt| E
+    E --> F
+    F --> G
+    G --> H
+    G --> I
+    I -->|Đã nhận| J
+    I -->|Lỗi thông báo| K
+    E -->|Lỗi kỹ thuật| L
+    F -->|Lỗi kỹ thuật| L

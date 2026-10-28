@@ -1,4 +1,5 @@
-import { BankingError, requirePermission } from "./model.js";
+import { inspectRecovery } from "./recovery.js";
+import { SCHEMA_VERSION, BankingError, requirePermission } from "./model.js";
 import { inspectLedger } from "./reconciliation.js";
 export function createMemorySnapshots(store) {
   const files = new Map();
@@ -44,7 +45,10 @@ export function createMemorySnapshots(store) {
           404,
         );
       const copy = JSON.parse(raw);
-      if (copy.schemaVersion !== 1 || !inspectLedger(copy).balanced)
+      if (
+        copy.schemaVersion !== SCHEMA_VERSION ||
+        !inspectLedger(copy).balanced
+      )
         throw new BankingError(
           "DRILL_FAILED",
           "Đối soát bản chụp không đạt.",
@@ -52,7 +56,10 @@ export function createMemorySnapshots(store) {
         );
       return store.transact((s) => {
         const record = s.backups.find((b) => b.id === id);
-        record.status = "verified";
+        record.recovery = inspectRecovery(copy, s);
+        record.status = record.recovery.readyToOpen
+          ? "verified"
+          : "investigation-required";
         record.lastDrillAt = new Date().toISOString();
         s.audit.push({
           id: crypto.randomUUID(),

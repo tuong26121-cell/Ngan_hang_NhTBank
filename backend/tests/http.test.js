@@ -207,3 +207,94 @@ test("automatic outbox worker only notifies after a durable posting", async (t) 
   assert.equal(app.store.read().ledger.length, 4);
   assert.equal(app.store.read().outbox[0].status, "delivered");
 });
+
+test("HTTP lookup survives logout/new session, separates accepted/posted/rejected and actor scope", async (t) => {
+  const { base, app } = await setup(t);
+  let headers = await login(base),
+    key = crypto.randomUUID();
+  let found = await fetch(base + "/api/v1/transfer-requests/" + key, {
+    headers,
+  });
+  assert.equal((await found.json()).status, "not_found");
+  await fetch(base + "/api/v1/transfers", {
+    method: "POST",
+    headers: { ...headers, "Idempotency-Key": key },
+    body: JSON.stringify(input),
+  });
+  await fetch(base + "/api/v1/session", { method: "DELETE", headers });
+  assert.equal(
+    (await fetch(base + "/api/v1/transfer-requests/" + key, { headers }))
+      .status,
+    401,
+  );
+  headers = await login(base);
+  found = await fetch(base + "/api/v1/transfer-requests/" + key, { headers });
+  assert.equal((await found.json()).status, "posted");
+  const rejected = crypto.randomUUID();
+  await fetch(base + "/api/v1/transfers", {
+    method: "POST",
+    headers: { ...headers, "Idempotency-Key": rejected },
+    body: JSON.stringify({ ...input, amount: "9000000" }),
+  });
+  assert.equal(
+    (
+      await (
+        await fetch(base + "/api/v1/transfer-requests/" + rejected, { headers })
+      ).json()
+    ).status,
+    "rejected",
+  );
+  const operator = await login(base, "operator");
+  assert.equal(
+    (
+      await fetch(base + "/api/v1/transfer-requests/" + key, {
+        headers: operator,
+      })
+    ).status,
+    403,
+  );
+  assert.equal(app.store.read().operations.length, 2);
+});
+
+test("HTTP reversal endpoints require operator then separate approver, retry approval adds no journal", async (t) => {
+  const { base, app } = await setup(t),
+    customer = await login(base);
+  const posted = await (
+    await fetch(base + "/api/v1/transfers", {
+      method: "POST",
+      headers: { ...customer, "Idempotency-Key": crypto.randomUUID() },
+      body: JSON.stringify({
+        ...input,
+        bank: "NhTBank Sandbox",
+        account: "0900000002",
+        recipient: "Trần Minh Anh",
+      }),
+    })
+  ).json();
+  const route = base + `/api/v1/transfers/${posted.id}/reversal-proposals`;
+  const body = JSON.stringify({
+    reason: "Đã đối chiếu hai tài khoản và đề nghị đảo toàn phần",
+  });
+  assert.equal(
+    (await fetch(route, { method: "POST", headers: customer, body })).status,
+    403,
+  );
+  const operator = await login(base, "operator");
+  const proposal = await (
+    await fetch(route, { method: "POST", headers: operator, body })
+  ).json();
+  const approver = await login(base, "approver");
+  for (let i = 0; i < 2; i++)
+    assert.equal(
+      (
+        await fetch(base + `/api/v1/proposals/${proposal.id}/approve`, {
+          method: "POST",
+          headers: approver,
+          body,
+        })
+      ).status,
+      200,
+    );
+  assert.equal(app.store.read().ledger.length, 6);
+  assert.equal(app.store.read().accounts[0].balance, 4056000);
+});

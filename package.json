@@ -9,7 +9,7 @@
     "preview": "vite preview frontend --config vite.config.js --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "format:check": "prettier --check \"frontend/**/*.{js,jsx,css,html}\" \"packages/**/*.js\" \"backend/**/*.{js,md}\" \"*.js\" \"*.json\" \"*.md\" \"docs/*.md\" \"e2e/*.js\"",
+    "format:check": "prettier --check \"frontend/**/*.{js,jsx,css,html}\" \"packages/**/*.js\" \"backend/**/*.{js,md}\" \"*.js\" \"*.json\" \"*.md\" \"docs/**/*.md\" \"e2e/*.js\"",
     "platform:serve": "node backend/src/server.js",
     "test:platform": "node --test --test-isolation=none backend/tests/*.test.js"
   },

@@ -1,0 +1,29 @@
+digraph G {
+rankdir=TB;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Đăng nhập và hết phiên"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Mở ứng dụng"];
+B [shape=box, label="GET session"];
+C [shape=diamond, label="Phiên còn hạn?"];
+D [shape=box, label="Nạp đúng tài khoản và quyền"];
+E [shape=box, label="Nhập PIN thử nghiệm"];
+F [shape=box, label="Máy chủ tạo cookie HttpOnly + CSRF"];
+G [shape=diamond, label="Có yêu cầu đã lưu?"];
+H [shape=box, label="Tra cứu mã cũ; giữ nguyên nội dung"];
+I [shape=box, label="Mở tổng quan"];
+J [shape=box, label="API trả SESSION_EXPIRED"];
+K [shape=box, label="Giữ hồ sơ; đăng nhập lại"];
+A -> B [label=""];
+B -> C [label=""];
+C -> D [label="Có"];
+C -> E [label="Không"];
+E -> F [label="Hợp lệ"];
+F -> D [label=""];
+D -> G [label=""];
+G -> H [label="Có"];
+G -> I [label="Không"];
+H -> J [label="Hết phiên"];
+J -> K [label=""];
+K -> E [label="Không tạo mã khác"];
+}

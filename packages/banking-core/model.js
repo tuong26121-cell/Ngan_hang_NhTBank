@@ -1,4 +1,4 @@
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 export const PRIMARY_ACCOUNT = "customer-vnd";
 export const DEMO_IDENTITIES = Object.freeze({
   customer: {
@@ -25,9 +25,11 @@ export const PERMISSIONS = Object.freeze({
     "incident:propose",
     "outbox:dispatch",
     "backup:create",
+    "request:process",
+    "reversal:propose",
     "lab:inject",
   ],
-  approver: ["platform:read", "incident:approve"],
+  approver: ["platform:read", "incident:approve", "reversal:approve"],
 });
 export class BankingError extends Error {
   constructor(code, message, status = 400) {
@@ -69,9 +71,22 @@ export function seedState(now = new Date().toISOString()) {
       id: PRIMARY_ACCOUNT,
       ownerId: DEMO_IDENTITIES.customer.id,
       name: "Nguyễn Nhựt Tường",
+      number: "0788818374",
       kind: "customer",
       currency: "VND",
       balance: 4056000,
+      status: "active",
+      singleLimit: 2000000,
+      dailyLimit: 3000000,
+    },
+    {
+      id: "peer-vnd",
+      ownerId: "demo-peer",
+      name: "Trần Minh Anh",
+      number: "0900000002",
+      kind: "customer",
+      currency: "VND",
+      balance: 0,
       status: "active",
       singleLimit: 2000000,
       dailyLimit: 3000000,
@@ -98,6 +113,7 @@ export function seedState(now = new Date().toISOString()) {
     version: 0,
     createdAt: now,
     accounts,
+    requests: [],
     operations: [],
     transfers: [
       {
@@ -143,6 +159,7 @@ export function seedState(now = new Date().toISOString()) {
   };
 }
 export const IMMUTABLE_COLLECTIONS = [
+  "requests",
   "ledger",
   "audit",
   "operations",
@@ -151,6 +168,7 @@ export const IMMUTABLE_COLLECTIONS = [
   "reconciliations",
 ];
 export const COLLECTIONS = [
+  "requests",
   "accounts",
   "operations",
   "transfers",

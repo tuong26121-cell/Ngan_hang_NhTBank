@@ -4,6 +4,8 @@
 
 **Không giao dịch tiền thật.** PIN 123456 và ba danh tính đều công khai để thử nghiệm. Không nhập dữ liệu ngân hàng thật. QR giữ payload `NHTBANK_SANDBOX:`, không phải VietQR thanh toán và không xác nhận tiền về.
 
+**Mới trong v2:** chống gửi lặp qua tải lại ở chế độ server, tra cứu mã yêu cầu cũ, chuyển nội bộ nguyên tử, bút toán bù có người duyệt riêng và kiểm tra yêu cầu quanh mốc sao lưu. Xem [thiết kế hệ thống v2 và 9 sơ đồ chỉnh sửa được](docs/design/system-v2.md).
+
 ## Mở và chạy
 
 Node.js **24+**; dùng `.nvmrc` hoặc devcontainer đã chỉ định Node 24.
@@ -29,7 +31,7 @@ Có thể mở trực tiếp không gian vận hành bằng `?workspace=operatio
 ## Các phần hoạt động
 
 - Luồng khách hàng hiện có: PIN, tổng quan/ẩn số dư, chuyển tiền, QR cục bộ, lịch sử/tìm/lọc, hồ sơ, trợ giúp, đăng xuất; năm tab giữ nguyên.
-- Chuyển tiền đi qua lõi dùng chung, không tự trừ tiền trong React. Hai bút toán, kết quả, mã chống lặp, audit và outbox chốt trong một transaction. Gửi lại cùng mã/nội dung trả kết quả cũ.
+- Chuyển tiền đi qua lõi dùng chung, không tự trừ tiền trong React. Receipt tiếp nhận lưu trước; hai bút toán, giao dịch, kết quả idempotency, audit và outbox chốt trong một transaction. Gửi lại cùng mã/nội dung trả kết quả cũ.
 - Kiểm tra quyền chủ tài khoản, tiền nguyên VNĐ, số dư và hạn mức mẫu **2 triệu/lần, 3 triệu/ngày UTC+7**. Người nhận chỉ được kiểm tra định dạng Sandbox, chưa xác minh ngân hàng.
 - Thông báo sau commit: lease/token, retry/backoff, hàng đợi lỗi và hộp nhận theo ID. Backend có worker mỗi giây; chế độ bộ nhớ có nút diễn tập xử lý hàng đợi. Không gửi SMS/email/push thật.
 - Đối soát thuật toán riêng từ bút toán gốc, lưu kết quả, cô lập sai lệch. Tài khoản lệch cũng bị chặn ngay trước ghi nợ.

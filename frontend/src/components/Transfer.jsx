@@ -12,14 +12,31 @@ import {
 import { Button, SecurityNote } from "./ui";
 import { DEMO_PIN, money, validateTransfer } from "../lib/bank";
 
-export default function Transfer({ balance, onTransfer, navigate }) {
-  const [step, setStep] = useState(1);
+export default function Transfer({
+  balance,
+  onTransfer,
+  navigate,
+  runtime,
+  onRefresh,
+}) {
+  const recovery = runtime?.getRecovery();
+  const [saved, setSaved] = useState(() => {
+    try {
+      return recovery?.read() || null;
+    } catch {
+      return null;
+    }
+  });
+  const [recoveryError, setRecoveryError] = useState("");
+  const [needsLogin, setNeedsLogin] = useState(false);
+  const [step, setStep] = useState(saved ? 5 : 1);
   const [form, setForm] = useState({
-    bank: "",
-    account: "",
-    recipient: "",
-    amount: "",
-    note: "",
+    ...(saved?.command || {}),
+    bank: saved?.command.bank || "",
+    account: saved?.command.account || "",
+    recipient: saved?.command.recipient || "",
+    amount: saved?.command.amount || "",
+    note: saved?.command.note || "",
   });
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
@@ -34,6 +51,136 @@ export default function Transfer({ balance, onTransfer, navigate }) {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [step]);
+  async function applyRecovery(row) {
+    if (!row) return;
+    setSaved(row);
+    setForm(row.command);
+    setRecoveryError("");
+    if (row.status === "posted") {
+      setReceipt(row.result);
+      setStep(4);
+      setError("");
+      // A failed account refresh never invalidates the confirmed posting.
+      try {
+        await onRefresh?.();
+      } catch {
+        setRecoveryError(
+          "Đã ghi sổ. Chưa tải lại được số dư; có thể kiểm tra sau.",
+        );
+      }
+    } else setStep(5);
+  }
+  async function checkResult() {
+    if (sent.current || !recovery) return;
+    sent.current = true;
+    setPending(true);
+    setRecoveryError("");
+    try {
+      await applyRecovery(await recovery.check());
+    } catch (e) {
+      setRecoveryError(e.message);
+      setNeedsLogin(e.code === "SESSION_EXPIRED");
+    } finally {
+      sent.current = false;
+      setPending(false);
+    }
+  }
+  async function reauthenticate(e) {
+    e.preventDefault();
+    if (pending) return;
+    setPending(true);
+    setRecoveryError("");
+    try {
+      await runtime.login("customer", pin);
+      setNeedsLogin(false);
+      await applyRecovery(await recovery.check());
+    } catch (e) {
+      setRecoveryError(e.message);
+    } finally {
+      setPending(false);
+      setPin("");
+    }
+  }
+  useEffect(() => {
+    if (!recovery) return;
+    let existing;
+    try {
+      existing = recovery.read();
+    } catch (e) {
+      setRecoveryError(e.message);
+      setStep(5);
+      return;
+    }
+    if (existing) {
+      setSaved(existing);
+      setForm(existing.command);
+      setStep(5);
+      void checkResult();
+    }
+    return runtime.subscribeRecovery(() => {
+      try {
+        const row = recovery.read();
+        if (row) {
+          setSaved(row);
+          setForm(row.command);
+        }
+      } catch (e) {
+        setRecoveryError(e.message);
+      }
+    });
+  }, [recovery]);
+  const checks = useRef(0);
+  useEffect(() => {
+    if (
+      step !== 5 ||
+      saved?.status !== "accepted" ||
+      pending ||
+      checks.current >= 3
+    )
+      return;
+    const timer = setTimeout(() => {
+      checks.current++;
+      void checkResult();
+    }, [1000, 2000, 4000][checks.current]);
+    return () => clearTimeout(timer);
+  }, [step, saved, pending]);
+  useEffect(() => {
+    if (step === 5) {
+      resultTitle.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, [step]);
+  async function finish(next) {
+    if (recovery) {
+      try {
+        await recovery.clear();
+      } catch (e) {
+        setRecoveryError(e.message);
+        return;
+      }
+    }
+    navigate(next);
+  }
+  async function retrySaved(e) {
+    e.preventDefault();
+    if (sent.current || !saved) return;
+    if (pin !== DEMO_PIN) {
+      setRecoveryError("Nhập PIN mô phỏng 123456 để gửi lại đúng yêu cầu.");
+      return;
+    }
+    sent.current = true;
+    setPending(true);
+    setRecoveryError("");
+    try {
+      await applyRecovery(await recovery.submit(saved.command, pin, saved.key));
+    } catch (e) {
+      setRecoveryError(e.message);
+    } finally {
+      sent.current = false;
+      setPending(false);
+      setPin("");
+    }
+  }
   const reduce = useReducedMotion();
   const change = (e) => {
     setError("");
@@ -63,6 +210,12 @@ export default function Transfer({ balance, onTransfer, navigate }) {
     if (requestKey.current.fingerprint !== fingerprint)
       requestKey.current = { fingerprint, key: crypto.randomUUID() };
     try {
+      if (recovery) {
+        setPending(true);
+        const row = await recovery.submit(form, pin);
+        await applyRecovery(row);
+        return;
+      }
       const pendingResult = onTransfer(form, pin, requestKey.current.key);
       let result;
       if (pendingResult?.then) {
@@ -82,12 +235,29 @@ export default function Transfer({ balance, onTransfer, navigate }) {
         });
     } catch (error) {
       sent.current = false;
+      if (recovery) {
+        setNeedsLogin(error.code === "SESSION_EXPIRED");
+        try {
+          const row = recovery.read();
+          if (row) {
+            setSaved(row);
+            setForm(row.command);
+            setStep(5);
+          }
+        } catch (e) {
+          setRecoveryError(e.message);
+          setStep(5);
+        }
+        setRecoveryError(error.message);
+      }
       setError(
         error.message ||
           "Chưa xác định được kết quả. Hãy giữ nguyên nội dung và thử lại cùng mã.",
       );
     } finally {
+      sent.current = false;
       setPending(false);
+      if (recovery) setPin("");
     }
   }
   return (
@@ -149,6 +319,21 @@ export default function Transfer({ balance, onTransfer, navigate }) {
                 <option>NhTBank Sandbox</option>
               </select>
             </label>
+            {form.bank === "NhTBank Sandbox" && (
+              <Button
+                type="button"
+                className="secondary"
+                onClick={() =>
+                  setForm({
+                    ...form,
+                    account: "0900000002",
+                    recipient: "Trần Minh Anh",
+                  })
+                }
+              >
+                Dùng tài khoản nội bộ mẫu
+              </Button>
+            )}
             <div className="form-grid">
               <label>
                 Số tài khoản
@@ -311,6 +496,118 @@ export default function Transfer({ balance, onTransfer, navigate }) {
             </div>
           </form>
         )}
+        {step === 5 && (
+          <div className="transfer-recovery" aria-busy={pending}>
+            <h2 ref={resultTitle} tabIndex={-1}>
+              {saved?.status === "rejected"
+                ? "Máy chủ đã từ chối"
+                : saved?.status === "accepted"
+                  ? "Máy chủ đã tiếp nhận"
+                  : saved?.status === "not_found"
+                    ? "Chưa tìm thấy yêu cầu"
+                    : "Chưa rõ kết quả"}
+            </h2>
+            <p className="demo-notice">
+              Bản minh họa · Không giao dịch tiền thật
+            </p>
+            {saved && (
+              <>
+                <div className="review-amount">
+                  {money(Number(saved.command.amount))}
+                  <small> VNĐ</small>
+                </div>
+                <p>
+                  Đến <strong>{saved.command.recipient}</strong> ·{" "}
+                  {saved.command.bank}
+                </p>
+                <p className="recovery-key">
+                  Mã yêu cầu: <strong>{saved.key}</strong>
+                </p>
+              </>
+            )}
+            <p>
+              {saved?.status === "rejected"
+                ? saved.error?.message
+                : saved?.status === "accepted"
+                  ? "Yêu cầu đã lưu trên máy chủ. Kiểm tra tự động tối đa 3 lần; sau đó bạn có thể kiểm tra thủ công. Chưa xác nhận ghi sổ."
+                  : "Mất phản hồi chưa có nghĩa chuyển tiền thất bại. Mã và nội dung đã lưu trên thiết bị; không tạo lệnh khác khi chưa rõ kết quả."}
+            </p>
+            {recoveryError && (
+              <p role="alert" className="form-error">
+                {recoveryError}
+              </p>
+            )}
+            {needsLogin && (
+              <form onSubmit={reauthenticate}>
+                <p>
+                  Phiên hết hạn. Đăng nhập lại để tra cứu; mã yêu cầu được giữ
+                  nguyên.
+                </p>
+                <label>
+                  PIN đăng nhập lại
+                  <input
+                    type="password"
+                    inputMode="numeric"
+                    maxLength={6}
+                    value={pin}
+                    onChange={(e) => setPin(e.target.value)}
+                  />
+                </label>
+                <Button
+                  className="secondary full"
+                  type="submit"
+                  disabled={pending}
+                >
+                  Đăng nhập lại và kiểm tra
+                </Button>
+              </form>
+            )}
+            {saved?.status === "rejected" ? (
+              <Button
+                className="primary full"
+                onClick={() => finish("dashboard")}
+              >
+                Đóng kết quả đã từ chối
+              </Button>
+            ) : (
+              <>
+                <Button
+                  className="primary full"
+                  disabled={pending || !saved}
+                  onClick={checkResult}
+                >
+                  {pending ? "Đang kiểm tra…" : "Kiểm tra kết quả"}
+                </Button>
+                {saved?.status === "not_found" && (
+                  <form onSubmit={retrySaved}>
+                    <p>
+                      Chỉ gửi lại sau tra cứu, bằng đúng mã và nội dung đã lưu.
+                      Máy chủ tiếp tục chống ghi nợ lặp.
+                    </p>
+                    <label>
+                      PIN để gửi lại
+                      <input
+                        aria-label="PIN để gửi lại"
+                        type="password"
+                        inputMode="numeric"
+                        maxLength={6}
+                        value={pin}
+                        onChange={(e) => setPin(e.target.value)}
+                      />
+                    </label>
+                    <Button
+                      className="secondary full"
+                      type="submit"
+                      disabled={pending}
+                    >
+                      Gửi lại cùng mã yêu cầu
+                    </Button>
+                  </form>
+                )}
+              </>
+            )}
+          </div>
+        )}
         {step === 4 && (
           <div className="success-panel" role="status">
             <span className="success-icon">
@@ -330,19 +627,18 @@ export default function Transfer({ balance, onTransfer, navigate }) {
               <strong>{form.recipient}</strong>
             </p>
             <p className="receipt-id">Mã giao dịch: {receipt?.id}</p>
+            {saved && <p className="recovery-key">Mã yêu cầu: {saved.key}</p>}
+            {recoveryError && <p role="alert">{recoveryError}</p>}
             <p className="receipt-id">
               Đã ghi sổ mô phỏng · Thông báo xử lý riêng sau ghi sổ.
             </p>
             <p className="demo-notice">Không có tiền thật được chuyển.</p>
-            <Button
-              className="primary full"
-              onClick={() => navigate("history")}
-            >
+            <Button className="primary full" onClick={() => finish("history")}>
               Xem lịch sử giao dịch <ArrowRight size={17} />
             </Button>
             <Button
               className="text-button mx-auto mt-4"
-              onClick={() => navigate("dashboard")}
+              onClick={() => finish("dashboard")}
             >
               Về trang chủ
             </Button>

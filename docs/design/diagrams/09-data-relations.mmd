@@ -1,0 +1,28 @@
+flowchart LR
+    A["Phiên RAM: actor + quyền"]
+    B["Tài khoản: owner / số dư đệm / trạng thái"]
+    C["Receipt: actor + key + fingerprint bất biến"]
+    D["Kết quả: posted hoặc rejected bất biến"]
+    E["Giao dịch: nguồn / đích / amount / reversesId"]
+    F["Bút toán: transactionId / accountId / signed amount"]
+    G["Outbox: eventId / transactionId / lease"]
+    H["Inbox: eventId duy nhất"]
+    I["Audit append-only"]
+    J["Đối soát / sự cố"]
+    K["Đề xuất / người lập / người duyệt"]
+    L["Backup / checksum / mốc yêu cầu"]
+    A -->|Sở hữu| B
+    A -->|Tạo| C
+    C -->|0..1 kết quả| D
+    D -->|posted → 1| E
+    E -->|2 bút toán| F
+    F -->|Tài khoản| B
+    E -->|1 sự kiện| G
+    G -->|0..1 mục nhận| H
+    C -->|Dấu vết| I
+    E -->|Dấu vết| I
+    F -->|Đối chiếu| J
+    J -->|Đề xuất xử lý| K
+    K -->|Đảo → giao dịch mới| E
+    C -->|Mốc tiếp nhận| L
+    E -->|Mốc ghi sổ| L

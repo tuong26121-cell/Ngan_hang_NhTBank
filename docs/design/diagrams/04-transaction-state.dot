@@ -1,0 +1,24 @@
+digraph G {
+rankdir=LR;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Máy trạng thái giao dịch máy chủ"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="not_found: chưa có receipt"];
+B [shape=box, label="accepted: receipt bất biến đã commit"];
+C [shape=box, label="Kiểm tra trong transaction ghi sổ"];
+D [shape=box, label="posted: kết quả bất biến"];
+E [shape=box, label="rejected: kết quả bất biến"];
+F [shape=box, label="accepted còn nguyên; không ghi nợ dở"];
+G [shape=box, label="Worker tiếp tục đúng lệnh"];
+H [shape=box, label="Đảo bằng giao dịch bù riêng"];
+A -> B [label="Đúng phiên / quyền / mã"];
+B -> C [label="API hoặc worker"];
+C -> D [label="COMMIT toàn bộ"];
+C -> E [label="Từ chối nghiệp vụ"];
+C -> F [label="Rollback lỗi kỹ thuật"];
+F -> G [label="Khởi động lại"];
+G -> C [label=""];
+D -> D [label="Gửi lại cùng mã"];
+E -> E [label="Gửi lại cùng mã"];
+D -> H [label="Gốc vẫn posted"];
+}

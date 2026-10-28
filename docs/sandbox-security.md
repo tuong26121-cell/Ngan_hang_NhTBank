@@ -22,3 +22,11 @@ Bản sao cùng máy không phải chống mất máy. Chưa có HA, phân vùng
 Lab cố ý tạo số dư bộ đệm sai để kiểm tra cơ chế chặn; mặc định server tắt. Không thêm endpoint đặt số dư tùy ý, xóa lịch sử hoặc bỏ qua phê duyệt. Không công khai phiên bản này để nhận dữ liệu nhạy cảm.
 
 Các yêu cầu triển khai thật cần một dự án kiểm soát riêng: danh tính mạnh, phân quyền quản trị, bảo vệ dữ liệu, giới hạn vận hành, quản trị khóa, đối soát ngoài, khôi phục mất vùng và đánh giá chuyên môn. Bản hiện tại không nhận hoặc chuyển tiền thật.
+
+## Hồ sơ phục hồi yêu cầu trong trình duyệt
+
+Chế độ server lưu mã và nội dung chuyển tiền mẫu vào localStorage để nối lại qua tải lại/đăng nhập lại, không lưu PIN, token phiên hoặc CSRF. Dữ liệu này cùng nguồn trang có thể đọc, chưa mã hóa; chỉ dùng dữ liệu mẫu. Web Locks tuần tự hóa các tab; máy chủ vẫn kiểm quyền, fingerprint và key, không tin localStorage làm bằng chứng giao dịch.
+
+Không tự xóa hồ sơ chưa rõ kết quả. Xóa storage, đổi thiết bị/origin, cố ý chọn mã khác hoặc khôi phục máy chủ mất receipt mới hơn nằm ngoài bảo đảm chống lặp của cùng ý định. Thiếu Web Locks/storage thì chặn gửi mới. Giữ receipt và kết quả không có thời hạn xóa tự động trong Sandbox này.
+
+Receipt đã tiếp nhận là quyền xử lý đúng lệnh được xác nhận tại thời điểm nhận; hết phiên không hủy quyền đó. Worker chỉ đọc receipt bất biến từ DB. Phê duyệt đảo không sửa lịch sử gốc, phải kiểm sổ, số dư đích và khác người lập. Recovery chỉ diễn tập và báo chặn nếu thiếu dữ liệu; không có API thay DB đang phục vụ.

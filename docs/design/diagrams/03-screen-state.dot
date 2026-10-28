@@ -1,0 +1,33 @@
+digraph G {
+rankdir=LR;
+graph [bgcolor="#F5F7FC", pad="0.35", nodesep="0.35", ranksep="0.5", fontname="DejaVu Sans", fontsize=20, labelloc="t", label="Máy trạng thái màn hình"];
+node [shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#779AD0", fontcolor="#172B45", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.15"];
+edge [color="#315D9A", fontcolor="#254A7B", fontname="DejaVu Sans", fontsize=10];
+A [shape=box, label="Nhập thông tin"];
+B [shape=box, label="Kiểm tra"];
+C [shape=box, label="PIN"];
+D [shape=box, label="Đang gửi"];
+E [shape=box, label="Chưa rõ kết quả"];
+F [shape=box, label="Đang tra cứu"];
+G [shape=box, label="Đang chờ / đã tiếp nhận"];
+H [shape=box, label="Chưa tìm thấy"];
+I [shape=box, label="Biên nhận đã ghi sổ"];
+J [shape=box, label="Kết quả bị từ chối"];
+K [shape=box, label="Đóng kết quả"];
+A -> B [label="Hợp lệ"];
+B -> C [label="Xác nhận"];
+C -> D [label="Lưu mã trước gửi"];
+D -> E [label="Mất phản hồi"];
+E -> F [label="Kiểm tra / tải lại"];
+F -> G [label="accepted"];
+G -> F [label="Tối đa 3 lần"];
+F -> H [label="not_found"];
+H -> D [label="Cùng mã + nội dung"];
+F -> I [label="posted"];
+F -> J [label="rejected"];
+D -> I [label="posted"];
+D -> J [label="rejected đã tra cứu"];
+I -> K [label="Chủ động đóng"];
+J -> K [label="Chủ động đóng"];
+K -> A [label="Ý định mới"];
+}

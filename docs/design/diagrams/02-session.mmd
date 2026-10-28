@@ -1,0 +1,24 @@
+flowchart TD
+    A["Mở ứng dụng"]
+    B["GET session"]
+    C{"Phiên còn hạn?"}
+    D["Nạp đúng tài khoản và quyền"]
+    E["Nhập PIN thử nghiệm"]
+    F["Máy chủ tạo cookie HttpOnly + CSRF"]
+    G{"Có yêu cầu đã lưu?"}
+    H["Tra cứu mã cũ; giữ nguyên nội dung"]
+    I["Mở tổng quan"]
+    J["API trả SESSION_EXPIRED"]
+    K["Giữ hồ sơ; đăng nhập lại"]
+    A --> B
+    B --> C
+    C -->|Có| D
+    C -->|Không| E
+    E -->|Hợp lệ| F
+    F --> D
+    D --> G
+    G -->|Có| H
+    G -->|Không| I
+    H -->|Hết phiên| J
+    J --> K
+    K -->|Không tạo mã khác| E

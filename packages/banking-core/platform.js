@@ -4,6 +4,8 @@ import {
   requirePermission,
   localDay,
 } from "./model.js";
+import { normalizeCommand, validateKey } from "./commands.js";
+import { createReversals } from "./reversals.js";
 import { inspectLedger } from "./reconciliation.js";
 const fail = (code, message, status = 400) => {
   throw new BankingError(code, message, status);
@@ -47,23 +49,69 @@ export function createPlatform(
   }
   function transfer(actor, input, key) {
     access(actor, "transfer:create");
-    if (typeof key !== "string" || !/^[A-Za-z0-9_-]{16,100}$/.test(key))
-      fail("INVALID_KEY", "Mỗi lệnh cần mã chống gửi lặp hợp lệ.");
-    if (!input || typeof input !== "object")
-      fail("INVALID_COMMAND", "Lệnh giao dịch không hợp lệ.");
-    const command = {
-      accountId: input.accountId || PRIMARY_ACCOUNT,
-      bank: String(input.bank || ""),
-      account: String(input.account || ""),
-      recipient: String(input.recipient || "").trim(),
-      amount: String(input.amount || ""),
-      note: String(input.note || "").trim(),
-    };
-    const fingerprint = JSON.stringify(command),
+    validateKey(key);
+    const command = normalizeCommand(input),
+      fingerprint = JSON.stringify(command),
       operationId = actor.id + ":" + key;
+    store.transact((s) => {
+      authorizeAccount(
+        actor,
+        s.accounts.find((a) => a.id === command.accountId),
+      );
+      const prior = s.requests.find((r) => r.id === operationId);
+      if (prior) {
+        if (prior.fingerprint !== fingerprint)
+          fail(
+            "KEY_CONFLICT",
+            "Mã chống gửi lặp đã dùng cho nội dung khác.",
+            409,
+          );
+        return prior;
+      }
+      const receipt = {
+        id: operationId,
+        actorId: actor.id,
+        key,
+        command,
+        fingerprint,
+        date: now(),
+      };
+      s.requests.push(receipt);
+      audit(
+        s,
+        actor,
+        "request.accepted",
+        "Đã lưu lệnh chính xác; chưa đồng nghĩa đã ghi sổ.",
+        operationId,
+      );
+      return receipt;
+    });
+    failpoint("after-acceptance");
+    return postAccepted(operationId);
+  }
+  function postAccepted(operationId) {
+    const receipt = store.read().requests.find((r) => r.id === operationId);
+    if (!receipt)
+      fail("REQUEST_NOT_FOUND", "Chưa có yêu cầu được tiếp nhận.", 404);
+    const { command, fingerprint } = receipt,
+      actor = { id: receipt.actorId };
+    if (
+      JSON.stringify(command) !== fingerprint ||
+      JSON.stringify(normalizeCommand(command)) !== fingerprint
+    )
+      fail(
+        "INVALID_ACCEPTED_COMMAND",
+        "Receipt không khớp nội dung bất biến; cần vận hành điều tra.",
+        409,
+      );
     const outcome = store.transact((s) => {
       const source = s.accounts.find((a) => a.id === command.accountId);
-      authorizeAccount(actor, source);
+      if (!source || source.ownerId !== actor.id)
+        fail(
+          "ACCOUNT_FORBIDDEN",
+          "Quyền tài khoản của yêu cầu đã thay đổi.",
+          403,
+        );
       const prior = s.operations.find((op) => op.id === operationId);
       if (prior) {
         if (prior.fingerprint !== fingerprint)
@@ -93,7 +141,8 @@ export function createPlatform(
         if (
           !banks.includes(command.bank) ||
           !/^\d{6,19}$/.test(command.account) ||
-          command.account === "0788818374" ||
+          command.account === source.number ||
+          (source.id === PRIMARY_ACCOUNT && command.account === "0788818374") ||
           command.recipient.length < 2 ||
           command.recipient.length > 80 ||
           command.note.length > 120
@@ -135,7 +184,34 @@ export function createPlatform(
             "Vượt hạn mức thử nghiệm: 2.000.000 VNĐ/lần, 3.000.000 VNĐ/ngày.",
             409,
           );
-        const clearing = s.accounts.find((a) => a.id === "sandbox-clearing");
+        const internal = command.bank === "NhTBank Sandbox";
+        const clearing = s.accounts.find((a) =>
+          internal
+            ? a.number === command.account ||
+              (a.id === PRIMARY_ACCOUNT && command.account === "0788818374")
+            : a.id === "sandbox-clearing",
+        );
+        if (
+          !clearing ||
+          clearing.id === source.id ||
+          clearing.status !== "active" ||
+          clearing.currency !== source.currency
+        )
+          fail(
+            "INVALID_INTERNAL_RECIPIENT",
+            "Tài khoản nhận nội bộ không tồn tại, trùng bên gửi hoặc đang bị khóa.",
+            409,
+          );
+        if (
+          internal &&
+          command.recipient.normalize("NFC").toLocaleUpperCase("vi-VN") !==
+            clearing.name.normalize("NFC").toLocaleUpperCase("vi-VN")
+        )
+          fail(
+            "INTERNAL_NAME_MISMATCH",
+            "Tên người nhận không khớp tài khoản nội bộ Sandbox.",
+            409,
+          );
         if (!Number.isSafeInteger(clearing.balance + amount))
           fail(
             "UNSAFE_AMOUNT",
@@ -147,14 +223,19 @@ export function createPlatform(
           id: transactionId,
           kind: "transfer",
           accountId: source.id,
-          name: command.recipient,
+          name: internal ? clearing.name : command.recipient,
           detail: command.note || "Chuyển tiền mô phỏng",
           category: "Chuyển tiền",
           amount: -amount,
           value: amount,
           date,
           icon: "transfer",
-          recipientVerification: "sandbox-format-only",
+          recipientVerification: internal
+            ? "sandbox-internal"
+            : "sandbox-format-only",
+          destinationAccountId: clearing.id,
+          internal,
+          requestKey: receipt.key,
           bank: command.bank,
           account: command.account,
           status: "posted",
@@ -187,7 +268,7 @@ export function createPlatform(
           payload: {
             title: "Đã ghi sổ giao dịch mô phỏng",
             amount,
-            recipient: command.recipient,
+            recipient: result.name,
           },
         });
         audit(
@@ -233,6 +314,41 @@ export function createPlatform(
       );
     return outcome.result;
   }
+  function lookup(actor, key) {
+    access(actor, "transfer:create");
+    validateKey(key);
+    const s = store.read(),
+      operationId = actor.id + ":" + key;
+    const request = s.requests.find((r) => r.id === operationId);
+    if (!request) return { key, status: "not_found" };
+    authorizeAccount(
+      actor,
+      s.accounts.find((a) => a.id === request.command.accountId),
+    );
+    const outcome = s.operations.find((op) => op.id === operationId);
+    return {
+      key,
+      status: outcome?.status || "accepted",
+      acceptedAt: request.date,
+      ...(outcome?.result ? { result: outcome.result } : {}),
+      ...(outcome?.error ? { error: outcome.error } : {}),
+    };
+  }
+  function settleAccepted(actor) {
+    access(actor, "request:process");
+    const s = store.read(),
+      receipt = s.requests.find(
+        (r) => !s.operations.some((op) => op.id === r.id),
+      );
+    if (!receipt) return { processed: false };
+    try {
+      postAccepted(receipt.id);
+    } catch (error) {
+      if (!store.read().operations.some((op) => op.id === receipt.id))
+        throw error;
+    }
+    return { processed: true, requestId: receipt.id };
+  }
   function snapshot(actor) {
     access(actor, actor.role === "customer" ? "account:read" : "platform:read");
     const s = store.read();
@@ -246,7 +362,17 @@ export function createPlatform(
       storage: store.kind,
       actor,
       accounts,
-      transfers: s.transfers.filter((t) => ids.has(t.accountId)),
+      transfers: s.transfers
+        .filter((t) => ids.has(t.accountId) || ids.has(t.destinationAccountId))
+        .map((t) => ({
+          ...t,
+          ...(!ids.has(t.accountId)
+            ? {
+                name:
+                  s.accounts.find((a) => a.id === t.accountId)?.name || t.name,
+              }
+            : {}),
+        })),
       notifications: s.notifications.filter((n) => ids.has(n.accountId)),
       labEnabled: false,
     };
@@ -354,12 +480,18 @@ export function createPlatform(
       return proposal;
     });
   }
+  const reversals = createReversals({ store, clock, id, audit, failpoint });
   function decide(
     actor,
     proposalId,
     approve,
     reason = "Đã kiểm tra bằng chứng và đối soát",
   ) {
+    if (
+      store.read().proposals.find((p) => p.id === proposalId)?.type ===
+      "reverse-transfer"
+    )
+      return reversals.decide(actor, proposalId, approve, reason);
     access(actor, "incident:approve");
     if (
       typeof reason !== "string" ||
@@ -519,6 +651,9 @@ export function createPlatform(
   return {
     store,
     transfer,
+    lookup,
+    settleAccepted,
+    proposeReversal: reversals.propose,
     snapshot,
     reconcile,
     propose,

@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
   push:
-    branches: [main, codex/transaction-platform-20261029]
+    branches: [main, codex/transaction-platform-20261029, codex/resilient-transfers-v2-20261029]
 permissions:
   contents: read
 jobs:

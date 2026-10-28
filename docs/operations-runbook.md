@@ -46,3 +46,21 @@ Nếu tiến trình dừng giữa claim và ack, khi khởi động lại chờ 
 | `NHT_COOKIE_SECURE`    | `1` khi chạy sau HTTPS phù hợp; không bật trên HTTP localhost          |
 
 Giữ nguyên proxy/TLS của môi trường chạy. GitHub Pages chỉ chạy bản bộ nhớ, không chạy Node/SQLite. Không bỏ quy tắc bảo vệ nhánh để xuất bản.
+
+## Diễn tập mất mạng v2
+
+1. Mở `?runtime=server`, đăng nhập, chọn chuyển nội bộ → **Dùng tài khoản nội bộ mẫu**, nhập 100.000 VNĐ, kiểm tra và PIN.
+2. DevTools có thể chặn POST trước gửi hoặc làm rơi phản hồi sau khi máy chủ commit. Hai tình huống đều phải giữ nguyên hồ sơ/mã trên thiết bị, không báo thất bại chỉ vì mất kết nối.
+3. Tải lại. Ứng dụng tra cứu mã cũ. Nếu posted: mở biên nhận ngay, không POST lại. Nếu not_found: nhập PIN vào **Gửi lại cùng mã yêu cầu**. Nếu accepted: chờ tối đa 3 kiểm tra tự động rồi kiểm tra thủ công.
+4. Phiên hết hạn: đăng nhập lại để tra cứu; không xóa localStorage, sửa lệnh hoặc tạo mã khác. Nếu mất hồ sơ, đối chiếu lịch sử và nhờ vận hành trước khi tạo ý định mới.
+5. Sau khi đã xác nhận posted/rejected, đóng kết quả để bắt đầu ý định mới. Hồ sơ chỉ bị xóa theo thao tác đóng kết quả, không xóa khi đăng xuất. Web Locks yêu cầu HTTPS/localhost hỗ trợ API này.
+
+## Bút toán bù
+
+Vào vận hành bằng operator → chọn giao dịch → **Đề xuất đảo giao dịch**, nhập lý do. Đổi sang approver khác → xem loại đề xuất/giao dịch gốc → phê duyệt hoặc từ chối. Bên nhận phải đủ số dư để bù, sổ và tài khoản không bị cô lập. Giao dịch gốc giữ nguyên, lịch sử thêm bút toán bù. Chưa có đảo một phần hoặc bù từ tiền thật.
+
+## Kiểm tra yêu cầu quanh mốc sao lưu
+
+Sau tạo bản sao, nếu có giao dịch/receipt mới rồi diễn tập bản sao cũ, giao diện phải ghi **Cần điều tra mốc khôi phục**. Đọc danh sách accepted-at-cut, yêu cầu ngoài snapshot và kết quả/bút toán thiếu, sự kiện/inbox thay đổi sau mốc và tình trạng cô lập của nguồn hiện tại. Không lấy checksum đúng hoặc số dư khớp riêng bản sao để mở lại hệ thống.
+
+Báo cáo `readyToOpen: true` chỉ xác nhận diễn tập ở thời điểm nguồn đối chiếu còn sẵn. Khi mất máy thật, nguồn đối chiếu này cũng có thể mất; cần nguồn độc lập ngoài máy, kế hoạch hồi phục và kiểm tra thủ công trước triển khai. Bản này không tự ghi đè/replay DB phục hồi. Bản sao v1 cần chuyển đổi riêng trước khi kiểm bằng code v2; chưa có công cụ tự chuyển backup cũ.

@@ -396,3 +396,41 @@
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
+.transfer-recovery > * + * {
+  margin-top: 20px;
+}
+.transfer-recovery h2 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+.recovery-key {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.transfer-recovery form {
+  display: grid;
+  gap: 20px;
+}
+.recovery-banner {
+  background: #eaf1ff;
+  padding: 20px;
+  border: 1px solid #cfddf7;
+  border-radius: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.recovery-banner p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 620px) {
+  .recovery-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

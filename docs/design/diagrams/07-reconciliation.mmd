@@ -1,0 +1,22 @@
+flowchart TD
+    A["Đọc snapshot nhất quán"]
+    B["Tính lại số dư bằng BigInt"]
+    C["Kiểm số tiền, dấu, tài khoản, giao dịch / receipt / kết quả / event"]
+    D{"Có sai lệch?"}
+    E["Lưu kết quả khớp"]
+    F["Cô lập phạm vi; lưu sự cố và audit"]
+    G{"Chỉ sai bộ đệm?"}
+    H["Đề xuất xây lại bộ đệm"]
+    I["Người khác duyệt bằng chứng không đổi"]
+    J["Đối soát lại; bỏ cô lập nếu đạt"]
+    K["Điều tra sổ gốc; không tự bù"]
+    A --> B
+    B --> C
+    C --> D
+    D -->|Không| E
+    D -->|Có| F
+    F --> G
+    G -->|Có| H
+    G -->|Không| K
+    H --> I
+    I -->|Đạt| J

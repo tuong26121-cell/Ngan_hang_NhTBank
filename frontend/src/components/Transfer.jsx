@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import confetti from "canvas-confetti";
 import {
@@ -25,6 +25,15 @@ export default function Transfer({ balance, onTransfer, navigate }) {
   const [error, setError] = useState("");
   const [receipt, setReceipt] = useState(null);
   const sent = useRef(false);
+  const requestKey = useRef({ fingerprint: null, key: null });
+  const resultTitle = useRef(null);
+  const [pending, setPending] = useState(false);
+  useEffect(() => {
+    if (step === 4) {
+      resultTitle.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, [step]);
   const reduce = useReducedMotion();
   const change = (e) => {
     setError("");
@@ -36,7 +45,7 @@ export default function Transfer({ balance, onTransfer, navigate }) {
     setError(message);
     if (!message) setStep(2);
   }
-  function confirm(e) {
+  async function confirm(e) {
     e.preventDefault();
     if (sent.current) return;
     if (pin !== DEMO_PIN) {
@@ -50,18 +59,36 @@ export default function Transfer({ balance, onTransfer, navigate }) {
     }
     // Lock synchronously before React renders the receipt: double clicks cannot debit twice.
     sent.current = true;
-    const result = onTransfer(form);
-    setReceipt(result);
-    setStep(4);
-    setError("");
-    if (!reduce)
-      confetti({
-        particleCount: 140,
-        spread: 85,
-        origin: { y: 0.55 },
-        colors: ["#0C3699", "#4cb8ed", "#b9a4ff", "#f4cb60"],
-        disableForReducedMotion: true,
-      });
+    const fingerprint = JSON.stringify(form);
+    if (requestKey.current.fingerprint !== fingerprint)
+      requestKey.current = { fingerprint, key: crypto.randomUUID() };
+    try {
+      const pendingResult = onTransfer(form, pin, requestKey.current.key);
+      let result;
+      if (pendingResult?.then) {
+        setPending(true);
+        result = await pendingResult;
+      } else result = pendingResult;
+      setReceipt(result);
+      setStep(4);
+      setError("");
+      if (!reduce)
+        confetti({
+          particleCount: 140,
+          spread: 85,
+          origin: { y: 0.55 },
+          colors: ["#0C3699", "#4cb8ed", "#b9a4ff", "#f4cb60"],
+          disableForReducedMotion: true,
+        });
+    } catch (error) {
+      sent.current = false;
+      setError(
+        error.message ||
+          "Chưa xác định được kết quả. Hãy giữ nguyên nội dung và thử lại cùng mã.",
+      );
+    } finally {
+      setPending(false);
+    }
   }
   return (
     <div className="focused-page">
@@ -187,7 +214,7 @@ export default function Transfer({ balance, onTransfer, navigate }) {
                 {error}
               </p>
             )}
-            <Button className="primary full" type="submit">
+            <Button className="primary full" type="submit" disabled={pending}>
               Tiếp tục <ArrowRight size={18} />
             </Button>
           </form>
@@ -196,7 +223,8 @@ export default function Transfer({ balance, onTransfer, navigate }) {
           <>
             <h2>Kiểm tra một lần, an tâm hơn.</h2>
             <p className="muted mt-2">
-              Thông tin dưới đây chỉ dùng trong mô phỏng.
+              Thông tin dưới đây chỉ dùng trong mô phỏng. Tên người nhận chưa
+              được xác minh bởi ngân hàng.
             </p>
             <div className="review-amount">
               {money(Number(form.amount))}
@@ -269,6 +297,7 @@ export default function Transfer({ balance, onTransfer, navigate }) {
               <Button
                 type="button"
                 className="secondary"
+                disabled={pending}
                 onClick={() => {
                   setStep(2);
                   setError("");
@@ -276,8 +305,8 @@ export default function Transfer({ balance, onTransfer, navigate }) {
               >
                 Quay lại
               </Button>
-              <Button className="primary" type="submit">
-                Chuyển tiền mô phỏng
+              <Button className="primary" type="submit" disabled={pending}>
+                {pending ? "Đang ghi sổ…" : "Chuyển tiền mô phỏng"}
               </Button>
             </div>
           </form>
@@ -288,7 +317,9 @@ export default function Transfer({ balance, onTransfer, navigate }) {
               <CircleCheck size={44} />
             </span>
             <span className="eyebrow">MỘT CHÚT YÊU THƯƠNG ĐÃ ĐƯỢC GỬI</span>
-            <h2>Chuyển tiền thành công!</h2>
+            <h2 ref={resultTitle} tabIndex={-1}>
+              Chuyển tiền thành công!
+            </h2>
             <div className="review-amount">
               {money(Number(form.amount))}
               <small> VNĐ</small>
@@ -299,6 +330,9 @@ export default function Transfer({ balance, onTransfer, navigate }) {
               <strong>{form.recipient}</strong>
             </p>
             <p className="receipt-id">Mã giao dịch: {receipt?.id}</p>
+            <p className="receipt-id">
+              Đã ghi sổ mô phỏng · Thông báo xử lý riêng sau ghi sổ.
+            </p>
             <p className="demo-notice">Không có tiền thật được chuyển.</p>
             <Button
               className="primary full"

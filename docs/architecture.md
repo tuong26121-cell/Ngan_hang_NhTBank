@@ -1,28 +1,84 @@
-# Kiến trúc NhTBank Sandbox
+# Kiến trúc giao dịch NhTBank Sandbox
 
-- `frontend/src/App.jsx`: phiên đăng nhập, điều hướng, số dư và sổ giao dịch trong bộ nhớ.
-- `frontend/src/components/`: Login, Dashboard, Transfer, Deposit và các thành phần giao diện dùng chung.
-- `frontend/src/lib/bank.js`: dữ liệu mẫu, định dạng VNĐ, kiểm tra đầu vào và tạo ảnh QR demo cục bộ.
-- `backend/`: vị trí dự phòng, không có server trong phiên bản này.
+Nền nâng cấp: `main` tại `db6b58e`, ngày 29/10/2026. Người dùng yêu cầu tổ chức lại toàn bộ không gian mã và luồng giao dịch theo các khối A–M. Đây là thay đổi nghiệp vụ mô phỏng có chủ đích, không phải chỉnh giao diện đơn thuần. Giữ React 18, Vite, năm mục điều hướng, QR cục bộ và các bản xem trước di động.
 
-## Luồng chuyển tiền
+## Luồng tổng thể
 
-1. Kiểm tra ngân hàng, số tài khoản mẫu, tên người nhận, số tiền nguyên >= 1.000 và không vượt số dư.
-2. Người dùng kiểm tra thông tin và phí 0 VNĐ.
-3. Xác nhận PIN demo. Chỉ ghi nhận một lần, cập nhật số dư và lịch sử trong bộ nhớ, rồi hiển thị biên nhận và confetti.
+```mermaid
+flowchart TD
+    A[Ứng dụng điện thoại / máy tính] --> B[Kiểm tra phiên và quyền tài khoản]
+    B --> C[Điều phối giao dịch và mã chống gửi lặp]
+    C --> D[Người nhận mẫu, số dư, hạn mức và tình trạng sổ]
+    D --> E[Ghi sổ nguyên tử]
+    E --> F[(Bút toán kép + kết quả + audit + outbox)]
+    F --> G[Worker thông báo sau khi ghi sổ]
+    G --> N[Hộp nhận chống trùng theo ID sự kiện]
+    F --> H[Đối soát tính lại từ bút toán gốc]
+    F --> I[Sao lưu và diễn tập khôi phục cách ly]
+    H --> J{Có sai lệch?}
+    J -->|Không| K[Lưu kết quả đối soát]
+    J -->|Có| L[Cô lập phạm vi và mở sự cố]
+    L --> M[Đề xuất + người khác phê duyệt có dấu vết]
+    M --> O[Xây lại bộ đệm, không sửa sổ gốc]
+    O --> H
+```
 
-Đăng xuất xóa giao dịch vừa nhập, khôi phục số dư/giao dịch mẫu, xóa bộ lọc và tìm kiếm. Đăng nhập lại không khôi phục dữ liệu vừa xóa. Tải lại trang cũng đặt lại hoàn toàn. Không dùng localStorage, cookie hay dịch vụ ngân hàng.
+## Các bộ phận đã triển khai
 
-## QR mô phỏng cục bộ
+| Khối  | Trách nhiệm                                                                                           | Điểm mã chính                                              |
+| ----- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| A     | Giao diện hiện có và bảng vận hành responsive                                                         | `frontend/src/App.jsx`, `components/PlatformWorkspace.jsx` |
+| B     | Phiên hết hạn, quyền theo vai trò, quyền ghi nợ tài khoản; máy chủ không tin role từ request          | `backend/src/server.js`, `packages/banking-core/model.js`  |
+| C     | Khóa theo chủ thể + mã lệnh; so khớp nội dung; giữ nguyên kết quả đã chốt                             | `packages/banking-core/platform.js`                        |
+| D     | Số nguyên VNĐ, người nhận mẫu, số dư, hạn mức UTC+7, kiểm tra sổ trước ghi nợ                         | `platform.js`, `reconciliation.js`                         |
+| E     | Một unit of work đồng bộ; SQLite `BEGIN IMMEDIATE` / commit / rollback                                | `backend/src/sqlite-store.js`                              |
+| F     | Sổ kép và kết quả/audit/sự kiện cùng transaction; bản ghi đã chốt chỉ thêm                            | `backend/migrations/001-ledger.sql`, `model.js`            |
+| G     | Claim có lease và token, retry/backoff, hàng đợi lỗi, hộp nhận theo ID                                | `platform.js`, worker trong `server.js`                    |
+| H/J/K | Thuật toán riêng tính tổng bút toán, kiểm tra cân bằng và liên kết kết quả/sự kiện; lưu từng lần chạy | `reconciliation.js`, `platform.js`                         |
+| I     | SQLite online backup, SHA-256, kiểm tra toàn vẹn và đối soát bản sao cách ly                          | `backend/src/backups.js`                                   |
+| L     | Khóa ghi nợ phạm vi ảnh hưởng, sự cố và nhật ký điều tra                                              | `platform.js`                                              |
+| M     | Người đề xuất khác người phê duyệt; bằng chứng phải còn nguyên; đối soát lại trước bỏ cô lập          | `platform.js`                                              |
 
-Màn Nạp tiền tạo QR ngay trên thiết bị sau khi ngừng nhập 400 ms; không gửi yêu cầu ảnh ra ngoài. Timer cũ được hủy khi sửa tiếp hoặc rời màn hình. QR cũ và nút sao chép được ẩn ngay khi đầu vào thay đổi. Chỉ số tiền nguyên từ 1.000 đến 500.000.000 VNĐ và nội dung tối đa 60 ký tự được tạo mã; nút tạo mã cho phép cập nhật ngay.
+## Ranh giới thành phần
 
-`qrcode` mã hóa chuỗi `NHTBANK_SANDBOX:` nối với JSON gồm số tiền và nội dung. Đây không phải EMV/VietQR, không chứa tài khoản ngân hàng hoặc URL thanh toán. Ảnh SVG dạng data URL được tạo từ tọa độ ma trận số nguyên, không chèn văn bản người dùng vào XML. Nhãn DEMO nằm trong chính ảnh gốc và không che vùng mã/quiet zone. Không có dịch vụ xác nhận tiền về hoặc tăng số dư bằng QR. Sao chép chỉ được thực hiện sau thao tác người dùng.
+```mermaid
+flowchart LR
+    UI[React UI] --> Adapter[Platform client]
+    Adapter -->|Mặc định| Core[Lõi điều phối dùng chung]
+    Adapter -->|runtime=server| HTTP[HTTP API + session + CSRF]
+    HTTP --> Core
+    Core --> UOW[Repository transaction]
+    UOW --> Memory[Memory repository]
+    UOW --> SQLite[(SQLite cục bộ)]
+    Core --> Recon[Đối soát độc lập về thuật toán]
+    SQLite --> Backup[Online backup / diễn tập cách ly]
+```
 
-## Phạm vi
+Lõi không import React, HTTP hoặc SQLite. Giao diện không tự trừ số dư nữa; nó gửi lệnh và đọc snapshot đã chốt. Hai repository dùng chung hợp đồng. Backend phục vụ cả bản web production và `/api/v1`; Vite có proxy cục bộ khi phát triển.
 
-Tiền gửi và Vay nhanh là màn hình xem trước, chưa thực hiện nghiệp vụ hay tính lãi. PIN nằm trong mã nguồn và không thể bảo vệ dữ liệu thật. Không có mục tiêu tuân thủ/bảo mật cho ứng dụng ngân hàng sản xuất.
+## Hai chế độ, hai vòng đời dữ liệu
 
-## Chuyển động
+- **Bộ nhớ, mặc định:** không gọi backend; tải lại hoặc đăng xuất đặt lại phiên. Vai trò chỉ là diễn tập trên trình duyệt. Bản chụp JSON mất theo phiên, không được gọi là sao lưu bền vững.
+- **SQLite, `?runtime=server`:** cookie phiên HttpOnly/SameSite, API cùng nguồn; vai trò và quyền kiểm tra ở máy chủ. Tải lại hoặc đăng xuất không xóa sổ. Khởi động lại backend đọc DB đã có; phiên đăng nhập chỉ ở RAM và phải đăng nhập lại sau khi server khởi động lại.
 
-Framer Motion chuyển màn theo opacity/translate và nghiêng thẻ bằng transform; bộ đếm dùng requestAnimationFrame qua `animate`. CSS tạo kính mờ, phản quang, đồng xu và ripple. Tôn trọng `prefers-reduced-motion`. Mục tiêu chuyển động mượt; tốc độ thực tế phụ thuộc thiết bị, không cam kết đo được 60fps trên mọi máy.
+Cả hai đều dùng PIN demo công khai `123456`, ba tài khoản mẫu và không có ngân hàng thật. Không thể dùng cơ chế này để bảo vệ dữ liệu hoặc tài sản thật.
+
+## Mô hình dữ liệu
+
+SQLite có `metadata`, `accounts`, `operations`, `transfers`, `ledger`, `audit`, `outbox`, `notifications`, `reconciliations`, `incidents`, `proposals`, `backups`. Mỗi tập có ID và thứ tự ổn định, JSON body có kiểm tra hợp lệ. Bút toán còn có cột số tiền nguyên, tài khoản và giao dịch với foreign key, cùng index tài khoản/giao dịch. Trigger cấm sửa/xóa sổ, audit, kết quả, mã lệnh, hộp nhận và kết quả đối soát.
+
+Số dư mẫu mở đầu 4.056.000 VNĐ được ghi hai bút toán: tài khoản khách hàng +4.056.000 và nguồn mẫu −4.056.000. Bốn mục lịch sử cũ chỉ là dữ liệu giao diện minh họa ngoài số dư mở đầu; không ghi lại chúng vào sổ mới. Biểu đồ cũ không phải nguồn để đối soát sổ mới.
+
+Chuyển tiền tạo hai bút toán: khách hàng −số tiền, tài khoản đối ứng Sandbox +số tiền. Chưa có thanh toán ra ngoài hoặc quyết toán ngân hàng. Mỗi nhóm bút toán phải tổng bằng 0; số dư bộ đệm phải bằng tổng bút toán của tài khoản. Thuật toán đối soát cộng bằng BigInt rồi kiểm tra miền số nguyên an toàn.
+
+## Cô lập và xử lý
+
+Sai lệch được ghi thành sự cố; tài khoản khách hàng ảnh hưởng bị cô lập. Nếu không xác định được phạm vi khách hàng từ sai lệch hệ thống thì cô lập các tài khoản khách hàng. Lệnh mới cũng kiểm tra tình trạng sổ trước ghi nợ. Mã lệnh đã ghi sổ vẫn tra lại đúng kết quả, không bị ghi nợ lần hai.
+
+Chỉ hỗ trợ sửa **bộ đệm số dư** từ sổ gốc. Mọi lỗi bút toán, thiếu kết quả/sự kiện hoặc tổng không cân bằng phải điều tra thủ công; không có nút tự bù tiền. Người lập đề xuất không được tự duyệt, kể cả khi quyền của họ thay đổi. Nếu bằng chứng đổi, đề xuất phải lập lại. Áp dụng, đối soát lại, lưu kết quả, bỏ cô lập và audit nằm trong một transaction.
+
+## Giới hạn cần giữ rõ
+
+Đối soát độc lập về cách tính, chưa phải hệ thống ngân hàng/đơn vị kiểm toán bên ngoài. Worker và API có thể cùng tiến trình, không phải hạ tầng HA. SQLite phù hợp bản thử một nút; chưa có PostgreSQL, khóa phân tán, HSM/KMS, lưu audit WORM, sao lưu ngoài máy, đăng nhập thật, OTP hay kiểm toán tuân thủ. Không tự động công bố backend hoặc thay đổi quy tắc GitHub Pages.
+
+Xem [bản đồ mã](workspace-map.md), [hợp đồng giao dịch](transaction-contract.md), [API](platform-api.md), [vận hành](operations-runbook.md), [mô hình an toàn](sandbox-security.md) và [kiểm chứng](platform-validation.md).

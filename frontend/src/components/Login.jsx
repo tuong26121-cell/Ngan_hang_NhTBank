@@ -23,7 +23,15 @@ export default function Login({ onLogin }) {
       return;
     }
     setLoading(true);
-    const timer = setTimeout(onLogin, 1100);
+    const timer = setTimeout(() => {
+      Promise.resolve()
+        .then(onLogin)
+        .catch((e) => {
+          setLoading(false);
+          setPin("");
+          setError(e.message || "Chưa kết nối được hệ thống mô phỏng.");
+        });
+    }, 1100);
     return () => clearTimeout(timer);
   }, [pin, onLogin]);
   useEffect(() => {

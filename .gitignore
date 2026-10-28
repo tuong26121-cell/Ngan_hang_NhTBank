@@ -17,3 +17,9 @@ coverage/
 playwright-report/
 test-results/
 .vite/
+
+# Local sandbox ledger and private backups
+backend/.data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

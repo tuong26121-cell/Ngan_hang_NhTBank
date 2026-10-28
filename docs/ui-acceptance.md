@@ -101,3 +101,39 @@ Tính từ sRGB của các màu đặc; không thay thế phép đo nền gradie
 - D05: tắt fade khởi tạo của vùng nhập PIN/vùng chờ đăng nhập và tắt fade/dịch chuyển giữa các bước chuyển tiền khi `prefers-reduced-motion: reduce`. Khi không bật giảm chuyển động, giữ hiệu ứng mặc định trước đó. Không đổi thời gian xử lý PIN, dữ liệu hoặc nghiệp vụ.
 - H01/H02/H06: chạy lại 31 unit/component (đạt), build production (đạt), và E2E bằng cấu hình chính thức với `NHT_CHROMIUM_PATH` trỏ Chromium 153 Linux: 10 đạt, 4 bỏ qua có chủ đích do ma trận responsive chỉ chạy ở project desktop. Hai project vẫn chạy hành trình chính; không phải thử Android hoặc Safari thật.
 - Rà soát React: hook gọi ở cấp component, không thay thứ tự hook hoặc thêm effect/listener; không thêm phụ thuộc. `git diff --check` đạt. Các mục thiết bị thật, tương phản toàn diện và hiệu suất chưa có bằng chứng mới giữ nguyên trạng thái. Không coi việc đẩy nhánh/PR là đã cập nhật website.
+
+## Nâng cấp nền tảng giao dịch — 29/10/2026
+
+Nền mới nhất lúc bắt đầu là `db6b58e`, nhánh làm việc `codex/transaction-platform-20261029`. Khác với các lần sửa UI trước, người dùng lần này yêu cầu thay đổi toàn bộ cấu trúc mã và luồng A–M; backend/lõi giao dịch được bổ sung có chủ đích. Giữ nhận diện hiện có, năm tab, số dư mở đầu, dữ liệu minh họa cũ và các bản xem trước native. Không ghi đè prototype MagicPath hoặc tự triển khai backend công khai.
+
+### Đối chiếu lại đủ 45 mã
+
+Các dòng dưới đây bổ sung trạng thái mới, không biến các giới hạn thiết bị thật/hiệu suất của báo cáo trước thành đạt.
+
+| Mã                 | Kết quả trong phạm vi nâng cấp                                                                                | Bằng chứng / giới hạn                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| A01, A02, A04, A05 | Giữ nhận diện xanh dương, Brand/SVG và Lucide; màn vận hành dùng cùng hệ màu                                  | Xem hai ảnh platform-mobile/desktop; không tự đổi logo                                  |
+| A03                | Kiểm tra tự động màn vận hành tại 390/1440; chưa kết luận toàn ứng dụng đạt WCAG                              | Axe không phát hiện vi phạm trong phạm vi mới; trạng thái cũ/chuyên biệt vẫn cần rà     |
+| B01, B02, B03, B04 | Hồi quy header, số dư mở đầu, ẩn/hiện và lối tắt                                                              | Hành trình khách hàng desktop/mobile, dữ liệu seed giữ nguyên                           |
+| B05, B06           | Vận hành một cột trên điện thoại, nhiều cột trên máy tính; bảng có vùng cuộn riêng                            | Viewport 320/360/390/412/768/1366/1440/1920, đo sau khi layout responsive ổn định       |
+| C01                | Vùng chạm của nút/summary vận hành hiển thị ít nhất 44×44 CSS px                                              | Đo DOM trên tám kích thước; không phải đo phần cứng                                     |
+| C02, C03, C04      | Nút/biểu tượng, viền, khoảng cách và trạng thái nhất quán trong màn mới                                       | Xem render và thao tác thực tế trên Chromium                                            |
+| C05, C06           | Có trạng thái chờ/lỗi; không hiện thành công khi mất phản hồi; nút quyền khác bị vô hiệu hoặc không xuất hiện | Kiểm thử UI mất phản hồi sau commit, gửi lại cùng key và phê duyệt khác vai trò         |
+| D01, D02           | Không thay thẻ 3D/kính mờ của bản nền                                                                         | Luồng khách hàng hiện có được hồi quy                                                   |
+| D03                | Chưa đo frame rate hoặc hiệu suất chuyển trang trên thiết bị thật                                             | Giữ giới hạn cũ                                                                         |
+| D04, D05, D06      | Giữ phản hồi nút, reduced motion và không thêm hiệu ứng cản thao tác tài chính                                | E2E giảm chuyển động; workspace không chạy hiệu ứng số tiền                             |
+| E01, E02, E03, E04 | Giữ 5 tab; Vận hành là trang con Cá nhân, đánh dấu khu vực bằng aria-current=location                         | E2E tab cũ và luồng vào/ra vận hành; không thêm tab thứ sáu                             |
+| E05                | Chưa xác minh vùng an toàn trên máy thật                                                                      | Không thay bằng kết quả viewport                                                        |
+| F01, F02           | Chưa thử Android/Safari iPhone phần cứng                                                                      | Giữ trạng thái chưa xác minh                                                            |
+| F03, F04           | Hồi quy responsive và xoay của bản nền; bổ sung các cỡ mới cho vận hành                                       | Các ca UI cũ và platform mới trong E2E                                                  |
+| F05                | Input/textarea vận hành 16px và focus rõ; chưa thử bàn phím ảo thật                                           | Tab/Escape/khôi phục focus đã thử trên Chromium                                         |
+| G01, G02, G03, G04 | Chưa đo LCP, INP, CLS hoặc heap đủ điều kiện nghiệm thu                                                       | Không điền số ước lượng                                                                 |
+| G05                | Hồi quy luồng cũ và luồng mới; lỗi mạng thử nghiệm được xử lý có thông báo                                    | Không gọi lỗi mạng được tiêm có chủ đích là lỗi JS chưa xử lý                           |
+| G06                | Chưa xác minh tải dài/độ ổn định trên điện thoại mục tiêu                                                     | Giữ giới hạn cũ                                                                         |
+| H01, H02           | Giữ chức năng cũ, chủ tài khoản, số dư đầu kỳ và QR; phân biệt lịch sử minh họa với sổ mới                    | 31 unit/component và hồi quy khách hàng; backend giữ dữ liệu theo mode mới được yêu cầu |
+| H03                | Khách hàng vẫn nhập → kiểm tra → PIN → kết quả; vận hành có luồng riêng                                       | Không chèn phê duyệt thủ công vào mọi chuyển tiền khách hàng                            |
+| H04, H05, H06      | Nhãn mô phỏng, PIN public có giải thích, không nhúng bí mật/API ngân hàng thật                                | QR cục bộ cũ giữ nguyên; API mới là API Sandbox cùng nguồn                              |
+
+### Bằng chứng và kết luận
+
+Xem `docs/platform-validation.md` cho lệnh chạy và phạm vi. Hai ảnh mới nằm ở `docs/screenshots/platform-mobile.png` và `platform-desktop.png`; không thay ảnh baseline cũ. Đã kiểm tra Tab/Escape và focus khôi phục cho hộp đổi vai trò. Không nghiệm thu chính thức toàn bộ P0 khi thiết bị thật, bàn phím ảo, hiệu suất và rà tương phản toàn diện chưa có bằng chứng.

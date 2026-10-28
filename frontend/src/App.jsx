@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
@@ -21,6 +21,8 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Transfer from "./components/Transfer";
 import Deposit from "./components/Deposit";
+import PlatformWorkspace from "./components/PlatformWorkspace";
+import { createPlatformClient, PRIMARY_ACCOUNT } from "./lib/platform-client";
 import {
   Brand,
   HelpDialog,
@@ -46,35 +48,108 @@ export default function App() {
   const [help, setHelp] = useState(false);
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
-  const login = useCallback(() => setAuthenticated(true), []);
+  const [runtime] = useState(createPlatformClient);
+  const [platformSnapshot, setPlatformSnapshot] = useState(null);
+  const [sessionError, setSessionError] = useState("");
+  const applySnapshot = useCallback((next) => {
+    setPlatformSnapshot(next);
+    setBalance(
+      next.accounts.find((a) => a.id === PRIMARY_ACCOUNT)?.balance ?? 0,
+    );
+    setTransactions([
+      ...next.transfers
+        .filter((t) => t.kind === "transfer")
+        .reverse()
+        .map((t) => ({ ...t, amount: -t.amount })),
+      ...initialTransactions,
+    ]);
+    return next;
+  }, []);
+  const login = useCallback(() => {
+    const finish = (next) => {
+      applySnapshot(next);
+      setAuthenticated(true);
+      setSessionError("");
+      if (
+        new URLSearchParams(window.location.search).get("workspace") ===
+        "operations"
+      )
+        setPage("operations");
+    };
+    const next = runtime.login();
+    return next?.then ? next.then(finish) : finish(next);
+  }, [runtime, applySnapshot]);
+  useEffect(() => {
+    if (runtime.mode !== "server") return;
+    let active = true;
+    runtime
+      .resume()
+      .then((next) => {
+        if (active) {
+          applySnapshot(next);
+          setAuthenticated(true);
+          if (
+            new URLSearchParams(window.location.search).get("workspace") ===
+            "operations"
+          )
+            setPage("operations");
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [runtime, applySnapshot]);
+  function refreshPlatform() {
+    const next = runtime.snapshot();
+    return next?.then ? next.then(applySnapshot) : applySnapshot(next);
+  }
+  async function platformAction(name, args) {
+    const result = await runtime.action(name, args);
+    await refreshPlatform();
+    return result;
+  }
+  async function switchIdentity(identity, pin) {
+    const next = await runtime.login(identity, pin);
+    applySnapshot(next);
+  }
+
   function navigate(next) {
     setPage(next);
     setNotifications(false);
     window.scrollTo({ top: 0, behavior: "instant" });
   }
-  function transfer(form) {
-    const entry = {
-      id: `NHT-${crypto.randomUUID().slice(0, 8).toUpperCase()}`,
-      name: form.recipient.trim(),
-      detail: form.note || "Chuyển tiền mô phỏng",
-      category: "Chuyển tiền",
-      amount: -Number(form.amount),
-      date: new Date().toISOString(),
-      icon: "transfer",
-    };
-    setBalance((b) => b + entry.amount);
-    setTransactions((t) => [entry, ...t]);
-    return entry;
+  function transfer(form, pin, key) {
+    const result = runtime.transfer(form, key, pin);
+    if (result?.then)
+      return result.then(async (entry) => {
+        await refreshPlatform();
+        return entry;
+      });
+    refreshPlatform();
+    return result;
   }
   function logout() {
-    setAuthenticated(false);
-    setBalance(INITIAL_BALANCE);
-    setTransactions(initialTransactions);
-    setFilter("all");
-    setQuery("");
-    setPage("dashboard");
-    setNotifications(false);
-    setHelp(false);
+    const finish = () => {
+      setAuthenticated(false);
+      setBalance(INITIAL_BALANCE);
+      setTransactions(initialTransactions);
+      setPlatformSnapshot(null);
+      setFilter("all");
+      setQuery("");
+      setPage("dashboard");
+      setNotifications(false);
+      setHelp(false);
+      setSessionError("");
+    };
+    try {
+      const result = runtime.logout();
+      if (result?.then)
+        result.then(finish).catch((e) => setSessionError(e.message));
+      else finish();
+    } catch (e) {
+      setSessionError(e.message);
+    }
   }
   if (!authenticated) return <Login onLogin={login} />;
   const title = {
@@ -85,6 +160,7 @@ export default function App() {
     profile: "Cá nhân",
     savings: "Tiền gửi",
     loans: "Vay nhanh",
+    operations: "Vận hành mô phỏng",
   }[page];
   return (
     <div className="app-shell">
@@ -96,8 +172,14 @@ export default function App() {
             <Button
               key={id}
               aria-label={label}
-              className={`nav-item ${page === id ? "selected" : ""}`}
-              aria-current={page === id ? "page" : undefined}
+              className={`nav-item ${page === id || (page === "operations" && id === "profile") ? "selected" : ""}`}
+              aria-current={
+                page === id
+                  ? "page"
+                  : page === "operations" && id === "profile"
+                    ? "location"
+                    : undefined
+              }
               onClick={() => navigate(id)}
             >
               <Icon size={21} />
@@ -153,7 +235,18 @@ export default function App() {
                 className="icon-button notification-button"
                 aria-label="Thông báo"
                 aria-expanded={notifications}
-                onClick={() => setNotifications(!notifications)}
+                onClick={() => {
+                  setNotifications(!notifications);
+                  if (!notifications) {
+                    try {
+                      const result = refreshPlatform();
+                      if (result?.catch)
+                        result.catch((e) => setSessionError(e.message));
+                    } catch (e) {
+                      setSessionError(e.message);
+                    }
+                  }
+                }}
               >
                 <Bell size={20} />
                 <i />
@@ -161,6 +254,24 @@ export default function App() {
               {notifications && (
                 <div className="notification-panel">
                   <strong>Một khởi đầu tốt đẹp ✦</strong>
+                  {(platformSnapshot?.notifications || [])
+                    .slice(-3)
+                    .reverse()
+                    .map((item) => (
+                      <article className="platform-notification" key={item.id}>
+                        <strong>{item.title}</strong>
+                        <p>
+                          {money(item.amount)} VNĐ · {item.recipient}
+                        </p>
+                        <small>Ghi sổ mô phỏng · {item.transactionId}</small>
+                        <Button
+                          className="text-button"
+                          onClick={() => navigate("history")}
+                        >
+                          Mở lịch sử
+                        </Button>
+                      </article>
+                    ))}
                   <p>
                     Chào mừng bạn đến với NhTBank Sandbox. Mọi giao dịch đều là
                     mô phỏng.
@@ -197,6 +308,11 @@ export default function App() {
           <span>Ngân hàng mô phỏng · Không giao dịch tiền thật</span>
         </div>
         <main id="main-content">
+          {sessionError && (
+            <p className="form-error" role="alert">
+              {sessionError}
+            </p>
+          )}
           <AnimatePresence mode="wait">
             <Page key={page}>
               {page === "dashboard" && (
@@ -214,6 +330,16 @@ export default function App() {
                 />
               )}{" "}
               {page === "deposit" && <Deposit navigate={navigate} />}{" "}
+              {page === "operations" && platformSnapshot && (
+                <PlatformWorkspace
+                  snapshot={platformSnapshot}
+                  runtime={runtime}
+                  onRefresh={refreshPlatform}
+                  onAction={platformAction}
+                  onIdentity={switchIdentity}
+                  navigate={navigate}
+                />
+              )}
               {page === "history" && (
                 <>
                   <div className="page-heading">
@@ -261,8 +387,9 @@ export default function App() {
                       )}
                     />
                     <p className="muted text-xs mt-5">
-                      Dữ liệu mẫu và giao dịch của phiên hiện tại. Đăng xuất
-                      hoặc tải lại trang sẽ đặt lại dữ liệu.
+                      {runtime.mode === "server"
+                        ? "Sổ mới được lưu SQLite; bốn giao dịch lịch sử cũ là dữ liệu minh họa ngoài số dư đầu kỳ, không được ghi sổ lại."
+                        : "Bốn mục cũ là lịch sử minh họa ngoài số dư đầu kỳ; giao dịch mới đi qua sổ của phiên. Đăng xuất hoặc tải lại đặt lại bộ nhớ."}
                     </p>
                   </section>
                 </>
@@ -303,10 +430,26 @@ export default function App() {
                         </div>
                         <div>
                           <dt>Lưu trữ dữ liệu</dt>
-                          <dd>Trong bộ nhớ phiên</dd>
+                          <dd>
+                            {runtime.mode === "server"
+                              ? "SQLite trên máy chủ cục bộ"
+                              : "Trong bộ nhớ phiên"}
+                          </dd>
                         </div>
                       </dl>
                       <SecurityNote />
+                      <Button
+                        className="secondary platform-link"
+                        onClick={() => navigate("operations")}
+                      >
+                        Không gian vận hành
+                      </Button>
+                      <p className="platform-caption">
+                        Vai trò: {platformSnapshot?.actor.name}.{" "}
+                        {runtime.mode === "server"
+                          ? "Đăng xuất kết thúc phiên, không xóa sổ cái."
+                          : "Đăng xuất sẽ đặt lại dữ liệu bộ nhớ."}
+                      </p>
                       <Button
                         className="text-button mt-4"
                         onClick={() => setHelp(true)}
@@ -314,7 +457,10 @@ export default function App() {
                         Trung tâm hỗ trợ <CircleHelp size={16} />
                       </Button>
                       <Button className="secondary mt-6" onClick={logout}>
-                        <LogOut size={17} /> Đăng xuất và xóa dữ liệu phiên
+                        <LogOut size={17} />{" "}
+                        {runtime.mode === "server"
+                          ? "Đăng xuất khỏi máy chủ"
+                          : "Đăng xuất và xóa dữ liệu phiên"}
                       </Button>
                     </div>
                   </section>
@@ -344,12 +490,16 @@ export default function App() {
           <h2 id="help-title">Chào bạn, chúng tôi ở đây.</h2>
           <p>
             Đăng nhập và xác nhận giao dịch với PIN <strong>123456</strong>.
-            Chuyển tiền chỉ cập nhật số dư mô phỏng trong phiên này.
+            {runtime.mode === "server"
+              ? "Sổ mô phỏng được lưu SQLite trên máy chủ cục bộ."
+              : "Chuyển tiền chỉ cập nhật số dư mô phỏng trong phiên này."}
           </p>
           <p>
-            Đăng xuất hoặc tải lại trang để khôi phục dữ liệu mẫu. QR được tạo
-            ngay trên thiết bị, chỉ chứa dữ liệu mô phỏng và không dùng thanh
-            toán.
+            {runtime.mode === "server"
+              ? "Đăng xuất hoặc tải lại không xóa sổ cái. "
+              : "Đăng xuất hoặc tải lại trang để khôi phục dữ liệu mẫu. "}
+            QR được tạo ngay trên thiết bị, chỉ chứa dữ liệu mô phỏng và không
+            dùng thanh toán.
           </p>
           <Button className="primary full" onClick={() => setHelp(false)}>
             Mình hiểu rồi

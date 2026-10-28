@@ -1,69 +1,65 @@
-# NhTBank ✦ Chạm đến điều tốt đẹp
+# NhTBank — ứng dụng và lõi giao dịch Sandbox
 
-Ứng dụng ngân hàng số **mô phỏng**, dành cho Nguyễn Nhựt Tường. React 18 + TailwindCSS + Framer Motion, bố cục desktop và điện thoại.
+Ứng dụng mô phỏng bằng React 18 + Vite, có giao diện điện thoại/máy tính và nền tảng giao dịch theo luồng **phiên/quyền → chống gửi lặp → kiểm tra → ghi sổ nguyên tử → thông báo → đối soát → xử lý có phê duyệt → sao lưu/diễn tập**.
 
-> Không kết nối cổng thanh toán, không chuyển hay nhận tiền thật. Không nhập thông tin ngân hàng thật. PIN demo được công khai, không dùng để bảo vệ dữ liệu nhạy cảm.
+**Không giao dịch tiền thật.** PIN 123456 và ba danh tính đều công khai để thử nghiệm. Không nhập dữ liệu ngân hàng thật. QR giữ payload `NHTBANK_SANDBOX:`, không phải VietQR thanh toán và không xác nhận tiền về.
 
+## Mở và chạy
 
-## Website trực tuyến
-
-Bản website mô phỏng được triển khai tại **https://nhtbank-web-tuong.vercel.app/** từ nhánh `main` của repository này. Mã PIN demo: `123456`. Dữ liệu mẫu hiện tại: **Nguyễn Nhựt Tường**, tài khoản mô phỏng **0788818374**, số dư khởi tạo **4.056.000 VNĐ**.
-
-Đây là ứng dụng trình diễn giao diện, **không phải tài khoản ngân hàng thực tế**, không nhận/chuyển tiền thật. Nếu cập nhật mã nguồn nhưng website vẫn là bản cũ, cần kiểm tra deployment mới trên Vercel; việc commit lên GitHub không tự xác nhận rằng website đã xuất bản.
-
-## Chạy cục bộ
-
-Yêu cầu Node.js 22.12+ (đã kiểm tra với Node 24) và npm.
+Node.js **24+**; dùng `.nvmrc` hoặc devcontainer đã chỉ định Node 24.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Mở địa chỉ Vite in trong terminal (`127.0.0.1`, chỉ trên thiết bị đang chạy). Muốn thử từ thiết bị khác trong cùng Wi-Fi, chạy `npm run dev -- --host 0.0.0.0` trong mạng tin cậy; không công khai Vite ra Internet. Nhập PIN **123456** bằng bàn phím hoặc bàn phím số trên màn hình. Số dư ban đầu: **4.056.000 VNĐ**. Tải lại trang để khôi phục dữ liệu mẫu.
+Mặc định là **bộ nhớ trình duyệt**, không cần backend. Mở địa chỉ Vite in trong terminal, PIN **123456**. Số dư đầu kỳ mẫu **4.056.000 VNĐ**. Tải lại hoặc đăng xuất đặt lại dữ liệu.
+
+Để dùng sổ bền vững trên máy chủ cục bộ:
 
 ```sh
-npm test                 # kiểm thử logic và tương tác
-npm run build           # bản production trong dist/
-npm run preview         # xem bản đã build
+npm run build
+npm run platform:serve
+```
+
+Mở `http://127.0.0.1:3001/?runtime=server`. Server phục vụ web production và API cùng nguồn, bind loopback. Vào **Cá nhân → Không gian vận hành**. SQLite giữ sổ khi tải lại, đăng xuất và khởi động lại server; phiên đăng nhập cần tạo lại khi server khởi động lại.
+
+Có thể mở trực tiếp không gian vận hành bằng `?workspace=operations` hoặc `?runtime=server&workspace=operations`. Đây là cùng ứng dụng responsive; không phải hai gói cài Android/Windows. Bản xem trước native hiện có vẫn được giữ trong repo, chưa build lại trong tác vụ này.
+
+## Các phần hoạt động
+
+- Luồng khách hàng hiện có: PIN, tổng quan/ẩn số dư, chuyển tiền, QR cục bộ, lịch sử/tìm/lọc, hồ sơ, trợ giúp, đăng xuất; năm tab giữ nguyên.
+- Chuyển tiền đi qua lõi dùng chung, không tự trừ tiền trong React. Hai bút toán, kết quả, mã chống lặp, audit và outbox chốt trong một transaction. Gửi lại cùng mã/nội dung trả kết quả cũ.
+- Kiểm tra quyền chủ tài khoản, tiền nguyên VNĐ, số dư và hạn mức mẫu **2 triệu/lần, 3 triệu/ngày UTC+7**. Người nhận chỉ được kiểm tra định dạng Sandbox, chưa xác minh ngân hàng.
+- Thông báo sau commit: lease/token, retry/backoff, hàng đợi lỗi và hộp nhận theo ID. Backend có worker mỗi giây; chế độ bộ nhớ có nút diễn tập xử lý hàng đợi. Không gửi SMS/email/push thật.
+- Đối soát thuật toán riêng từ bút toán gốc, lưu kết quả, cô lập sai lệch. Tài khoản lệch cũng bị chặn ngay trước ghi nợ.
+- Xử lý sự cố: vận hành lập đề xuất, tài khoản phê duyệt khác kiểm tra bằng chứng; chỉ xây lại bộ đệm và đối soát lại, không sửa sổ gốc hoặc tự bù tiền.
+- SQLite online backup, checksum, integrity/foreign-key check và khôi phục thử sang bản cách ly. Bản bộ nhớ chỉ chụp JSON tạm trong phiên, có nhãn rõ.
+
+Bốn mục lịch sử cũ vẫn là dữ liệu giao diện minh họa ngoài số dư mở đầu, không được ghi vào sổ mới lần nữa. Tiền gửi và Vay nhanh vẫn là màn xem trước, chưa có nghiệp vụ.
+
+## Vai trò thử nghiệm
+
+Trong Không gian vận hành chọn **Đổi vai trò thử nghiệm**: Khách hàng, Nhân viên vận hành hoặc Người phê duyệt. PIN cho cả ba là **123456**. Đổi vai trò giữ dữ liệu để diễn tập; không coi đây là xác thực/phân quyền đủ cho tiền thật.
+
+Lab tạo lệch bộ đệm chỉ có trong bản bộ nhớ; server mặc định tắt. Xem runbook để bật trên DB thử riêng. Không có nút sửa bút toán gốc hoặc endpoint ghi đè DB đang chạy.
+
+## Kiểm thử và tài liệu
+
+```sh
+npm test
+npm run test:platform
+npm run build
 npx playwright install chromium
-npm run test:e2e        # kiểm thử trình duyệt desktop + mobile
+npm run test:e2e
+npm run format:check
 ```
 
-Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playwright install-deps chromium` (cần quyền quản trị). E2E tự khởi động Vite trên cổng 4173 và mô phỏng phản hồi VietQR để kiểm thử không phụ thuộc dịch vụ ngoài.
+E2E cần build trước vì một số ca chạy cả backend và web production. Có thể dùng Chromium hệ thống bằng `NHT_CHROMIUM_PATH`. Kiểm tra viewport không phải thử điện thoại/Safari thật.
 
-## Trải nghiệm
+- [Kiến trúc A–M](docs/architecture.md) và [bản đồ không gian mã](docs/workspace-map.md).
+- [Hợp đồng giao dịch](docs/transaction-contract.md), [API cục bộ](docs/platform-api.md), [vận hành/khôi phục](docs/operations-runbook.md).
+- [Giới hạn an toàn](docs/sandbox-security.md), [kết quả nền tảng](docs/platform-validation.md), [nghiệm thu UI](docs/ui-acceptance.md).
+- [Bản xem trước di động hiện có](docs/mobile-preview.md), [lịch sử cập nhật bảo mật](docs/security-update.md).
 
-- Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
-- Dashboard: ẩn/hiện số dư, bộ đếm từ 0, bốn tiện ích và giao dịch gần đây.
-- Chuyển tiền: thông tin → kiểm tra → xác nhận PIN → biên nhận, confetti và cập nhật lịch sử. Kiểm tra số dư, số tiền và chống xác nhận lặp.
-- Nạp tiền: QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gọi dịch vụ ảnh ngoài, không gửi số tiền/nội dung ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
-- Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất. Đăng xuất xóa giao dịch vừa nhập, bộ lọc/tìm kiếm và khôi phục số dư mẫu, kể cả khi đăng nhập lại mà không tải lại trang.
-- Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
-
-## Những “phép thuật” giao diện
-
-Sắc xanh hoàng gia **#0C3699** trên nền **#F4F7FC**, bề mặt kính mờ và phản quang nhiều lớp. Thẻ số dư nghiêng theo chuột bằng lò xo Framer Motion; ripple theo vị trí bấm; đồng xu nổi và thẻ chào chuyển động bằng CSS. Các màn xuất hiện nhẹ nhàng; chế độ giảm chuyển động được tôn trọng. Toàn bộ đồ họa trang trí tạo bằng CSS/SVG icon, không cần tải ảnh ngoài.
-
-## Cấu trúc
-
-```text
-frontend/         React app
-  src/components/ Giao diện và luồng tương tác
-  src/lib/        Dữ liệu và logic mô phỏng
-  src/test/       Kiểm thử component
-backend/          Ranh giới kiến trúc dự phòng (chưa có server)
-docs/             Kiến trúc, phạm vi Sandbox
-e2e/              Playwright desktop + mobile
-AGENTS.md         Quy tắc cho các lần phát triển sau
-```
-
-Chi tiết: [Kiến trúc và phạm vi](docs/architecture.md). Dữ liệu phiên chỉ giữ trong bộ nhớ; không lưu vào trình duyệt, không yêu cầu biến môi trường hoặc thông tin bí mật.
-
-## Kiểm tra và ảnh giao diện
-
-[Biên bản kiểm tra](docs/validation.md) · [Dashboard desktop](docs/screenshots/dashboard-desktop.png) · [Dashboard điện thoại](docs/screenshots/dashboard-mobile.png).
-
-## Cập nhật bảo mật
-
-Xem [ghi chép cập nhật cho issue #2](docs/security-update.md). Các công cụ phát triển được nâng phiên bản; `postcss-selector-parser` được khóa ở 7.1.6 qua npm override để giữ Tailwind 3 và hạn chế thay đổi giao diện. QR cục bộ dùng `qrcode`; `jsqr` chỉ dùng kiểm thử giải mã. PIN công khai vẫn chỉ là thao tác trải nghiệm demo.
+Không thêm phụ thuộc runtime cho backend: dùng thư viện chuẩn Node. DB, WAL, backup và phiên không vào Git. Không có dịch vụ ngân hàng, webhook nhận tiền thật, HA, sao lưu ngoài máy hoặc chứng nhận tuân thủ. GitHub Pages chỉ chạy bản bộ nhớ; backend Node/SQLite cần môi trường máy chủ riêng. Không thay đổi quy tắc bảo vệ môi trường xuất bản.

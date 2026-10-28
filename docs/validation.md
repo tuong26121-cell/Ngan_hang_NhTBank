@@ -1,5 +1,9 @@
 # Kết quả kiểm tra
 
+## Nâng cấp giao dịch ngày 29/10/2026
+
+Xem [biên bản nền tảng giao dịch](platform-validation.md) và [nghiệm thu UI bổ sung](ui-acceptance.md). Các kết quả bên dưới là lịch sử phiên bản trước; bản nâng cấp có thêm lõi dùng chung, SQLite cục bộ và hai chế độ vòng đời dữ liệu.
+
 ## Cập nhật bảo mật ngày 26/10/2026
 
 Xem [phạm vi và kết quả cập nhật](security-update.md). Unit/component: **31 đạt**; build đạt; audit toàn bộ phụ thuộc báo **0**; CSS build giống từng byte so với bản nền. E2E được cập nhật để kiểm tra QR cục bộ, giải mã ảnh và đăng xuất không reload; **6/6 đạt** trên Chromium 153 tương thích, desktop và viewport iPhone 13. Lệnh chuẩn bị chặn bởi Chromium 149 chưa cài trong môi trường; lần chạy đạt dùng cấu hình tạm trỏ tới Chromium 153, không sửa launch options của repository. Không phải Safari/thiết bị thật.

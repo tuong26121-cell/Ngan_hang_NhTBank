@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS metadata (id INTEGER PRIMARY KEY CHECK (id = 1), body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS accounts (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS operations (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS transfers (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS ledger (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)), account_id TEXT NOT NULL REFERENCES accounts(id), transaction_id TEXT NOT NULL REFERENCES transfers(id), amount INTEGER NOT NULL CHECK(amount != 0));
+CREATE INDEX IF NOT EXISTS ledger_account ON ledger(account_id);
+CREATE INDEX IF NOT EXISTS ledger_transaction ON ledger(transaction_id);
+CREATE TABLE IF NOT EXISTS audit (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS outbox (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS notifications (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS reconciliations (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS incidents (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS proposals (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+CREATE TABLE IF NOT EXISTS backups (id TEXT PRIMARY KEY, position INTEGER UNIQUE NOT NULL, body TEXT NOT NULL CHECK(json_valid(body)));
+PRAGMA user_version = 1;

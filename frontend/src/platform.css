@@ -1,0 +1,398 @@
+.platform-workspace {
+  font-size: 16px;
+  color: #17233d;
+  max-width: 1200px;
+  margin: auto;
+}
+.platform-workspace > .text-button {
+  margin-bottom: 16px;
+}
+.platform-workspace .page-heading h1 {
+  font-size: 26px;
+}
+.platform-workspace .page-heading p {
+  font-size: 16px;
+}
+.platform-workspace h2,
+.platform-dialog h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.platform-workspace h3 {
+  font-size: 18px;
+}
+.platform-workspace > .panel,
+.platform-workspace > .platform-mode {
+  margin-bottom: 24px;
+}
+.platform-workspace p {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.platform-workspace .platform-caption,
+.platform-dialog .platform-caption {
+  font-size: 14px;
+  color: #52627c;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+.platform-mode {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background: #edf3ff;
+  border: 1px solid #c8d7ee;
+  border-radius: 18px;
+  color: #153e8f;
+}
+.platform-mode p {
+  font-size: 14px;
+  margin: 8px 0 0;
+  color: #334e7a;
+}
+.platform-mode > svg {
+  flex-shrink: 0;
+}
+.platform-session {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.platform-session h2 {
+  margin-bottom: 10px;
+}
+.platform-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 24px;
+}
+.platform-metrics > .panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  min-width: 0;
+}
+.platform-metrics svg {
+  color: #0c3699;
+}
+.platform-metrics span {
+  font-size: 14px;
+  color: #52627c;
+}
+.platform-metrics strong {
+  font-size: 28px;
+  color: #17233d;
+}
+.platform-workspace .primary,
+.platform-workspace .secondary,
+.platform-workspace .text-button,
+.platform-dialog .primary,
+.platform-dialog .secondary {
+  font-size: 16px;
+  min-height: 48px;
+  white-space: normal;
+}
+.platform-workspace > .panel {
+  padding: 24px;
+}
+.platform-workspace .panel {
+  background: white;
+  min-width: 0;
+}
+.platform-workspace .panel > h2 {
+  margin-bottom: 16px;
+}
+.platform-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.platform-actions > .button {
+  min-width: 0;
+}
+.platform-check {
+  margin-top: 20px;
+  background: #f4f7fc;
+  border: 1px solid #d6dfed;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.platform-record {
+  border-top: 1px solid #d6dfed;
+  padding: 20px 0;
+  min-width: 0;
+}
+.platform-record > .button {
+  margin-top: 16px;
+}
+.platform-record p {
+  font-size: 16px;
+  margin-top: 8px;
+}
+.platform-record strong {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.platform-record:last-child {
+  padding-bottom: 0;
+}
+.platform-empty {
+  color: #52627c;
+  font-size: 16px;
+  padding: 20px 0;
+}
+.platform-notice {
+  padding: 16px;
+  border: 1px solid #8bb9a8;
+  background: #eef8f2;
+  color: #11513d;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+.platform-detail > summary {
+  min-height: 48px;
+  align-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: revert;
+  font-size: 16px;
+}
+.platform-detail[open] > summary {
+  margin-bottom: 20px;
+}
+.platform-table {
+  max-width: 100%;
+  overflow: auto;
+  outline-offset: 3px;
+  margin-bottom: 24px;
+}
+.platform-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 580px;
+  font-size: 14px;
+}
+.platform-table caption {
+  text-align: left;
+  margin-bottom: 12px;
+}
+.platform-table th,
+.platform-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #d6dfed;
+  overflow-wrap: anywhere;
+  max-width: 300px;
+}
+.platform-table th {
+  color: #334e7a;
+  background: #edf3ff;
+  font-weight: 600;
+}
+.platform-table td:last-child {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.platform-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.platform-flow li {
+  padding: 16px;
+  border: 1px solid #c8d7ee;
+  background: #f4f7fc;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.platform-dialog {
+  width: min(620px, calc(100% - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 1px solid #d6dfed;
+  border-radius: 20px;
+  color: #17233d;
+}
+.platform-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+.platform-dialog::backdrop {
+  background: #10214775;
+  backdrop-filter: blur(4px);
+}
+.platform-dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #d6dfed;
+  flex-shrink: 0;
+}
+.platform-dialog-heading > .icon-button {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  font-size: 28px;
+  color: #153e8f;
+}
+.platform-dialog-body {
+  padding: 24px;
+  overflow: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+.platform-dialog label {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 20px 0;
+  color: #17233d;
+}
+.platform-dialog input,
+.platform-dialog select,
+.platform-dialog textarea {
+  display: block;
+  font: inherit;
+  width: 100%;
+  font-size: 16px;
+  min-height: 52px;
+  padding: 14px;
+  margin-top: 8px;
+  border: 1px solid #73829b;
+  border-radius: 12px;
+  background: white;
+  color: #17233d;
+}
+.platform-dialog textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.platform-dialog form > .primary {
+  margin-top: 24px;
+}
+.platform-inline-note {
+  font-size: 14px;
+  color: #52627c;
+  padding: 16px;
+  border: 1px solid #c8d7ee;
+  background: #edf3ff;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+.platform-link {
+  margin-top: 20px;
+}
+.platform-caption code {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .platform-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .platform-workspace .page-heading {
+    align-items: flex-start;
+  }
+  .platform-session {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 500px) {
+  .platform-workspace h2 {
+    font-size: 20px;
+  }
+  .platform-workspace .page-heading h1 {
+    font-size: 24px;
+  }
+  .platform-mode {
+    padding: 16px;
+    gap: 10px;
+  }
+  .platform-metrics {
+    gap: 12px;
+  }
+  .platform-metrics > .panel {
+    padding: 16px;
+  }
+  .platform-workspace .platform-session > .button {
+    width: 100%;
+  }
+  .platform-actions > .button {
+    width: 100%;
+  }
+  .platform-flow {
+    grid-template-columns: 1fr;
+  }
+  .platform-dialog-heading {
+    padding: 16px 20px;
+  }
+  .platform-dialog-body {
+    padding: 20px;
+  }
+  .platform-dialog-heading h2 {
+    font-size: 22px;
+  }
+  .platform-record .button {
+    width: 100%;
+  }
+  .platform-workspace > .panel {
+    padding: 20px;
+  }
+}
+
+.platform-notification {
+  border-top: 1px solid #d6dfed;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+.platform-notification strong {
+  font-size: 14px;
+}
+.platform-notification small {
+  display: block;
+  font-size: 14px;
+  color: #52627c;
+  overflow-wrap: anywhere;
+}
+.platform-notification > .text-button {
+  font-size: 14px;
+  min-height: 44px;
+}
+
+.platform-workspace .section-title,
+.platform-workspace .page-heading {
+  flex-wrap: wrap;
+}
+.platform-workspace .page-heading > div {
+  min-width: 0;
+}
+.platform-workspace .section-title h2 {
+  font-size: 20px;
+  min-width: 0;
+}
+.platform-workspace .tag {
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: normal;
+  max-width: 100%;
+}
+.platform-workspace,
+.platform-workspace .section-title > * {
+  min-width: 0;
+}
+.platform-workspace .page-heading .eyebrow {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

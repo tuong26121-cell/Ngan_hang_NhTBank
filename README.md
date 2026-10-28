@@ -1,9 +1,8 @@
-# NhTBank ✦ Chạm đến điều tốt đẹp
+# NhTBank 1.1 · Tài chính trong tầm tay
 
 Ứng dụng ngân hàng số **mô phỏng**, dành cho Nguyễn Nhựt Tường. React 18 + TailwindCSS + Framer Motion, bố cục desktop và điện thoại.
 
 > Không kết nối cổng thanh toán, không chuyển hay nhận tiền thật. Không nhập thông tin ngân hàng thật. PIN demo được công khai, không dùng để bảo vệ dữ liệu nhạy cảm.
-
 
 ## Website trực tuyến
 
@@ -30,20 +29,35 @@ npx playwright install chromium
 npm run test:e2e        # kiểm thử trình duyệt desktop + mobile
 ```
 
-Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playwright install-deps chromium` (cần quyền quản trị). E2E tự khởi động Vite trên cổng 4173 và mô phỏng phản hồi VietQR để kiểm thử không phụ thuộc dịch vụ ngoài.
+Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playwright install-deps chromium` (cần quyền quản trị). E2E tự khởi động Vite trên cổng 4173; QR được tạo và giải mã cục bộ, không phụ thuộc dịch vụ ảnh hoặc thanh toán bên ngoài. Có thể dùng Chromium đã cài với biến `NHT_CHROMIUM_PATH=/usr/bin/chromium`.
 
 ## Trải nghiệm
 
 - Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
-- Dashboard: ẩn/hiện số dư, bộ đếm từ 0, bốn tiện ích và giao dịch gần đây.
+- Dashboard: ẩn/hiện số dư, bộ đếm, bốn lối tắt, tám ô tiện ích theo mẫu và giao dịch gần đây.
 - Chuyển tiền: thông tin → kiểm tra → xác nhận PIN → biên nhận, confetti và cập nhật lịch sử. Kiểm tra số dư, số tiền và chống xác nhận lặp.
 - Nạp tiền: QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gọi dịch vụ ảnh ngoài, không gửi số tiền/nội dung ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
 - Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất. Đăng xuất xóa giao dịch vừa nhập, bộ lọc/tìm kiếm và khôi phục số dư mẫu, kể cả khi đăng nhập lại mà không tải lại trang.
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
 
-## Những “phép thuật” giao diện
+## Giao diện theo mẫu NhTBank 1.1
 
-Sắc xanh hoàng gia **#0C3699** trên nền **#F4F7FC**, bề mặt kính mờ và phản quang nhiều lớp. Thẻ số dư nghiêng theo chuột bằng lò xo Framer Motion; ripple theo vị trí bấm; đồng xu nổi và thẻ chào chuyển động bằng CSS. Các màn xuất hiện nhẹ nhàng; chế độ giảm chuyển động được tôn trọng. Toàn bộ đồ họa trang trí tạo bằng CSS/SVG icon, không cần tải ảnh ngoài.
+Đã ghép mẫu Android trong `NhTBank 1.1.zip` vào ứng dụng React hiện có: nền xanh lam–tím, vòng 3D bằng CSS, thẻ tài khoản, nút tròn, tám ô tiện ích, biểu tượng SVG và nút QR nổi giữa thanh điều hướng điện thoại. Phông Be Vietnam Pro tải từ tệp nội bộ, giữ kèm giấy phép OFL. Chế độ giảm chuyển động vẫn được tôn trọng.
+
+- Bản điện thoại: mở `/?view=android` trên máy chủ đang chạy; bố cục một cột ngay cả khi xem trên máy tính.
+- Bản máy tính: mở `/?view=windows`; tự co lại khi màn hình hẹp.
+- Có liên kết đổi bố cục ở màn đăng nhập và cuối trang. Chuyển bố cục mở lại phiên demo.
+- Tám ô tiện ích được đối chiếu với mẫu; Ví của tôi và Mục tiêu dẫn đến các màn có sẵn. Các mục chưa có nghiệp vụ mở hộp thoại ghi rõ **bản xem trước**, không thực hiện dịch vụ.
+- Toàn bộ mã mẫu gốc nằm trong [references/nhtbank-v11](references/nhtbank-v11/README.md). Các chức năng của ứng dụng JavaScript mẫu không ghi đè dữ liệu và luồng xử lý React.
+
+Xuất hai tệp HTML độc lập từ đúng bản build React, gồm cả CSS, JavaScript và phông chữ:
+
+```sh
+npm run build
+node scripts/export-standalone.mjs
+```
+
+Kết quả tại `dist/standalone/NhTBank-Android.html` và `dist/standalone/NhTBank-Windows.html`. Tải tệp rồi mở bằng Chromium/Chrome/Edge hiện đại; PIN demo **123456**. QR vẫn được tạo cục bộ. Đây là tệp web, không phải gói cài Android hoặc Windows. Bản bàn giao đã xuất sẵn ở `exports/`.
 
 ## Cấu trúc
 

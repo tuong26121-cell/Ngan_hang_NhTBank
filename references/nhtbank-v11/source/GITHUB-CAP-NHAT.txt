@@ -1,0 +1,7 @@
+Mã đã kiểm thử: ab2753ed36b5d22ef99385809f5311beab9d4fb6
+Kho đích: https://github.com/tuong26121-cell/Ngan_hang_NhTBank
+Nhánh: demo/nhtbank-deployed-2026-10-25
+Nếu có Git và quyền ghi: fetch kho, chép các tệp nguồn vào nhánh này, git add, git commit rồi git push.
+Không tải thư mục dist lên thay cho mã nguồn. README.md và .gitignore được giữ nguyên.
+Chạy: python3 serve.py
+Build: python3 build_static.py

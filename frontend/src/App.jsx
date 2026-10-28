@@ -1,10 +1,6 @@
 import { useCallback, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import {
-  LayoutDashboard,
-  ArrowLeftRight,
-  Clock3,
-  UserRound,
   LogOut,
   Bell,
   ChevronDown,
@@ -15,8 +11,8 @@ import {
   X,
   CircleHelp,
   Sparkles,
-  QrCode,
 } from "lucide-react";
+import { ReferenceIcon, DisplaySwitcher } from "./components/ReferenceArt";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Transfer from "./components/Transfer";
@@ -31,11 +27,11 @@ import {
 } from "./components/ui";
 import { INITIAL_BALANCE, OWNER, initialTransactions, money } from "./lib/bank";
 const navigation = [
-  ["dashboard", "Trang chủ", LayoutDashboard],
-  ["transfer", "Giao dịch", ArrowLeftRight],
-  ["deposit", "QR", QrCode],
-  ["history", "Lịch sử", Clock3],
-  ["profile", "Cá nhân", UserRound],
+  ["dashboard", "Trang chủ", "home"],
+  ["transfer", "Giao dịch", "transfer"],
+  ["deposit", "QR", "qr"],
+  ["history", "Lịch sử", "history"],
+  ["profile", "Cá nhân", "profile"],
 ];
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -87,20 +83,24 @@ export default function App() {
     loans: "Vay nhanh",
   }[page];
   return (
-    <div className="app-shell">
+    <div
+      className={`app-shell ${page === "dashboard" ? "home-shell" : "detail-shell"}`}
+    >
       <aside className="sidebar">
         <Brand />
         <span className="sidebar-label">KHÔNG GIAN CỦA BẠN</span>
         <nav aria-label="Điều hướng chính">
-          {navigation.map(([id, label, Icon]) => (
+          {navigation.map(([id, label, icon]) => (
             <Button
               key={id}
               aria-label={label}
-              className={`nav-item ${page === id ? "selected" : ""}`}
+              className={`nav-item ${id === "deposit" ? "nav-qr" : ""} ${page === id ? "selected" : ""}`}
               aria-current={page === id ? "page" : undefined}
               onClick={() => navigate(id)}
             >
-              <Icon size={21} />
+              <span className="nav-icon-wrap">
+                <ReferenceIcon name={icon} size={23} />
+              </span>
               <span>{label}</span>
               {page === id && <span className="nav-dot" />}
             </Button>
@@ -329,6 +329,7 @@ export default function App() {
         <footer className="app-footer">
           <span>© 2026 NhTBank. Chạm đến điều tốt đẹp.</span>
           <SecurityNote />
+          <DisplaySwitcher />
         </footer>
       </div>
       {help && (

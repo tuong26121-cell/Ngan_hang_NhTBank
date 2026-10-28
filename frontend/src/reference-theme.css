@@ -1,0 +1,1511 @@
+/* NhTBank 1.1: visual elements integrated from the supplied Android sample.
+   Business logic remains in the existing React application. */
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/BeVietnamPro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/BeVietnamPro-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Be Vietnam Pro";
+  src: url("/fonts/BeVietnamPro-Bold.ttf") format("truetype");
+  font-weight: 700 900;
+  font-display: swap;
+}
+:root {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  color: #173957;
+  background: #edf6ff;
+}
+body {
+  background: #edf6ff;
+}
+.button {
+  touch-action: manipulation;
+}
+a:focus-visible {
+  outline: 3px solid #1377c9;
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+.reference-icon {
+  display: block;
+  flex-shrink: 0;
+}
+.app-shell .workspace {
+  position: relative;
+  background: linear-gradient(180deg, #edf8ff, #f8fbff 650px, #f2f8ff);
+}
+.home-shell .workspace::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 396px;
+  background:
+    radial-gradient(ellipse at 2% -4%, #62eaf1, transparent 42%),
+    radial-gradient(ellipse at 98% 12%, #6a3fe2, transparent 49%),
+    linear-gradient(122deg, #22b8f1, #1686ed 48%, #2840df 79%, #5230de);
+  pointer-events: none;
+}
+.app-shell .topbar {
+  height: 86px;
+  padding: 0 36px;
+  border: 0;
+  background: linear-gradient(115deg, #117abf, #344cd4);
+  color: white;
+  backdrop-filter: none;
+}
+.home-shell .topbar {
+  background: transparent;
+}
+.topbar .brand,
+.topbar .breadcrumb,
+.topbar .breadcrumb strong,
+.topbar .breadcrumb span,
+.topbar .profile-button,
+.topbar .profile-button svg {
+  color: white;
+}
+.brand small {
+  letter-spacing: 0.9px;
+  font-size: 7px;
+}
+.brand-mark {
+  background: linear-gradient(140deg, #9af9ff, #027bec 76%);
+  box-shadow:
+    inset 0 2px 3px #ffffff88,
+    0 5px 20px #04288f30;
+  border-radius: 12px;
+}
+.topbar .sandbox-pill {
+  background: #102f783b;
+  color: white;
+  border: 1px solid #ffffff66;
+  border-radius: 24px;
+}
+.topbar .sandbox-pill > span {
+  background: #8fffe0;
+}
+.topbar .icon-button {
+  color: white;
+  background: #ffffff20;
+  border: 1px solid #ffffff66;
+  border-radius: 13px;
+}
+.topbar .notification-button i {
+  background: #ffd384;
+  width: 6px;
+  height: 6px;
+}
+.topbar .avatar {
+  background: #f6d2b9;
+  border: 2px solid #fff;
+  color: #164f8c;
+}
+.topbar .profile-button small {
+  color: #e0efff;
+}
+.app-shell .simulation-banner {
+  position: relative;
+  z-index: 2;
+  background: #e8f6ff;
+  color: #244e77;
+  border-bottom: 1px solid #d4eafb;
+}
+.home-shell .simulation-banner {
+  background: #10327d35;
+  color: white;
+  border-block: 1px solid #ffffff22;
+  font-size: 11px;
+}
+.app-shell #main-content {
+  padding: 30px 36px;
+  min-height: calc(100dvh - 230px);
+}
+.home-shell #main-content {
+  max-width: none;
+  padding: 0;
+  min-height: 0;
+}
+.sidebar {
+  border-color: #deebf6;
+}
+.sidebar .brand {
+  font-size: 24px;
+}
+.sidebar .brand small {
+  font-size: 6px;
+  letter-spacing: 0.75px;
+}
+.sidebar .nav-item {
+  min-height: 52px;
+  border-radius: 14px;
+  color: #526987;
+}
+.sidebar .nav-item.selected {
+  background: #e8f5ff;
+  color: #086bc0;
+  box-shadow: none;
+}
+.nav-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nav-dot {
+  background: #137ac8;
+}
+.sidebar .support-card {
+  background: #f3faff;
+  border-color: #deebf6;
+}
+.dashboard-hero {
+  position: relative;
+  max-width: 1180px;
+  margin: auto;
+  min-height: 240px;
+  padding: 54px 36px 60px;
+  color: white;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 65%;
+}
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  font-weight: 600;
+  color: white;
+}
+.hero-copy h1 {
+  font-size: clamp(25px, 2.5vw, 35px);
+  margin: 13px 0 9px;
+  letter-spacing: -0.9px;
+}
+.hero-copy p {
+  font-size: 13px;
+  color: white;
+}
+.reference-content {
+  position: relative;
+  max-width: 1180px;
+  padding: 0 36px 30px;
+  margin: -26px auto 0;
+  display: grid;
+  gap: 22px;
+}
+.account-overview {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 22px;
+  perspective: 1200px;
+}
+.reference-balance.balance-card {
+  padding: 26px 26px 21px;
+  border-radius: 25px;
+  border: 1px solid #ffffffb3;
+  background:
+    radial-gradient(ellipse at 100% 0%, #ffffff18, transparent 50%),
+    linear-gradient(115deg, #106fa5, #3260bc 56%, #6343bf);
+  box-shadow:
+    0 15px 36px #1e62bc26,
+    inset 0 2px 4px #ffffff80;
+  color: white;
+  min-height: 0;
+}
+.reference-account-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.account-sandbox {
+  border: 1px solid #ffffff66;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.reference-account-number {
+  font-size: 12px;
+  color: white;
+  margin: 10px 0 0;
+}
+.reference-account-number i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8affda;
+  margin: 0 0 1px 5px;
+}
+.reference-balance-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 8px;
+}
+.reference-balance .balance-number {
+  margin: 0;
+  gap: 10px;
+  letter-spacing: -0.6px;
+  font-size: clamp(28px, 3vw, 42px);
+  flex-wrap: wrap;
+}
+.reference-balance .balance-number > span:last-child {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0;
+}
+.reference-balance .icon-button.light {
+  color: white;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.reference-owner {
+  font-size: 9px;
+  color: white;
+  letter-spacing: 0.4px;
+  line-height: 1.7;
+}
+.reference-owner > span {
+  white-space: nowrap;
+}
+.reference-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  border-top: 1px solid #ffffff5c;
+  margin-top: 19px;
+  padding-top: 17px;
+}
+.reference-quick-action.button {
+  flex-direction: column;
+  gap: 9px;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 0 4px;
+  overflow: visible;
+  border-radius: 14px;
+}
+.reference-quick-action:hover {
+  background: #ffffff18;
+}
+.quick-icon-orb {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff9c;
+  background: linear-gradient(135deg, #89f4ff80, #0086cecc);
+  box-shadow:
+    inset 0 2px 3px #ffffffa3,
+    0 4px 9px #123c9c1a;
+}
+.reference-cashflow {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 25px;
+  background: white;
+  border-color: #e2eef7;
+}
+.reference-cashflow .section-title {
+  color: #1175b9;
+  align-items: flex-start;
+}
+.reference-cashflow .section-title h2 {
+  margin-top: 8px;
+  color: #173957;
+  font-size: 17px;
+}
+.reference-cashflow .eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.7px;
+}
+.reference-flow-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 22px;
+}
+.reference-flow-row > div > span {
+  display: block;
+  color: #526987;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+.reference-flow-row strong {
+  display: block;
+  font-size: 23px;
+  letter-spacing: -0.6px;
+}
+.reference-flow-row strong small {
+  font-size: 13px;
+  font-weight: 400;
+}
+.reference-cashflow .cashflow-caption {
+  font-size: 10px;
+  margin-top: 20px;
+  color: #526987;
+}
+.reference-services.panel,
+.reference-recent.panel {
+  padding: 26px;
+  border-radius: 25px;
+  background: white;
+  border-color: #e7f0f8;
+  box-shadow: 0 8px 26px #1c4b9e07;
+}
+.reference-content .section-title h2 {
+  font-size: 20px;
+  margin-top: 6px;
+  color: #173957;
+}
+.reference-content .eyebrow {
+  color: #1268a8;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.service-preview-label {
+  font-size: 10px;
+  color: #526987;
+  background: #f0f6fc;
+  padding: 7px 9px;
+  border-radius: 8px;
+}
+.reference-service-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px 6px;
+  margin-top: 28px;
+}
+.reference-service.button {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #34516e;
+  font-size: 11px;
+  font-weight: 600;
+  min-height: 104px;
+  padding: 5px 0 10px;
+  overflow: visible;
+  border-radius: 16px;
+}
+.reference-service.button:hover {
+  background: #f3faff;
+  transform: translateY(-2px);
+}
+.service-icon-tile {
+  width: 58px;
+  height: 58px;
+  border-radius: 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  background: #e7f7ff;
+  color: #0877bc;
+  box-shadow:
+    inset 0 2px 1px #ffffff,
+    0 5px 10px #1867b306;
+  border: 1px solid #e2f2ff;
+}
+.service-icon-tile.sky {
+  background: linear-gradient(140deg, #effcff, #dcf2ff);
+  color: #097cba;
+}
+.service-icon-tile.blue {
+  background: linear-gradient(140deg, #f1f5ff, #e2ebff);
+  color: #3668ce;
+  border-color: #e3ebff;
+}
+.service-icon-tile.mint {
+  background: linear-gradient(140deg, #f0fffb, #def4ed);
+  color: #087f7d;
+  border-color: #e1f2ee;
+}
+.service-icon-tile.violet {
+  background: linear-gradient(140deg, #f7f4ff, #ebe5ff);
+  color: #7150c9;
+  border-color: #ede6ff;
+}
+.service-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  padding: 4px 5px;
+  border-radius: 6px;
+  background: #c94923;
+  color: white;
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1;
+  border: 2px solid white;
+}
+.reference-recent .section-title {
+  margin-bottom: 15px;
+}
+.reference-recent .transaction {
+  padding-block: 18px;
+}
+.reference-recent .transaction-icon {
+  border-radius: 14px;
+}
+.reference-savings-banner {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 20px 24px;
+  border: 1px solid #d9eaf8;
+  border-radius: 22px;
+  background: #e8f6ff;
+}
+.reference-savings-banner h2 {
+  font-size: 16px;
+}
+.reference-savings-banner p {
+  font-size: 11px;
+  color: #526987;
+  margin-top: 5px;
+}
+.reference-savings-banner .icon-button {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #1268a8;
+}
+.app-shell .app-footer {
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 36px 25px;
+  max-width: 1180px;
+  margin: auto;
+}
+.display-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #526987;
+}
+.display-switcher a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: #1268a8;
+  text-decoration: none;
+}
+.display-switcher a[aria-current] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.primary {
+  background: #0a69bd;
+  box-shadow: 0 8px 18px #1887db1a;
+}
+.primary:hover {
+  background: #0858a1;
+}
+.form-panel,
+.qr-panel,
+.history-panel,
+.profile-panel,
+.product-panel {
+  border-radius: 23px;
+}
+.profile-cover {
+  background: linear-gradient(125deg, #1687d3, #4c44d1);
+}
+.reference-motif {
+  position: relative;
+  height: 200px;
+  width: 310px;
+  pointer-events: none;
+  perspective: 600px;
+}
+.motif-torus {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 16px;
+  left: 85px;
+  background: conic-gradient(
+    from 20deg,
+    #ffb895,
+    #fff4fc 9%,
+    #ba83f6 22%,
+    #1b53dc 38%,
+    #74fbfb 53%,
+    #fff8f6 64%,
+    #5d38d5 80%,
+    #fb9ab2 91%,
+    #ffb895
+  );
+  border-radius: 49%;
+  transform: rotate(-28deg) rotateY(-20deg);
+  box-shadow:
+    inset 5px 5px 17px #ffffffcc,
+    0 16px 30px #08358b80,
+    0 0 30px #a7fdff8a;
+  animation: motif-float 6s ease-in-out infinite;
+}
+.motif-torus::before {
+  content: "";
+  position: absolute;
+  inset: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1479ed, #4d2fd3 75%, #59d4ff);
+  box-shadow: inset 6px 6px 12px #0d2e9acc;
+}
+.motif-orbit {
+  position: absolute;
+  width: 280px;
+  height: 75px;
+  top: 58px;
+  left: 15px;
+  border: 2px solid #f4ffffb8;
+  border-radius: 50%;
+  transform: rotate(-24deg);
+  box-shadow: 0 0 17px #afffff88;
+}
+.motif-orbit-back {
+  width: 230px;
+  left: 39px;
+  transform: rotate(24deg);
+  opacity: 0.4;
+}
+.motif-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 20% 20%,
+    white,
+    #7ce7ff 24%,
+    #5451dc 73%
+  );
+  box-shadow: 0 0 19px #9df1ff;
+}
+.motif-bubble-one {
+  height: 30px;
+  width: 30px;
+  left: 28px;
+  top: 70px;
+}
+.motif-bubble-two {
+  height: 23px;
+  width: 23px;
+  right: 23px;
+  top: 28px;
+}
+.motif-halo {
+  position: absolute;
+  width: 255px;
+  height: 20px;
+  left: 30px;
+  top: 173px;
+  background: #e8ffffa0;
+  border-radius: 50%;
+  filter: blur(13px);
+}
+.hero-motif {
+  position: absolute;
+  right: 5%;
+  top: 10px;
+  transform: scale(1.1);
+}
+@keyframes motif-float {
+  50% {
+    transform: rotate(-25deg) rotateY(-20deg) translateY(-10px);
+  }
+}
+.login-page {
+  background: #f3f9ff;
+}
+.login-art {
+  background:
+    radial-gradient(ellipse at 12% 0, #7cf1f2, transparent 53%),
+    radial-gradient(ellipse at 88% 15%, #784be8, transparent 55%),
+    linear-gradient(125deg, #159df1, #0e76e8 50%, #3930db);
+}
+.login-art::after {
+  display: none;
+}
+.login-art .brand-light .brand-mark {
+  background: linear-gradient(135deg, #9af9ff, #027bec 73%);
+}
+.login-art .brand-light small,
+.login-art .eyebrow,
+.login-art p,
+.login-art .art-footer {
+  color: white;
+}
+.login-art h1 > span {
+  color: #bdfaff;
+}
+.login-motif {
+  margin: 60px auto 50px;
+  transform: scale(1.35);
+}
+.login-form > .display-switcher {
+  margin-top: 12px;
+}
+:root[data-display="android"] .app-shell,
+:root[data-display="android"] .login-page {
+  max-width: 520px;
+  margin-inline: auto;
+}
+:root[data-display="android"] .login-page {
+  display: flex;
+  flex-direction: column;
+}
+:root[data-display="android"] .login-art {
+  display: block;
+  min-height: 310px;
+  padding: 26px;
+}
+:root[data-display="android"] .login-art-copy,
+:root[data-display="android"] .art-footer {
+  display: none;
+}
+:root[data-display="android"] .login-art .brand {
+  justify-content: center;
+}
+:root[data-display="android"] .login-motif {
+  margin: 20px auto 0;
+  transform: scale(0.9);
+}
+:root[data-display="android"] .login-form {
+  padding: 28px 24px;
+}
+:root[data-display="android"] .deposit-grid,
+:root[data-display="android"] .transfer-grid {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .reference-service-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .reference-flow-row strong {
+    font-size: 19px;
+  }
+  .hero-motif {
+    right: -10px;
+    transform: scale(0.85);
+  }
+  .account-overview {
+    grid-template-columns: 1.3fr 1fr;
+  }
+  .reference-content {
+    padding-inline: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-motif *,
+  .reference-service.button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-shell .workspace {
+    margin-left: 0;
+  }
+  .app-shell .sidebar {
+    inset: auto auto calc(10px + env(safe-area-inset-bottom)) 50%;
+    transform: translateX(-50%);
+    width: min(calc(100% - 24px), 496px);
+    height: auto;
+    padding: 5px 4px 7px;
+    border: 1px solid #d6edff;
+    border-radius: 25px;
+    background: #fffffffa;
+    box-shadow: 0 12px 30px #1253a72e;
+    z-index: 30;
+  }
+  .app-shell .sidebar > .brand,
+  .app-shell .sidebar-label,
+  .app-shell .sidebar-bottom {
+    display: none;
+  }
+  .app-shell .sidebar nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+  }
+  .app-shell .nav-item {
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    font-size: 9px;
+    padding: 5px 0;
+    overflow: visible;
+    border-radius: 17px;
+    line-height: 1.4;
+  }
+  .app-shell .nav-item > span {
+    display: flex;
+    white-space: nowrap;
+  }
+  .app-shell .nav-item .nav-dot {
+    display: none;
+  }
+  .app-shell .nav-item.selected {
+    background: transparent;
+    color: #086bb2;
+    box-shadow: none;
+    font-weight: 700;
+  }
+  .app-shell .nav-item .nav-icon-wrap {
+    min-height: 30px;
+  }
+  .app-shell .nav-qr .nav-icon-wrap {
+    width: 55px;
+    height: 55px;
+    min-height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6bf7ff, #0794e9);
+    color: #064f7c;
+    border: 4px solid white;
+    box-shadow: 0 6px 16px #1ca8e54d;
+    margin-top: -22px;
+    margin-bottom: 0;
+  }
+  .app-shell .nav-qr .reference-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .app-shell .topbar {
+    height: 78px;
+    padding-inline: 18px;
+  }
+  .app-shell .header-identity .brand {
+    font-size: 22px;
+    gap: 9px;
+  }
+  .app-shell .breadcrumb,
+  .app-shell .profile-button > span:nth-child(2),
+  .app-shell .profile-button > svg,
+  .app-shell .topbar-right > .sandbox-pill {
+    display: none;
+  }
+  .app-shell .topbar-right {
+    gap: 8px;
+  }
+  .app-shell .profile-button {
+    padding: 0;
+  }
+  .app-shell .profile-button .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .app-shell .notification-panel {
+    right: -48px;
+  }
+  .home-shell .workspace::before {
+    height: 450px;
+  }
+  .app-shell .simulation-banner {
+    font-size: 10px;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .app-shell #main-content {
+    padding: 24px 16px;
+  }
+  .home-shell #main-content {
+    padding: 0;
+  }
+  .dashboard-hero {
+    min-height: 280px;
+    padding: 28px 20px 140px;
+  }
+  .hero-copy {
+    max-width: 100%;
+  }
+  .hero-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(22px, 5.8vw, 28px);
+    letter-spacing: -0.8px;
+    margin: 11px 0 8px;
+  }
+  .hero-copy p {
+    font-size: 11px;
+  }
+  .hero-motif {
+    top: 115px;
+    right: 4%;
+    transform: scale(0.82);
+    transform-origin: top right;
+  }
+  .reference-content {
+    padding: 0 16px 20px;
+    gap: 18px;
+    margin-top: -20px;
+  }
+  .account-overview {
+    display: contents;
+  }
+  .reference-balance.balance-card {
+    padding: 22px 20px 18px;
+    grid-row: 1;
+    border-radius: 24px;
+  }
+  .reference-account-head {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+  .account-sandbox {
+    font-size: 7px;
+  }
+  .reference-account-number {
+    font-size: 11px;
+  }
+  .reference-balance .balance-number {
+    font-size: clamp(27px, 8.2vw, 38px);
+    gap: 7px;
+  }
+  .reference-balance-line {
+    margin-top: 19px;
+    gap: 4px;
+  }
+  .reference-balance .balance-number > span:last-child {
+    font-size: 10px;
+  }
+  .reference-owner {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .reference-quick-actions {
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+  .reference-quick-action.button {
+    font-size: 10px;
+  }
+  .quick-icon-orb {
+    width: 50px;
+    height: 50px;
+  }
+  .reference-services.panel,
+  .reference-recent.panel {
+    padding: 22px 18px;
+  }
+  .reference-services {
+    grid-row: 2;
+  }
+  .reference-content .section-title {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .reference-content .section-title h2 {
+    font-size: 18px;
+    margin-top: 6px;
+  }
+  .reference-content .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+  .service-preview-label {
+    font-size: 8px;
+    padding: 6px;
+    white-space: nowrap;
+  }
+  .reference-service-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 24px;
+    gap: 16px 3px;
+  }
+  .reference-service.button {
+    font-size: 9px;
+    gap: 10px;
+    min-height: 90px;
+  }
+  .service-icon-tile {
+    width: 53px;
+    height: 53px;
+    border-radius: 17px;
+  }
+  .reference-cashflow {
+    padding: 22px 18px;
+    border-radius: 24px;
+    grid-row: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+  }
+  .reference-cashflow .section-title,
+  .reference-cashflow .cashflow-caption {
+    grid-column: 1 / -1;
+  }
+  .reference-cashflow .section-title h2 {
+    font-size: 17px;
+  }
+  .reference-flow-row {
+    margin: 0;
+    gap: 8px;
+  }
+  .reference-flow-row strong {
+    font-size: 14px;
+    letter-spacing: -0.4px;
+  }
+  .reference-flow-row .flow-icon {
+    width: 34px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+  .reference-flow-row .flow-icon svg {
+    width: 19px;
+  }
+  .reference-flow-row > div > span {
+    font-size: 10px;
+  }
+  .reference-flow-row strong small {
+    font-size: 10px;
+  }
+  .reference-cashflow .cashflow-caption {
+    margin: 0;
+    font-size: 10px;
+  }
+  .reference-recent {
+    grid-row: 3;
+  }
+  .reference-recent .transaction {
+    gap: 8px;
+    padding-block: 17px;
+  }
+  .reference-recent .transaction-info {
+    max-width: none;
+  }
+  .reference-recent .transaction-info strong,
+  .reference-recent .transaction-value strong {
+    font-size: 10px;
+  }
+  .reference-recent .transaction-info > span,
+  .reference-recent .transaction-value > span {
+    font-size: 9px;
+  }
+  .reference-recent .transaction-icon {
+    width: 35px;
+    height: 39px;
+    border-radius: 12px;
+  }
+  .reference-recent .transaction-icon svg {
+    width: 18px;
+  }
+  .reference-recent .direction {
+    display: none;
+  }
+  .reference-recent .text-button {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .reference-savings-banner {
+    gap: 12px;
+    padding: 17px 14px;
+  }
+  .reference-savings-banner h2 {
+    font-size: 12px;
+  }
+  .reference-savings-banner p {
+    font-size: 9px;
+  }
+  .reference-savings-banner .service-icon-tile {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+  }
+  .app-shell .app-footer {
+    justify-content: center;
+    text-align: center;
+    padding: 0 16px calc(116px + env(safe-area-inset-bottom));
+    flex-direction: column;
+    gap: 3px;
+  }
+  .app-shell .app-footer .security-note {
+    font-size: 10px;
+    justify-content: center;
+  }
+  .app-shell .page-heading h1 {
+    font-size: 25px;
+  }
+  .app-shell .deposit-grid,
+  .app-shell .transfer-grid {
+    grid-template-columns: 1fr;
+  }
+  .login-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-art {
+    display: block;
+    min-height: 300px;
+    padding: 25px;
+    border-radius: 0 0 32px 32px;
+  }
+  .login-art .brand {
+    justify-content: center;
+  }
+  .login-art-copy,
+  .login-art .art-footer {
+    display: none;
+  }
+  .login-motif {
+    margin: 20px auto 0;
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+  .login-form {
+    padding: 25px 24px;
+    position: relative;
+    border-radius: 25px;
+    background: #f8fbff;
+  }
+}
+
+/* Explicit phone layout also works when opened on a desktop. */
+:root[data-display="android"] .app-shell .workspace {
+  margin-left: 0;
+}
+:root[data-display="android"] .app-shell .sidebar {
+  inset: auto auto calc(10px + env(safe-area-inset-bottom)) 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - 24px), 496px);
+  height: auto;
+  padding: 5px 4px 7px;
+  border: 1px solid #d6edff;
+  border-radius: 25px;
+  background: #fffffffa;
+  box-shadow: 0 12px 30px #1253a72e;
+  z-index: 30;
+}
+:root[data-display="android"] .app-shell .sidebar > .brand,
+:root[data-display="android"] .app-shell .sidebar-label,
+:root[data-display="android"] .app-shell .sidebar-bottom {
+  display: none;
+}
+:root[data-display="android"] .app-shell .sidebar nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+}
+:root[data-display="android"] .app-shell .nav-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 62px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  font-size: 9px;
+  padding: 5px 0;
+  overflow: visible;
+  border-radius: 17px;
+  line-height: 1.4;
+}
+:root[data-display="android"] .app-shell .nav-item > span {
+  display: flex;
+  white-space: nowrap;
+}
+:root[data-display="android"] .app-shell .nav-item .nav-dot {
+  display: none;
+}
+:root[data-display="android"] .app-shell .nav-item.selected {
+  background: transparent;
+  color: #086bb2;
+  box-shadow: none;
+  font-weight: 700;
+}
+:root[data-display="android"] .app-shell .nav-item .nav-icon-wrap {
+  min-height: 30px;
+}
+:root[data-display="android"] .app-shell .nav-qr .nav-icon-wrap {
+  width: 55px;
+  height: 55px;
+  min-height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6bf7ff, #0794e9);
+  color: #064f7c;
+  border: 4px solid white;
+  box-shadow: 0 6px 16px #1ca8e54d;
+  margin-top: -22px;
+  margin-bottom: 0;
+}
+:root[data-display="android"] .app-shell .nav-qr .reference-icon {
+  width: 26px;
+  height: 26px;
+}
+:root[data-display="android"] .app-shell .topbar {
+  height: 78px;
+  padding-inline: 18px;
+}
+:root[data-display="android"] .app-shell .header-identity .brand {
+  font-size: 22px;
+  gap: 9px;
+}
+:root[data-display="android"] .app-shell .breadcrumb,
+:root[data-display="android"] .app-shell .profile-button > span:nth-child(2),
+:root[data-display="android"] .app-shell .profile-button > svg,
+:root[data-display="android"] .app-shell .topbar-right > .sandbox-pill {
+  display: none;
+}
+:root[data-display="android"] .app-shell .topbar-right {
+  gap: 8px;
+}
+:root[data-display="android"] .app-shell .profile-button {
+  padding: 0;
+}
+:root[data-display="android"] .app-shell .profile-button .avatar {
+  width: 40px;
+  height: 40px;
+}
+:root[data-display="android"] .app-shell .notification-panel {
+  right: -48px;
+}
+:root[data-display="android"] .home-shell .workspace::before {
+  height: 450px;
+}
+:root[data-display="android"] .app-shell .simulation-banner {
+  font-size: 10px;
+  padding: 8px 12px;
+  gap: 6px;
+}
+:root[data-display="android"] .app-shell #main-content {
+  padding: 24px 16px;
+}
+:root[data-display="android"] .home-shell #main-content {
+  padding: 0;
+}
+:root[data-display="android"] .dashboard-hero {
+  min-height: 280px;
+  padding: 28px 20px 140px;
+}
+:root[data-display="android"] .hero-copy {
+  max-width: 100%;
+}
+:root[data-display="android"] .hero-eyebrow {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+:root[data-display="android"] .hero-copy h1 {
+  font-size: clamp(22px, 5.8vw, 28px);
+  letter-spacing: -0.8px;
+  margin: 11px 0 8px;
+}
+:root[data-display="android"] .hero-copy p {
+  font-size: 11px;
+}
+:root[data-display="android"] .hero-motif {
+  top: 115px;
+  right: 4%;
+  transform: scale(0.82);
+  transform-origin: top right;
+}
+:root[data-display="android"] .reference-content {
+  padding: 0 16px 20px;
+  gap: 18px;
+  margin-top: -20px;
+}
+:root[data-display="android"] .account-overview {
+  display: contents;
+}
+:root[data-display="android"] .reference-balance.balance-card {
+  padding: 22px 20px 18px;
+  grid-row: 1;
+  border-radius: 24px;
+}
+:root[data-display="android"] .reference-account-head {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+}
+:root[data-display="android"] .account-sandbox {
+  font-size: 7px;
+}
+:root[data-display="android"] .reference-account-number {
+  font-size: 11px;
+}
+:root[data-display="android"] .reference-balance .balance-number {
+  font-size: clamp(27px, 8.2vw, 38px);
+  gap: 7px;
+}
+:root[data-display="android"] .reference-balance-line {
+  margin-top: 19px;
+  gap: 4px;
+}
+:root[data-display="android"]
+  .reference-balance
+  .balance-number
+  > span:last-child {
+  font-size: 10px;
+}
+:root[data-display="android"] .reference-owner {
+  font-size: 8px;
+  letter-spacing: 0;
+}
+:root[data-display="android"] .reference-quick-actions {
+  margin-top: 18px;
+  padding-top: 16px;
+}
+:root[data-display="android"] .reference-quick-action.button {
+  font-size: 10px;
+}
+:root[data-display="android"] .quick-icon-orb {
+  width: 50px;
+  height: 50px;
+}
+:root[data-display="android"] .reference-services.panel,
+:root[data-display="android"] .reference-recent.panel {
+  padding: 22px 18px;
+}
+:root[data-display="android"] .reference-services {
+  grid-row: 2;
+}
+:root[data-display="android"] .reference-content .section-title {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+:root[data-display="android"] .reference-content .section-title h2 {
+  font-size: 18px;
+  margin-top: 6px;
+}
+:root[data-display="android"] .reference-content .eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.8px;
+}
+:root[data-display="android"] .service-preview-label {
+  font-size: 8px;
+  padding: 6px;
+  white-space: nowrap;
+}
+:root[data-display="android"] .reference-service-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 24px;
+  gap: 16px 3px;
+}
+:root[data-display="android"] .reference-service.button {
+  font-size: 9px;
+  gap: 10px;
+  min-height: 90px;
+}
+:root[data-display="android"] .service-icon-tile {
+  width: 53px;
+  height: 53px;
+  border-radius: 17px;
+}
+:root[data-display="android"] .reference-cashflow {
+  padding: 22px 18px;
+  border-radius: 24px;
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 12px;
+}
+:root[data-display="android"] .reference-cashflow .section-title,
+:root[data-display="android"] .reference-cashflow .cashflow-caption {
+  grid-column: 1 / -1;
+}
+:root[data-display="android"] .reference-cashflow .section-title h2 {
+  font-size: 17px;
+}
+:root[data-display="android"] .reference-flow-row {
+  margin: 0;
+  gap: 8px;
+}
+:root[data-display="android"] .reference-flow-row strong {
+  font-size: 14px;
+  letter-spacing: -0.4px;
+}
+:root[data-display="android"] .reference-flow-row .flow-icon {
+  width: 34px;
+  height: 38px;
+  flex-shrink: 0;
+}
+:root[data-display="android"] .reference-flow-row .flow-icon svg {
+  width: 19px;
+}
+:root[data-display="android"] .reference-flow-row > div > span {
+  font-size: 10px;
+}
+:root[data-display="android"] .reference-flow-row strong small {
+  font-size: 10px;
+}
+:root[data-display="android"] .reference-cashflow .cashflow-caption {
+  margin: 0;
+  font-size: 10px;
+}
+:root[data-display="android"] .reference-recent {
+  grid-row: 3;
+}
+:root[data-display="android"] .reference-recent .transaction {
+  gap: 8px;
+  padding-block: 17px;
+}
+:root[data-display="android"] .reference-recent .transaction-info {
+  max-width: none;
+}
+:root[data-display="android"] .reference-recent .transaction-info strong,
+:root[data-display="android"] .reference-recent .transaction-value strong {
+  font-size: 10px;
+}
+:root[data-display="android"] .reference-recent .transaction-info > span,
+:root[data-display="android"] .reference-recent .transaction-value > span {
+  font-size: 9px;
+}
+:root[data-display="android"] .reference-recent .transaction-icon {
+  width: 35px;
+  height: 39px;
+  border-radius: 12px;
+}
+:root[data-display="android"] .reference-recent .transaction-icon svg {
+  width: 18px;
+}
+:root[data-display="android"] .reference-recent .direction {
+  display: none;
+}
+:root[data-display="android"] .reference-recent .text-button {
+  font-size: 10px;
+  white-space: nowrap;
+}
+:root[data-display="android"] .reference-savings-banner {
+  gap: 12px;
+  padding: 17px 14px;
+}
+:root[data-display="android"] .reference-savings-banner h2 {
+  font-size: 12px;
+}
+:root[data-display="android"] .reference-savings-banner p {
+  font-size: 9px;
+}
+:root[data-display="android"] .reference-savings-banner .service-icon-tile {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+}
+:root[data-display="android"] .app-shell .app-footer {
+  justify-content: center;
+  text-align: center;
+  padding: 0 16px calc(116px + env(safe-area-inset-bottom));
+  flex-direction: column;
+  gap: 3px;
+}
+:root[data-display="android"] .app-shell .app-footer .security-note {
+  font-size: 10px;
+  justify-content: center;
+}
+:root[data-display="android"] .app-shell .page-heading h1 {
+  font-size: 25px;
+}
+:root[data-display="android"] .app-shell .deposit-grid,
+:root[data-display="android"] .app-shell .transfer-grid {
+  grid-template-columns: 1fr;
+}
+:root[data-display="android"] .login-page {
+  display: flex;
+  flex-direction: column;
+}
+:root[data-display="android"] .login-art {
+  display: block;
+  min-height: 300px;
+  padding: 25px;
+  border-radius: 0 0 32px 32px;
+}
+:root[data-display="android"] .login-art .brand {
+  justify-content: center;
+}
+:root[data-display="android"] .login-art-copy,
+:root[data-display="android"] .login-art .art-footer {
+  display: none;
+}
+:root[data-display="android"] .login-motif {
+  margin: 20px auto 0;
+  transform: scale(0.9);
+  transform-origin: top center;
+}
+:root[data-display="android"] .login-form {
+  padding: 25px 24px;
+  position: relative;
+  border-radius: 25px;
+  background: #f8fbff;
+}
+
+@media (max-width: 350px) {
+  .reference-balance.balance-card {
+    padding-inline: 16px;
+  }
+  .quick-icon-orb {
+    width: 45px;
+    height: 45px;
+  }
+  .reference-service.button {
+    font-size: 8px;
+  }
+  .service-icon-tile {
+    width: 47px;
+    height: 49px;
+  }
+  .service-preview-label {
+    display: none;
+  }
+  .reference-flow-row {
+    gap: 5px;
+  }
+  .reference-flow-row strong {
+    font-size: 12px;
+  }
+  .reference-recent .transaction {
+    grid-template-columns: 35px minmax(0, 1fr);
+  }
+  .reference-recent .transaction-value {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+/* Keep icon wrappers visible when the existing tablet sidebar collapses. */
+.sidebar .nav-item > .nav-icon-wrap {
+  display: flex;
+}
+.quick-icon-orb {
+  color: #073b66;
+}
+:root[data-display="android"] .form-grid {
+  grid-template-columns: 1fr;
+}
+
+/* The layout switch stays in normal flow, clear of the login notice. */
+.login-form > .security-note {
+  position: static;
+  margin-top: 24px;
+  max-width: 100%;
+}
+:root[data-display="android"] .login-form > .sandbox-pill {
+  position: static;
+  align-self: center;
+  margin-bottom: 16px;
+}

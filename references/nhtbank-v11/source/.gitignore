@@ -1,0 +1,19 @@
+# Tệp chứa thông tin bí mật
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+
+# Tệp tạm
+*.log
+.DS_Store
+Thumbs.db
+
+# Python runtime / local environments
+__pycache__/
+*.py[cod]
+.venv/
+
+# Generated static site
+/dist/

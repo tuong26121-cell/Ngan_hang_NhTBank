@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowRight,
-  Delete,
-  Fingerprint,
-  LockKeyhole,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, Delete, Fingerprint, LockKeyhole } from "lucide-react";
 import { Brand, Button, SecurityNote } from "./ui";
+import { ReferenceMotif, DisplaySwitcher } from "./ReferenceArt";
 import { DEMO_PIN, OWNER } from "../lib/bank";
 
 export default function Login({ onLogin }) {
@@ -43,7 +38,7 @@ export default function Login({ onLogin }) {
       <section className="login-art">
         <Brand light />
         <div className="login-art-copy">
-          <span className="eyebrow">A LITTLE MORE POSSIBILITY.</span>
+          <span className="eyebrow">TÀI CHÍNH TRONG TẦM TAY</span>
           <h1>
             Điều tốt đẹp,
             <br />
@@ -55,20 +50,7 @@ export default function Login({ onLogin }) {
             Một tương lai rộng mở hơn.
           </p>
         </div>
-        <div className="orb orb-one" />
-        <div className="orb orb-two" />
-        <div className="floating-card">
-          <span>NhTBank</span>
-          <ShieldCheck size={26} />
-          <strong>
-            Chạm đến
-            <br />
-            điều tốt đẹp.
-          </strong>
-          <small>
-            NGUYỄN NHỰT TƯỜNG <span>✦</span>
-          </small>
-        </div>
+        <ReferenceMotif className="login-motif" />
         <div className="art-footer">
           <span>THIẾT KẾ CHO CUỘC SỐNG CỦA BẠN</span>
           <span>© NhTBank 2026</span>
@@ -76,7 +58,7 @@ export default function Login({ onLogin }) {
       </section>
       <section className="login-form">
         <span className="sandbox-pill">
-          <span /> SANDBOX EXPERIENCE
+          <span /> TRẢI NGHIỆM MÔ PHỎNG
         </span>
         <AnimatePresence mode="wait">
           {loading ? (
@@ -158,6 +140,7 @@ export default function Login({ onLogin }) {
           )}
         </AnimatePresence>
         <SecurityNote />
+        <DisplaySwitcher />
       </section>
     </div>
   );

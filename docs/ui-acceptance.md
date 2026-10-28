@@ -1,6 +1,6 @@
-# Đối chiếu giao diện NhTBank ngày 26/10/2026
+# Đối chiếu giao diện NhTBank · cập nhật 29/10/2026
 
-Đây là bản cải tiến theo chuẩn người dùng cung cấp, chưa phải nghiệm thu chính thức. Chuẩn trung tâm: [ui-standard.md](ui-standard.md). Đủ 45 mã (32 P0, 12 P1, 1 P2), khác số cộng 43/30 trong bảng tổng hợp Word gốc.
+Bản cập nhật mới nhất tích hợp giao diện NhTBank 1.1; xem mục ngày 29/10/2026 phía dưới. Đây là bản cải tiến theo chuẩn người dùng cung cấp, chưa phải nghiệm thu chính thức. Chuẩn trung tâm: [ui-standard.md](ui-standard.md). Đủ 45 mã (32 P0, 12 P1, 1 P2), khác số cộng 43/30 trong bảng tổng hợp Word gốc.
 
 ## Phiên bản và phạm vi
 
@@ -101,3 +101,74 @@ Tính từ sRGB của các màu đặc; không thay thế phép đo nền gradie
 - D05: tắt fade khởi tạo của vùng nhập PIN/vùng chờ đăng nhập và tắt fade/dịch chuyển giữa các bước chuyển tiền khi `prefers-reduced-motion: reduce`. Khi không bật giảm chuyển động, giữ hiệu ứng mặc định trước đó. Không đổi thời gian xử lý PIN, dữ liệu hoặc nghiệp vụ.
 - H01/H02/H06: chạy lại 31 unit/component (đạt), build production (đạt), và E2E bằng cấu hình chính thức với `NHT_CHROMIUM_PATH` trỏ Chromium 153 Linux: 10 đạt, 4 bỏ qua có chủ đích do ma trận responsive chỉ chạy ở project desktop. Hai project vẫn chạy hành trình chính; không phải thử Android hoặc Safari thật.
 - Rà soát React: hook gọi ở cấp component, không thay thứ tự hook hoặc thêm effect/listener; không thêm phụ thuộc. `git diff --check` đạt. Các mục thiết bị thật, tương phản toàn diện và hiệu suất chưa có bằng chứng mới giữ nguyên trạng thái. Không coi việc đẩy nhánh/PR là đã cập nhật website.
+
+## Tích hợp mẫu NhTBank 1.1 — 29/10/2026
+
+- Nền trước sửa: `6131260c0ea3c0c4dcbd73b3a7eff233aabb6c16`; nhánh tính năng `codex/nhtbank-v11-interface`. Commit bản bàn giao là commit chứa mục này, lấy bằng `git log -1 --format=%H -- docs/ui-acceptance.md`.
+- Ảnh trước sửa đã lưu trong `docs/screenshots/dashboard-mobile.png` và `dashboard-desktop.png`. Ảnh mới mang tiền tố `v11-`.
+- Mẫu trực quan chính: tệp `NhTBank-Android.html` trong gói `App NhTBank v1. 1.zip`. Mã mẫu JavaScript đầy đủ và HTML độc lập được giữ nguyên ở `references/nhtbank-v11/`; đã đối chiếu từng byte của 29 tệp nguồn gốc. Không thực hiện các hướng dẫn xuất bản trong tài liệu đính kèm.
+- Tích hợp: CSS xanh lam–tím, torus, thẻ tài khoản, nút biểu tượng nổi, tám tiện ích và QR nổi. Dựng lại biểu tượng Unicode lỗi phông thành SVG. Tận dụng phông Be Vietnam Pro nội bộ, giữ giấy phép. Giao diện React giữ dữ liệu và nghiệp vụ sẵn có; các tiện ích mới chỉ điều hướng đến màn hiện có hoặc mở giải thích bản xem trước.
+- Thêm hai điểm mở `?view=android` / `?view=windows`, liên kết đổi bố cục và trình xuất HTML độc lập từ production bundle. Không thêm dependency, backend, camera hoặc cơ chế lưu dữ liệu của mẫu JavaScript.
+- Kiểm tra: **31/31 unit/component đạt**, build production đạt. Bộ E2E chính thức Chromium Linux: **10 đạt, 4 bỏ qua có chủ đích** vì bốn viewport được chạy một lần trong project desktop; hành trình chính vẫn chạy cả desktop/mobile. Bao gồm PIN sai/đúng, chuyển tiền, lỗi số dư/PIN xác nhận, cập nhật số dư/lịch sử, bộ lọc/tìm, giải mã QR và không request ngoài, sản phẩm xem trước, hỗ trợ/focus/Escape, đăng xuất và đặt lại dữ liệu.
+- Rà React theo kỹ năng react-best-practices: hooks cấp component; giá trị thu/chi suy ra từ giao dịch; danh sách tĩnh ngoài component; SVG trang trí có aria-hidden và nút có tên; dialog dùng thành phần focus có sẵn; không thêm effect/listener trong dashboard.
+
+### Đối chiếu toàn bộ 45 mã cho bản 1.1
+
+Các bằng chứng phía trên thay thế mô tả giao diện cũ khi khác nhau. Các trạng thái chưa đo hoặc cần thiết bị thật được giữ nguyên.
+
+| Mã  | Trạng thái hiện tại    | Bằng chứng / giới hạn                                                            |
+| --- | ---------------------- | -------------------------------------------------------------------------------- |
+| A01 | Đạt trong Chromium     | Ảnh mới: xanh dương, trắng và xanh nhạt; tím chỉ làm màu nhấn theo mẫu.          |
+| A02 | Đã xem trực quan       | Nền và thẻ chuyển màu theo mẫu Android; không khẳng định trên mọi màn hình thật. |
+| A03 | Kiểm tra một phần      | Chọn nền thẻ đậm hơn mẫu và icon xanh đậm; chưa đo toàn bộ gradient/trạng thái.  |
+| A04 | Đạt trong Chromium     | Giữ hình SVG logo NhTBank và viewBox; ảnh màn hẹp/rộng.                          |
+| A05 | Đạt trong Chromium     | Dùng chung font, ReferenceIcon, ReferenceMotif, Button và theme trên các màn.    |
+| B01 | Đạt trong Chromium     | Logo, tên chủ tài khoản, NT và nút thông báo còn đầy đủ.                         |
+| B02 | Đạt trong Chromium     | Số dư 4.056.000 và số tài khoản 0788 818 374 giữ nguyên.                         |
+| B03 | Đạt trong Chromium     | E2E ẩn/hiện số dư và kiểm tra sau chuyển tiền.                                   |
+| B04 | Đạt trong Chromium     | Bốn lối tắt và năm mục điều hướng đến màn hiện có.                               |
+| B05 | Đạt trong Chromium     | E2E năm màn tại 320/360/390/430, không tràn ngang.                               |
+| B06 | Đã xem trực quan       | Padding, bo góc, khoảng cách icon theo mẫu; ảnh mới.                             |
+| C01 | Đạt trong Chromium     | E2E đo mọi nút hiển thị ≥44×44 CSS px tại bốn chiều rộng.                        |
+| C02 | Đạt trong Chromium     | Hover/active/ripple, trạng thái chọn và aria-current.                            |
+| C03 | Đạt trong Chromium     | SVG thay ký tự Unicode lỗi phông, cùng nét bo tròn; tám dịch vụ đủ nghĩa.        |
+| C04 | Đã xem trực quan       | Bề mặt icon tròn/bo góc theo nhóm, dùng CSS chung.                               |
+| C05 | Đạt trong Chromium     | Giữ các bước xác nhận và chống gửi lặp; hồi quy E2E.                             |
+| C06 | Đạt trong Chromium     | Native disabled giữ nguyên; unit ca PIN/QR/số tiền sai.                          |
+| D01 | Đã xem trực quan       | Torus CSS, thẻ nghiêng nhẹ và nút có highlight/đổ bóng.                          |
+| D02 | Đã xem trực quan       | Thanh điều hướng nổi và bề mặt mờ nhẹ; nội dung rõ.                              |
+| D03 | Chưa xác minh đầy đủ   | Chuyển màn dùng Page cũ; chưa đo frame rate trên thiết bị thật.                  |
+| D04 | Đạt trong Chromium     | Phản hồi active/ripple và hover trên các nút.                                    |
+| D05 | Đạt trong Chromium     | Tắt animation motif khi reduce; MotionConfig/Page giữ nguyên, E2E reduce.        |
+| D06 | Đạt trong Chromium     | Torus không nhận pointer; nội dung cuộn qua thanh cố định, có đệm cuối trang.    |
+| E01 | Đạt trong Chromium     | Đúng năm mục Trang chủ/Giao dịch/QR/Lịch sử/Cá nhân.                             |
+| E02 | Đạt trong Chromium     | E2E mở từng màn và xác nhận tiêu đề.                                             |
+| E03 | Đạt trong Chromium     | aria-current và màu chọn; QR có hình nổi, chữ vẫn hiển thị.                      |
+| E04 | Đạt trong Chromium     | Thanh điện thoại cố định, có đệm cuối trang, hỗ trợ cuộn.                        |
+| E05 | Chưa thử thiết bị thật | Dùng env(safe-area-inset-bottom); chưa có bằng chứng Android/iOS thật.           |
+| F01 | Chưa thử thiết bị thật | Chromium Linux mô phỏng không thay Chrome Android trên ZTE.                      |
+| F02 | Chưa thử thiết bị thật | Chưa thử Safari iOS 16.7.11 trên iPhone 8.                                       |
+| F03 | Đạt trong Chromium     | E2E bốn viewport 320/360/390/430 trên năm màn.                                   |
+| F04 | Đạt trong Chromium     | E2E xoay sang 844×320/360/390/430, vẫn mở được màn giao dịch.                    |
+| F05 | Chưa thử thiết bị thật | Input 16px, scroll-margin còn nguyên; chưa thử bàn phím ảo thật.                 |
+| G01 | Chưa đo                | Chưa thống nhất điều kiện LCP; không dùng số ước lượng.                          |
+| G02 | Chưa đo                | Chưa có dữ liệu INP đủ tin cậy.                                                  |
+| G03 | Chưa đo                | Chưa đo CLS trong điều kiện nghiệm thu thống nhất.                               |
+| G04 | Chưa đo                | Chưa profiling heap/thử lặp dài; không kết luận không rò bộ nhớ.                 |
+| G05 | Đạt trong Chromium     | E2E không có pageerror/console.error trong hành trình chính.                     |
+| G06 | Chưa thử thiết bị thật | Chạy Chromium được; chưa kết luận cho thiết bị thật.                             |
+| H01 | Đạt trong Chromium     | 31 unit/component và 10 E2E đạt, giữ luồng chính.                                |
+| H02 | Đạt trong phạm vi sửa  | Không thay frontend/src/lib/bank.js, Transfer.jsx hoặc Deposit.jsx.              |
+| H03 | Đạt trong Chromium     | Không thêm bước vào chuyển tiền, QR hay lịch sử.                                 |
+| H04 | Đạt trong Chromium     | Banner, Sandbox và nhãn bản xem trước hiện rõ.                                   |
+| H05 | Đã rà phạm vi sửa      | Không thêm secret/API key, PIN 123456 công khai chỉ là demo.                     |
+| H06 | Đạt trong Chromium     | Giữ QR NHTBANK_SANDBOX tạo cục bộ và cảnh báo trong ảnh gốc.                     |
+
+Chưa nghiệm thu chính thức: các P0 cần thiết bị thật, rà tương phản toàn diện và profiling bộ nhớ vẫn chưa xác minh. Bản HTML là web độc lập, không phải gói cài Android/Windows; website production không được coi đã cập nhật chỉ vì sửa mã nguồn.
+
+### Kiểm tra bổ sung và bản HTML bàn giao
+
+- Kiểm tra năm màn chính, sáu hộp thoại tiện ích, Escape/focus, ẩn/hiện số dư, kích thước nút và tràn ngang ở 360×800, 412×915, 768×1024, 1366×768, 1920×1080; kiểm tra thêm chế độ Android ép một cột khi viewport 1440×1000. Các vòng kiểm tra giao diện này đạt; ảnh tại `docs/screenshots/v11-android.png`, `v11-tablet.png`, `v11-windows.png`.
+- Phát hiện liên kết Máy tính ở màn đăng nhập Android xem từ desktop bị thông báo mô phỏng chặn vùng bấm. Đã đưa thông báo về luồng bố cục bình thường; kiểm tra lại đổi bố cục hai chiều bằng thao tác click đạt. Chạy lại riêng E2E đăng nhập bàn phím desktop/mobile sau sửa: 2/2 đạt.
+- Hai HTML trong `exports/` xuất từ cùng production bundle đã build thành công. Kiểm tra chính các HTML qua HTTP cục bộ: đăng nhập, dialog và khôi phục focus, chuyển 100.000 VNĐ demo, số dư còn 3.956.000, QR hợp lệ và lỗi số tiền 0; không có lỗi JavaScript và không có request nào ngoài request mở chính HTML (font/JS/CSS nhúng sẵn). Chính sách Chromium của môi trường chặn điều hướng `file://`, nên chưa xác minh trực tiếp thao tác mở tệp từ trình quản lý tệp trên Android/Windows thật.
+- `git diff --check` và kiểm tra Prettier cho các tệp đã chỉnh đều đạt. Mã mẫu gốc được giữ nguyên, không đưa vào phạm vi định dạng lại hoặc thực thi hướng dẫn.

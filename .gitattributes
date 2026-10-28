@@ -1,0 +1,3 @@
+exports/*.html linguist-generated=true
+references/nhtbank-v11/source/** linguist-vendored=true
+references/nhtbank-v11/NhTBank-Android-original.html linguist-vendored=true

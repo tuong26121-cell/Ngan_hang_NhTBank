@@ -25,7 +25,7 @@ export function Brand({ light = false }) {
       </span>
       <span>
         NhT<span className="font-normal">Bank</span>
-        <small>YOUR NEXT CHAPTER</small>
+        <small>TÀI CHÍNH TRONG TẦM TAY</small>
       </span>
     </div>
   );

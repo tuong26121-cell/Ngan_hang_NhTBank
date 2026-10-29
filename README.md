@@ -1,14 +1,21 @@
 # NhTBank 1.1 · Tài chính trong tầm tay
 
-Ứng dụng ngân hàng số **mô phỏng**, dành cho Nguyễn Nhựt Tường. React 18 + TailwindCSS + Framer Motion, bố cục desktop và điện thoại.
+**NhTBank 1.1** là ứng dụng ngân hàng số **mô phỏng** dành cho Nguyễn Nhựt Tường. Trải nghiệm trên điện thoại và máy tính với PIN demo, chuyển tiền mô phỏng, QR tạo cục bộ và lịch sử giao dịch. Xây dựng bằng React 18, TailwindCSS và Framer Motion.
 
 > Không kết nối cổng thanh toán, không chuyển hay nhận tiền thật. Không nhập thông tin ngân hàng thật. PIN demo được công khai, không dùng để bảo vệ dữ liệu nhạy cảm.
 
 ## Website trực tuyến
 
-Bản website mô phỏng tại **https://nhtbank-web-tuong.vercel.app/**. Kho mã nguồn hiện dùng nhánh mặc định `NhTBank`. Mã PIN demo: `123456`. Dữ liệu mẫu hiện tại: **Nguyễn Nhựt Tường**, tài khoản mô phỏng **0788818374**, số dư khởi tạo **4.056.000 VNĐ**.
+| Bố cục             | Mở trực tiếp                                                                           |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| Điện thoại Android | [Mở bản điện thoại](https://tuong26121-cell.github.io/Ngan_hang_NhTBank/?view=android) |
+| Máy tính Windows   | [Mở bản máy tính](https://tuong26121-cell.github.io/Ngan_hang_NhTBank/?view=windows)   |
 
-Đây là ứng dụng trình diễn giao diện, **không phải tài khoản ngân hàng thực tế**, không nhận/chuyển tiền thật. Nếu cập nhật mã nguồn nhưng website vẫn là bản cũ, cần kiểm tra deployment mới trên Vercel; việc commit lên GitHub không tự xác nhận rằng website đã xuất bản.
+**PIN dùng thử: `123456`.** Chủ tài khoản mẫu: **Nguyễn Nhựt Tường** · Số tài khoản mẫu: **0788818374** · Số dư ban đầu: **4.056.000 VNĐ**.
+
+Nhánh mặc định: [`NhTBank`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/tree/NhTBank) · [Trạng thái build và triển khai](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/workflows/deploy-pages.yml).
+
+Ứng dụng chỉ dùng dữ liệu mẫu và dữ liệu của phiên hiện tại. Đăng xuất hoặc tải lại trang sẽ đặt lại dữ liệu. Chưa có backend, cơ sở dữ liệu hoặc kết nối ngân hàng thật.
 
 GitHub Pages dùng workflow `Deploy NhTBank to GitHub Pages`: cài npm, chạy kiểm thử và build React/Vite vào `dist/`, rồi triển khai từ nhánh `NhTBank`. Bản build lấy đúng đường dẫn con từ cấu hình Pages để JavaScript, CSS và font tải được tại `https://tuong26121-cell.github.io/Ngan_hang_NhTBank/`. Environment `github-pages` cần cho phép nhánh `NhTBank`; bộ lọc nhánh trong workflow và quy tắc environment là hai cấu hình riêng.
 
@@ -33,7 +40,7 @@ npm run test:e2e        # kiểm thử trình duyệt desktop + mobile
 
 Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playwright install-deps chromium` (cần quyền quản trị). E2E tự khởi động Vite trên cổng 4173; QR được tạo và giải mã cục bộ, không phụ thuộc dịch vụ ảnh hoặc thanh toán bên ngoài. Có thể dùng Chromium đã cài với biến `NHT_CHROMIUM_PATH=/usr/bin/chromium`.
 
-## Trải nghiệm
+## Chức năng và trạng thái
 
 - Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
 - Dashboard: ẩn/hiện số dư, bộ đếm, bốn lối tắt, tám ô tiện ích theo mẫu và giao dịch gần đây.
@@ -41,6 +48,8 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 - Nạp tiền: QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gọi dịch vụ ảnh ngoài, không gửi số tiền/nội dung ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
 - Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất. Đăng xuất xóa giao dịch vừa nhập, bộ lọc/tìm kiếm và khôi phục số dư mẫu, kể cả khi đăng nhập lại mà không tải lại trang.
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
+
+Các mục Cửa hàng, Thẻ điện tử, Bảo vệ thẻ, Ưu đãi, Vé dịch vụ và Quà tặng hiện mở thông tin **bản xem trước**. Ví của tôi dẫn tới Cá nhân; Mục tiêu dẫn tới phần Tiền gửi đang xem trước. Việc giữ đầy đủ mã mẫu gốc không có nghĩa tất cả chức năng của mẫu đã được tích hợp vào ứng dụng React.
 
 ## Giao diện theo mẫu NhTBank 1.1
 
@@ -78,7 +87,9 @@ Chi tiết: [Kiến trúc và phạm vi](docs/architecture.md). Dữ liệu phi�
 
 ## Kiểm tra và ảnh giao diện
 
-[Biên bản kiểm tra](docs/validation.md) · [Dashboard desktop](docs/screenshots/dashboard-desktop.png) · [Dashboard điện thoại](docs/screenshots/dashboard-mobile.png).
+[Đối chiếu 45 tiêu chí giao diện](docs/ui-acceptance.md) · [Biên bản kiểm tra](docs/validation.md) · [Giao diện điện thoại 1.1](docs/screenshots/v11-android.png) · [Giao diện máy tính 1.1](docs/screenshots/v11-windows.png).
+
+Các kết quả Chromium và viewport mô phỏng được ghi trong biên bản; chưa thay thế việc thử trên thiết bị Android/iOS thật.
 
 ## Cập nhật bảo mật
 

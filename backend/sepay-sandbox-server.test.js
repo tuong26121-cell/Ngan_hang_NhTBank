@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createHmac } from "node:crypto";
 import { createSandboxServer, verifySePayWebhook } from "./sepay-sandbox-server.mjs";

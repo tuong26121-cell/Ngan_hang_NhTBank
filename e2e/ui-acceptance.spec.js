@@ -11,7 +11,7 @@ for (const width of [320, 360, 390, 430]) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
-    await page.goto("/");
+    await page.goto("./");
     for (const n of "123456")
       await page.getByRole("button", { name: `Số ${n}`, exact: true }).click();
     await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();

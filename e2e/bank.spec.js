@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 async function login(page) {
-  await page.goto("/");
+  await page.goto("./");
   for (const number of "123456")
     await page
       .getByRole("button", { name: `Số ${number}`, exact: true })
@@ -146,7 +146,7 @@ test("complete Sandbox journey without console errors", async ({
 });
 test("keyboard login, notifications and reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("./");
   await expect(
     page.getByRole("heading", { name: "Nguyễn Nhựt Tường" }),
   ).toBeVisible();

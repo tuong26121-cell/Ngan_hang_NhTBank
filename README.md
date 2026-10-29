@@ -10,6 +10,8 @@ Bản website mô phỏng tại **https://nhtbank-web-tuong.vercel.app/**. Kho m
 
 Đây là ứng dụng trình diễn giao diện, **không phải tài khoản ngân hàng thực tế**, không nhận/chuyển tiền thật. Nếu cập nhật mã nguồn nhưng website vẫn là bản cũ, cần kiểm tra deployment mới trên Vercel; việc commit lên GitHub không tự xác nhận rằng website đã xuất bản.
 
+GitHub Pages dùng workflow `Deploy NhTBank to GitHub Pages`: cài npm, chạy kiểm thử và build React/Vite vào `dist/`, rồi triển khai từ nhánh `NhTBank`. Bản build lấy đúng đường dẫn con từ cấu hình Pages để JavaScript, CSS và font tải được tại `https://tuong26121-cell.github.io/Ngan_hang_NhTBank/`. Environment `github-pages` cần cho phép nhánh `NhTBank`; bộ lọc nhánh trong workflow và quy tắc environment là hai cấu hình riêng.
+
 ## Chạy cục bộ
 
 Yêu cầu Node.js 22.12+ (đã kiểm tra với Node 24) và npm.

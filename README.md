@@ -6,7 +6,7 @@
 
 ## Website trực tuyến
 
-Bản website mô phỏng được triển khai tại **https://nhtbank-web-tuong.vercel.app/** từ nhánh `main` của repository này. Mã PIN demo: `123456`. Dữ liệu mẫu hiện tại: **Nguyễn Nhựt Tường**, tài khoản mô phỏng **0788818374**, số dư khởi tạo **4.056.000 VNĐ**.
+Bản website mô phỏng tại **https://nhtbank-web-tuong.vercel.app/**. Kho mã nguồn hiện dùng nhánh mặc định `NhTBank`. Mã PIN demo: `123456`. Dữ liệu mẫu hiện tại: **Nguyễn Nhựt Tường**, tài khoản mô phỏng **0788818374**, số dư khởi tạo **4.056.000 VNĐ**.
 
 Đây là ứng dụng trình diễn giao diện, **không phải tài khoản ngân hàng thực tế**, không nhận/chuyển tiền thật. Nếu cập nhật mã nguồn nhưng website vẫn là bản cũ, cần kiểm tra deployment mới trên Vercel; việc commit lên GitHub không tự xác nhận rằng website đã xuất bản.
 

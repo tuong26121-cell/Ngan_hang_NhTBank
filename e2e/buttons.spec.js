@@ -63,11 +63,11 @@ for (const view of ["android", "windows"]) {
     await activate(page.getByRole("button", { name: "Đã hiểu", exact: true }));
     await expect(page.getByText("Một khởi đầu tốt đẹp ✦")).toHaveCount(0);
     for (const label of [
-      "Cửa hàng",
+      "Hóa đơn",
       "Thẻ điện tử",
       "MỚI Bảo vệ thẻ",
       "MỚI Ưu đãi",
-      "Vé dịch vụ",
+      "Thanh toán",
       "Quà tặng",
     ]) {
       await activate(page.getByRole("button", { name: label, exact: true }));

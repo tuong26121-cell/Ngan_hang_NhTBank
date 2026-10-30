@@ -48,7 +48,7 @@ for (const view of ["android", "windows"]) {
       await activate(page.getByRole("button", { name: label, exact: true }));
       await expect(page.getByRole("heading", { name: heading, exact: true }).first()).toBeVisible();
     }
-    await activate(page.getByRole("button", { name: "Trung tâm hỗ trợ", exact: true }).filter({ visible: true }));
+    await activate(page.locator("main").getByRole("button", { name: "Trung tâm hỗ trợ", exact: true }));
     await expect(page.getByRole("dialog")).toBeVisible();
     await activate(page.getByRole("button", { name: "Đóng hỗ trợ" }));
     await expect(page.getByRole("dialog")).toHaveCount(0);

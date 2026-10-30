@@ -1,0 +1,43 @@
+name: Verify NhTBank main integration
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Unit and sandbox gateway tests
+        run: npm test
+      - name: Build production web at GitHub Pages subpath
+        run: npm run build -- --base /Ngan_hang_NhTBank/
+      - name: Install Chromium for E2E
+        run: npx playwright install --with-deps chromium
+      - name: Test Android and Windows interactions against production build
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort --base /Ngan_hang_NhTBank/ &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null; then break; fi
+            sleep 1
+          done
+          NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e -- --max-failures=1
+      - name: Archive Playwright evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-integration-playwright
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7

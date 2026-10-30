@@ -2,7 +2,7 @@ name: Build NhTBank demo APK
 on:
   workflow_dispatch:
   push:
-    branches: [NhTBank]
+    branches: [main]
     paths:
       - 'frontend/**'
       - 'package.json'
@@ -57,7 +57,7 @@ jobs:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
       - name: Publish downloadable APK release
-        if: github.ref == 'refs/heads/NhTBank'
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

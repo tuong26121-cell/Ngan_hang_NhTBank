@@ -204,6 +204,13 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Không thay đổi giao dịch Sandbox, không dùng PIN demo để truy cập ngân hàng và không mở API giao dịch thật.
 
 
+## Sửa lỗi truy cập bộ nhớ trình duyệt — khac_phuc_loi/lan_25
+
+- Sửa AuthGate đọc tên đăng nhập đã ghi nhớ bằng hàm có xử lý SecurityError, tránh trắng trang khi localStorage bị chặn.
+- Kiểm thử hồi quy component mô phỏng Storage.getItem ném lỗi: vẫn mở được đăng nhập và đăng ký.
+- Kết quả cục bộ: 71/71 unit/component tests đạt, production build đạt. E2E đã thêm ca storage bị chặn cho các cấu hình desktop/mobile/android; chưa xác minh trình duyệt do tải Chromium thất bại trong môi trường này. Chưa nghiệm thu thiết bị thật hoặc bàn phím ảo.
+- Nhánh gốc: main 842d985251ec546b47fd78adc35311ed38476cf5. Các tiêu chí ngoài phạm vi sửa lỗi giữ trạng thái hiện có.
+
 ## Bổ sung 30/10/2026 — Logo NT, 20 biểu tượng màu và màn xác thực một trang
 
 - Nguồn icon: hai ảnh chủ ứng dụng gửi trực tiếp. Logo **NT** riêng từ ảnh nền xanh lam/vàng; bỏ logo **V xanh lá** trong mockup. Bộ 20 biểu tượng chức năng được cắt giữ tỷ lệ và gom vào atlas WebP 5×4, ánh xạ trong `ReferenceArt.jsx`.

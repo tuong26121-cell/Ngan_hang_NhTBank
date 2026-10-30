@@ -34,7 +34,7 @@ test("settings change password and recovery code reset work locally", async ({ p
   await page.getByRole("button", { name: "Mở cài đặt bảo mật" }).click();
   await expect(page.getByRole("heading", { name: "Cài đặt bảo mật", exact: true })).toBeVisible();
   await page.getByLabel("Mật khẩu hiện tại").fill("DemoPass12345!");
-  await page.getByLabel("Mật khẩu mới").fill("ChangedPass12345!");
+  await page.getByLabel("Mật khẩu mới", { exact: true }).fill("ChangedPass12345!");
   await page.getByLabel("Xác nhận mật khẩu mới").fill("ChangedPass12345!");
   await page.getByRole("button", { name: "Đổi mật khẩu" }).click();
   await expect(page.getByRole("status")).toContainText("Đã đổi mật khẩu");

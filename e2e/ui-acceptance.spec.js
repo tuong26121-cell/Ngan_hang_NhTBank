@@ -19,14 +19,14 @@ for (const width of [320, 360, 390, 430]) {
     await expect(nav.getByRole("button")).toHaveText([
       "Trang chủ",
       "Giao dịch",
-      "QR",
+      "Quét QR",
       "Lịch sử",
       "Cá nhân",
     ]);
     for (const [label, heading] of [
       ["Trang chủ", /Xin chào/],
       ["Giao dịch", "Chuyển tiền"],
-      ["QR", "Nạp tiền"],
+      ["Quét QR", "Quét mã QR"],
       ["Lịch sử", "Lịch sử giao dịch"],
       ["Cá nhân", "Cá nhân"],
     ]) {

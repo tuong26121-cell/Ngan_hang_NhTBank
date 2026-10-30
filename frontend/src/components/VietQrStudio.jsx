@@ -197,7 +197,7 @@ export default function VietQrStudio() {
         </form>
         <div className="vietqr-result vietqr-receipt" aria-live="polite">
           <div className="vietqr-receipt-top">
-            <div className="vietqr-receipt-brand"><span className="vietqr-brand-icon">N</span><div><strong>NhTBank</strong><small>QR STUDIO · NHẬN CHUYỂN KHOẢN</small></div></div>
+            <div className="vietqr-receipt-brand"><span className="vietqr-brand-icon"><img src={import.meta.env.BASE_URL + "branding/nt-logo.webp"} alt="" width="38" height="38" /></span><div><strong>NhTBank</strong><small>QR STUDIO · NHẬN CHUYỂN KHOẢN</small></div></div>
             <span className="vietqr-receipt-number">VietQR</span>
           </div>
           {preview ? (

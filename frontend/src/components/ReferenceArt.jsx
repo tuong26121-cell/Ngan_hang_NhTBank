@@ -19,7 +19,12 @@ const paths = {
   star: "m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8Z",
   goal: "M12 3a9 9 0 1 0 9 9M12 7a5 5 0 1 0 5 5m-5 0 9-9m-4 0h4v4",
 };
+const paletteSlots = {"home":5,"transfer":19,"qr":15,"history":4,"profile":0,"send":19,"receive":18,"savings":14,"wallet":0,"store":7,"card":2,"shield":3,"gift":10,"ticket":7,"star":10,"goal":14,"invest":6,"loan":8,"payment":11,"account":0,"notification":9,"settings":16,"support":17,"invoice":7,"topup":18,"qrPayment":13};
 export function ReferenceIcon({ name, size = 24, className = "" }) {
+  const slot = paletteSlots[name];
+  if (slot !== undefined) {
+    return <span className={"reference-icon brand-palette-icon " + className} aria-hidden="true" style={{ width:size, height:size, display:"inline-block", flexShrink:0, backgroundImage:"url(" + import.meta.env.BASE_URL + "branding/icons-20.webp)", backgroundSize:"500% 400%", backgroundRepeat:"no-repeat", backgroundPosition:(slot % 5) * 25 + "% " + (Math.floor(slot / 5) * 100 / 3) + "%" }} />;
+  }
   return (
     <svg
       className={`reference-icon ${className}`}

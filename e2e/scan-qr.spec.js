@@ -24,6 +24,7 @@ test("middle QR navigation opens camera screen, decodes local upload and offers 
     if (!request.url().startsWith(new URL(page.url()).origin)) outside.push(request.url());
   });
   await page.goto("./");
+  outside.length = 0;
   for (const number of "123456") await page.getByRole("button",{name:`Số ${number}`,exact:true}).click();
   await expect(page.getByRole("heading",{name:/Xin chào/})).toBeVisible();
   const qrNav = page.getByRole("button",{name:"Quét QR",exact:true});

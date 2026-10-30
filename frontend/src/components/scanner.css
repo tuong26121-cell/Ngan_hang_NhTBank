@@ -55,3 +55,6 @@
   .scan-camera-actions .button { padding:9px; font-size:11px; }
 }
 @media (prefers-reduced-motion:reduce) { .scan-corners i { filter:none; } }
+
+/* Touch targets on scanner must meet the existing 44px P0 requirement. */
+.scan-page button { min-height:44px; }

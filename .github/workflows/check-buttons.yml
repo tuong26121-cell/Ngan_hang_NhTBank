@@ -20,8 +20,12 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Test production build at Pages subpath
         run: |
-          npm run preview -- --host 127.0.0.1 --port 4173 &
-          NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort --base /Ngan_hang_NhTBank/ &
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null; then break; fi
+            sleep 1
+          done
+          NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e -- --max-failures=1
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -17,6 +17,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Transfer from "./components/Transfer";
 import Deposit from "./components/Deposit";
+import QrScanner from "./components/QrScanner";
 import {
   Brand,
   HelpDialog,
@@ -29,7 +30,7 @@ import { INITIAL_BALANCE, OWNER, initialTransactions, money } from "./lib/bank";
 const navigation = [
   ["dashboard", "Trang chủ", "home"],
   ["transfer", "Giao dịch", "transfer"],
-  ["deposit", "QR", "qr"],
+  ["scan", "Quét QR", "qr"],
   ["history", "Lịch sử", "history"],
   ["profile", "Cá nhân", "profile"],
 ];
@@ -77,6 +78,7 @@ export default function App() {
     dashboard: "Tổng quan",
     transfer: "Chuyển tiền",
     deposit: "Nạp tiền",
+    scan: "Quét mã QR",
     history: "Lịch sử giao dịch",
     profile: "Cá nhân",
     savings: "Tiền gửi",
@@ -94,7 +96,7 @@ export default function App() {
             <Button
               key={id}
               aria-label={label}
-              className={`nav-item ${id === "deposit" ? "nav-qr" : ""} ${page === id ? "selected" : ""}`}
+              className={`nav-item ${id === "scan" ? "nav-qr" : ""} ${page === id ? "selected" : ""}`}
               aria-current={page === id ? "page" : undefined}
               onClick={() => navigate(id)}
             >
@@ -214,6 +216,7 @@ export default function App() {
                 />
               )}{" "}
               {page === "deposit" && <Deposit navigate={navigate} />}{" "}
+              {page === "scan" && <QrScanner navigate={navigate} />}{" "}
               {page === "history" && (
                 <>
                   <div className="page-heading">

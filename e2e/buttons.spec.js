@@ -122,3 +122,36 @@ for (const view of ["android", "windows"]) {
     expect(errors).toEqual([]);
   });
 }
+
+
+for (const startView of ["android", "windows"]) {
+  test(`switching layouts preserves the active sandbox session from ${startView}`, async ({ page }, testInfo) => {
+    test.setTimeout(60000);
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.goto(`./?view=${startView}`);
+    const activate = async (locator) => {
+      if (testInfo.project.name === "mobile") await locator.tap();
+      else await locator.click();
+    };
+    for (const digit of "123456") {
+      await activate(page.getByRole("button", { name: `Số ${digit}`, exact: true }));
+    }
+    await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+
+    const switcher = page.getByRole("navigation", { name: "Chọn bố cục" });
+    const initialNavigation = await page.evaluate(() => performance.getEntriesByType("navigation").length);
+    const nextView = startView === "android" ? "windows" : "android";
+    await activate(switcher.getByRole("link", { name: nextView === "android" ? "Điện thoại" : "Máy tính" }));
+    await expect(page).toHaveURL(new RegExp(`[?&]view=${nextView}`));
+    await expect(page.locator("html")).toHaveAttribute("data-display", nextView);
+    await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Số 1", exact: true })).toHaveCount(0);
+    expect(await page.evaluate(() => performance.getEntriesByType("navigation").length)).toBe(initialNavigation);
+
+    await page.goBack();
+    await expect(page.locator("html")).toHaveAttribute("data-display", startView);
+    await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+}

@@ -202,3 +202,13 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Bổ sung kiểm thử unit parser TLV/CRC và Playwright ảnh QR tải lên trên hai bố cục; chạy CI PR để lưu bằng chứng, **chưa xác nhận camera thiết bị thật, deep-link native, hay giao dịch thật**.
 - A01/A03/B01/C01/C02/C05: cần rà thao tác máy thật, focus, tương phản, kích thước nút và thanh điều hướng; chưa đánh dấu nghiệm thu P0 khi chưa có bằng chứng trực tiếp.
 - Không thay đổi giao dịch Sandbox, không dùng PIN demo để truy cập ngân hàng và không mở API giao dịch thật.
+
+
+## Bổ sung 30/10/2026 — Logo NT, 20 biểu tượng màu và màn xác thực một trang
+
+- Nguồn icon: hai ảnh chủ ứng dụng gửi trực tiếp. Logo **NT** riêng từ ảnh nền xanh lam/vàng; bỏ logo **V xanh lá** trong mockup. Bộ 20 biểu tượng chức năng được cắt giữ tỷ lệ và gom vào atlas WebP 5×4, ánh xạ trong `ReferenceArt.jsx`.
+- Mở ứng dụng có logo NT trong 0,5 giây (giảm chuyển động vẫn hiện tĩnh) rồi chuyển sang màn login độc lập cố định theo viewport.
+- Đăng nhập: tên + mật khẩu, đăng ký tài khoản demo, lưu tên đăng nhập, khôi phục bằng mã dự phòng, đổi mật khẩu trong trang Cài đặt. Không lưu mật khẩu rõ vào localStorage. Không có backend xác thực.
+- A04/A05/C03 (logo và icon), B01/B05 (bố cục), C01/C02/C05 (nút, phản hồi), D và E (thông báo bảo mật/riêng tư) phải được rà soát trên thiết bị thật. **Không tự đánh dấu đạt toàn bộ 45 tiêu chí.**
+- Tài nguyên ảnh đính kèm đi theo `import.meta.env.BASE_URL` để tương thích đường dẫn GitHub Pages khi build production. Cần kiểm tra riêng khi xuất HTML standalone.
+- Bằng chứng E2E/CI và ảnh nghiệm thu chỉ được đánh dấu đạt sau khi GitHub Actions trên commit cuối thành công. Camera thật, bàn phím ảo, các thiết bị nhỏ vẫn chưa được kiểm tra trực tiếp.

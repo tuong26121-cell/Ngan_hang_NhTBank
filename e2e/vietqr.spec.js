@@ -14,7 +14,7 @@ test("VietQR opt-in works on Android and Windows without touching demo QR", asyn
   for (const number of "123456")
     await page.getByRole("button", { name: `Số ${number}`, exact: true }).click();
   await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
-  await page.getByRole("button", { name: "QR", exact: true }).first().click();
+  await page.getByRole("button", { name: /Nạp tiền/ }).first().click();
   const demo = page.getByRole("img", { name: /QR mô phỏng/ });
   await expect(demo).toHaveAttribute("src", /^data:image\/svg\+xml/);
   await expect(page.getByRole("heading", { name: "NhTBank QR Studio" })).toBeVisible();

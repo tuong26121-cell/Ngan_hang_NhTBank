@@ -194,3 +194,11 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Các tiêu chí UI liên quan: C01 (các nút tạo/copy/tải), C02 (focus), C05 (feedback), A01 (khả dụng trên Android/Windows), B (bố cục), E (riêng tư). **Chưa nghiệm thu thiết bị thật**.
 - Bổ sung kiểm thử Vitest và E2E với phản hồi ảnh bên ngoài được giả lập, tránh phụ thuộc mạng. Kết quả CI sẽ được ghi nhận ở PR; chưa nhận định đạt khi chưa có bằng chứng.
 - Tài liệu chi tiết: [vietqr-studio.md](vietqr-studio.md). Không ảnh hưởng đến 45 tiêu chí nghiệm thu hiện hành của mô phỏng cho tới khi PR được kiểm tra và gộp.
+
+## Bổ sung quét mã QR và thẻ biên nhận v2 · 30/10/2026
+
+- Nút QR nổi giữa thanh điều hướng (Android)/QR trong sidebar (Windows) chuyển đến màn quét camera; đường dẫn tạo QR qua Nạp tiền trên dashboard hoặc nút ở màn quét.
+- Thẻ nhận tiền của NhTBank có bố cục riêng: header gradient, thẻ biên nhận, trường người nhận và các nút hành động. Ảnh VietQR nguyên bản không bị phủ logo hay thay ma trận QR.
+- Bổ sung kiểm thử unit parser TLV/CRC và Playwright ảnh QR tải lên trên hai bố cục; chạy CI PR để lưu bằng chứng, **chưa xác nhận camera thiết bị thật, deep-link native, hay giao dịch thật**.
+- A01/A03/B01/C01/C02/C05: cần rà thao tác máy thật, focus, tương phản, kích thước nút và thanh điều hướng; chưa đánh dấu nghiệm thu P0 khi chưa có bằng chứng trực tiếp.
+- Không thay đổi giao dịch Sandbox, không dùng PIN demo để truy cập ngân hàng và không mở API giao dịch thật.

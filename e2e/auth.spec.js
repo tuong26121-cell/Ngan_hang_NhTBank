@@ -20,7 +20,7 @@ test("NT splash, single viewport, registration and remembered username", async (
   await page.getByRole("button", { name: "Cá nhân", exact: true }).click();
   await page.getByRole("button", { name: "Đăng xuất và xóa dữ liệu phiên" }).click();
   await expect(page.getByRole("heading", { name: "Đăng nhập NhTBank" })).toBeVisible();
-  await expect(page.getByLabel("Tên đăng nhập")).toHaveValue(DEMO_USERNAME);
+  await expect(page.getByLabel("Tên đăng nhập", { exact: true })).toHaveValue(DEMO_USERNAME);
   await expect(page.getByLabel("Mật khẩu", { exact: true })).toHaveValue("");
 });
 
@@ -40,7 +40,7 @@ test("settings change password and recovery code reset work locally", async ({ p
   await expect(page.getByRole("status")).toContainText("Đã đổi mật khẩu");
   await page.getByRole("button", { name: "Cá nhân", exact: true }).click();
   await page.getByRole("button", { name: "Đăng xuất và xóa dữ liệu phiên" }).click();
-  await page.getByLabel("Tên đăng nhập").fill(DEMO_USERNAME);
+  await page.getByLabel("Tên đăng nhập", { exact: true }).fill(DEMO_USERNAME);
   await page.getByLabel("Mật khẩu", { exact: true }).fill("DemoPass12345!");
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("không đúng");

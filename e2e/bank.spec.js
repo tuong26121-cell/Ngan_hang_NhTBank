@@ -140,7 +140,7 @@ test("keyboard login, notifications and reduced motion", async ({ page }) => {
     fullPage: true,
     animations: "disabled",
   });
-  await page.getByLabel("Tên đăng nhập").fill("nhtbank_demo");
+  await page.getByLabel("Tên đăng nhập", { exact: true }).fill("nhtbank_demo");
   await page.getByLabel("Mật khẩu", { exact: true }).fill("Incorrect000!");
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("không đúng");

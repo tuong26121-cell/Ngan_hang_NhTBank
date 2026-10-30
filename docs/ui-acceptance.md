@@ -172,3 +172,8 @@ Chưa nghiệm thu chính thức: các P0 cần thiết bị thật, rà tương
 - Phát hiện liên kết Máy tính ở màn đăng nhập Android xem từ desktop bị thông báo mô phỏng chặn vùng bấm. Đã đưa thông báo về luồng bố cục bình thường; kiểm tra lại đổi bố cục hai chiều bằng thao tác click đạt. Chạy lại riêng E2E đăng nhập bàn phím desktop/mobile sau sửa: 2/2 đạt.
 - Hai HTML trong `exports/` xuất từ cùng production bundle đã build thành công. Kiểm tra chính các HTML qua HTTP cục bộ: đăng nhập, dialog và khôi phục focus, chuyển 100.000 VNĐ demo, số dư còn 3.956.000, QR hợp lệ và lỗi số tiền 0; không có lỗi JavaScript và không có request nào ngoài request mở chính HTML (font/JS/CSS nhúng sẵn). Chính sách Chromium của môi trường chặn điều hướng `file://`, nên chưa xác minh trực tiếp thao tác mở tệp từ trình quản lý tệp trên Android/Windows thật.
 - `git diff --check` và kiểm tra Prettier cho các tệp đã chỉnh đều đạt. Mã mẫu gốc được giữ nguyên, không đưa vào phạm vi định dạng lại hoặc thực thi hướng dẫn.
+
+# Điều tra bổ sung PR #19 — 30/10/2026
+
+Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm tra: head `87c32ac44eef3e5084f4aac60d69ca44234f85a1`; commit bổ sung được nhận diện bằng lịch sử PR #19. Bổ sung project Pixel 7 và bằng chứng tải script/CSS; giữ dữ liệu và ứng dụng hiện có. Chưa tái hiện lỗi người dùng trên thiết bị thật, chưa xác định nguyên nhân gốc, chưa nghiệm thu P0 và không kết luận đã sửa xong. Đối chiếu đủ 45 mã trong báo cáo; không thay trạng thái các phép đo chưa thực hiện.
+

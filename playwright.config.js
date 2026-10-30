@@ -4,6 +4,7 @@ export default defineConfig({
   fullyParallel: true,
   workers: 2,
   retries: 0,
+  reporter: [["list"], ["html", { open: "never" }]],
   use: {
     baseURL: process.env.NHT_TEST_URL || "http://127.0.0.1:4173",
     launchOptions: process.env.NHT_CHROMIUM_PATH
@@ -23,6 +24,10 @@ export default defineConfig({
     {
       name: "mobile",
       use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" },
+    },
+    {
+      name: "android",
+      use: { ...devices["Pixel 7"], defaultBrowserType: "chromium" },
     },
   ],
   webServer: process.env.NHT_TEST_URL

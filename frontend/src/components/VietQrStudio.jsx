@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, Copy, Download, ExternalLink, Info, QrCode } from "lucide-react";
 import { Button } from "./ui";
+import BankHandoff from "./BankHandoff";
 import { money } from "../lib/bank";
 import {
   buildVietQrUrl,
@@ -194,67 +195,68 @@ export default function VietQrStudio() {
             <QrCode size={18} /> Tạo ảnh VietQR theo thông tin của tôi
           </Button>
         </form>
-        <div className="panel vietqr-result" aria-live="polite">
-          <span className="eyebrow">ẢNH VIETQR · KHÔNG THUỘC SANDBOX</span>
+        <div className="vietqr-result vietqr-receipt" aria-live="polite">
+          <div className="vietqr-receipt-top">
+            <div className="vietqr-receipt-brand"><span className="vietqr-brand-icon">N</span><div><strong>NhTBank</strong><small>QR STUDIO · NHẬN CHUYỂN KHOẢN</small></div></div>
+            <span className="vietqr-receipt-number">VietQR</span>
+          </div>
           {preview ? (
             <>
-              {imageFailed ? (
-                <div className="qr-fallback">
-                  <QrCode size={60} />
-                  <p>Không tải được ảnh từ vietqr.app.</p>
-                  <small>Kiểm tra mạng hoặc mở liên kết ảnh.</small>
+              <div className="vietqr-ticket" aria-label="Thẻ QR nhận tiền NhTBank">
+                <span className="vietqr-ticket-eyebrow">QUÉT ĐỂ CHUYỂN KHOẢN</span>
+                <h3>{VIETQR_BANKS.find((bank) => bank.code === form.bank)?.label}</h3>
+                <div className="vietqr-image-stage">
+                  {imageFailed ? (
+                    <div className="qr-fallback">
+                      <QrCode size={60} />
+                      <p>Không tải được ảnh từ vietqr.app.</p>
+                      <small>Kiểm tra mạng hoặc mở ảnh trực tiếp.</small>
+                    </div>
+                  ) : (
+                    <img className="vietqr-image" src={preview.url}
+                      alt="Ảnh VietQR nhận chuyển khoản từ dịch vụ vietqr.app"
+                      referrerPolicy="no-referrer"
+                      onError={() => setImageFailed(true)} />
+                  )}
                 </div>
-              ) : (
-                <img
-                  className="vietqr-image"
-                  src={preview.url}
-                  alt="Ảnh VietQR nhận chuyển khoản từ dịch vụ vietqr.app"
-                  referrerPolicy="no-referrer"
-                  onError={() => setImageFailed(true)}
-                />
-              )}
-              <p className="vietqr-summary">
-                <strong>{VIETQR_BANKS.find((bank) => bank.code === form.bank)?.label}</strong>
-                <span>{form.account}</span>
-                <strong>{form.amount ? money(Number(form.amount)) + " VNĐ" : "Người gửi tự nhập số tiền"}</strong>
-              </p>
+                <p className="vietqr-ticket-hint">Dùng tính năng Quét QR trong ứng dụng ngân hàng để thanh toán.</p>
+                <div className="vietqr-ticket-perforation" aria-hidden="true"><span/><i/><span/></div>
+                <p className="vietqr-summary">
+                  <span><small>TÀI KHOẢN NHẬN</small><strong>{form.account}</strong></span>
+                  <span><small>SỐ TIỀN</small><strong>{form.amount ? money(Number(form.amount)) + " VNĐ" : "Người gửi tự nhập"}</strong></span>
+                  {form.description && <span><small>NỘI DUNG</small><strong>{form.description}</strong></span>}
+                </p>
+              </div>
               <div className="vietqr-actions">
                 <Button type="button" className="secondary" onClick={copyLink}>
                   {copied ? <Check size={16} /> : <Copy size={16} />}
                   {copied ? "Đã sao chép" : "Sao chép liên kết"}
                 </Button>
-                <a
-                  className="button secondary"
-                  href={buildVietQrUrl(form, { download: true })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  referrerPolicy="no-referrer"
-                >
+                <a className="button secondary" href={buildVietQrUrl(form, { download: true })}
+                  target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
                   <Download size={16} /> Tải ảnh QR
                 </a>
-                <a
-                  className="vietqr-source-link"
-                  href={preview.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  referrerPolicy="no-referrer"
-                >
-                  Mở ảnh tại vietqr.app <ExternalLink size={14} />
+                <a className="vietqr-source-link" href={preview.url}
+                  target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                  Mở ảnh gốc <ExternalLink size={14} />
                 </a>
               </div>
+              <BankHandoff title="Đi đến ngân hàng để chuyển tiền" />
               <p className="vietqr-footnote">
-                Chỉ tạo ảnh QR nhận tiền. Không có xác minh chủ tài khoản,
-                theo dõi trạng thái chuyển khoản hoặc kết nối ngân hàng.
+                Ảnh mã QR do vietqr.app cung cấp. NhTBank chỉ trình bày
+                giao diện; mã QR gốc không bị thay đổi nên vẫn quét được.
+                Không xác nhận chủ tài khoản hoặc trạng thái nhận tiền.
               </p>
             </>
           ) : (
             <div className="qr-placeholder vietqr-empty">
-              <QrCode size={70} strokeWidth={1.25} />
-              <h3>Chưa gửi dữ liệu tạo ảnh</h3>
-              <p>Điền tài khoản, đọc thông báo chia sẻ dữ liệu rồi nhấn tạo VietQR.</p>
-              <small>Không phát sinh yêu cầu tới vietqr.app trước khi bạn nhấn tạo.</small>
+              <QrCode size={70} strokeWidth={1} />
+              <h3>Mã QR mang dấu ấn NhTBank</h3>
+              <p>Điền thông tin để tạo thẻ nhận tiền theo bố cục mới.</p>
+              <small>Chỉ gửi dữ liệu tới vietqr.app khi bạn đồng ý và nhấn tạo.</small>
             </div>
           )}
+
         </div>
       </div>
     </section>

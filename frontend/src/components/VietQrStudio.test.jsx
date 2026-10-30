@@ -6,7 +6,7 @@ describe("VietQR Studio explicit external-service boundary", () => {
   it("does not load an external QR before user consent and action", () => {
     render(<VietQrStudio />);
     expect(screen.queryByRole("img", { name: /Ảnh VietQR/ })).not.toBeInTheDocument();
-    expect(screen.getByText(/Không phát sinh yêu cầu/)).toBeInTheDocument();
+    expect(screen.getByText(/Chỉ gửi dữ liệu tới/)).toBeInTheDocument();
     fireEvent.change(screen.getByLabelText("Số tài khoản nhận"), {
       target: { value: "0788818374" },
     });

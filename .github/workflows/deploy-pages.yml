@@ -2,9 +2,9 @@ name: Deploy NhTBank to GitHub Pages
 
 on:
   push:
-    branches: ["NhTBank"]
+    branches: ["main"]
   pull_request:
-    branches: ["NhTBank"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -45,7 +45,7 @@ jobs:
           path: dist
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/NhTBank'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

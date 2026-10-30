@@ -1,0 +1,32 @@
+name: Check button interactions
+on:
+  pull_request:
+    branches: ["NhTBank"]
+permissions:
+  contents: read
+jobs:
+  interactions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build -- --base /Ngan_hang_NhTBank/
+      - run: npx playwright install --with-deps chromium
+      - name: Test production build at Pages subpath
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 &
+          NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: button-interaction-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7

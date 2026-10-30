@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 // SVG equivalents of the supplied NhTBank 1.1 symbols, independent of system fonts.
 const paths = {
   home: "m3 10 9-7 9 7v10H15v-6H9v6H3Z",
@@ -57,14 +58,44 @@ export function getDisplayMode() {
     : "windows";
 }
 export function DisplaySwitcher() {
-  const android = getDisplayMode() === "android";
+  // React keeps login, page selection and sandbox data in memory. A regular
+  // navigation to ?view=... reloads the app and silently discards that state.
+  // Switching layouts must only update the visual mode, without reloading.
+  const [mode, setMode] = useState(getDisplayMode);
+  useEffect(() => {
+    const restoreMode = () => {
+      const next = getDisplayMode();
+      document.documentElement.dataset.display = next;
+      setMode(next);
+    };
+    window.addEventListener("popstate", restoreMode);
+    return () => window.removeEventListener("popstate", restoreMode);
+  }, []);
+  const changeMode = (event, next) => {
+    // Preserve native browser behavior for modified/middle clicks.
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) return;
+    event.preventDefault();
+    if (getDisplayMode() !== next) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", next);
+      window.history.pushState(null, "", url);
+    }
+    document.documentElement.dataset.display = next;
+    setMode(next);
+  };
   return (
     <nav className="display-switcher" aria-label="Chọn bố cục">
-      <a href="?view=android" aria-current={android ? "page" : undefined}>
+      <a href="?view=android" onClick={(event) => changeMode(event, "android")} aria-current={mode === "android" ? "page" : undefined}>
         Điện thoại
       </a>
       <span aria-hidden="true">/</span>
-      <a href="?view=windows" aria-current={!android ? "page" : undefined}>
+      <a href="?view=windows" onClick={(event) => changeMode(event, "windows")} aria-current={mode === "windows" ? "page" : undefined}>
         Máy tính
       </a>
     </nav>

@@ -84,6 +84,7 @@ export default function App() {
     scan: "Quét mã QR",
     history: "Lịch sử giao dịch",
     profile: "Cá nhân",
+    settings: "Cài đặt bảo mật",
     savings: "Tiền gửi",
     loans: "Vay nhanh",
   }[page];
@@ -160,7 +161,7 @@ export default function App() {
                 aria-expanded={notifications}
                 onClick={() => setNotifications(!notifications)}
               >
-                <Bell size={20} />
+                <ReferenceIcon name="notification" size={27} />
                 <i />
               </Button>
               {notifications && (
@@ -312,7 +313,7 @@ export default function App() {
                           <dd>Trong bộ nhớ phiên</dd>
                         </div>
                       </dl>
-                      <SecuritySettings username={currentUser} />
+                      <Button className="secondary mt-4" onClick={() => navigate("settings")}>Mở cài đặt bảo mật</Button>
                       <SecurityNote />
                       <Button
                         className="text-button mt-4"
@@ -325,6 +326,19 @@ export default function App() {
                       </Button>
                     </div>
                   </section>
+                </>
+              )}{" "}
+              {page === "settings" && (
+                <>
+                  <div className="page-heading">
+                    <div>
+                      <span className="eyebrow">BẢO VỆ TÀI KHOẢN DEMO</span>
+                      <h1>Cài đặt bảo mật</h1>
+                      <p>Quản lý mật khẩu đã đăng ký trên thiết bị này.</p>
+                    </div>
+                  </div>
+                  <SecuritySettings username={currentUser} />
+                  <SecurityNote />
                 </>
               )}{" "}
               {(page === "savings" || page === "loans") && (

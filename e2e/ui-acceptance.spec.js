@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { registerAndLogin } from "./auth-helper";
 
 for (const width of [320, 360, 390, 430]) {
   test(`acceptance UI at ${width}px`, async ({ page }, testInfo) => {
@@ -12,8 +13,7 @@ for (const width of [320, 360, 390, 430]) {
     const errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("./");
-    for (const n of "123456")
-      await page.getByRole("button", { name: `Số ${n}`, exact: true }).click();
+    await registerAndLogin(page);
     await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Điều hướng chính" });
     await expect(nav.getByRole("button")).toHaveText([

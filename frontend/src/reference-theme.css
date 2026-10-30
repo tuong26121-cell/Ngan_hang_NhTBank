@@ -1509,3 +1509,49 @@ a:focus-visible {
   align-self: center;
   margin-bottom: 16px;
 }
+
+
+/* User-supplied NT logo and colorful bank tiles (excluding the rejected V logo). */
+.brand .brand-mark,
+.brand-light .brand-mark,
+.login-art .brand-light .brand-mark {
+  overflow: hidden;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: 0 4px 13px #0751af35;
+}
+.brand .brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.brand-palette-icon {
+  background-color: transparent;
+  border-radius: 20%;
+  vertical-align: middle;
+}
+.quick-icon-orb,
+.reference-service .service-icon-tile {
+  background: transparent !important;
+  box-shadow: none;
+  border: 0;
+}
+.quick-icon-orb .brand-palette-icon {
+  width: 48px !important;
+  height: 48px !important;
+}
+.reference-service .service-icon-tile .brand-palette-icon {
+  width: min(100%, 53px) !important;
+  height: min(100%, 53px) !important;
+}
+:root[data-display="android"] .reference-service .service-icon-tile .brand-palette-icon {
+  width: 46px !important;
+  height: 46px !important;
+}
+.app-shell .nav-qr .brand-palette-icon {
+  width: 30px !important;
+  height: 30px !important;
+}

@@ -17,15 +17,15 @@ const shortcuts = [
   { label: "Chuyển tiền", icon: "send", page: "transfer" },
   { label: "Nạp tiền", icon: "receive", page: "deposit" },
   { label: "Tiền gửi", icon: "savings", page: "savings" },
-  { label: "Vay nhanh", icon: "wallet", page: "loans" },
+  { label: "Vay nhanh", icon: "loan", page: "loans" },
 ];
 const services = [
   {
-    label: "Cửa hàng",
-    icon: "store",
+    label: "Hóa đơn",
+    icon: "invoice",
     tone: "sky",
     description:
-      "Không gian khám phá cửa hàng và dịch vụ. Mẫu hiện tại chưa kết nối cửa hàng hoặc xử lý đơn mua hàng.",
+      "Trang hóa đơn mẫu. Chưa kết nối bên xuất hóa đơn hoặc thực hiện thanh toán.",
   },
   { label: "Ví của tôi", icon: "wallet", tone: "blue", page: "profile" },
   {
@@ -33,7 +33,7 @@ const services = [
     icon: "card",
     tone: "mint",
     description:
-      "Giao diện quản lý thẻ trong mẫu NhTBank 1.1. Chưa có chức năng phát hành hoặc liên kết thẻ ngân hàng.",
+      "Giao diện quản lý thẻ trong mẫu NhTBank. Chưa có chức năng phát hành hoặc liên kết thẻ ngân hàng.",
   },
   {
     label: "Bảo vệ thẻ",
@@ -52,11 +52,11 @@ const services = [
     badge: true,
   },
   {
-    label: "Vé dịch vụ",
-    icon: "ticket",
+    label: "Thanh toán",
+    icon: "payment",
     tone: "blue",
     description:
-      "Bản xem trước tiện ích vé dịch vụ. Chưa kết nối đặt vé hoặc thanh toán.",
+      "Không gian thanh toán mô phỏng. Chưa kết nối hóa đơn hoặc xử lý thanh toán thật.",
   },
   {
     label: "Quà tặng",
@@ -66,6 +66,7 @@ const services = [
       "Giao diện quà tặng trong mẫu NhTBank. Chưa có chức năng mua, gửi hoặc quy đổi quà.",
   },
   { label: "Mục tiêu", icon: "goal", tone: "violet", page: "savings" },
+  { label: "Cài đặt", icon: "settings", tone: "blue", page: "settings" },
 ];
 
 export default function Dashboard({ balance, transactions, navigate }) {

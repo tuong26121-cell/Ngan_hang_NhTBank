@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { registerAndLogin } from "./auth-helper";
 import QRCode from "qrcode";
 
 const tlv = (tag,value) => tag + String(value.length).padStart(2,"0") + value;
@@ -25,7 +26,7 @@ test("middle QR navigation opens camera screen, decodes local upload and offers 
   });
   await page.goto("./");
   outside.length = 0;
-  for (const number of "123456") await page.getByRole("button",{name:`Số ${number}`,exact:true}).click();
+  await registerAndLogin(page);
   await expect(page.getByRole("heading",{name:/Xin chào/})).toBeVisible();
   const qrNav = page.getByRole("button",{name:"Quét QR",exact:true});
   await expect(qrNav).toBeVisible();

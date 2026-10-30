@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { registerAndLogin } from "./auth-helper";
 
 for (const view of ["android", "windows"]) {
   test(`buttons respond in ${view} layout`, async ({ page }, testInfo) => {
@@ -39,10 +40,7 @@ for (const view of ["android", "windows"]) {
       ),
       contentType: "application/json",
     });
-    for (const n of "123456")
-      await activate(
-        page.getByRole("button", { name: `Số ${n}`, exact: true }),
-      );
+    await registerAndLogin(page);
     await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
     const home = async () => {
       await activate(
@@ -65,11 +63,11 @@ for (const view of ["android", "windows"]) {
     await activate(page.getByRole("button", { name: "Đã hiểu", exact: true }));
     await expect(page.getByText("Một khởi đầu tốt đẹp ✦")).toHaveCount(0);
     for (const label of [
-      "Cửa hàng",
+      "Hóa đơn",
       "Thẻ điện tử",
       "MỚI Bảo vệ thẻ",
       "MỚI Ưu đãi",
-      "Vé dịch vụ",
+      "Thanh toán",
       "Quà tặng",
     ]) {
       await activate(page.getByRole("button", { name: label, exact: true }));
@@ -117,7 +115,7 @@ for (const view of ["android", "windows"]) {
       page.getByRole("button", { name: "Đăng xuất và xóa dữ liệu phiên" }),
     );
     await expect(
-      page.getByRole("button", { name: "Số 1", exact: true }),
+      page.getByRole("heading", { name: "Đăng nhập NhTBank" }),
     ).toBeVisible();
     expect(errors).toEqual([]);
   });
@@ -134,9 +132,7 @@ for (const startView of ["android", "windows"]) {
       if (testInfo.project.name === "mobile") await locator.tap();
       else await locator.click();
     };
-    for (const digit of "123456") {
-      await activate(page.getByRole("button", { name: `Số ${digit}`, exact: true }));
-    }
+    await registerAndLogin(page);
     await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
 
     const switcher = page.getByRole("navigation", { name: "Chọn bố cục" });

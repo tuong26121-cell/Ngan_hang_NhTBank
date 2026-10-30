@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { registerAndLogin } from "./auth-helper";
 
 test("VietQR opt-in works on Android and Windows without touching demo QR", async ({ page }) => {
   const external = [];
@@ -11,8 +12,7 @@ test("VietQR opt-in works on Android and Windows without touching demo QR", asyn
     });
   });
   await page.goto("./");
-  for (const number of "123456")
-    await page.getByRole("button", { name: `Số ${number}`, exact: true }).click();
+  await registerAndLogin(page);
   await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
   await page.getByRole("button", { name: /Nạp tiền/ }).first().click();
   const demo = page.getByRole("img", { name: /QR mô phỏng/ });

@@ -1,0 +1,42 @@
+.auth-screen{position:fixed;inset:0;width:100%;height:100dvh;overflow:hidden;display:grid;place-items:center;padding:clamp(10px,2vh,22px);background:radial-gradient(circle at 0% 0%,#67d4fc 0,transparent 38%),linear-gradient(145deg,#0b3c97,#1584d4 50%,#e6f9ff);z-index:20}.auth-splash{display:grid;place-items:center;animation:auth-pop .5s ease-out both}.auth-logo{padding:30px;border-radius:32px;background:#ffffff26;box-shadow:0 18px 65px #061c6677}.auth-card{box-sizing:border-box;width:min(100%,410px);max-height:calc(100dvh - 20px);padding:clamp(14px,3vh,28px);border-radius:24px;background:#fffffffa;box-shadow:0 20px 60px #002b7266;display:flex;flex-direction:column;justify-content:center;gap:clamp(7px,1.3vh,15px)}.auth-heading>span{display:block;font-size:9px;color:#0c79b5;margin-top:8px;letter-spacing:1px}.auth-heading h1{font-size:clamp(20px,3.4vh,29px);margin:5px 0;color:#0b387a}.auth-heading p{font-size:11px;color:#526987;line-height:1.45}.auth-fields{display:grid;gap:clamp(4px,.7vh,9px)}.auth-fields label{font-size:12px;font-weight:650;color:#164479}.auth-fields>input{width:100%;min-height:42px;padding:9px 12px;border:1px solid #c8dbf2;border-radius:11px;background:#f8fbff;font:inherit;font-size:13px}.auth-fields>input:focus{outline:2px solid #1488de}.auth-check{display:flex;gap:9px;align-items:center;font-weight:400!important;font-size:11px!important}.auth-check input{accent-color:#096fcb}.auth-primary{min-height:44px;border:0;border-radius:11px;color:white;background:linear-gradient(115deg,#0766bd,#23a9e8);font-weight:750;cursor:pointer}.auth-primary:disabled{opacity:.65}.auth-links{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}.auth-links button{border:0;background:transparent;color:#075ba7;font-size:12px;cursor:pointer;padding:6px 0}.auth-footer{font-size:9px;text-align:center;color:#637994;line-height:1.5}.auth-error{font-size:11px;color:#a42332}.auth-notice{font-size:11px;color:#11683f}@keyframes auth-pop{from{opacity:.2;transform:scale(.76)}to{opacity:1;transform:scale(1)}}@media(max-height:570px){.auth-card{gap:4px;padding:10px 18px}.auth-heading p{display:none}.auth-heading h1{font-size:19px}.auth-fields{gap:3px}.auth-fields>input{min-height:34px;padding:5px 10px}.auth-primary{min-height:36px}.auth-footer{font-size:8px}}@media(prefers-reduced-motion:reduce){.auth-splash{animation:none}}
+
+/* One-screen, no-scroll login; compact at phone heights. */
+.auth-screen { box-sizing: border-box; overflow: hidden; }
+.auth-card { min-width:0; min-height:0; }
+.auth-logo { display:flex; flex-direction:column; align-items:center; gap:12px; color:#fff; font-size:29px; font-weight:800; }
+.auth-logo img { display:block; width:min(35vw,180px); height:auto; border-radius:23%; box-shadow:0 18px 45px #04236969; }
+.auth-card .brand { font-size:22px; }
+.auth-card .brand-mark { width:38px; height:38px; }
+.auth-recovery-output { padding:10px; border:1px solid #bde3ef; border-radius:12px; background:#effbff; display:grid; gap:5px; }
+.auth-recovery-output strong { color:#164579; font-size:10px; }
+.auth-recovery-output code { font-size:12px; font-weight:800; color:#0a4e9b; word-break:break-all; letter-spacing:.3px; }
+.auth-recovery-output small { font-size:9px; color:#526987; }
+.auth-recovery-output button { justify-self:start; color:#0a64ad; background:transparent; border:0; cursor:pointer; font-size:11px; font-weight:700; }
+.auth-card .display-switcher { justify-content:center; margin:0; font-size:10px; }
+.auth-card button:focus-visible,
+.auth-card input:focus-visible,
+.auth-card a:focus-visible { outline:3px solid #0e8ddc; outline-offset:2px; }
+.auth-fields input { min-width:0; }
+@media(max-height:690px) {
+ .auth-heading .brand small { display:none; }
+ .auth-heading p { display:none; }
+ .auth-heading h1 { font-size:21px; }
+ .auth-card { padding:12px 18px; gap:5px; }
+ .auth-fields { gap:4px; }
+ .auth-fields > input { min-height:36px; padding:7px 9px; }
+ .auth-primary { min-height:40px; }
+ .auth-footer { margin:0; }
+ .auth-recovery-output { padding:7px; gap:2px; }
+}
+@media(max-height:490px) {
+ .auth-card { padding:8px 12px; gap:3px; }
+ .auth-card .brand small,.auth-heading>span,.auth-footer { display:none; }
+ .auth-card .brand { font-size:17px; }
+ .auth-card .brand-mark { width:27px; height:27px; }
+ .auth-heading h1 { font-size:16px; margin:2px 0; }
+ .auth-fields { gap:2px; }
+ .auth-fields > input { min-height:30px; padding:4px 8px; font-size:11px; }
+ .auth-fields label { font-size:10px; }
+ .auth-links button { padding:2px; }
+ .auth-primary { min-height:32px; }
+}

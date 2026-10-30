@@ -35,3 +35,12 @@ Lệnh E2E mặc định ban đầu không chạy vì môi trường thiếu Chr
 - Kiểm tra HTTPS và các header CSP, chống nhúng trang, Referrer-Policy tại URL triển khai thực tế. Mã nguồn không xác nhận được cấu hình của nhà cung cấp hosting.
 - Chạy lại bộ E2E trên Chromium chuẩn do Playwright cài trong CI; phân biệt với Chromium tương thích dùng trong môi trường kiểm tra hiện tại.
 - Không dùng kết quả audit 0 hoặc các kiểm thử demo để kết luận ứng dụng đủ điều kiện bảo mật ngân hàng thật. Không tự động đóng issue #2 bằng cập nhật này.
+
+
+## Cập nhật 30/10/2026 — tài khoản demo cục bộ và thay nhận diện
+
+- Màn đăng nhập mới là **khung UI mô phỏng**, không phải sản phẩm xác thực ngân hàng thật. Người dùng tự đăng ký tên/mật khẩu; hàm băm PBKDF2-SHA256 150.000 vòng và salt ngẫu nhiên; mã khôi phục riêng được băm, xoay sau khi sử dụng.
+- Ghi nhớ tên tài khoản tùy chọn, không ghi mật khẩu rõ. Không auto-login khi tải trang; dữ liệu phiên ứng dụng vẫn reset theo hiện trạng.
+- Không có máy chủ, tài khoản liên thiết bị, đăng ký điện thoại/email, OTP thật, cookie phiên bảo mật hoặc bảo vệ chống tấn công toàn hệ thống. Truy cập localStorage, mất thiết bị hoặc xóa bộ nhớ vẫn là giới hạn. **Không được dùng tài khoản thật, OTP hoặc thông tin ngân hàng để đăng nhập demo.**
+- PIN `123456` vẫn là xác nhận **chuyển tiền mô phỏng**, không phải mật khẩu đăng nhập mới. Tạo VietQR bên ngoài và quét VietQR không có xác minh giao dịch thật.
+- Logo NT và 20 biểu tượng người dùng cung cấp chỉ là tài nguyên đồ họa, không chứng nhận mức độ bảo mật. Không nối backend SePay/MB thật hoặc thay đổi dữ liệu giao dịch.

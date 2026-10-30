@@ -15,13 +15,13 @@ export function Brand({ light = false }) {
   return (
     <div className={`brand ${light ? "brand-light" : ""}`}>
       <span className="brand-mark">
-        <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false">
-          <path
-            d="M10 29V11h5l10 14V11h5v18h-5L15 15v14z"
-            fill="currentColor"
-          />
-          <path d="M24 5h11v11l-4-4-5 5-3-3 5-5z" fill="currentColor" />
-        </svg>
+        <img
+          src={`${import.meta.env.BASE_URL}branding/nt-logo.webp`}
+          alt=""
+          width="42"
+          height="42"
+          decoding="async"
+        />
       </span>
       <span>
         NhT<span className="font-normal">Bank</span>

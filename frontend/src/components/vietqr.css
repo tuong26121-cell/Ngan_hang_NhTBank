@@ -35,3 +35,45 @@
   .vietqr-two-col { grid-template-columns:minmax(0,1fr); gap:0; }
   .vietqr-form, .vietqr-result { padding:18px; }
 }
+
+
+/* V2: custom receipt composition surrounding an unchanged provider QR image. */
+.vietqr-receipt { padding:0; border-radius:27px; overflow:hidden; min-height:480px; border:1px solid #d8e8f9; background:linear-gradient(160deg,#081c53 0%,#095ba4 44%,#34c8dc 78%,#d7f9ff 100%); display:flex; flex-direction:column; align-items:stretch; text-align:left; box-shadow:0 24px 43px #063c7540; }
+.vietqr-receipt-top { display:flex; align-items:center; justify-content:space-between; gap:10px; color:white; padding:23px 21px 17px; }
+.vietqr-receipt-brand { display:flex; align-items:center; gap:10px; }
+.vietqr-receipt-brand strong { display:block; font-size:17px; letter-spacing:-.5px; }
+.vietqr-receipt-brand small { display:block; font-size:8px; letter-spacing:1px; color:#c0ecff; margin-top:4px; }
+.vietqr-brand-icon { display:flex; align-items:center; justify-content:center; color:#0a54ac; background:linear-gradient(150deg,#fff,#e2faff); border-radius:13px; width:38px; height:38px; font-weight:900; box-shadow:0 2px 12px #031f603d; }
+.vietqr-receipt-number { font-size:11px; color:#d6faff; border:1px solid #b8f5ff70; padding:7px 10px; border-radius:99px; white-space:nowrap; }
+.vietqr-ticket { position:relative; background:#fff; margin:0 17px; padding:22px 19px 18px; border-radius:21px; text-align:center; box-shadow:0 13px 21px #031f6045; color:#183868; }
+.vietqr-ticket-eyebrow { display:block; color:#3381bc; font-size:9px; letter-spacing:2px; font-weight:750; }
+.vietqr-ticket h3 { font-size:21px; margin:9px 0 17px; color:#113b82; }
+.vietqr-image-stage { max-width:310px; margin:auto; display:flex; justify-content:center; align-items:center; min-height:245px; border:8px solid #edf9ff; border-radius:19px; box-shadow:inset 0 0 0 1px #c6e5fa; background:white; padding:7px; }
+.vietqr-image-stage .vietqr-image { border:none; max-height:310px; border-radius:6px; max-width:100%; width:auto; object-fit:contain; }
+.vietqr-ticket-hint { font-size:10px; line-height:1.7; color:#647990; margin:13px 0; }
+.vietqr-ticket-perforation { display:flex; align-items:center; margin:17px -19px 14px; gap:0; color:#d6eaf8; }
+.vietqr-ticket-perforation i { flex:1; border-top:2px dashed #c5deef; }
+.vietqr-ticket-perforation span { width:14px; height:14px; border-radius:50%; background:#187aba; }
+.vietqr-ticket-perforation span:first-child { transform:translateX(-7px); }
+.vietqr-ticket-perforation span:last-child { transform:translateX(7px); }
+.vietqr-ticket .vietqr-summary { margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; text-align:left; gap:10px; font-size:11px; }
+.vietqr-ticket .vietqr-summary > span { display:flex; flex-direction:column; padding:10px; min-width:0; gap:5px; background:#eef7ff; border-radius:10px; overflow-wrap:anywhere; }
+.vietqr-ticket .vietqr-summary small { color:#557aa4; font-size:9px; font-weight:700; letter-spacing:.7px; }
+.vietqr-ticket .vietqr-summary strong { color:#12366f; font-size:13px; overflow-wrap:anywhere; }
+.vietqr-ticket .vietqr-summary > span:last-child:nth-child(3) { grid-column:1 / -1; }
+.vietqr-receipt .vietqr-actions { padding:19px 16px 1px; display:flex; justify-content:center; }
+.vietqr-receipt .vietqr-actions .button { background:#fff; color:#12458f; border:none; font-weight:750; }
+.vietqr-receipt .vietqr-source-link { color:#fff; }
+.vietqr-receipt .bank-handoff { margin:15px 16px 0; width:auto; background:#f1f9ff; border:1px solid #d0eeff; }
+.vietqr-receipt .vietqr-footnote { color:#e4f8ff; padding:0 24px 18px; text-align:center; }
+.vietqr-receipt .vietqr-empty { color:#e9faff; padding:36px 20px 46px; text-align:center; }
+.vietqr-receipt .vietqr-empty h3 { color:#fff; }
+.vietqr-receipt .vietqr-empty p, .vietqr-receipt .vietqr-empty small { color:#e5faff; }
+@media (max-width:520px) {
+  .vietqr-receipt-top { padding:17px 15px; }
+  .vietqr-ticket { margin:0 10px; padding:17px 12px; }
+  .vietqr-ticket-perforation { margin-inline:-12px; }
+  .vietqr-ticket .vietqr-summary { grid-template-columns:1fr; }
+  .vietqr-ticket .vietqr-summary > span:last-child:nth-child(3) { grid-column:auto; }
+  .vietqr-receipt .bank-handoff { margin-inline:10px; }
+}

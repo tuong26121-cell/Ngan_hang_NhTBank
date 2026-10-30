@@ -13,11 +13,11 @@
 
 **PIN dùng thử: `123456`.** Chủ tài khoản mẫu: **Nguyễn Nhựt Tường** · Số tài khoản mẫu: **0788818374** · Số dư ban đầu: **4.056.000 VNĐ**.
 
-Nhánh mặc định: [`NhTBank`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/tree/NhTBank) · [Trạng thái build và triển khai](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/workflows/deploy-pages.yml).
+Nhánh phát hành thống nhất: [`main`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/tree/main) · [Trạng thái build và triển khai](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/workflows/deploy-pages.yml).
 
 Ứng dụng chỉ dùng dữ liệu mẫu và dữ liệu của phiên hiện tại. Đăng xuất hoặc tải lại trang sẽ đặt lại dữ liệu. Chưa có backend, cơ sở dữ liệu hoặc kết nối ngân hàng thật.
 
-GitHub Pages dùng workflow `Deploy NhTBank to GitHub Pages`: cài npm, chạy kiểm thử và build React/Vite vào `dist/`, rồi triển khai từ nhánh `NhTBank`. Bản build lấy đúng đường dẫn con từ cấu hình Pages để JavaScript, CSS và font tải được tại `https://tuong26121-cell.github.io/Ngan_hang_NhTBank/`. Environment `github-pages` cần cho phép nhánh `NhTBank`; bộ lọc nhánh trong workflow và quy tắc environment là hai cấu hình riêng.
+GitHub Pages dùng workflow `Deploy NhTBank to GitHub Pages`: cài npm, chạy kiểm thử và build React/Vite vào `dist/`, rồi triển khai từ nhánh `main`. Bản build lấy đúng đường dẫn con từ cấu hình Pages để JavaScript, CSS và font tải được tại `https://tuong26121-cell.github.io/Ngan_hang_NhTBank/`. Environment `github-pages` cần cho phép nhánh `main`; bộ lọc nhánh trong workflow và quy tắc environment là hai cấu hình riêng.
 
 ## Chạy cục bộ
 
@@ -50,6 +50,10 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
 
 Các mục Cửa hàng, Thẻ điện tử, Bảo vệ thẻ, Ưu đãi, Vé dịch vụ và Quà tặng hiện mở thông tin **bản xem trước**. Ví của tôi dẫn tới Cá nhân; Mục tiêu dẫn tới phần Tiền gửi đang xem trước. Việc giữ đầy đủ mã mẫu gốc không có nghĩa tất cả chức năng của mẫu đã được tích hợp vào ứng dụng React.
+
+## Trạng thái hợp nhất ba nhánh (30/10/2026)
+
+`main` chứa UI/demo hiện có từ `NhTBank`, bao gồm PR #19; mã gateway SePay Sandbox PR #18 chỉ là nguồn thử nghiệm, không chạy tự động trên GitHub Pages, không kết nối MB thật. Trước khi triển khai cần database chống trùng, HTTPS, xác thực/phân quyền, rate limits, giám sát và nghiệm thu an toàn. Không dùng PIN demo làm xác thực backend.
 
 ## Giao diện theo mẫu NhTBank 1.1
 

@@ -56,7 +56,7 @@ const services = [
     icon: "payment",
     tone: "blue",
     description:
-      "Bản xem trước tiện ích vé dịch vụ. Chưa kết nối đặt vé hoặc thanh toán.",
+      "Không gian thanh toán mô phỏng. Chưa kết nối hóa đơn hoặc xử lý thanh toán thật.",
   },
   {
     label: "Quà tặng",

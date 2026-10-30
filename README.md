@@ -1,6 +1,6 @@
 # NhTBank 1.1 · Tài chính trong tầm tay
 
-**NhTBank 1.1** là ứng dụng ngân hàng số **mô phỏng** dành cho Nguyễn Nhựt Tường. Trải nghiệm trên điện thoại và máy tính với PIN demo, chuyển tiền mô phỏng, QR tạo cục bộ và lịch sử giao dịch. Xây dựng bằng React 18, TailwindCSS và Framer Motion.
+**NhTBank 1.1** là ứng dụng ngân hàng số **mô phỏng** dành cho Nguyễn Nhựt Tường. Trải nghiệm trên điện thoại và máy tính với tài khoản demo cục bộ, chuyển tiền mô phỏng, QR tạo cục bộ và lịch sử giao dịch. Xây dựng bằng React 18, TailwindCSS và Framer Motion.
 
 > Không kết nối cổng thanh toán, không chuyển hay nhận tiền thật. Không nhập thông tin ngân hàng thật. PIN demo được công khai, không dùng để bảo vệ dữ liệu nhạy cảm.
 
@@ -11,7 +11,7 @@
 | Điện thoại Android | [Mở bản điện thoại](https://tuong26121-cell.github.io/Ngan_hang_NhTBank/?view=android) |
 | Máy tính Windows   | [Mở bản máy tính](https://tuong26121-cell.github.io/Ngan_hang_NhTBank/?view=windows)   |
 
-**PIN dùng thử: `123456`.** Chủ tài khoản mẫu: **Nguyễn Nhựt Tường** · Số tài khoản mẫu: **0788818374** · Số dư ban đầu: **4.056.000 VNĐ**.
+**Đăng nhập:** chọn Đăng ký tài khoản, tạo tên đăng nhập và mật khẩu từ 10 ký tự. Lưu mã khôi phục hiển thị một lần. Mã PIN `123456` chỉ dùng ở bước xác nhận **chuyển tiền Sandbox**, không dùng đăng nhập. Chủ tài khoản mẫu: **Nguyễn Nhựt Tường** · Số tài khoản mẫu: **0788818374** · Số dư ban đầu: **4.056.000 VNĐ**.
 
 Nhánh phát hành thống nhất: [`main`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/tree/main) · [Trạng thái build và triển khai](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/workflows/deploy-pages.yml).
 
@@ -28,7 +28,7 @@ npm ci
 npm run dev
 ```
 
-Mở địa chỉ Vite in trong terminal (`127.0.0.1`, chỉ trên thiết bị đang chạy). Muốn thử từ thiết bị khác trong cùng Wi-Fi, chạy `npm run dev -- --host 0.0.0.0` trong mạng tin cậy; không công khai Vite ra Internet. Nhập PIN **123456** bằng bàn phím hoặc bàn phím số trên màn hình. Số dư ban đầu: **4.056.000 VNĐ**. Tải lại trang để khôi phục dữ liệu mẫu.
+Mở địa chỉ Vite in trong terminal (`127.0.0.1`, chỉ trên thiết bị đang chạy). Muốn thử từ thiết bị khác trong cùng Wi-Fi, chạy `npm run dev -- --host 0.0.0.0` trong mạng tin cậy; không công khai Vite ra Internet. Tạo tài khoản demo bằng tên đăng nhập/mật khẩu; không nhập thông tin ngân hàng thật. Số dư ban đầu: **4.056.000 VNĐ**. Tải lại trang để khôi phục dữ liệu mẫu.
 
 ```sh
 npm test                 # kiểm thử logic và tương tác
@@ -42,8 +42,8 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 
 ## Chức năng và trạng thái
 
-- Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
-- Dashboard: ẩn/hiện số dư, bộ đếm, bốn lối tắt, tám ô tiện ích theo mẫu và giao dịch gần đây.
+- Màn mở logo NT 0,5 giây; trang đăng nhập cố định theo viewport với tên đăng nhập/mật khẩu, đăng ký, quên mật khẩu bằng mã khôi phục offline, ghi nhớ tên đăng nhập (không lưu mật khẩu), cài đặt đổi mật khẩu. Dữ liệu xác thực demo lưu cục bộ trên thiết bị, không có phiên máy chủ.
+- Dashboard: ẩn/hiện số dư, bộ đếm, bốn lối tắt, chín ô tiện ích theo mẫu và giao dịch gần đây.
 - Chuyển tiền: thông tin → kiểm tra → xác nhận PIN → biên nhận, confetti và cập nhật lịch sử. Kiểm tra số dư, số tiền và chống xác nhận lặp.
 - Nạp tiền: mở bằng nút **Nạp tiền** trên bảng điều khiển hoặc từ màn Quét QR; QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gửi dữ liệu demo ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
 - NhTBank QR Studio (tùy chọn, tách biệt Sandbox): tạo ảnh VietQR nhận tiền qua dịch vụ bên thứ ba `vietqr.app/img`. Chỉ gửi dữ liệu tài khoản/ngân hàng/số tiền/nội dung/tên nếu người dùng tự điền, đánh dấu đồng ý và nhấn tạo. QR này có thể được dùng cho **chuyển khoản ngân hàng thật bên ngoài NhTBank**; không kết nối tài khoản, không xác minh chủ tài khoản hoặc thanh toán, không ghi giao dịch hay cập nhật số dư demo. Hỗ trợ mẫu compact/qronly/standee, liên kết tải ảnh và sao chép URL; phải tự đối chiếu thông tin người thụ hưởng trong ứng dụng ngân hàng. Không gửi PIN, OTP hay mật khẩu.
@@ -52,7 +52,17 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 - Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất. Đăng xuất xóa giao dịch vừa nhập, bộ lọc/tìm kiếm và khôi phục số dư mẫu, kể cả khi đăng nhập lại mà không tải lại trang.
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
 
-Các mục Cửa hàng, Thẻ điện tử, Bảo vệ thẻ, Ưu đãi, Vé dịch vụ và Quà tặng hiện mở thông tin **bản xem trước**. Ví của tôi dẫn tới Cá nhân; Mục tiêu dẫn tới phần Tiền gửi đang xem trước. Việc giữ đầy đủ mã mẫu gốc không có nghĩa tất cả chức năng của mẫu đã được tích hợp vào ứng dụng React.
+Các mục Hóa đơn, Thẻ điện tử, Bảo vệ thẻ, Ưu đãi, Thanh toán và Quà tặng hiện mở thông tin **bản xem trước**. Ví của tôi dẫn tới Cá nhân; Mục tiêu dẫn tới phần Tiền gửi đang xem trước. Việc giữ đầy đủ mã mẫu gốc không có nghĩa tất cả chức năng của mẫu đã được tích hợp vào ứng dụng React.
+
+
+## Nhận diện và xác thực mới (nhánh tính năng 30/10/2026)
+
+- Logo chính là ảnh NT xanh lam–vàng do người dùng cung cấp, không dùng logo chữ V xanh lá từ bộ mockup. Tệp `frontend/public/branding/nt-logo.webp` được tối ưu dung lượng từ ảnh gốc.
+- `frontend/public/branding/icons-20.webp` là atlas 5×4 của **20 biểu tượng màu nguyên mẫu**, không chứa logo cũ; `ReferenceIcon` ánh xạ tới nút chức năng đúng ngữ cảnh (trang chủ, quét, chuyển tiền, tài khoản, cài đặt...).
+- Mã đăng nhập demo dùng PBKDF2-SHA256 với salt ngẫu nhiên và mã khôi phục riêng có thể xoay vòng; chỉ là **minh họa trên localStorage**. Không có máy chủ xác minh, email/OTP thực, quản lý thiết bị, MFA, giới hạn tần suất toàn hệ thống hoặc session ngân hàng. Dữ liệu demo không bảo vệ tiền thật.
+- `Ghi nhớ` chỉ giữ tên đăng nhập, không lưu mật khẩu và không tự đăng nhập lại khi mở ứng dụng. Mỗi lần tải trang cần nhập mật khẩu.
+- Tài khoản demo chỉ tồn tại trong dữ liệu trình duyệt hiện tại; xóa dữ liệu trình duyệt có thể xóa tài khoản và mã khôi phục không thể phục hồi nếu không giữ bản sao.
+- Kiểm thử phần cứng Android và Windows, màn hình thấp và xem xét toàn bộ 45 mã nghiệm thu vẫn cần thực hiện trước khi kết luận đã sẵn sàng production.
 
 ## Trạng thái hợp nhất ba nhánh (30/10/2026)
 
@@ -60,12 +70,12 @@ Các mục Cửa hàng, Thẻ điện tử, Bảo vệ thẻ, Ưu đãi, Vé d�
 
 ## Giao diện theo mẫu NhTBank 1.1
 
-Đã ghép mẫu Android trong `NhTBank 1.1.zip` vào ứng dụng React hiện có: nền xanh lam–tím, vòng 3D bằng CSS, thẻ tài khoản, nút tròn, tám ô tiện ích, biểu tượng SVG và nút QR nổi giữa thanh điều hướng điện thoại. Phông Be Vietnam Pro tải từ tệp nội bộ, giữ kèm giấy phép OFL. Chế độ giảm chuyển động vẫn được tôn trọng.
+Đã ghép mẫu Android trong `NhTBank 1.1.zip` vào ứng dụng React hiện có: nền xanh lam–tím, vòng 3D bằng CSS, thẻ tài khoản, nút tròn, tám ô tiện ích, bộ biểu tượng màu lấy từ ảnh do chủ ứng dụng cung cấp và nút QR nổi giữa thanh điều hướng điện thoại. Phông Be Vietnam Pro tải từ tệp nội bộ, giữ kèm giấy phép OFL. Chế độ giảm chuyển động vẫn được tôn trọng.
 
 - Bản điện thoại: mở `/?view=android` trên máy chủ đang chạy; bố cục một cột ngay cả khi xem trên máy tính.
 - Bản máy tính: mở `/?view=windows`; tự co lại khi màn hình hẹp.
-- Có liên kết đổi bố cục ở màn đăng nhập và cuối trang. Chuyển bố cục mở lại phiên demo.
-- Tám ô tiện ích được đối chiếu với mẫu; Ví của tôi và Mục tiêu dẫn đến các màn có sẵn. Các mục chưa có nghiệp vụ mở hộp thoại ghi rõ **bản xem trước**, không thực hiện dịch vụ.
+- Có liên kết đổi bố cục ở màn đăng nhập và cuối trang. Chuyển Android/Windows bằng URL history, không tải lại và không xóa phiên hiện tại.
+- Các ô tiện ích được đối chiếu với mẫu; Ví của tôi và Mục tiêu dẫn đến các màn có sẵn. Các mục chưa có nghiệp vụ mở hộp thoại ghi rõ **bản xem trước**, không thực hiện dịch vụ.
 - Toàn bộ mã mẫu gốc nằm trong [references/nhtbank-v11](references/nhtbank-v11/README.md). Các chức năng của ứng dụng JavaScript mẫu không ghi đè dữ liệu và luồng xử lý React.
 
 Xuất hai tệp HTML độc lập từ đúng bản build React, gồm cả CSS, JavaScript và phông chữ:
@@ -75,7 +85,7 @@ npm run build
 node scripts/export-standalone.mjs
 ```
 
-Kết quả tại `dist/standalone/NhTBank-Android.html` và `dist/standalone/NhTBank-Windows.html`. Tải tệp rồi mở bằng Chromium/Chrome/Edge hiện đại; PIN demo **123456**. QR vẫn được tạo cục bộ. Đây là tệp web, không phải gói cài Android hoặc Windows. Bản bàn giao đã xuất sẵn ở `exports/`.
+Kết quả tại `dist/standalone/NhTBank-Android.html` và `dist/standalone/NhTBank-Windows.html`. Tải tệp rồi mở bằng Chromium/Chrome/Edge hiện đại; đăng ký tài khoản demo mới trước khi đăng nhập. PIN **123456** chỉ để xác nhận chuyển tiền mô phỏng. QR vẫn được tạo cục bộ. Đây là tệp web, không phải gói cài Android hoặc Windows. Bản bàn giao đã xuất sẵn ở `exports/`.
 
 ## Cấu trúc
 

@@ -13,7 +13,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ReferenceIcon, DisplaySwitcher } from "./components/ReferenceArt";
-import Login from "./components/Login";
+import AuthGate from "./components/AuthGate";
+import SecuritySettings from "./components/SecuritySettings";
 import Dashboard from "./components/Dashboard";
 import Transfer from "./components/Transfer";
 import Deposit from "./components/Deposit";
@@ -36,6 +37,7 @@ const navigation = [
 ];
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const [page, setPage] = useState("dashboard");
   const [balance, setBalance] = useState(INITIAL_BALANCE);
   const [transactions, setTransactions] = useState(initialTransactions);
@@ -43,7 +45,7 @@ export default function App() {
   const [help, setHelp] = useState(false);
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
-  const login = useCallback(() => setAuthenticated(true), []);
+  const login = useCallback((username) => { setCurrentUser(username); setAuthenticated(true); }, []);
   function navigate(next) {
     setPage(next);
     setNotifications(false);
@@ -65,6 +67,7 @@ export default function App() {
   }
   function logout() {
     setAuthenticated(false);
+    setCurrentUser("");
     setBalance(INITIAL_BALANCE);
     setTransactions(initialTransactions);
     setFilter("all");
@@ -73,7 +76,7 @@ export default function App() {
     setNotifications(false);
     setHelp(false);
   }
-  if (!authenticated) return <Login onLogin={login} />;
+  if (!authenticated) return <AuthGate onLogin={login} />;
   const title = {
     dashboard: "Tổng quan",
     transfer: "Chuyển tiền",
@@ -309,6 +312,7 @@ export default function App() {
                           <dd>Trong bộ nhớ phiên</dd>
                         </div>
                       </dl>
+                      <SecuritySettings username={currentUser} />
                       <SecurityNote />
                       <Button
                         className="text-button mt-4"

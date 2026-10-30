@@ -1,5 +1,6 @@
 import {useEffect,useState} from "react";
 import {Brand} from "./ui";
+import {DisplaySwitcher} from "./ReferenceArt";
 import {registerDemo,verifyDemo} from "../lib/demoAuth";
 import "./auth-shell.css";
 const SESSION_KEY="nhtbank-demo-remember-user";
@@ -23,7 +24,7 @@ export default function AuthGate({onLogin}){
  }catch(e){setError(e.message||"Có lỗi xảy ra.");}finally{setBusy(false);}
  }
  return <div className="auth-screen">
- {splash?<div className="auth-splash" role="status" aria-label="Đang mở NhTBank"><div className="auth-logo"><Brand light/></div></div>:
+ {splash?<div className="auth-splash" role="status" aria-label="Đang mở NhTBank"><div className="auth-logo"><img src={`${import.meta.env.BASE_URL}branding/nt-logo.webp`} alt="Biểu tượng NhTBank NT" width="180" height="180"/><strong>NhTBank</strong></div></div>:
  <div className="auth-card">
   <div className="auth-heading"><Brand/><span>TRẢI NGHIỆM MÔ PHỎNG</span><h1>{mode==="register"?"Đăng ký tài khoản":mode==="forgot"?"Quên mật khẩu":"Đăng nhập NhTBank"}</h1><p>Bảo mật tài khoản thử nghiệm trên thiết bị. Không dùng thông tin ngân hàng thật.</p></div>
   <form onSubmit={submit} className="auth-fields">
@@ -37,7 +38,7 @@ export default function AuthGate({onLogin}){
   <div className="auth-links">
    {mode==="login"?<><button onClick={()=>{setMode("forgot");setError("");setNotice("")}}>Quên mật khẩu?</button><button onClick={()=>{setMode("register");setError("");setNotice("")}}>Đăng ký tài khoản</button></>:<button onClick={()=>{setMode("login");setError("");setNotice("");setPassword("")}}>Quay lại đăng nhập</button>}
   </div>
-  <p className="auth-footer">NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật</p>
+  <DisplaySwitcher/><p className="auth-footer">NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật</p>
  </div>}
  </div>
 }

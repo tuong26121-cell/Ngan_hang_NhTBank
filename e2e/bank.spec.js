@@ -1,12 +1,5 @@
 import { test, expect } from "@playwright/test";
-async function login(page) {
-  await page.goto("./");
-  for (const number of "123456")
-    await page
-      .getByRole("button", { name: `Số ${number}`, exact: true })
-      .click();
-  await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
-}
+import { registerAndLogin, createDemoAccount, loginExisting } from "./auth-helper";
 test("complete Sandbox journey without console errors", async ({
   page,
 }, testInfo) => {
@@ -16,7 +9,8 @@ test("complete Sandbox journey without console errors", async ({
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
   });
-  await login(page);
+  await page.goto("./");
+  await registerAndLogin(page);
   await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
     "4.056.000",
   );
@@ -120,14 +114,7 @@ test("complete Sandbox journey without console errors", async ({
   await page
     .getByRole("button", { name: "Đăng xuất và xóa dữ liệu phiên" })
     .click();
-  await expect(
-    page.getByRole("button", { name: "Số 1", exact: true }),
-  ).toBeVisible();
-  for (const number of "123456")
-    await page
-      .getByRole("button", { name: `Số ${number}`, exact: true })
-      .click();
-  await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+  await loginExisting(page);
   await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
     "4.056.000",
   );
@@ -147,18 +134,17 @@ test("complete Sandbox journey without console errors", async ({
 test("keyboard login, notifications and reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("./");
-  await expect(
-    page.getByRole("heading", { name: "Nguyễn Nhựt Tường" }),
-  ).toBeVisible();
+  await createDemoAccount(page);
   await page.screenshot({
     path: `test-results/login-${test.info().project.name}.png`,
     fullPage: true,
     animations: "disabled",
   });
-  await page.keyboard.type("000000");
-  await expect(page.getByRole("alert")).toContainText("PIN chưa đúng");
-  await page.keyboard.type("123456");
-  await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
+  await page.getByLabel("Tên đăng nhập").fill("nhtbank_demo");
+  await page.getByLabel("Mật khẩu", { exact: true }).fill("Incorrect000!");
+  await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("không đúng");
+  await loginExisting(page);
   await expect(page.getByLabel("4.056.000 VNĐ", { exact: true })).toHaveText(
     "4.056.000",
   );
@@ -171,7 +157,8 @@ test("keyboard login, notifications and reduced motion", async ({ page }) => {
 test("support dialog traps focus and closes with Escape", async ({
   page,
 }, testInfo) => {
-  await login(page);
+  await page.goto("./");
+  await registerAndLogin(page);
   if (testInfo.project.use.isMobile)
     await page.getByRole("button", { name: "Cá nhân", exact: true }).click();
   await page.getByRole("button", { name: "Trung tâm hỗ trợ" }).click();

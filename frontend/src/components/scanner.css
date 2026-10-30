@@ -1,0 +1,60 @@
+/* New full-page scanner: independent of demo-deposit and QR receipt. */
+.scan-page { padding: 4px 0 30px; }
+.scan-title-row { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:21px; }
+.scan-chip { color:#23609a; font-size:10px; font-weight:750; background:#e4f5ff; border:1px solid #b7dcf7; padding:9px 12px; border-radius:999px; }
+.scan-hero { margin:0 0 20px; padding:24px 28px; border-radius:23px; color:white; background:linear-gradient(125deg,#0b2360,#0879ca 70%,#22beca); box-shadow:0 13px 35px #1768b934; }
+.scan-hero h1 { color:inherit; font-size:28px; margin:9px 0 3px; }
+.scan-hero p { color:#def7ff; font-size:12px; }
+.scan-layout { display:grid; grid-template-columns:minmax(260px,1fr) minmax(280px,.94fr); align-items:start; gap:20px; }
+.scan-camera-card { background:#0c1b37; color:#e4f4ff; padding:18px; border-radius:24px; box-shadow:0 13px 24px #0d3b6836; }
+.scan-viewport { min-height:310px; aspect-ratio:1; border-radius:18px; position:relative; overflow:hidden; background:radial-gradient(circle at 50% 50%,#204b71,#091731 75%); display:flex; align-items:center; justify-content:center; }
+.scan-viewport video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.scan-corners { position:absolute; inset:18%; pointer-events:none; }
+.scan-corners i { position:absolute; width:37px; height:37px; border:solid #63e5ff; filter:drop-shadow(0 0 7px #35c6ff88); }
+.scan-corners i:nth-child(1) { top:0; left:0; border-width:4px 0 0 4px; border-radius:13px 0 0 0; }
+.scan-corners i:nth-child(2) { top:0; right:0; border-width:4px 4px 0 0; border-radius:0 13px 0 0; }
+.scan-corners i:nth-child(3) { bottom:0; left:0; border-width:0 0 4px 4px; border-radius:0 0 0 13px; }
+.scan-corners i:nth-child(4) { bottom:0; right:0; border-width:0 4px 4px 0; border-radius:0 0 13px 0; }
+.scan-no-camera { display:flex; flex-direction:column; align-items:center; gap:14px; color:#b6dafa; font-size:13px; }
+.scan-loading { position:absolute; bottom:12px; color:white; font-size:11px; text-align:center; }
+.scan-camera-actions { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:15px 0 8px; }
+.scan-camera-actions .button { min-height:45px; font-size:12px; }
+.scan-upload { cursor:pointer; }
+.scan-upload input { position:absolute; width:1px; height:1px; opacity:0; }
+.scan-upload:focus-within { outline:3px solid #7ad9ff; outline-offset:3px; }
+.scan-camera-card > p { font-size:11px; color:#b7d7ed; line-height:1.7; }
+.scan-detail { padding:24px; min-width:0; }
+.scan-detail h2 { font-size:20px; color:#153876; margin:8px 0 18px; }
+.scan-detail-fields { display:grid; gap:11px; margin-bottom:17px; }
+.scan-detail-fields > div { padding:11px 14px; border-radius:12px; border:1px solid #dce9fb; background:#f7faff; display:flex; flex-direction:column; gap:4px; overflow-wrap:anywhere; }
+.scan-detail-fields span { color:#536b8f; font-size:10px; }
+.scan-detail-fields strong { font-size:16px; }
+.scan-warning { display:flex; gap:10px; background:#fff6e9; color:#84541e; border:1px solid #f2d8ab; padding:12px; border-radius:12px; margin-bottom:14px; }
+.scan-warning p { font-size:11px; line-height:1.7; }
+.scan-empty-result { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px 0 28px; gap:14px; color:#3e6da0; }
+.scan-empty-result p { font-size:12px; color:#536b8f; line-height:1.8; max-width:350px; }
+.scan-empty-result h2 { margin:0; }
+.scan-manual-toggle { margin-top:20px; }
+.scan-manual { margin-top:10px; display:grid; gap:10px; }
+.scan-manual label { font-size:11px; }
+.scan-manual textarea { font:inherit; width:100%; min-height:75px; border-radius:10px; border:1px solid #ccd9ee; padding:10px; resize:vertical; }
+.scan-error { margin-top:14px; }
+.bank-handoff { margin-top:19px; background:linear-gradient(135deg,#e9f7ff,#f2f7ff); border:1px solid #cfe8f8; padding:17px; border-radius:16px; width:100%; text-align:left; }
+.bank-handoff-head { display:flex; gap:9px; color:#124b8e; align-items:center; margin-bottom:14px; }
+.bank-handoff-head strong { font-size:13px; }
+.bank-handoff > label { display:block; font-size:11px; font-weight:700; margin-bottom:7px; color:#425a7b; }
+.bank-handoff-controls { display:flex; gap:9px; flex-wrap:wrap; }
+.bank-handoff-controls select { background:#fff; flex:1 1 175px; width:100%; min-width:0; border-radius:10px; border:1px solid #b9d8f3; padding:12px; font:inherit; font-size:12px; }
+.bank-handoff-button { flex:1 1 150px; min-height:45px; white-space:nowrap; text-decoration:none; font-size:12px; }
+.bank-handoff > p { color:#48607d; font-size:10px; margin-top:12px; line-height:1.75; }
+@media (max-width:900px) { .scan-layout { grid-template-columns:1fr; } }
+@media (max-width:520px) {
+  .scan-hero { padding:19px; } .scan-title-row { flex-wrap:wrap; }
+  .scan-viewport { min-height:250px; } .scan-detail { padding:19px; }
+  .scan-camera-card { padding:11px; } .scan-camera-actions { grid-template-columns:1fr 1fr; }
+  .scan-camera-actions .button { padding:9px; font-size:11px; }
+}
+@media (prefers-reduced-motion:reduce) { .scan-corners i { filter:none; } }
+
+/* Touch targets on scanner must meet the existing 44px P0 requirement. */
+.scan-page button { min-height:44px; }

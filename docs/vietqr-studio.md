@@ -26,3 +26,11 @@
 ## Cảnh báo
 
 Sử dụng tham số `holder` chỉ là điền tên hiển thị vào ảnh; không chứng minh tên đã được ngân hàng xác minh. Tên người thụ hưởng do ứng dụng ngân hàng xác nhận mới là thông tin cần đối chiếu. Dịch vụ `vietqr.app` không phải backend của NhTBank.
+
+## Nâng cấp giao diện nhận tiền và quét QR v2
+
+- Thẻ VietQR được bao bởi giao diện NhTBank (gradient, biên nhận với viền đứt, dữ liệu nhận tiền); bitmap của bên cung cấp không được thay đổi. Có thêm chọn ngân hàng gửi tiền và chuyển sang trang chính thức của MB, VCB, TCB, KLB, Agribank. **Đây không phải deep link mở màn chuyển tiền**, không đính kèm thông tin giao dịch để tránh truyền bên ngoài khi chưa có tích hợp cấp phép.
+- Nút QR giữa thanh điều hướng mở màn camera (`QrScanner.jsx`) sau khi đăng nhập. `getUserMedia` chỉ chạy trong HTTPS sau khi mở màn, yêu cầu trình duyệt cấp quyền. Bộ giải mã `jsqr` chạy cục bộ cho camera và ảnh thư viện, không upload. Các trường VietQR TLV mã 38/NAPAS, tiền VND và CRC được kiểm tra cục bộ trong `scanVietQr.js`.
+- CRC là xác nhận toàn vẹn dữ liệu, **không phải xác thực người nhận**. Tên ngân hàng BIN chỉ hiển thị mã; ứng dụng ngân hàng thật phải đối soát tên và xác nhận trước giao dịch.
+- Khi thiết bị không có camera/không cấp quyền, có chọn ảnh từ thư viện hoặc dán payload để phân tích; khi rời trang hoặc quét xong thì dừng stream.
+- E2E mới dùng file PNG VietQR tạo cục bộ, không gửi tiền, không gọi nhà cung cấp ngoài. Cần kiểm tra camera Android thật và Windows thật trước khi nghiệm thu đầy đủ.

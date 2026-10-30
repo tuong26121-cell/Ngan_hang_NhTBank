@@ -96,7 +96,7 @@ for (const view of ["android", "windows"]) {
     }
     for (const [label, heading] of [
       ["Giao dịch", "Chuyển tiền"],
-      ["QR", "Nạp tiền"],
+      ["Quét QR", "Quét mã QR"],
       ["Lịch sử", "Lịch sử giao dịch"],
       ["Cá nhân", "Cá nhân"],
     ]) {

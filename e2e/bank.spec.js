@@ -172,7 +172,7 @@ test("support dialog traps focus and closes with Escape", async ({
   page,
 }, testInfo) => {
   await login(page);
-  if (testInfo.project.name === "mobile")
+  if (testInfo.project.use.isMobile)
     await page.getByRole("button", { name: "Cá nhân", exact: true }).click();
   await page.getByRole("button", { name: "Trung tâm hỗ trợ" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();

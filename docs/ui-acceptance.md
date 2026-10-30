@@ -172,3 +172,18 @@ Chưa nghiệm thu chính thức: các P0 cần thiết bị thật, rà tương
 - Phát hiện liên kết Máy tính ở màn đăng nhập Android xem từ desktop bị thông báo mô phỏng chặn vùng bấm. Đã đưa thông báo về luồng bố cục bình thường; kiểm tra lại đổi bố cục hai chiều bằng thao tác click đạt. Chạy lại riêng E2E đăng nhập bàn phím desktop/mobile sau sửa: 2/2 đạt.
 - Hai HTML trong `exports/` xuất từ cùng production bundle đã build thành công. Kiểm tra chính các HTML qua HTTP cục bộ: đăng nhập, dialog và khôi phục focus, chuyển 100.000 VNĐ demo, số dư còn 3.956.000, QR hợp lệ và lỗi số tiền 0; không có lỗi JavaScript và không có request nào ngoài request mở chính HTML (font/JS/CSS nhúng sẵn). Chính sách Chromium của môi trường chặn điều hướng `file://`, nên chưa xác minh trực tiếp thao tác mở tệp từ trình quản lý tệp trên Android/Windows thật.
 - `git diff --check` và kiểm tra Prettier cho các tệp đã chỉnh đều đạt. Mã mẫu gốc được giữ nguyên, không đưa vào phạm vi định dạng lại hoặc thực thi hướng dẫn.
+
+# Điều tra bổ sung PR #19 — 30/10/2026
+
+Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm tra: head `87c32ac44eef3e5084f4aac60d69ca44234f85a1`; commit bổ sung được nhận diện bằng lịch sử PR #19. Bổ sung project Pixel 7 và bằng chứng tải script/CSS; giữ dữ liệu và ứng dụng hiện có. Chưa tái hiện lỗi người dùng trên thiết bị thật, chưa xác định nguyên nhân gốc, chưa nghiệm thu P0 và không kết luận đã sửa xong. Đối chiếu đủ 45 mã trong báo cáo; không thay trạng thái các phép đo chưa thực hiện.
+
+
+
+## PR #19 — sửa thao tác chuyển giao diện (30/10/2026)
+
+- **Phát hiện từ mã nguồn:** `DisplaySwitcher` trước bản sửa dùng `<a href="?view=...">`, tạo điều hướng toàn trang. NhTBank giữ `authenticated`, số dư mô phỏng, lịch sử phát sinh trong React `useState`; tải lại làm mất toàn bộ phiên. Đường chuyển chế độ chỉ thay đổi CSS `html[data-display]`, không đòi hỏi reload.
+- **Sửa trong mã ứng dụng:** `frontend/src/components/ReferenceArt.jsx`, dùng `history.pushState` kết hợp cập nhật `document.documentElement.dataset.display` và `useState`; lắng nghe `popstate` để điều hướng Back đồng bộ. Giữ hành vi mở tab mới khi bấm phím bổ trợ.
+- **Kiểm thử hồi quy:** `e2e/buttons.spec.js` thêm hai trường hợp từ Android/Windows, trên cả dự án mobile (tap) và desktop (click): nhập PIN demo, chuyển bố cục, xác nhận không quay về PIN, URL và CSS đúng, nút vẫn hoạt động, back vẫn duy trì phiên, không có `pageerror`. **Test này sẽ thất bại trước sửa** vì điều hướng đầy đủ khiến React reset phiên.
+- **Bằng chứng trước sửa:** run `40995212414` có 31 unit tests đạt và 14 E2E đạt/4 skipped; run Pages `40995212753` build và upload thành công nhưng deploy job bị **skipped**. Bài thử trình duyệt bên ngoài thấy URL Pages truy cập được và điều hướng Android hoạt động; một lần thử Windows nhập PIN không thành công do công cụ click nhầm nút, không đủ chứng minh lỗi ở ứng dụng Windows. Chưa có bằng chứng về lớp phủ chặn thao tác trong các nút khác.
+- **Trạng thái:** đã sửa mã và bổ sung E2E tại commit `73ea0420a551928e4e193dbb31c9bc36e9cc289c`; **chưa xác nhận** unit/build/E2E sau commit và chưa nghiệm thu P0 trên thiết bị Android/Windows thật. Chờ kết quả CI mới, không tự đánh dấu đạt.
+- Không thay đổi luồng giao dịch hoặc số dư demo.

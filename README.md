@@ -45,7 +45,8 @@ Linux tối giản có thể cần thư viện hệ thống Chromium: `npx playw
 - Đăng nhập PIN, bàn phím phát sáng và màn chờ khối 3D.
 - Dashboard: ẩn/hiện số dư, bộ đếm, bốn lối tắt, tám ô tiện ích theo mẫu và giao dịch gần đây.
 - Chuyển tiền: thông tin → kiểm tra → xác nhận PIN → biên nhận, confetti và cập nhật lịch sử. Kiểm tra số dư, số tiền và chống xác nhận lặp.
-- Nạp tiền: QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gọi dịch vụ ảnh ngoài, không gửi số tiền/nội dung ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
+- Nạp tiền: QR demo tạo ngay trên thiết bị, tự cập nhật sau khi ngừng nhập 400 ms. Không gửi dữ liệu demo ra mạng. QR chỉ chứa chuỗi `NHTBANK_SANDBOX:` và dữ liệu demo, **không phải VietQR thanh toán**. Nhãn DEMO gắn trong ảnh gốc; không có xác nhận tiền về.
+- NhTBank QR Studio (tùy chọn, tách biệt Sandbox): tạo ảnh VietQR nhận tiền qua dịch vụ bên thứ ba `vietqr.app/img`. Chỉ gửi dữ liệu tài khoản/ngân hàng/số tiền/nội dung/tên nếu người dùng tự điền, đánh dấu đồng ý và nhấn tạo. QR này có thể được dùng cho **chuyển khoản ngân hàng thật bên ngoài NhTBank**; không kết nối tài khoản, không xác minh chủ tài khoản hoặc thanh toán, không ghi giao dịch hay cập nhật số dư demo. Hỗ trợ mẫu compact/qronly/standee, liên kết tải ảnh và sao chép URL; phải tự đối chiếu thông tin người thụ hưởng trong ứng dụng ngân hàng. Không gửi PIN, OTP hay mật khẩu.
 - Lịch sử: lọc Thu/Chi và tìm kiếm. Cá nhân: thông tin chủ tài khoản và đăng xuất. Đăng xuất xóa giao dịch vừa nhập, bộ lọc/tìm kiếm và khôi phục số dư mẫu, kể cả khi đăng nhập lại mà không tải lại trang.
 - Tiền gửi, Vay nhanh: màn xem trước, chưa có nghiệp vụ. Không có backend hay cơ sở dữ liệu.
 

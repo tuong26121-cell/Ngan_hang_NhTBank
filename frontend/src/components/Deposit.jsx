@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button, SecurityNote } from "./ui";
 import { money, demoQrUrl } from "../lib/bank";
+import VietQrStudio from "./VietQrStudio";
 export default function Deposit({ navigate }) {
   const [amount, setAmount] = useState("100000");
   const [note, setNote] = useState("NAP TIEN DEMO");
@@ -211,6 +212,7 @@ export default function Deposit({ navigate }) {
           )}
         </section>
       </div>
+      <VietQrStudio />
       <SecurityNote />
     </div>
   );

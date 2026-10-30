@@ -89,7 +89,7 @@ export function SecurityNote() {
   return (
     <div className="security-note">
       <ShieldCheck size={15} />
-      <span>Ứng dụng mô phỏng · Không nhập thông tin ngân hàng thật</span>
+      <span>Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật</span>
     </div>
   );
 }

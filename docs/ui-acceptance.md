@@ -187,3 +187,10 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - **Bằng chứng trước sửa:** run `40995212414` có 31 unit tests đạt và 14 E2E đạt/4 skipped; run Pages `40995212753` build và upload thành công nhưng deploy job bị **skipped**. Bài thử trình duyệt bên ngoài thấy URL Pages truy cập được và điều hướng Android hoạt động; một lần thử Windows nhập PIN không thành công do công cụ click nhầm nút, không đủ chứng minh lỗi ở ứng dụng Windows. Chưa có bằng chứng về lớp phủ chặn thao tác trong các nút khác.
 - **Trạng thái:** đã sửa mã và bổ sung E2E tại commit `73ea0420a551928e4e193dbb31c9bc36e9cc289c`; **chưa xác nhận** unit/build/E2E sau commit và chưa nghiệm thu P0 trên thiết bị Android/Windows thật. Chờ kết quả CI mới, không tự đánh dấu đạt.
 - Không thay đổi luồng giao dịch hoặc số dư demo.
+
+## Bổ sung NhTBank QR Studio · 30/10/2026 (nhánh tính năng)
+
+- Tách riêng ô tạo VietQR qua dịch vụ bên ngoài khỏi QR Sandbox. Không chỉnh sửa dòng tiền và số dư demo.
+- Các tiêu chí UI liên quan: C01 (các nút tạo/copy/tải), C02 (focus), C05 (feedback), A01 (khả dụng trên Android/Windows), B (bố cục), E (riêng tư). **Chưa nghiệm thu thiết bị thật**.
+- Bổ sung kiểm thử Vitest và E2E với phản hồi ảnh bên ngoài được giả lập, tránh phụ thuộc mạng. Kết quả CI sẽ được ghi nhận ở PR; chưa nhận định đạt khi chưa có bằng chứng.
+- Tài liệu chi tiết: [vietqr-studio.md](vietqr-studio.md). Không ảnh hưởng đến 45 tiêu chí nghiệm thu hiện hành của mô phỏng cho tới khi PR được kiểm tra và gộp.

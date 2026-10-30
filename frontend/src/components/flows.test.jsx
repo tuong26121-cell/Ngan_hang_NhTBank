@@ -7,6 +7,8 @@ import Login from "./Login";
 import Transfer from "./Transfer";
 import Deposit from "./Deposit";
 vi.mock("canvas-confetti", () => ({ default: vi.fn() }));
+// Session-flow tests bypass account UI; authentication gets its own E2E suite.
+vi.mock("./AuthGate", () => ({ default: ({ onLogin }) => <button onClick={() => onLogin("test_account")}>Mở phiên demo để kiểm thử</button> }));
 // Session-state checks do not depend on animation-frame scheduling in jsdom.
 vi.mock("./ui", async (importOriginal) => ({
   ...(await importOriginal()),
@@ -31,7 +33,7 @@ describe("User flows", () => {
   it("clears transactions, balance and search on logout without a reload", async () => {
     render(<App />);
     async function unlock() {
-      for (const key of "123456") fireEvent.keyDown(window, { key });
+      fireEvent.click(screen.getByRole("button", { name: "Mở phiên demo để kiểm thử" }));
       await screen.findByRole(
         "heading",
         { name: /Xin chào/ },

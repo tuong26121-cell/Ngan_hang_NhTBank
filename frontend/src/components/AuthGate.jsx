@@ -6,15 +6,23 @@ import "./auth-shell.css";
 
 const REMEMBER_KEY = "nhtbank-demo-remember-user";
 
+function rememberedUsername() {
+  try {
+    return localStorage.getItem(REMEMBER_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
 export default function AuthGate({ onLogin }) {
   const [splash, setSplash] = useState(true);
   const [mode, setMode] = useState("login");
-  const [username, setUsername] = useState(() => localStorage.getItem(REMEMBER_KEY) || "");
+  const [username, setUsername] = useState(rememberedUsername);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [recoveryInput, setRecoveryInput] = useState("");
   const [recoveryOutput, setRecoveryOutput] = useState("");
-  const [remember, setRemember] = useState(Boolean(localStorage.getItem(REMEMBER_KEY)));
+  const [remember, setRemember] = useState(() => Boolean(rememberedUsername()));
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);

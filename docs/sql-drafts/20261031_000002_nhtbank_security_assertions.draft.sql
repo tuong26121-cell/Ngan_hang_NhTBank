@@ -41,9 +41,21 @@ begin
   end if;
 
   if has_schema_privilege('anon', 'private', 'USAGE')
-     or has_schema_privilege('authenticated', 'private', 'USAGE')
-     or has_schema_privilege('public', 'private', 'USAGE') then
-    raise exception 'FAIL: PUBLIC/client role has USAGE on private schema';
+     or has_schema_privilege('authenticated', 'private', 'USAGE') then
+    raise exception 'FAIL: client role has USAGE on private schema';
+  end if;
+
+  if exists (
+    select 1
+    from pg_catalog.pg_namespace n
+    cross join lateral pg_catalog.aclexplode(
+      coalesce(n.nspacl, pg_catalog.acldefault('n', n.nspowner))
+    ) acl
+    where n.nspname = 'private'
+      and acl.grantee = 0
+      and acl.privilege_type = 'USAGE'
+  ) then
+    raise exception 'FAIL: PUBLIC has USAGE on private schema';
   end if;
 
   if not has_schema_privilege('service_role', 'private', 'USAGE') then
@@ -77,8 +89,7 @@ begin
 
     foreach p in array all_table_privileges loop
       if has_table_privilege('anon', format('private.%I', t), p)
-         or has_table_privilege('authenticated', format('private.%I', t), p)
-         or has_table_privilege('public', format('private.%I', t), p) then
+         or has_table_privilege('authenticated', format('private.%I', t), p) then
         raise exception 'FAIL: PUBLIC/client role has % on private.%', p, t;
       end if;
     end loop;
@@ -133,8 +144,7 @@ begin
      or not has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'SELECT')
      or has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'UPDATE')
      or has_sequence_privilege('anon', 'private.audit_events_id_seq', 'USAGE')
-     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'USAGE')
-     or has_sequence_privilege('public', 'private.audit_events_id_seq', 'USAGE') then
+     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'USAGE') then
     raise exception 'FAIL: audit sequence grants are incorrect';
   end if;
 

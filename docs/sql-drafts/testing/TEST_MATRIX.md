@@ -6,11 +6,11 @@ Use this as the run record. Initial status for every row is NOT RUN.
 |---|---|---|---|---|
 | PRE-01 | Environment | Runner accepts localhost/127.0.0.1 only, port 54322, database postgres | Other host/port/database rejected before SQL | NOT RUN |
 | PRE-02 | Environment | PostgreSQL version and Supabase auth/roles preflight | PostgreSQL 17+; auth.users and required roles exist | NOT RUN |
-| ACL-01 | Schema | private owner and grants | Owner postgres; service_role USAGE; no PUBLIC/client USAGE | NOT RUN |
+| ACL-01 | Schema | private owner and grants | Owner postgres; service_role USAGE only; no PUBLIC/client USAGE and no service_role CREATE | NOT RUN |
 | ACL-02 | Tables | RLS on all seven application tables | RLS enabled everywhere | NOT RUN |
 | ACL-03 | Tables | anon/authenticated table privileges | No direct table privileges | NOT RUN |
 | ACL-04 | Tables | service_role privilege matrix | Exactly the documented SELECT/INSERT/UPDATE/DELETE rights; no TRUNCATE/REFERENCES/TRIGGER/MAINTAIN | NOT RUN |
-| ACL-05 | Sequences | audit identity sequence privileges | service_role USAGE/SELECT only; no PUBLIC/client USAGE | NOT RUN |
+| ACL-05 | Sequences | audit identity sequence privileges | postgres owner; service_role USAGE/SELECT only; no PUBLIC/client USAGE/SELECT/UPDATE | NOT RUN |
 | ACL-06 | Functions | ownership and EXECUTE ACLs | postgres owns functions; clients/PUBLIC cannot execute; service_role can execute only bounded cleanup function | NOT RUN |
 | RLS-01 | RLS | policy inventory | No client policies in private schema | NOT RUN |
 | AUD-01 | Audit | UPDATE probe | Rejected with SQLSTATE 55000 | NOT RUN |
@@ -40,6 +40,9 @@ These must remain NOT RUN until implemented as backend integration tests in an i
 9. Application-level audit metadata redaction and retention policy.
 10. Supabase API Exposed schemas configuration excludes `private`; this is a dashboard/project configuration check and cannot be proven by these SQL scripts.
 11. Owner/superuser threat model, backup integrity, external immutable audit export, disaster recovery and compliance review.
+12. User deletion behavior: sandbox_accounts ON DELETE RESTRICT needs a reviewed archive/deletion workflow.
+13. Role-management authorization: only trusted backend code may assign privileged user_roles; never trust user-editable user_metadata.
+14. Idempotency retention/replay window: verify TTL exceeds retry/dispute windows before cleanup is enabled.
 
 ## Run record template
 

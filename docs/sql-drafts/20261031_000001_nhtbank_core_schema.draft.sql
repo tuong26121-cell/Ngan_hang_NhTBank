@@ -1,4 +1,4 @@
--- NhTBank core database draft v2 (security hardening)
+-- NhTBank core database draft v3 (security hardening)
 -- STATUS: REVIEW ONLY. DO NOT APPLY TO ANY HOSTED SUPABASE PROJECT.
 -- Target: PostgreSQL 17 / Supabase. Expected DDL owner: postgres.
 -- This file is intentionally under docs/sql-drafts/, not supabase/migrations/.
@@ -72,7 +72,6 @@ create table private.user_roles (
   primary key (user_id, role_name)
 );
 
--- Explicitly sandbox-only. No real bank account records in this first draft.
 create table private.sandbox_accounts (
   id uuid primary key default gen_random_uuid(),
   owner_user_id uuid not null references auth.users(id) on delete restrict,
@@ -153,11 +152,53 @@ create table private.idempotency_keys (
 create index idempotency_keys_expiry_idx
   on private.idempotency_keys(expires_at);
 
--- Append-only, redacted audit metadata. A DB owner/superuser can still alter
--- triggers; export important audit events to an independently controlled sink.
+-- Bounded cleanup: only expired terminal rows can be removed. In-flight
+-- "started" rows are retained for explicit recovery/reconciliation.
+-- SECURITY DEFINER is tightly scoped, owned by postgres, and executable only
+-- by service_role. The trusted backend must call it with a bounded batch size.
+create or replace function private.purge_expired_idempotency_keys(p_batch_size integer default 500)
+returns integer
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  deleted_count integer;
+begin
+  if p_batch_size is null or p_batch_size < 1 or p_batch_size > 5000 then
+    raise exception 'p_batch_size must be between 1 and 5000'
+      using errcode = '22023';
+  end if;
+
+  with candidates as (
+    select k.id
+    from private.idempotency_keys as k
+    where k.expires_at <= pg_catalog.now()
+      and k.processing_status in ('completed', 'failed')
+    order by k.expires_at, k.id
+    limit p_batch_size
+    for update skip locked
+  )
+  delete from private.idempotency_keys as target
+  using candidates
+  where target.id = candidates.id;
+
+  get diagnostics deleted_count = row_count;
+  return deleted_count;
+end;
+$$;
+
+revoke all on function private.purge_expired_idempotency_keys(integer)
+  from public, anon, authenticated, service_role;
+grant execute on function private.purge_expired_idempotency_keys(integer)
+  to service_role;
+
+-- Append-only audit metadata. actor_user_id is a historical UUID snapshot,
+-- deliberately without an auth.users FK: ON DELETE SET NULL would issue an
+-- UPDATE that conflicts with the append-only trigger below.
 create table private.audit_events (
   id bigint generated always as identity primary key,
-  actor_user_id uuid references auth.users(id) on delete set null,
+  actor_user_id uuid,
   actor_type text not null check (actor_type in ('user', 'admin', 'system', 'provider')),
   action varchar(120) not null check (length(btrim(action)) > 0),
   entity_type varchar(120) not null check (length(btrim(entity_type)) > 0),
@@ -168,8 +209,6 @@ create table private.audit_events (
     check (pg_catalog.pg_column_size(metadata) <= 8192),
   created_at timestamptz not null default pg_catalog.now()
 );
--- actor_user_id may become NULL when the referenced auth.users row is deleted;
--- actor_type preserves the historical actor classification.
 
 create index audit_events_actor_time_idx
   on private.audit_events(actor_user_id, created_at desc);
@@ -208,6 +247,14 @@ alter table private.sandbox_transactions enable row level security;
 alter table private.webhook_inbox enable row level security;
 alter table private.idempotency_keys enable row level security;
 alter table private.audit_events enable row level security;
+
+-- Explicitly neutralize unexpected GLOBAL default ACL grants on all current
+-- objects, then grant the exact minimum. Default-privilege REVOKE scoped to
+-- this schema alone cannot remove grants inherited from global defaults.
+revoke all on all tables in schema private
+  from public, anon, authenticated, service_role;
+revoke all on all sequences in schema private
+  from public, anon, authenticated, service_role;
 
 -- Narrow backend grants. service_role bypasses RLS and must never reach clients.
 grant select, insert, update on private.profiles to service_role;

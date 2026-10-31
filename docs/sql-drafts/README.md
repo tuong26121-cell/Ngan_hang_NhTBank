@@ -28,7 +28,7 @@
 2. Browser/mobile clients receive no USAGE on private and no table or sequence grants.
 3. A trusted backend is the only intended database caller. Its service_role secret is server-side only, never shipped to browser/mobile bundles, logs, or Git.
 4. service_role bypasses RLS. The backend must authenticate and authorize every request before using it; RLS is not a substitute for backend authorization.
-5. DDL is expected to run under the Supabase postgres owner role. Table/sequence default privileges are role-specific. Per-schema function default ACLs cannot revoke a global PUBLIC EXECUTE grant; each function must therefore have an explicit REVOKE from PUBLIC and application roles.
+5. DDL is expected to run under the Supabase postgres owner role. Default privileges are role-specific, and per-schema REVOKE cannot subtract privileges granted by global defaults. The current objects receive explicit grants/revokes; inspect effective ACLs for future objects. Per-schema function default ACLs cannot revoke a global PUBLIC EXECUTE grant, so every function must carry an explicit REVOKE from PUBLIC and application roles.
 6. Table ownership must remain with a trusted migration/database owner, never anon, authenticated, or service_role.
 7. No client policies are created because direct client database access is intentionally prohibited in this design.
 8. Sandbox records are constrained to provider sepay, environment sandbox, and VND only. This is not a real-money ledger or payment execution system.
@@ -44,7 +44,7 @@
 - Namespace idempotency keys by a server-generated principal key (for example user:<uuid> or system:<service>).
 - Add webhook status/timestamp consistency constraints and non-empty provider identifiers.
 - Add audit metadata type/size checks and profile timestamp maintenance.
-- Expand assertions to check elevated table privileges, function ACLs, RLS, object ownership, and audit UPDATE/DELETE/TRUNCATE rejection.
+- Expand assertions to check elevated table privileges, effective function ACLs, RLS, object ownership, per-principal idempotency uniqueness, webhook state consistency, and audit UPDATE/DELETE/TRUNCATE rejection.
 
 ## Local review workflow (not performed by this revision)
 

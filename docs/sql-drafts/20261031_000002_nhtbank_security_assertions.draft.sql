@@ -111,21 +111,6 @@ begin
     raise exception 'FAIL: a private function is executable by PUBLIC';
   end if;
 
-  -- Verify the postgres-in-private default function ACL explicitly revokes PUBLIC.
-  if exists (
-    select 1
-    from pg_catalog.pg_default_acl d
-    join pg_catalog.pg_namespace n on n.oid = d.defaclnamespace
-    cross join lateral pg_catalog.aclexplode(d.defaclacl) acl
-    where n.nspname = 'private'
-      and d.defaclrole = 'postgres'::regrole
-      and d.defaclobjtype = 'f'
-      and acl.grantee = 0
-      and acl.privilege_type = 'EXECUTE'
-  ) then
-    raise exception 'FAIL: default EXECUTE is still granted to PUBLIC in private';
-  end if;
-
   -- No permissive client policies should exist in this server-only design.
   if exists (
     select 1

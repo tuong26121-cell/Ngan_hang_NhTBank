@@ -38,11 +38,14 @@
 11. Audit triggers reject UPDATE, DELETE, and TRUNCATE, but a superuser/table owner can alter or disable controls. Export security-critical audit records to an independently controlled sink before relying on them for compliance.
 12. The idempotency cleanup function is SECURITY DEFINER, owned by postgres, and can delete only expired completed/failed rows in bounded batches. It cannot delete started rows. Schedule calls from a trusted backend/maintenance process; no scheduler or paid service is provisioned by this draft.
 13. Request-hash mismatch detection remains an application/backend responsibility. The unique constraint prevents duplicate principal/scope/key rows but cannot by itself compare and reject a different request hash.
+14. The cleanup retention window must exceed provider/client retry and dispute windows. Once an idempotency row is purged, a late retry can be treated as new; define an explicit retention policy before enabling cleanup.
+15. Deleting an auth user is blocked while sandbox_accounts rows reference that user with ON DELETE RESTRICT. Define a reviewed account archival/deletion workflow before enabling user deletion.
+16. user_roles contains privileged role names. Only trusted authorization code may write it; never derive admin/support/operations roles from user-editable user_metadata.
 
 ## v3 corrections
 
 - Preserve exact v2 files under archive/v2 before changing the active draft.
-- Explicitly revoke all current table and sequence ACLs from PUBLIC, anon, authenticated, and service_role before reapplying the narrow server grant matrix. This neutralizes unexpected global default ACL grants on the objects already created.
+- Explicitly revoke all current schema ACLs (including stale service_role CREATE), table ACLs, and sequence ACLs from PUBLIC, anon, authenticated, and service_role before reapplying the narrow server grant matrix. This neutralizes unexpected global default ACL grants on the objects already created.
 - Keep role-specific default-privilege revokes for future objects and document that they do not override global defaults.
 - Remove the audit actor foreign key so deleting auth.users does not attempt a forbidden UPDATE on the append-only audit table; retain actor UUID as historical data.
 - Add a bounded SECURITY DEFINER cleanup function for expired terminal idempotency records. Started records are never purged by this function.

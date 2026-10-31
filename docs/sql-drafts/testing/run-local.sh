@@ -11,8 +11,8 @@ command -v psql >/dev/null 2>&1 || fail "psql is required. Install PostgreSQL 17
 
 # Strict allow-list: never accept a hosted hostname, alternate port, or database.
 # Credentials may be present in the URL, but it must target local loopback only.
-if [[ ! "$LOCAL_DATABASE_URL" =~ ^postgres(ql)?://([^/@]+@)?(localhost|127\.0\.0\.1):54322/postgres([?].*)?$ ]]; then
-  fail "Refusing connection. Only localhost/127.0.0.1:54322/postgres is allowed."
+if [[ ! "$LOCAL_DATABASE_URL" =~ ^postgres(ql)?://([^/@?]+@)?(localhost|127\.0\.0\.1):54322/postgres$ ]]; then
+  fail "Refusing connection. Only an exact localhost/127.0.0.1:54322/postgres URI without query parameters is allowed."
 fi
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"

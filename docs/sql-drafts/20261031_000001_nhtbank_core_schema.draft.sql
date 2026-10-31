@@ -35,8 +35,9 @@ alter default privileges for role postgres in schema private
   revoke all on tables from public, anon, authenticated, service_role;
 alter default privileges for role postgres in schema private
   revoke all on sequences from public, anon, authenticated, service_role;
-alter default privileges for role postgres in schema private
-  revoke execute on functions from public, anon, authenticated, service_role;
+-- Per-schema default ACLs cannot revoke a global PUBLIC function grant.
+-- Every function created below therefore has an explicit REVOKE; repeat that
+-- explicit REVOKE for each future function added to this schema.
 
 create table private.profiles (
   user_id uuid primary key references auth.users(id) on delete cascade,

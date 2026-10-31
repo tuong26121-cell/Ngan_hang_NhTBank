@@ -70,8 +70,8 @@ These are a design inventory, not a migration. Final names, constraints and rete
 ## 6. Suggested delivery sequence
 
 - **2A — Design approval:** confirm product scope, identity model, backend hosting and data retention.
-- **2B — Isolated development environment:** create Supabase development branch after cost approval; no production data is copied to the branch.
-- **2C — First migration:** create private schemas, profile/role mapping, sandbox transaction tables, constraints, RLS and minimal grants.
+- **2B — No-cost preparation (current):** maintain SQL drafts and security assertions on the Git working branch; validate locally with a disposable PostgreSQL/Supabase stack. No hosted development branch is required.
+- **2C — First migration:** after review and local validation, create a canonical migration using `supabase migration new`; apply locally first. Hosted database changes require separate approval.
 - **2D — Backend skeleton:** health, JWT validation, request IDs, rate limits, provider adapter interface and secret handling.
 - **2E — Sandbox persistence:** webhook inbox + idempotency + transaction sync, with replay and failure tests.
 - **2F — Client integration:** replace device-local demo auth only after server auth is implemented; preserve the existing Sandbox UX as a separate mode.
@@ -80,14 +80,15 @@ These are a design inventory, not a migration. Final names, constraints and rete
 ## 7. Explicitly out of scope
 
 - No production migration, SQL DDL, data writes or Edge Function deployment has been performed.
-- No Supabase development branch has been created yet; the provider quoted **USD 0.01344/hour**. User approval is required before provisioning this billable resource.
+- No Supabase development branch has been created. The selected workflow avoids this hourly charge and uses GitHub drafts plus local PostgreSQL/Supabase tooling.
 - No real bank credentials, OTP, account statements or payment tokens are requested or stored.
 - No production payments, real balance, card issuing, lending or deposit products.
 - No deployment to GitHub Pages, Vercel or a public API host.
 
 ## 8. Verification checklist before first migration
 
-- [ ] User approves Supabase development-branch hourly cost.
+- [ ] Review SQL draft pack in `docs/sql-drafts/`.
+- [ ] Validate the draft against a disposable local PostgreSQL/Supabase 17 environment.
 - [ ] Confirm backend runtime/hosting and environment secret manager.
 - [ ] Approve identity and role model.
 - [ ] Approve table inventory, data minimization and retention.
@@ -107,3 +108,15 @@ A read-only catalog query on the existing Supabase project found explicit defaul
 - Before creating any table/function in `public`, the first migration must revoke broad default privileges and add narrowly scoped explicit grants alongside RLS. Prefer keeping internal ledger/provider/webhook objects in a non-exposed schema.
 
 This is a project-specific finding from `pg_catalog.pg_default_acl`, not an assumption based only on the general Supabase platform changelog.
+
+
+## 10. Giai đoạn 2B — SQL draft pack (2026-10-31)
+
+Prepared on `codex/nhtbank-backend-supabase-design-20261031`:
+- `docs/sql-drafts/README.md`
+- `docs/sql-drafts/20261031_000001_nhtbank_core_schema.draft.sql`
+- `docs/sql-drafts/20261031_000002_nhtbank_security_assertions.draft.sql`
+
+The draft creates a non-exposed `private` schema, seven baseline tables (profiles, user_roles, sandbox_accounts, sandbox_transactions, webhook_inbox, idempotency_keys, audit_events), explicit server-only grants, RLS, and append-only audit protection. It intentionally defers ledger/accounting tables pending a separately reviewed double-entry and posting model.
+
+No SQL was executed against the hosted Supabase project. No paid development branch, migration history entry, hosted schema change, merge, or deployment was created. SQL syntax has only been statically reviewed; local PostgreSQL execution remains a required next verification step.

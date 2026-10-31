@@ -130,7 +130,7 @@ CREATE TABLE private.webhook_inbox (
   provider_account_ref text NOT NULL,
   event_timestamp timestamptz NOT NULL,
   received_at timestamptz NOT NULL DEFAULT now(),
-  signature_verified boolean NOT NULL DEFAULT false CHECK (signature_verified),
+  signature_verified boolean NOT NULL CHECK (signature_verified IS TRUE),
   payload_sha256 char(64) NOT NULL,
   processing_status text NOT NULL DEFAULT 'received'
     CHECK (processing_status IN ('received', 'processed', 'rejected', 'failed')),

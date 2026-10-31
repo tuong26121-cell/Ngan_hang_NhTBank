@@ -73,6 +73,12 @@ begin
         raise exception 'FAIL: client role has % on private.%', p, t;
       end if;
     end loop;
+
+    if has_table_privilege('service_role', format('private.%I', t), 'TRUNCATE')
+       or has_table_privilege('service_role', format('private.%I', t), 'REFERENCES')
+       or has_table_privilege('service_role', format('private.%I', t), 'TRIGGER') then
+      raise exception 'FAIL: service_role has elevated table privilege on private.%', t;
+    end if;
   end loop;
 
   -- Verify the intended narrow server grants and absence of high-risk grants.

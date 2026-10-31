@@ -96,3 +96,14 @@ These are a design inventory, not a migration. Final names, constraints and rete
 - [ ] Confirm backups, restore process, monitoring and incident response.
 - [ ] Run Supabase security/performance advisors after DDL.
 - [ ] Verify no secret appears in Git history or frontend build.
+
+## 9. Additional project-specific security finding
+
+A read-only catalog query on the existing Supabase project found explicit default privileges on new `public` objects for `anon` and `authenticated`:
+
+- New tables: default ACL includes read/write privileges for `anon`, `authenticated` and `service_role`.
+- New functions: default ACL includes EXECUTE for `anon`, `authenticated` and `service_role`.
+- These are defaults for future objects; there are currently zero public tables/functions, so no existing application table was exposed by this finding.
+- Before creating any table/function in `public`, the first migration must revoke broad default privileges and add narrowly scoped explicit grants alongside RLS. Prefer keeping internal ledger/provider/webhook objects in a non-exposed schema.
+
+This is a project-specific finding from `pg_catalog.pg_default_acl`, not an assumption based only on the general Supabase platform changelog.

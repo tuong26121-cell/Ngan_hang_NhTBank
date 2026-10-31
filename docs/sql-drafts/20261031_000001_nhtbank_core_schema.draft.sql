@@ -165,9 +165,10 @@ create table private.audit_events (
   metadata jsonb not null default '{}'::jsonb
     check (pg_catalog.jsonb_typeof(metadata) = 'object')
     check (pg_catalog.pg_column_size(metadata) <= 8192),
-  created_at timestamptz not null default pg_catalog.now(),
-  check ((actor_type in ('user', 'admin')) = (actor_user_id is not null))
+  created_at timestamptz not null default pg_catalog.now()
 );
+-- actor_user_id may become NULL when the referenced auth.users row is deleted;
+-- actor_type preserves the historical actor classification.
 
 create index audit_events_actor_time_idx
   on private.audit_events(actor_user_id, created_at desc);

@@ -26,7 +26,8 @@ begin
 end;
 $$;
 
-revoke all on schema private from public, anon, authenticated;
+-- Clear inherited/pre-existing schema ACLs, including stale CREATE grants.
+revoke all on schema private from public, anon, authenticated, service_role;
 grant usage on schema private to service_role;
 
 -- Default privileges are scoped to the object-creating role. DDL is expected
@@ -57,6 +58,7 @@ begin
 end;
 $$;
 
+alter function private.set_updated_at() owner to postgres;
 revoke all on function private.set_updated_at() from public, anon, authenticated, service_role;
 
 create trigger profiles_set_updated_at
@@ -188,6 +190,7 @@ begin
 end;
 $$;
 
+alter function private.purge_expired_idempotency_keys(integer) owner to postgres;
 revoke all on function private.purge_expired_idempotency_keys(integer)
   from public, anon, authenticated, service_role;
 grant execute on function private.purge_expired_idempotency_keys(integer)
@@ -228,6 +231,7 @@ begin
 end;
 $$;
 
+alter function private.reject_audit_mutation() owner to postgres;
 revoke all on function private.reject_audit_mutation() from public, anon, authenticated, service_role;
 
 create trigger audit_events_no_update_delete

@@ -26,7 +26,7 @@ printf '%s\n' "== NhTBank SQL v3 local-only test runner =="
 printf '%s\n' "Target allow-list: localhost/127.0.0.1:54322/postgres"
 printf '%s\n' "No hosted database target is accepted."
 
-psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 <<'SQL'
+env -u PGHOST -u PGHOSTADDR -u PGPORT -u PGDATABASE -u PGSERVICE -u PGSERVICEFILE psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 <<'SQL'
 do $preflight$
 declare
   required_role text;
@@ -59,11 +59,11 @@ select 'PREFLIGHT PASS — PostgreSQL 17+ and Supabase local bootstrap objects d
 SQL
 
 printf '%s\n' "== Applying core draft to disposable local database =="
-psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$CORE_SQL"
+env -u PGHOST -u PGHOSTADDR -u PGPORT -u PGDATABASE -u PGSERVICE -u PGSERVICEFILE psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$CORE_SQL"
 printf '%s\n' "CORE DRAFT APPLIED"
 
 printf '%s\n' "== Running transactional security assertions =="
-psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$ASSERT_SQL"
+env -u PGHOST -u PGHOSTADDR -u PGPORT -u PGDATABASE -u PGSERVICE -u PGSERVICEFILE psql "$LOCAL_DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$ASSERT_SQL"
 printf '%s\n' "ASSERTIONS PASS"
 
 printf '%s\n' "== COMPLETE =="

@@ -4,14 +4,38 @@ const STORAGE_KEY = "nhtbank-demo-users-v2";
 const ITERATIONS = 150000;
 const encoder = new TextEncoder();
 
+// If browser storage is blocked or full, keep demo accounts in memory for this tab.
+// This fallback is intentionally temporary and never claims cross-refresh persistence.
+let volatileUsers = {};
+let useVolatileStorage = false;
+
 export function loadUsers() {
+  if (useVolatileStorage) return volatileUsers;
   try {
     const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     return data && typeof data === "object" && !Array.isArray(data) ? data : {};
   } catch {
-    return {};
+    useVolatileStorage = true;
+    return volatileUsers;
   }
 }
+
+function saveUsers(users) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+    volatileUsers = users;
+    return true;
+  } catch {
+    useVolatileStorage = true;
+    volatileUsers = users;
+    return false;
+  }
+}
+
+export function isDemoStoragePersistent() {
+  return !useVolatileStorage;
+}
+
 function toHex(array) {
   return Array.from(array, (value) => value.toString(16).padStart(2, "0")).join("");
 }
@@ -61,7 +85,7 @@ export async function registerDemo(username, password) {
   if (users[name]) throw new Error("Tên đăng nhập đã tồn tại trên thiết bị này.");
   const { record, recoveryCode } = await newRecord(password);
   users[name] = record;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  saveUsers(users);
   return { name, recoveryCode };
 }
 export async function verifyDemo(username, password) {
@@ -79,7 +103,7 @@ export async function changeDemoPassword(username, oldPassword, newPassword) {
   const users = loadUsers();
   const salt = randomHex();
   users[name] = { ...users[name], salt, digest: await derive(newPassword, salt) };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  saveUsers(users);
 }
 export async function recoverDemo(username, recoveryCode, newPassword) {
   const name = checkName(username);
@@ -94,6 +118,6 @@ export async function recoverDemo(username, recoveryCode, newPassword) {
   if (!match) throw new Error("Tên tài khoản hoặc mã khôi phục không đúng.");
   const next = await newRecord(newPassword);
   users[name] = next.record;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  saveUsers(users);
   return { name, recoveryCode: next.recoveryCode };
 }

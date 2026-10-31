@@ -1,20 +1,39 @@
 import { useEffect, useState } from "react";
 import { Brand } from "./ui";
 import { DisplaySwitcher } from "./ReferenceArt";
-import { registerDemo, verifyDemo, recoverDemo } from "../lib/demoAuth";
+import { registerDemo, verifyDemo, recoverDemo, isDemoStoragePersistent } from "../lib/demoAuth";
 import "./auth-shell.css";
 
 const REMEMBER_KEY = "nhtbank-demo-remember-user";
+const STORAGE_WARNING = "Trình duyệt đang chặn hoặc không đủ dung lượng lưu trữ. Tài khoản demo chỉ tồn tại trong tab hiện tại; hãy lưu mã khôi phục riêng và không tải lại trang.";
+
+function readRememberedUsername() {
+  try {
+    return localStorage.getItem(REMEMBER_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+function writeRememberedUsername(username) {
+  try {
+    if (username) localStorage.setItem(REMEMBER_KEY, username);
+    else localStorage.removeItem(REMEMBER_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 export default function AuthGate({ onLogin }) {
   const [splash, setSplash] = useState(true);
   const [mode, setMode] = useState("login");
-  const [username, setUsername] = useState(() => localStorage.getItem(REMEMBER_KEY) || "");
+  const [username, setUsername] = useState(readRememberedUsername);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [recoveryInput, setRecoveryInput] = useState("");
   const [recoveryOutput, setRecoveryOutput] = useState("");
-  const [remember, setRemember] = useState(Boolean(localStorage.getItem(REMEMBER_KEY)));
+  const [remember, setRemember] = useState(Boolean(readRememberedUsername()));
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
@@ -45,7 +64,11 @@ export default function AuthGate({ onLogin }) {
         if (password !== confirm) throw new Error("Mật khẩu xác nhận chưa trùng khớp.");
         const registered = await registerDemo(username, password);
         setRecoveryOutput(registered.recoveryCode);
-        setNotice("Đã đăng ký tài khoản demo. Lưu mã khôi phục trước khi đăng nhập.");
+        setNotice(
+          isDemoStoragePersistent()
+            ? "Đã đăng ký tài khoản demo. Lưu mã khôi phục trước khi đăng nhập."
+            : `Đã tạo tài khoản demo tạm thời. ${STORAGE_WARNING}`,
+        );
         setMode("login");
         setPassword("");
         setConfirm("");
@@ -53,7 +76,11 @@ export default function AuthGate({ onLogin }) {
         if (password !== confirm) throw new Error("Mật khẩu xác nhận chưa trùng khớp.");
         const recovered = await recoverDemo(username, recoveryInput, password);
         setRecoveryOutput(recovered.recoveryCode);
-        setNotice("Đã đặt lại mật khẩu demo. Hãy lưu mã khôi phục mới rồi đăng nhập.");
+        setNotice(
+          isDemoStoragePersistent()
+            ? "Đã đặt lại mật khẩu demo. Hãy lưu mã khôi phục mới rồi đăng nhập."
+            : `Đã đặt lại mật khẩu trong phiên tạm thời. ${STORAGE_WARNING}`,
+        );
         setMode("login");
         setPassword("");
         setConfirm("");
@@ -62,8 +89,7 @@ export default function AuthGate({ onLogin }) {
         if (!(await verifyDemo(username, password))) {
           throw new Error("Tên đăng nhập hoặc mật khẩu không đúng.");
         }
-        if (remember) localStorage.setItem(REMEMBER_KEY, username.trim().toLowerCase());
-        else localStorage.removeItem(REMEMBER_KEY);
+        writeRememberedUsername(remember ? username.trim().toLowerCase() : "");
         setPassword("");
         onLogin(username.trim().toLowerCase());
       }

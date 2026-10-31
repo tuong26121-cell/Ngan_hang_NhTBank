@@ -325,6 +325,29 @@ begin
     raise exception 'FAIL: cleanup removed an in-flight started idempotency row';
   end if;
 
+  -- Duplicate webhook delivery with the same provider/event ID must be rejected.
+  insert into private.webhook_inbox (
+    provider, provider_event_id, event_type, payload_sha256
+  ) values (
+    'sepay', 'assertion-duplicate-event', 'test',
+    decode(repeat('33', 32), 'hex')
+  );
+
+  rejected := false;
+  begin
+    insert into private.webhook_inbox (
+      provider, provider_event_id, event_type, payload_sha256
+    ) values (
+      'sepay', 'assertion-duplicate-event', 'test',
+      decode(repeat('33', 32), 'hex')
+    );
+  exception when unique_violation then
+    rejected := true;
+  end;
+  if not rejected then
+    raise exception 'FAIL: duplicate provider webhook event was accepted';
+  end if;
+
   -- Processed requires processed_at; non-processed states must not have it.
   rejected := false;
   begin

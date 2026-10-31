@@ -28,7 +28,7 @@
 2. Browser/mobile clients receive no USAGE on private and no table or sequence grants.
 3. A trusted backend is the only intended database caller. Its service_role secret is server-side only, never shipped to browser/mobile bundles, logs, or Git.
 4. service_role bypasses RLS. The backend must authenticate and authorize every request before using it; RLS is not a substitute for backend authorization.
-5. DDL is expected to run under the Supabase postgres owner role. Default privileges are role-specific; if a different migration owner is selected, recreate and test the default-privilege rules for that exact owner.
+5. DDL is expected to run under the Supabase postgres owner role. Table/sequence default privileges are role-specific. Per-schema function default ACLs cannot revoke a global PUBLIC EXECUTE grant; each function must therefore have an explicit REVOKE from PUBLIC and application roles.
 6. Table ownership must remain with a trusted migration/database owner, never anon, authenticated, or service_role.
 7. No client policies are created because direct client database access is intentionally prohibited in this design.
 8. Sandbox records are constrained to provider sepay, environment sandbox, and VND only. This is not a real-money ledger or payment execution system.
@@ -37,7 +37,7 @@
 
 ## Changes in this hardening pass
 
-- Explicitly revoke default function EXECUTE from PUBLIC as well as application roles.
+- Explicitly revoke function EXECUTE from PUBLIC on every function created in this schema. Per-schema default ACLs cannot override a global PUBLIC EXECUTE default, so every future function must carry its own explicit REVOKE and be covered by assertions.
 - Verify existing private schema ownership rather than trusting IF NOT EXISTS.
 - Narrow server grants: no routine profile/account deletion, no role UPDATE, no transaction mutation, and no audit mutation.
 - Add a TRUNCATE guard to audit events and revoke TRUNCATE through the role grant matrix.

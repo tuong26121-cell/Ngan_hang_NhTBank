@@ -7,7 +7,7 @@
 
 - Use a disposable Supabase Local stack on a computer you control.
 - Do not run this against a hosted Supabase URL, a linked project, staging, or Production.
-- The runner accepts only `localhost` or `127.0.0.1`, port `54322`, database `postgres`.
+- The runner accepts only an exact URI for `localhost` or `127.0.0.1`, port `54322`, database `postgres`; it rejects query parameters that could override the connection target.
 - The runner requires PostgreSQL 17+ and the Supabase bootstrap objects/roles.
 - It applies the core draft and runs assertions. The core draft creates objects and commits; use a fresh disposable local database for every run.
 - The assertions run inside a transaction and roll back their probe rows.

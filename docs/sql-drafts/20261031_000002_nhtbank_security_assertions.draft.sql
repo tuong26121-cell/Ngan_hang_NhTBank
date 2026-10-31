@@ -162,7 +162,48 @@ begin
     raise exception 'FAIL: audit TRUNCATE was not rejected with SQLSTATE 55000';
   end if;
 
-  raise notice 'PASS: client isolation, RLS, ownership, role grants, default ACLs and audit mutation guards';
+  -- Different principals may reuse the same operation/key; the same
+  -- principal/scope/key must remain unique. Request-hash mismatch handling is
+  -- an application-layer assertion and is not enforced by this unique index.
+  insert into private.idempotency_keys (
+    principal_key, operation_scope, idempotency_key, request_sha256, expires_at
+  ) values
+    ('user:assertion-a', 'transfer:create', 'same-key', decode(repeat('00', 32), 'hex'), pg_catalog.now() + interval '1 day'),
+    ('user:assertion-b', 'transfer:create', 'same-key', decode(repeat('00', 32), 'hex'), pg_catalog.now() + interval '1 day');
+
+  rejected := false;
+  begin
+    insert into private.idempotency_keys (
+      principal_key, operation_scope, idempotency_key, request_sha256, expires_at
+    ) values (
+      'user:assertion-a', 'transfer:create', 'same-key',
+      decode(repeat('00', 32), 'hex'), pg_catalog.now() + interval '1 day'
+    );
+  exception when unique_violation then
+    rejected := true;
+  end;
+  if not rejected then
+    raise exception 'FAIL: duplicate idempotency key for the same principal was accepted';
+  end if;
+
+  -- A processed webhook must carry processed_at; this inconsistent row must fail.
+  rejected := false;
+  begin
+    insert into private.webhook_inbox (
+      provider, provider_event_id, event_type, payload_sha256,
+      processing_status, processed_at
+    ) values (
+      'sepay', 'assertion-invalid-processed', 'test',
+      decode(repeat('00', 32), 'hex'), 'processed', null
+    );
+  exception when check_violation then
+    rejected := true;
+  end;
+  if not rejected then
+    raise exception 'FAIL: inconsistent processed webhook state was accepted';
+  end if;
+
+  raise notice 'PASS: client isolation, RLS, ownership, grants, function ACLs, idempotency, webhook constraints and audit guards';
 end;
 $$;
 

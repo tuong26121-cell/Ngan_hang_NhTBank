@@ -62,6 +62,23 @@ begin
     raise exception 'FAIL: service_role is missing USAGE on private schema';
   end if;
 
+  if has_schema_privilege('service_role', 'private', 'CREATE') then
+    raise exception 'FAIL: service_role must not have CREATE on private schema';
+  end if;
+
+  if exists (
+    select 1
+    from pg_catalog.pg_namespace n
+    cross join lateral pg_catalog.aclexplode(
+      coalesce(n.nspacl, pg_catalog.acldefault('n', n.nspowner))
+    ) acl
+    where n.nspname = 'private'
+      and acl.grantee = 0
+      and acl.privilege_type = 'CREATE'
+  ) then
+    raise exception 'FAIL: PUBLIC has CREATE on private schema';
+  end if;
+
   foreach t in array app_tables loop
     if not exists (
       select 1
@@ -148,18 +165,27 @@ begin
     raise exception 'FAIL: audit sequence grants are incorrect';
   end if;
 
+  if not has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'USAGE')
+     or not has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'SELECT')
+     or has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'UPDATE')
+     or has_sequence_privilege('anon', 'private.audit_events_id_seq', 'USAGE')
+     or has_sequence_privilege('anon', 'private.audit_events_id_seq', 'SELECT')
+     or has_sequence_privilege('anon', 'private.audit_events_id_seq', 'UPDATE')
+     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'USAGE')
+     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'SELECT')
+     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'UPDATE') then
+    raise exception 'FAIL: audit sequence grants are incorrect';
+  end if;
+
   if exists (
     select 1
     from pg_catalog.pg_class c
     join pg_catalog.pg_namespace n on n.oid = c.relnamespace
-    cross join lateral pg_catalog.aclexplode(
-      coalesce(c.relacl, pg_catalog.acldefault('S', c.relowner))
-    ) acl
-    where n.nspname = 'private'
-      and c.relkind = 'S'
-      and acl.grantee = 0
+    join pg_catalog.pg_roles owner_role on owner_role.oid = c.relowner
+    where n.nspname = 'private' and c.relkind = 'S'
+      and owner_role.rolname <> 'postgres'
   ) then
-    raise exception 'FAIL: PUBLIC has an explicit sequence ACL in private';
+    raise exception 'FAIL: a private sequence is not owned by postgres';
   end if;
 
   -- Functions are postgres-owned. No PUBLIC/client execution; only the bounded
@@ -200,6 +226,17 @@ begin
       )
   ) then
     raise exception 'FAIL: a private function is executable by a client role';
+  end if;
+
+  if exists (
+    select 1
+    from pg_catalog.pg_proc f
+    join pg_catalog.pg_namespace n on n.oid = f.pronamespace
+    where n.nspname = 'private'
+      and has_function_privilege('service_role', f.oid, 'EXECUTE')
+      and f.oid <> 'private.purge_expired_idempotency_keys(integer)'::regprocedure
+  ) then
+    raise exception 'FAIL: service_role can execute an unapproved private function';
   end if;
 
   if has_function_privilege(

@@ -62,8 +62,10 @@ begin
     raise exception 'FAIL: service_role is missing USAGE on private schema';
   end if;
 
-  if has_schema_privilege('service_role', 'private', 'CREATE') then
-    raise exception 'FAIL: service_role must not have CREATE on private schema';
+  if has_schema_privilege('service_role', 'private', 'CREATE')
+     or has_schema_privilege('anon', 'private', 'CREATE')
+     or has_schema_privilege('authenticated', 'private', 'CREATE') then
+    raise exception 'FAIL: service_role/client role must not have CREATE on private schema';
   end if;
 
   if exists (

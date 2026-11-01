@@ -1,9 +1,9 @@
-name: Build NhTBank Android Debug APK
+name: Xây dựng APK Android NhTBank thử nghiệm
 on:
   workflow_dispatch:
   push:
     branches:
-      - 'build-apk/**'
+      - 'xay-dung/apk-android-thu-nghiem'
     paths:
       - 'frontend/**'
       - 'package.json'

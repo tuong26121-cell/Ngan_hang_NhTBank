@@ -6,11 +6,11 @@ permissions:
   contents: read
 jobs:
   interactions:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: "22"
           cache: npm
@@ -26,7 +26,7 @@ jobs:
             sleep 1
           done
           NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e -- --max-failures=1
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: button-interaction-results

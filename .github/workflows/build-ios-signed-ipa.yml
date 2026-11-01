@@ -11,8 +11,8 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
           cache: npm
@@ -110,7 +110,7 @@ jobs:
           test -n "$IPA_FILE"
           cp "$IPA_FILE" "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
           unzip -tq "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: NhTBank-iOS-signed-IPA
           path: NhTBank-iOS-signed.ipa

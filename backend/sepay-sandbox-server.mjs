@@ -106,7 +106,7 @@ export function createSandboxHandler({ env = process.env, fetchImpl = globalThis
       if (!env.SEPAY_WEBHOOK_SECRET || env.SEPAY_WEBHOOK_SECRET.length < 32) {
         return reply(res, 503, { error: "webhook_not_configured" });
       }
-      if (!String(req.headers["content-type"] || "").toLowerCase().startsWith("application/json")) {
+      if (!/^application\/json(?:\s*;|$)/i.test(String(req.headers["content-type"] || ""))) {
         return reply(res, 415, { error: "unsupported_media_type" });
       }
       let body;
@@ -122,7 +122,13 @@ export function createSandboxHandler({ env = process.env, fetchImpl = globalThis
 }
 
 export function createSandboxServer(options) {
-  return http.createServer(createSandboxHandler(options));
+  const server = http.createServer(createSandboxHandler(options));
+  // Bound request/header handling for this small sandbox-only HTTP gateway.
+  server.requestTimeout = 15_000;
+  server.headersTimeout = 10_000;
+  server.keepAliveTimeout = 5_000;
+  server.maxHeadersCount = 50;
+  return server;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

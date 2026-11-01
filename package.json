@@ -8,6 +8,7 @@
     "build": "vite build frontend --config vite.config.js",
     "preview": "vite preview frontend --config vite.config.js --host 127.0.0.1",
     "test": "vitest run",
+    "test:backend": "node --test backend/tests/*.test.mjs",
     "test:e2e": "playwright test",
     "format:check": "prettier --check \"frontend/**/*.{js,jsx,css,html}\" \"*.js\" \"*.json\" \"*.md\" \"backend/*.md\" \"docs/*.md\" \"e2e/*.js\""
   },

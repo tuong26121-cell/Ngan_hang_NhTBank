@@ -39,6 +39,22 @@ Mặc định chỉ lắng nghe trên `127.0.0.1:8787`, không mở Internet. M�
 
 Gọi dữ liệu (chỉ từ dịch vụ nội bộ đáng tin cậy): `GET /api/transactions`, header `Authorization: Bearer <NHT_INTERNAL_ACCESS_TOKEN>`. Máy chủ tự gọi endpoint cố định `https://userapi-sandbox.sepay.vn/v2/transactions`, gửi token Test mode, bắt buộc phản hồi đúng `bank_account_id`, chuyển sang định dạng giao dịch đã kiểm thử và xóa các trường nhạy cảm khỏi phản hồi. Lỗi trả thông báo chung, không lộ token/chi tiết ngân hàng.
 
+## Kiểm thử bảo mật Backend/Webhook
+
+Bộ kiểm thử không cần thư viện bên thứ ba, dùng `node:test` và HTTP server loopback trên cổng ngẫu nhiên:
+```sh
+npm run test:backend
+```
+
+Các bài kiểm thử nằm tại `backend/tests/sepay-sandbox-security.test.mjs`. Chúng dùng token/secret giả chỉ tồn tại trong test, mock SePay sandbox upstream, và không gọi mạng tới SePay. Coverage gồm:
+- HMAC trên raw body, chữ ký sai, body bị sửa, timestamp sai/quá hạn/quá tương lai, secret không hợp lệ.
+- Internal bearer auth, cấu hình thiếu, route/method không hợp lệ.
+- URL upstream cố định, token chỉ gửi ở server-side, giới hạn page size, redirect bị chặn, account scope mismatch, payload lỗi.
+- Webhook không ACK khi chưa có durable storage; JSON media type nghiêm ngặt; body vượt 64 KiB bị từ chối.
+- Security response headers và giới hạn timeout/header của HTTP server.
+
+Các test này không chứng minh khả năng chống replay xuyên nhiều instance, dedupe webhook bền vững, xử lý đồng thời, rate limiting, xác thực người dùng thật, TLS/proxy hoặc tích hợp với SePay thực. Những phần đó vẫn NOT RUN / chưa triển khai. Chỉ chạy test trên máy local với Node.js 22+; không đặt secrets thật vào test.
+
 ## Chưa được phép đưa vào production
 
 1. Chưa tích hợp **đăng nhập người dùng thật**, phiên đăng nhập an toàn, phân quyền và rate limiting; token nội bộ **không phải** cơ chế xác thực cho frontend công khai.

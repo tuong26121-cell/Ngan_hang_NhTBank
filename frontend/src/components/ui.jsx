@@ -26,6 +26,12 @@ export function Brand({ light = false }) {
       <span>
         NhT<span className="font-normal">Bank</span>
         <small>TÀI CHÍNH TRONG TẦM TAY</small>
+        <span className="nhan-phien-ban">
+          Phiên bản {__NHT_PHIEN_BAN__.version} ·{" "}
+          {__NHT_PHIEN_BAN__.local
+            ? "Bản thử cục bộ"
+            : `Bản dựng ${__NHT_PHIEN_BAN__.versionCode}`}
+        </span>
       </span>
     </div>
   );
@@ -89,7 +95,9 @@ export function SecurityNote() {
   return (
     <div className="security-note">
       <ShieldCheck size={15} />
-      <span>Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật</span>
+      <span>
+        Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật
+      </span>
     </div>
   );
 }

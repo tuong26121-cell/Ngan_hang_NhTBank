@@ -2912,3 +2912,7 @@ input::placeholder {
     font-size: 16px;
   }
 }
+
+/* Version stays readable even when the brand tagline is hidden on mobile. */
+.brand .nhan-phien-ban { display:block; font-size:11px; line-height:1.5; font-weight:600; letter-spacing:0; color:#164479; white-space:normal; }
+.brand-light .nhan-phien-ban { color:#fff; }

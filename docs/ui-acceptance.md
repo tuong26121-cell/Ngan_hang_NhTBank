@@ -222,3 +222,5 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Local: 70/70 unit tests dat; build web dat (canh bao bundle >500 kB co san); bai kiem thu cau hinh Android dat. E2E local bi chan vi tai Chromium nhan ZIP loi; khong coi la E2E dat. Workflow APK se chay lai E2E tren runner GitHub va kiem tra version thuc trong APK bang aapt.
 - Doi chieu 45 ma A01–H06: A04/A05/B01/B05/F03 bi anh huong truc tiep, can doi chieu anh va E2E; chua nghiem thu may that. A01–A03, B02–B04/B06, C01–C06, D01–D06, E01–E05, F01/F02/F04/F05, G01–G06, H01–H06 giu pham vi hien co, khong nang trang thai nghiem thu chi dua vao thay logo.
 - Chua ket luan dat toan bo 45 tieu chi, camera, ban phim ao hoac chi so hieu nang. Khong sua luong giao dich, khong deploy website, khong Release.
+
+- Run GitHub `41499928650` (commit `7acc6836fb7a411dcd046d4c2fa4e293c3f18cc2`): unit dat, build web dat, E2E 43 dat / 8 skipped; loi npm 10.9.9 `Cannot read properties of null (reading edgesOut)` khi cai bo sung Capacitor sau npm ci. Chuyen Capacitor thanh devDependencies co phien ban co dinh va lockfile de chi cai bang npm ci; can run moi xac nhan APK.

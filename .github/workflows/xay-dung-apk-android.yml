@@ -52,7 +52,6 @@ jobs:
           npm run test:e2e -- --max-failures=1
       - name: Chuan bi du an Android Capacitor
         run: |
-          npm install --no-save --package-lock=false @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
           npx cap add android
           npx cap sync android
           node scripts/cau-hinh-apk.mjs

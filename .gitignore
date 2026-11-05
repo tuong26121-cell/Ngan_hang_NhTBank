@@ -17,3 +17,6 @@ coverage/
 playwright-report/
 test-results/
 .vite/
+
+# Du an Android duoc tao lai trong workflow
+/android/

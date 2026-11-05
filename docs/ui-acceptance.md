@@ -212,3 +212,15 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - A04/A05/C03 (logo và icon), B01/B05 (bố cục), C01/C02/C05 (nút, phản hồi), D và E (thông báo bảo mật/riêng tư) phải được rà soát trên thiết bị thật. **Không tự đánh dấu đạt toàn bộ 45 tiêu chí.**
 - Tài nguyên ảnh đính kèm đi theo `import.meta.env.BASE_URL` để tương thích đường dẫn GitHub Pages khi build production. Cần kiểm tra riêng khi xuất HTML standalone.
 - Bằng chứng E2E/CI và ảnh nghiệm thu chỉ được đánh dấu đạt sau khi GitHub Actions trên commit cuối thành công. Camera thật, bàn phím ảo, các thiết bị nhỏ vẫn chưa được kiểm tra trực tiếp.
+
+
+## Logo launcher va nhan phien ban — 03/11/2026
+
+- Nhanh `cap-nhat/logo-va-phien-ban-apk`, nen `1e8732525ef041a39b25c036836951ca93cde339`.
+- Dung anh NT chu ung dung gui; chi cat le trang, giu ty le va tao cac kich thuoc Android. Legacy icon va adaptive icon (vung an toan trung tam), cung logo trong giao dien.
+- Phien ban 1.0.1; versionCode Android va nhan ban dung trong giao dien cung lay tu `scripts/thong-tin-phien-ban.mjs`. Chua cai APK tren dien thoai that.
+- Local: 70/70 unit tests dat; build web dat (canh bao bundle >500 kB co san); bai kiem thu cau hinh Android dat. E2E local bi chan vi tai Chromium nhan ZIP loi; khong coi la E2E dat. Workflow APK se chay lai E2E tren runner GitHub va kiem tra version thuc trong APK bang aapt.
+- Doi chieu 45 ma A01–H06: A04/A05/B01/B05/F03 bi anh huong truc tiep, can doi chieu anh va E2E; chua nghiem thu may that. A01–A03, B02–B04/B06, C01–C06, D01–D06, E01–E05, F01/F02/F04/F05, G01–G06, H01–H06 giu pham vi hien co, khong nang trang thai nghiem thu chi dua vao thay logo.
+- Chua ket luan dat toan bo 45 tieu chi, camera, ban phim ao hoac chi so hieu nang. Khong sua luong giao dich, khong deploy website, khong Release.
+
+- Run GitHub `41499928650` (commit `7acc6836fb7a411dcd046d4c2fa4e293c3f18cc2`): unit dat, build web dat, E2E 43 dat / 8 skipped; loi npm 10.9.9 `Cannot read properties of null (reading edgesOut)` khi cai bo sung Capacitor sau npm ci. Chuyen Capacitor thanh devDependencies co phien ban co dinh va lockfile de chi cai bang npm ci; can run moi xac nhan APK.

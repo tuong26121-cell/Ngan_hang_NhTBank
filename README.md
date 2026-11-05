@@ -126,3 +126,20 @@ Các kết quả Chromium và viewport mô phỏng được ghi trong biên bả
 ## Cập nhật bảo mật
 
 Xem [ghi chép cập nhật cho issue #2](docs/security-update.md). Các công cụ phát triển được nâng phiên bản; `postcss-selector-parser` được khóa ở 7.1.6 qua npm override để giữ Tailwind 3 và hạn chế thay đổi giao diện. QR cục bộ dùng `qrcode`; `jsqr` chỉ dùng kiểm thử giải mã. PIN công khai vẫn chỉ là thao tác trải nghiệm demo.
+
+## Logo Android va phien ban APK
+
+Tu phien ban 1.0.1, APK dung logo NT chu ung dung cung cap ngay 03/11/2026.
+Tai nguyen launcher legacy va adaptive nam trong `tai-nguyen/android/res/`.
+Sau `npx cap sync android`, chay `node scripts/cau-hinh-apk.mjs` de gan icon va
+cap nhat `versionName` tu `package.json`. Workflow truyen `NHT_BUILD_NUMBER` tu
+`github.run_number`; `versionCode = 1000 + NHT_BUILD_NUMBER`. Khong reset so lan
+chay cua workflow nay khi tiep tuc phat hanh cap nhat.
+Nhan phien ban trong ung dung va `thong-tin-phien-ban.json` trong goi APK dung
+cung nguon du lieu. Build local khong co bien nay hien ro "Ban thu cuc bo".
+Android hien thi versionName trong Thong tin ung dung; ten launcher van la
+NhTBank Demo. Khong viet so phien ban truc tiep len hinh logo.
+
+APK Debug cua moi runner co the dung khoa ky debug khac nhau; neu Android bao
+khong tuong thich chu ky voi ban cu, can go ban demo cu roi cai lai (tai khoan
+mau luu cuc bo se mat). Chua cau hinh khoa ky on dinh hay ban Release.

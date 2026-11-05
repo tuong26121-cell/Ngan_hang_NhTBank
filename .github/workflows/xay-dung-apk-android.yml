@@ -3,14 +3,19 @@ run-name: APK Android thu nghiem - ${{ github.ref_name }} - ${{ github.actor }}
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, cap-nhat/logo-va-phien-ban-apk]
     paths:
       - 'frontend/**'
+      - 'tai-nguyen/android/**'
+      - 'scripts/cau-hinh-apk.mjs'
+      - 'scripts/thong-tin-phien-ban.mjs'
       - 'package.json'
       - 'package-lock.json'
       - 'vite.config.js'
       - 'capacitor.config.json'
       - '.github/workflows/xay-dung-apk-android.yml'
+env:
+  NHT_BUILD_NUMBER: ${{ github.run_number }}
 permissions:
   contents: read
 concurrency:
@@ -38,13 +43,18 @@ jobs:
         run: |
           npm ci
           npm test
+          node --test scripts/kiem-thu/cau-hinh-apk.test.mjs
       - name: Xay dung tai nguyen web
         run: npm run build
+      - name: Kiem thu giao dien va nhan phien ban
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e -- --max-failures=1
       - name: Chuan bi du an Android Capacitor
         run: |
-          npm install --no-save --package-lock=false @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
           npx cap add android
           npx cap sync android
+          node scripts/cau-hinh-apk.mjs
       - name: Kiem tra Gradle wrapper
         uses: gradle/actions/wrapper-validation@v6.4.1
       - name: Bien dich APK thu nghiem
@@ -58,8 +68,12 @@ jobs:
         run: |
           test -s android/app/build/outputs/apk/debug/app-debug.apk
           unzip -tq android/app/build/outputs/apk/debug/app-debug.apk
+          for tool in "$ANDROID_HOME"/build-tools/*/aapt; do AAPT="$tool"; done
+          "$AAPT" dump badging android/app/build/outputs/apk/debug/app-debug.apk > android/thong-tin-goi-apk.txt
+          node --input-type=module -e 'import {readFileSync} from "node:fs"; import {thongTinPhienBan} from "./scripts/thong-tin-phien-ban.mjs"; const i=thongTinPhienBan(); const s=readFileSync("android/thong-tin-goi-apk.txt","utf8"); if(!s.includes("versionCode="+String.fromCharCode(39)+i.versionCode+String.fromCharCode(39)) || !s.includes("versionName="+String.fromCharCode(39)+i.version+String.fromCharCode(39))) process.exit(1);'
           mkdir -p goi-apk
           cp android/app/build/outputs/apk/debug/app-debug.apk goi-apk/NhTBank-ThuNghiem.apk
+          cp android/thong-tin-phien-ban.json android/thong-tin-goi-apk.txt goi-apk/
           cd goi-apk
           sha256sum NhTBank-ThuNghiem.apk | tee ma-kiem-tra-sha256.txt
           printf 'Ma commit: %s\nLoai ban dung: debug\nUng dung: vn.nhtbank.demo\n' "$BUILD_SHA" > thong-tin-ban-dung.txt
@@ -70,7 +84,7 @@ jobs:
           {
             printf '## APK Android NhTBank thu nghiem\n\n'
             printf 'Ma commit: `%s`\n\n' "$BUILD_SHA"
-            printf 'Tai **NhTBank-APK-ThuNghiem** trong muc Artifacts cua lan chay nay (luu 14 ngay).\n\n'
+            printf 'Tai **NhTBank-APK-ThuNghiem-<so-lan-chay>** trong muc Artifacts cua lan chay nay (luu 14 ngay).\n\n'
             printf 'Giai nen ZIP, sau do cai `NhTBank-ThuNghiem.apk` tren thiet bi Android thu nghiem.\n\n'
             printf 'Chi mo phong Sandbox. APK thu nghiem, chua phai ban phat hanh Google Play. Khong giao dich ngan hang that.\n\n'
             printf 'Kiem tra tep da giai nen bang `sha256sum -c ma-kiem-tra-sha256.txt`:\n\n```text\n'
@@ -80,7 +94,7 @@ jobs:
       - name: Tai len APK va ma SHA256
         uses: actions/upload-artifact@v7.0.2
         with:
-          name: NhTBank-APK-ThuNghiem
+          name: NhTBank-APK-ThuNghiem-${{ github.run_number }}
           path: |
             goi-apk/
           if-no-files-found: error

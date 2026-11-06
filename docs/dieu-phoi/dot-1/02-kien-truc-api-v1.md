@@ -37,3 +37,10 @@ Android Capacitor / Web SPA -> API contract (trusted Node backend) -> private Po
 - Chua cung cap schema/API field-level contract cuoi; endpoint nam tren la proposed, khong phai verified route.
 
 **Ban giao:** 06, 07, 08, 04, 05, 13. **Gate ARCH-01:** CHUA PASS; can review chuoi user permissions, field names, errors va contract phien ban.
+
+## Đồng bộ bản nháp để review — nghiệm thu Đợt 1
+
+- Đề xuất biểu diễn tiền trên API là chuỗi chữ số nguyên VNĐ, đối chiếu BIGINT bằng số nguyên chính xác; không parse qua JavaScript Number trước khi kiểm tra miền giá trị. Frontend demo hiện vẫn dùng Number/safe integer. Giới hạn nghiệp vụ API và cách chuẩn hóa chuỗi còn chờ 10/02/07/08 review, chưa phải contract được phê duyệt.
+- Retry vẫn phải xác thực và kiểm quyền hiện hành. Sau đó so namespace/key/hash và replay receipt đã commit trước khi xét số dư hiện tại cho yêu cầu mới; không để lần retry hợp lệ thất bại vì lần chuyển đầu đã dùng hết số dư.
+- Bảng route này chỉ mô tả v1 đề xuất. Gateway hiện dùng response `{error: string}`/`{environment, transactions}`; chưa thực hiện envelope `request_id/error.code/data` của v1. Không đổi gateway chỉ để làm nó có vẻ đã hỗ trợ v1.
+- Các quyết định còn mở, owner và điều kiện đóng: [báo cáo nghiệm thu](../nghiem-thu-dot-1-20261106.md). ARCH-01 vẫn REVIEW PENDING.

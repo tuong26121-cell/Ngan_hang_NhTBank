@@ -1,0 +1,454 @@
+{
+  "source_commit": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+  "date": "2026-11-06",
+  "runtime_local_matches": true,
+  "runtime_manifest": [
+    {
+      "path": "backend/README.md",
+      "blob_sha": "ce70296842b1f40c9b7ccff3622bd3692a1b1fb4"
+    },
+    {
+      "path": "backend/sepay-sandbox-server.mjs",
+      "blob_sha": "121190aa3a938b43c9f7da2b83d36fe501c6a8b6"
+    },
+    {
+      "path": "backend/sepay-sandbox-server.test.js",
+      "blob_sha": "bb4587a416076f011afa9be5068404f91da72a6c"
+    },
+    {
+      "path": "backend/tests/sepay-sandbox-security.test.mjs",
+      "blob_sha": "9e74385ad5962cd0a2840d7e9287325600c04ed5"
+    },
+    {
+      "path": "capacitor.config.json",
+      "blob_sha": "c560c022588aa153107e7427bfd53bc77a101699"
+    },
+    {
+      "path": "e2e/auth-helper.js",
+      "blob_sha": "0e51adb88f26707a1a3f07d7dc18a7720a39948d"
+    },
+    {
+      "path": "e2e/auth-storage-fallback.spec.js",
+      "blob_sha": "97e949a8db315d9ec6ade10118f6edf5b2e44e76"
+    },
+    {
+      "path": "e2e/auth.spec.js",
+      "blob_sha": "1c28504d081cf78c799c1ec4481945d4ea9609b1"
+    },
+    {
+      "path": "e2e/bank.spec.js",
+      "blob_sha": "9a475513d52fa0def75461204b822671b050c093"
+    },
+    {
+      "path": "e2e/buttons.spec.js",
+      "blob_sha": "76e8b9f4eb6c689f452e21317e87cc80aaa6247d"
+    },
+    {
+      "path": "e2e/phien-ban.spec.js",
+      "blob_sha": "d4fa915e633bb6637fd5c53a04e7ad2e6bd40256"
+    },
+    {
+      "path": "e2e/scan-qr.spec.js",
+      "blob_sha": "bc26309e8c43bc2dfe4b34a7178d4f068541880e"
+    },
+    {
+      "path": "e2e/ui-acceptance.spec.js",
+      "blob_sha": "4c891451659e4b2c43e88247724be341b3e31016"
+    },
+    {
+      "path": "e2e/vietqr.spec.js",
+      "blob_sha": "a17b9b0c16fdcfc299c1862f0904d8d0e02c2a0a"
+    },
+    {
+      "path": "frontend/index.html",
+      "blob_sha": "606f5f141dcd2c452bc247fc6b8fdedf4b21aada"
+    },
+    {
+      "path": "frontend/public/branding/icons-20.webp",
+      "blob_sha": "abc4849c8fb373e63bdbd03be3b1622e2fa32af8"
+    },
+    {
+      "path": "frontend/public/branding/nt-logo.webp",
+      "blob_sha": "7818a4ca7e4ac39e18a96cbf3cbded31b1fd5342"
+    },
+    {
+      "path": "frontend/public/fonts/BeVietnamPro-Bold.ttf",
+      "blob_sha": "52aadc6da089ed8ae647b5e0c8cac4f8b3e24750"
+    },
+    {
+      "path": "frontend/public/fonts/BeVietnamPro-Regular.ttf",
+      "blob_sha": "dfa34c09fe2bae0626e00aa3265af2119345c27b"
+    },
+    {
+      "path": "frontend/public/fonts/BeVietnamPro-SemiBold.ttf",
+      "blob_sha": "b25bad31fe8984d5db6cbce61a23323bbb68bc97"
+    },
+    {
+      "path": "frontend/public/fonts/OFL.txt",
+      "blob_sha": "9e2c1177b1e7b9b2f63e122d37f8c21bc5dddc65"
+    },
+    {
+      "path": "frontend/src/App.jsx",
+      "blob_sha": "66d8ec07722592f491d66007e76f103130705ca9"
+    },
+    {
+      "path": "frontend/src/components/AuthGate.jsx",
+      "blob_sha": "c59bd83d9c230edfff18db37956cb4a359a4b18d"
+    },
+    {
+      "path": "frontend/src/components/BankHandoff.jsx",
+      "blob_sha": "c79eaabe98d89e31232c1d1b1c9cdc77a2cef01c"
+    },
+    {
+      "path": "frontend/src/components/Dashboard.jsx",
+      "blob_sha": "fdc9ec990a50008b63c1456a4f561d6c956f60eb"
+    },
+    {
+      "path": "frontend/src/components/Deposit.jsx",
+      "blob_sha": "b30e0b3fb2bcbc29c6c76e95bc5dd7f88d77051e"
+    },
+    {
+      "path": "frontend/src/components/Login.jsx",
+      "blob_sha": "c9b4ecc8971555f022decd2bd75c4a130edf2a77"
+    },
+    {
+      "path": "frontend/src/components/QrScanner.jsx",
+      "blob_sha": "b78020bf6cfaf73f41f0f20dbc8b830cc93ccd6c"
+    },
+    {
+      "path": "frontend/src/components/ReferenceArt.jsx",
+      "blob_sha": "9bf081ba53d84507b8437c7a009db1d468e5a2c4"
+    },
+    {
+      "path": "frontend/src/components/SecuritySettings.jsx",
+      "blob_sha": "2a348523478afa363f43d1d749066baf43e9394e"
+    },
+    {
+      "path": "frontend/src/components/Transfer.jsx",
+      "blob_sha": "5efeed2543b21b98dc644a6f26c294013853abd4"
+    },
+    {
+      "path": "frontend/src/components/VietQrStudio.jsx",
+      "blob_sha": "3b7f08b373857ede63b01565f85f0bb883a9c83d"
+    },
+    {
+      "path": "frontend/src/components/VietQrStudio.test.jsx",
+      "blob_sha": "f81aca283a01b7aa1e5be6b4fe3d9b77102916a5"
+    },
+    {
+      "path": "frontend/src/components/auth-shell.css",
+      "blob_sha": "dc60c7257a05e8572932a689f383b7b6cd2d6497"
+    },
+    {
+      "path": "frontend/src/components/flows.test.jsx",
+      "blob_sha": "371a3116971e84a21b622d22791ca1f6e0f08ed4"
+    },
+    {
+      "path": "frontend/src/components/scanner.css",
+      "blob_sha": "9a1c1e14ba28c7ae8619923c0ce5c344796aff81"
+    },
+    {
+      "path": "frontend/src/components/ui.jsx",
+      "blob_sha": "1aab8309712a06996bd621740e2cdea2785025df"
+    },
+    {
+      "path": "frontend/src/components/vietqr.css",
+      "blob_sha": "1afde7cb7f5e947ce5f28236d95526a0d6580608"
+    },
+    {
+      "path": "frontend/src/lib/bank.js",
+      "blob_sha": "7a1669d9162a9a516457991f05b609a732c631e0"
+    },
+    {
+      "path": "frontend/src/lib/bank.test.js",
+      "blob_sha": "eee837d9c65c472fda2a9e14b5721a3160a2b4d7"
+    },
+    {
+      "path": "frontend/src/lib/demoAuth.js",
+      "blob_sha": "3d32dc1c0d79c096fc2a3c340b14bea7897b7c48"
+    },
+    {
+      "path": "frontend/src/lib/scanVietQr.js",
+      "blob_sha": "5eac3c9874a72f832d73c572c5e260b550732f79"
+    },
+    {
+      "path": "frontend/src/lib/scanVietQr.test.js",
+      "blob_sha": "a15a305009662015807b62bb8cd8775bd679f72d"
+    },
+    {
+      "path": "frontend/src/lib/sepayAdapter.js",
+      "blob_sha": "1fa97af57c91da4e444539086052e33785fa8d9a"
+    },
+    {
+      "path": "frontend/src/lib/sepayAdapter.test.js",
+      "blob_sha": "e5660f2db9a7e5daea64e36a1fd36f6bc926e927"
+    },
+    {
+      "path": "frontend/src/lib/vietqr.js",
+      "blob_sha": "a27987fb21e5fb71a93e8a1d76f0bdbaef2d6e51"
+    },
+    {
+      "path": "frontend/src/lib/vietqr.test.js",
+      "blob_sha": "fd772589cbce4a97a9e7b6d6dd210597d3592bc4"
+    },
+    {
+      "path": "frontend/src/main.jsx",
+      "blob_sha": "83bd5710d54d75ad7cf85944ed9a546d0c7fa267"
+    },
+    {
+      "path": "frontend/src/reference-theme.css",
+      "blob_sha": "6e2a6936cd8469981035bef13a2ce54f920fdd14"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "blob_sha": "3aebd1e6795e9154ea2025c958e51c1a66c7ecad"
+    },
+    {
+      "path": "frontend/src/test/decodeQr.js",
+      "blob_sha": "fc55a4891e07091583869e724b332b64d4c84918"
+    },
+    {
+      "path": "frontend/src/test/setup.js",
+      "blob_sha": "951c911055678a8be9ff500a8b09b703fa3a42e8"
+    },
+    {
+      "path": "package-lock.json",
+      "blob_sha": "efda5b97cd695f85f03d4ed02d484dded0a1bfd6"
+    },
+    {
+      "path": "package.json",
+      "blob_sha": "333f9942e0bf2a4a53dee5d32e53be8d7abfee52"
+    },
+    {
+      "path": "playwright.config.js",
+      "blob_sha": "b405f1b794672b51e671b8667a59827b26085110"
+    },
+    {
+      "path": "postcss.config.js",
+      "blob_sha": "99417eb5a5d1ed54b838b9a5260bf0e9d6c6e07a"
+    },
+    {
+      "path": "scripts/cau-hinh-apk.mjs",
+      "blob_sha": "73e0394e067f2cb397d9060f06aa6e93adca0119"
+    },
+    {
+      "path": "scripts/export-standalone.mjs",
+      "blob_sha": "9398350592e8df81de0ac48b0e8a98eaf9a55eb6"
+    },
+    {
+      "path": "scripts/kiem-thu/cau-hinh-apk.test.mjs",
+      "blob_sha": "7c528a610ff5ea371b344f864d2353a4b77e3d6a"
+    },
+    {
+      "path": "scripts/thong-tin-phien-ban.mjs",
+      "blob_sha": "003140227d51fe6b3ca714609856f47ef0ed8568"
+    },
+    {
+      "path": "tailwind.config.js",
+      "blob_sha": "a1553d58cfa3f5fec6defda3838bc3a282d39bb1"
+    },
+    {
+      "path": "vite.config.js",
+      "blob_sha": "8abb3bb2efb832f2fd42e0c1f49d6118e1ce392a"
+    }
+  ],
+  "issues_snapshot_before_updates": [
+    {
+      "number": 32,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32",
+      "title": "[NHTBANK-01][P0] Trung tâm điều phối – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:07:02Z",
+      "body": "# Phân công Nhóm 01 – Trung tâm điều phối\n\n- **Người/AI phụ trách theo thiết kế:** Nhóm 01 (vai trò logic; KHÔNG phải GitHub assignee hay một cuộc trò chuyện đã được kích hoạt).\n- **Ưu tiên:** P0; **Đầu vào:** Không; **Gate:** COORD-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Nguồn điều phối:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nChốt nguồn trạng thái, điều phối 14 nhóm, nhật ký quyết định và handoff; kiểm soát scope MVP.\n\n## Nghiệm thu thiết kế\nBản MASTER-STATUS có version, dependency và evidence; handoff log rõ bên nhận.\n\n## Quyền và bằng chứng\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Giao dịch thật/chi phí phải có xác nhận cụ thể. Chỉ ghi VERIFIED khi có bằng chứng cụ thể. Không gộp trạng thái thiết kế với kết quả test/build.\n\n## Hướng dẫn nhận việc trong ChatGPT\nMở cuộc trò chuyện chuyên biệt trong Project NhTBank, yêu cầu: “Tiếp quản [NHTBANK-01] từ GitHub Issue này. Đọc MASTER-STATUS v2; xác minh đầu vào; lập kế hoạch và bàn giao cho nhóm 01. Có thể sửa GitHub/main và chạy kiểm thử phù hợp khi đã xác minh phạm vi, môi trường và điều kiện nghiệm thu.”\n\n**Lưu ý:** GitHub Issue không tự gửi thông điệp sang một cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 1/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Doi chieu status, Issue, phu thuoc va tao bang ban giao phien ban; chap nhan co cau dieu phoi.\n- **Phu thuoc / dieu kien chot:** Khong co phu thuoc bat buoc cho hoat dong nay.\n- **Ban giao de nghi:** Nhom 02,10,06,07,08,13 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Gioi han:** Chi doc/thiet ke de khoi dong. Khong chay SQL, build, test, giao dich ngan hang, merge hay deploy theo viec cap nhat Issue nay.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Điều phối 14 nhóm; phiên bản hóa nguồn, kiểm tra tiếp nhận/handoff.\n- **Phụ thuộc để chốt:** Không.\n- **Tiếp nhận:** ĐANG ĐIỀU PHỐI trong chat Nhóm 01; chưa có GitHub assignee.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 01](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/01-dieu-phoi.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã tổng hợp quy tắc điều phối và phụ thuộc từ nguồn hiện tại; Nhóm 01 đang làm việc trong cuộc trò chuyện này.\n- **Đề xuất việc tiếp theo:** Thu thập phản hồi từ các nhóm; kiểm chứng các gate; điều phối handoff 10 -> 02 và 07 <-> 08.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; tiếp nhận của nhóm logic chưa được xác nhận từ GitHub assignee/comment. Giữ ISSUE OPEN; chưa nghiệm thu chức năng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Không biến quyền thực hiện thành kết quả SQL/test/build PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 33,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/33",
+      "title": "[NHTBANK-02][P0] Kiến trúc và API contract – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:07:27Z",
+      "body": "# Phân công Nhóm 02 – Kiến trúc và API contract\n\n- **Người/AI phụ trách theo thiết kế:** Nhóm 02 (vai trò logic; KHÔNG phải GitHub assignee hay một cuộc trò chuyện đã được kích hoạt).\n- **Ưu tiên:** P0; **Đầu vào:** 01,10; **Gate:** ARCH-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Nguồn điều phối:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế sơ đồ Website/Android/Backend/Auth/PostgreSQL, OpenAPI v1 nháp, data flow, API versioning.\n\n## Nghiệm thu thiết kế\nCó sơ đồ, endpoint/response/error/auth contract; phân biệt thực tế đã có với kiến trúc dự kiến.\n\n## Quyền và bằng chứng\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Giao dịch thật/chi phí phải có xác nhận cụ thể. Chỉ ghi VERIFIED khi có bằng chứng cụ thể. Không gộp trạng thái thiết kế với kết quả test/build.\n\n## Hướng dẫn nhận việc trong ChatGPT\nMở cuộc trò chuyện chuyên biệt trong Project NhTBank, yêu cầu: “Tiếp quản [NHTBANK-02] từ GitHub Issue này. Đọc MASTER-STATUS v2; xác minh đầu vào; lập kế hoạch và bàn giao cho nhóm 01. Có thể sửa GitHub/main và chạy kiểm thử phù hợp khi đã xác minh phạm vi, môi trường và điều kiện nghiệm thu.”\n\n**Lưu ý:** GitHub Issue không tự gửi thông điệp sang một cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 3/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Kiem ke kien truc dang co va tao API contract v1 o muc DRAFT; ghi gia dinh business rules.\n- **Phu thuoc / dieu kien chot:** Ban cuoi can PRD Nhom 10 va ra soat bao mat Nhom 06.\n- **Ban giao de nghi:** Nhom 06,07,08,03,13 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Quyền được ủy quyền:** được trực tiếp sửa `main`, chạy test/build/CI/APK/E2E, SQL có kiểm soát, merge/deploy theo nhiệm vụ. Giao dịch thật cần xác nhận riêng cho từng giao dịch; không gán kết quả PASS khi chưa kiểm chứng.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - BAN NHAP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Kiểm kê kiến trúc và tạo API skeleton v1, ghi TBD.\n- **Phụ thuộc để chốt:** Nhóm 10 cần bàn giao PRD để chốt.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền hiện hành:** có thể sửa code/Issues trực tiếp trên `main` và chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ, preflight và gate; giữ Issue OPEN cho đến khi có bằng chứng nghiệm thu, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 02](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/02-kien-truc-api-v1.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã có sơ đồ ranh giới và API v1 đề xuất; endpoint này chưa có backend implementation được xác minh.\n- **Đề xuất việc tiếp theo:** Review OpenAPI v1 với 10/06/08 và quản lý Auth principal/error contract trước khi tích hợp UI.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; tiếp nhận của nhóm logic chưa được xác nhận từ GitHub assignee/comment. Giữ ISSUE OPEN; chưa nghiệm thu chức năng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Không biến quyền thực hiện thành kết quả SQL/test/build PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 34,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/34",
+      "title": "[NHTBANK-03][P1] UI UX và Design System – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:10:11Z",
+      "body": "# Phân công Nhóm 03 – UI UX và Design System\n\n- **Người/AI phụ trách theo thiết kế:** Nhóm 03 (vai trò logic; KHÔNG phải GitHub assignee hay một cuộc trò chuyện đã được kích hoạt).\n- **Ưu tiên:** P1; **Đầu vào:** 10,02; **Gate:** UX-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Nguồn điều phối:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế tokens, component states, accessibility, phong cách Futuristic 3D sáng dùng chung Web/Android.\n\n## Nghiệm thu thiết kế\nCó tokens, component spec, trạng thái lỗi/loading và tiêu chí accessibility.\n\n## Quyền và bằng chứng\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Giao dịch thật/chi phí phải có xác nhận cụ thể. Chỉ ghi VERIFIED khi có bằng chứng cụ thể. Không gộp trạng thái thiết kế với kết quả test/build.\n\n## Hướng dẫn nhận việc trong ChatGPT\nMở cuộc trò chuyện chuyên biệt trong Project NhTBank, yêu cầu: “Tiếp quản [NHTBANK-03] từ GitHub Issue này. Đọc MASTER-STATUS v2; xác minh đầu vào; lập kế hoạch và bàn giao cho nhóm 01. Có thể sửa GitHub/main và chạy kiểm thử phù hợp khi đã xác minh phạm vi, môi trường và điều kiện nghiệm thu.”\n\n**Lưu ý:** GitHub Issue không tự gửi thông điệp sang một cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 8/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Ra soat docs/ui-standard.md va phac thao design tokens, component states, accessibility.\n- **Dieu kien chot:** Chot UI flow sau khi Nhom 02 va 10 co API contract, PRD.\n- **Ban giao cho:** 04,05,11; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - BAN NHAP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Rà soát ui-standard, soạn tokens và accessibility draft.\n- **Phụ thuộc để chốt:** Nhóm 02 và 10 chốt contract để hoàn thiện.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền hiện hành:** có thể sửa code/Issues trực tiếp trên `main` và chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ, preflight và gate; giữ Issue OPEN cho đến khi có bằng chứng nghiệm thu, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 03](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/03-design-system.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã có bản rà soát 45 mã UI và tokens đề xuất; chưa sửa CSS/đo contrast trên thiết bị.\n- **Đề xuất việc tiếp theo:** Đối chiếu CSS nguồn, chốt tokens, 45 UI criteria và bàn giao cho 04/05/11.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; chưa có xác nhận nhóm logic nhận việc. Giữ Issue OPEN; không coi gate PASS nếu thiếu bằng chứng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md).\n\n\n## Bàn giao Đợt 1 và nhiệm vụ Đợt 2 — 2026-11-06\n\n- **Tài liệu Đợt 1:** [03-design-system.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/03-design-system.md) — UI token/accessibility audit nhap, CSS chua sua.\n- **Đợt 2:** [Bảng ưu tiên, gates và bàn giao](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Tiếp nhận:** CHƯA XÁC NHẬN; chưa có phản hồi từ cuộc trò chuyện/assignee phụ trách. Trạng thái artifact DRAFT PREPARED, gate CHƯA PASS.\n- **Yêu cầu:** phản biện source/contract, xuất HANDOFF có bằng chứng, không giả định test/SQL/APK PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 35,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/35",
+      "title": "[NHTBANK-04][P1] Website – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T08:41:34Z",
+      "body": "# Phân công Nhóm 04 – Website\n\n- **Nhóm logic:** 04; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P1; **Phụ thuộc:** 02,03,06,08; **Gate:** UX-01 / ARCH-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nRà soát trang và luồng hiện tại; thiết kế sitemap, màn đăng nhập demo, dashboard, chuyển khoản, lịch sử, error states; ánh xạ API theo bản contract nháp.\n\n## Tiêu chí nghiệm thu thiết kế\nCó sitemap, screen matrix, dữ liệu mẫu tách biệt backend thực; không tuyên bố build/test đã chạy.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-04 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** CHO CONTRACT DE TICH HOP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Chỉ kiểm kê website và lập sitemap, không nối API.\n- **Phụ thuộc để chốt:** Chờ nhóm 02, 03, 06, 08 để tích hợp.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền hiện hành:** có thể sửa code/Issues trực tiếp trên `main` và chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ, preflight và gate; giữ Issue OPEN cho đến khi có bằng chứng nghiệm thu, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n",
+      "comments": []
+    },
+    {
+      "number": 36,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/36",
+      "title": "[NHTBANK-05][P1] Mobile Android – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T08:39:20Z",
+      "body": "# Phân công Nhóm 05 – Mobile Android\n\n- **Nhóm logic:** 05; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P1; **Phụ thuộc:** 02,03,06,08; **Gate:** UX-01 / ARCH-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế Android-first user flow, màn hình demo, session UX, kế hoạch build APK và kiểm thử thiết bị.\n\n## Tiêu chí nghiệm thu thiết kế\nCó screen map, mobile architecture, security UX, build plan; chưa coi APK có artifact nếu chưa kiểm chứng.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-05 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** CHO CONTRACT DE TICH HOP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Kiểm kê Android screen map, quy trình APK Debug, chưa build.\n- **Phụ thuộc để chốt:** Chờ 02/03/06/08 để chốt tích hợp.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n",
+      "comments": []
+    },
+    {
+      "number": 37,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/37",
+      "title": "[NHTBANK-06][P0] Danh tính và bảo mật – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:07:44Z",
+      "body": "# Phân công Nhóm 06 – Danh tính và bảo mật\n\n- **Nhóm logic:** 06; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P0; **Phụ thuộc:** 02,10; **Gate:** SEC-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế threat model, RBAC, authentication, authorization, session, token lifecycle, chống privilege escalation; review interface với SQL ACL.\n\n## Tiêu chí nghiệm thu thiết kế\nCó ma trận role/principal/quyền, các threat cases P0, review boundary và blockers.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-06 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 4/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Lap threat model so bo va danh sach quyen/role; tuyen bo ro diem can contract Nhom 02.\n- **Phu thuoc / dieu kien chot:** Ma tran RBAC cuoi cho Nhom 02,10 chot contract.\n- **Ban giao de nghi:** Nhom 07,08,13 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Gioi han:** Chi doc/thiet ke de khoi dong. Khong chay SQL, build, test, giao dich ngan hang, merge hay deploy theo viec cap nhat Issue nay.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - BAN NHAP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Threat model, RBAC, session/AuthZ boundary từ source hiện có.\n- **Phụ thuộc để chốt:** Chờ 02 và 10 để khóa yêu cầu; QA 13 phản biện.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 06](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/06-bao-mat-rbac.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã lập threat model/RBAC nháp, nhấn mạnh service_role bypass RLS và kiểm soát principal tại backend.\n- **Đề xuất việc tiếp theo:** Review độc lập với 13; chốt ACL/AuthZ boundary cùng 02/07/08; chưa PASS SEC-01.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; tiếp nhận của nhóm logic chưa được xác nhận từ GitHub assignee/comment. Giữ ISSUE OPEN; chưa nghiệm thu chức năng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Không biến quyền thực hiện thành kết quả SQL/test/build PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 38,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/38",
+      "title": "[NHTBANK-07][P0] Database và Supabase – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:08:10Z",
+      "body": "# Phân công Nhóm 07 – Database và Supabase\n\n- **Nhóm logic:** 07; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P0; **Phụ thuộc:** 02,06,08 (hai vòng); **Gate:** DB-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nTiếp tục A3.6: kiểm tra lại nguồn và SHA hai file SQL v2, hợp nhất unified diff v2.1, GATE-01..10, default/column/table ACL, transaction semantics; được triển khai và kiểm thử khi đủ điều kiện kỹ thuật.\n\n## Tiêu chí nghiệm thu thiết kế\nCó unified diff cho đúng hai file và review từng hunk; SQL NOT RUN, không v3, không reversed, chỉ transfer sandbox.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-07 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 5/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Tiep tuc A3.6: tai doc nguon SQL v2, kiem tra SHA, phan tich unified diff v2.1 tren giay.\n- **Phu thuoc / dieu kien chot:** Khong chay SQL, khong dung testing-v3, khong reversed; can input 06 va 08 de chot.\n- **Ban giao de nghi:** Nhom 08,06,13 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Gioi han:** Chi doc/thiet ke de khoi dong. Khong chay SQL, build, test, giao dich ngan hang, merge hay deploy theo viec cap nhat Issue nay.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - THIET KE (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** A3.6: phân tích hai file SQL archive/v2 trên main (đã khớp SHA) và tạo unified diff thiết kế.\n- **Phụ thuộc để chốt:** Nhánh codex/nhtbank-sql-hardening-20261031 không còn tìm thấy; phối hợp vòng 1-2 với 02/06/08.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 07](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/07-sql-v21-a36.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã có tài liệu A3.6 liệt kê hunk/GATE và SHA SQL v2; chưa phải unified diff cuối, SQL NOT RUN.\n- **Đề xuất việc tiếp theo:** Thiết kế unified diff đúng hai file, kiểm tra PG17 ACL/MAINTAIN/SET ROLE, bàn giao 08 và 13; không dùng testing-v3.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; tiếp nhận của nhóm logic chưa được xác nhận từ GitHub assignee/comment. Giữ ISSUE OPEN; chưa nghiệm thu chức năng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Không biến quyền thực hiện thành kết quả SQL/test/build PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 39,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/39",
+      "title": "[NHTBANK-08][P0] Backend và Transfer – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:09:29Z",
+      "body": "# Phân công Nhóm 08 – Backend và Transfer\n\n- **Nhóm logic:** 08; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P0; **Phụ thuộc:** 02,06,07 (hai vòng),10; **Gate:** TX-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế OpenAPI, authorization, atomic transfer, idempotency claim/replay/hash conflict, concurrency, crash recovery và test scenarios.\n\n## Tiêu chí nghiệm thu thiết kế\nCó idempotency state machine, transaction boundary, API error codes và đặc tả concurrency; NOT RUN.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-08 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 6/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Thiet ke transfer sandbox atomic/idempotency state machine va API error contract ban nhap.\n- **Phu thuoc / dieu kien chot:** Chot transaction sau khi doi chieu Nhom 07, xac thuc Nhom 06 va nghiep vu Nhom 10.\n- **Ban giao de nghi:** Nhom 07,13,02 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Gioi han:** Chi doc/thiet ke de khoi dong. Khong chay SQL, build, test, giao dich ngan hang, merge hay deploy theo viec cap nhat Issue nay.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - BAN NHAP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Atomic transfer, idempotency/replay/hash mismatch/concurrency state machine.\n- **Phụ thuộc để chốt:** Chờ chốt contract 02, business rules 10 và schema 07.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 08](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/08-transfer-idempotency.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã có atomic transfer/idempotency state machine dạng thiết kế; chưa có persistent backend transfer hay concurrency run.\n- **Đề xuất việc tiếp theo:** Chốt API/DB with 02/07; xây contract test crash/retry/10-request concurrency với 13.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; chưa có xác nhận nhóm logic nhận việc. Giữ Issue OPEN; không coi gate PASS nếu thiếu bằng chứng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md).\n\n\n## Bàn giao Đợt 1 và nhiệm vụ Đợt 2 — 2026-11-06\n\n- **Tài liệu Đợt 1:** [08-transfer-idempotency.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/08-transfer-idempotency.md) — Backend/idempotency contract nhap; chua implemented, concurrency NOT RUN.\n- **Đợt 2:** [Bảng ưu tiên, gates và bàn giao](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Tiếp nhận:** CHƯA XÁC NHẬN; chưa có phản hồi từ cuộc trò chuyện/assignee phụ trách. Trạng thái artifact DRAFT PREPARED, gate CHƯA PASS.\n- **Yêu cầu:** phản biện source/contract, xuất HANDOFF có bằng chứng, không giả định test/SQL/APK PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 40,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/40",
+      "title": "[NHTBANK-09][P2] SePay và Webhook – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T08:39:51Z",
+      "body": "# Phân công Nhóm 09 – SePay và Webhook\n\n- **Nhóm logic:** 09; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P2; **Phụ thuộc:** 06,07,08; **Gate:** SEC-01 / TX-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nĐối chiếu tài liệu chính thức Test Mode, đề xuất webhook event schema, xác minh nguồn gửi, chống trùng/replay, retry và lỗi.\n\n## Tiêu chí nghiệm thu thiết kế\nCó tài liệu có nguồn, contract sandbox, webhook state machine, danh sách rủi ro; không gọi ngân hàng thật.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-09 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 12/14.\n- **Kha nang bat dau:** CHI CHUAN BI; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Nghien cuu tai lieu SePay Test Mode, phac thao event map va risk register.\n- **Dieu kien chot:** Can 06,07,08 chot an toan truoc ket noi sandbox; khong goi dich vu.\n- **Ban giao cho:** 08,06; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** CHO CONTRACT DE TICH HOP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Nghiên cứu tài liệu SePay Test Mode và webhook specification; không gọi dịch vụ thật.\n- **Phụ thuộc để chốt:** Chờ nhóm 06/07/08.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n",
+      "comments": []
+    },
+    {
+      "number": 41,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/41",
+      "title": "[NHTBANK-10][P1] Nghiệp vụ tài chính – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:07:09Z",
+      "body": "# Phân công Nhóm 10 – Nghiệp vụ tài chính\n\n- **Nhóm logic:** 10; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P1; **Phụ thuộc:** 01; **Gate:** COORD-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nXác định MVP và business rules cho ví, tài khoản, giao dịch sandbox, tiết kiệm, vay, thẻ demo, lịch sử, phí/lãi demo.\n\n## Tiêu chí nghiệm thu thiết kế\nCó PRD, feature matrix, stories và acceptance criteria; số liệu mô phỏng gắn nhãn.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-10 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi dot 2026-11-06 (Nhom 01)\n\n- **Thu tu giao viec de xuat:** 2/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU THIET KE / RÀ SOÁT NGAY.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (GitHub assignees rong, chua co phan hoi nhan viec tai thoi diem doi chieu). Không được đổi thành IN PROGRESS khi chưa có bằng chứng.\n- **Cong viec buoc 1:** Soan pham vi MVP, danh sach nghiep vu sandbox va quy tac transfer ban nhap.\n- **Phu thuoc / dieu kien chot:** Can Nhom 01 chot pham vi truoc khi NGHIEM THU PRD; khong can cho de bat dau.\n- **Ban giao de nghi:** Nhom 02,08,03 (ghi Handoff-ID, commit/nguon, artifact, blocker va acceptance).\n- **Nguon trang thai:** [MASTER-STATUS](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n- **Gioi han:** Chi doc/thiet ke de khoi dong. Khong chay SQL, build, test, giao dich ngan hang, merge hay deploy theo viec cap nhat Issue nay.\n- **Dieu kien da nhan viec:** co nguoi/agent duoc giao cu the VA co thong diep xac nhan tiep nhan/ket qua kiem chung. Issue duoc phan loai “san sang” khong dong nghia agent dang chay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Tạo PRD MVP sandbox, business rules transfer, acceptance criteria.\n- **Phụ thuộc để chốt:** Nhóm 01 đã có scope điều phối.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 10](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/10-nghiep-vu-mvp.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã lập PRD MVP sandbox dạng nháp, phân biệt demo đang có và các tính năng chưa triển khai.\n- **Đề xuất việc tiếp theo:** Chốt scope MVP và quy tắc transfer/retention với Nhóm 01; bàn giao acceptance cho 02/06/08/13.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; tiếp nhận của nhóm logic chưa được xác nhận từ GitHub assignee/comment. Giữ ISSUE OPEN; chưa nghiệm thu chức năng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Không biến quyền thực hiện thành kết quả SQL/test/build PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 42,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/42",
+      "title": "[NHTBANK-11][P2] Admin Dashboard – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T08:39:58Z",
+      "body": "# Phân công Nhóm 11 – Admin Dashboard\n\n- **Nhóm logic:** 11; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P2; **Phụ thuộc:** 03,06,08; **Gate:** SEC-01 / UX-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế sitemap quản trị, RBAC support/operator/auditor, audit view và quy trình incident sandbox.\n\n## Tiêu chí nghiệm thu thiết kế\nCó admin sitemap, permission matrix và incident workflow, không tạo admin thật.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-11 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 13/14.\n- **Kha nang bat dau:** CHI CHUAN BI; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Phac thao admin sitemap va role matrix, khong tao tai khoan admin.\n- **Dieu kien chot:** Can contract 08, security 06 va design 03 de chot.\n- **Ban giao cho:** 06,03; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** CHO CONTRACT DE TICH HOP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Thiết kế sitemap Admin nháp, tập hợp vai trò quyền, chưa nối API.\n- **Phụ thuộc để chốt:** Chờ nhóm 03/06/08.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n",
+      "comments": []
+    },
+    {
+      "number": 43,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/43",
+      "title": "[NHTBANK-12][P2] AI Assistant – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T08:40:02Z",
+      "body": "# Phân công Nhóm 12 – AI Assistant\n\n- **Nhóm logic:** 12; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P2; **Phụ thuộc:** 06,08,10; **Gate:** SEC-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế AI trợ lý tài chính chỉ đọc cho demo, intent catalog, tool permissions, bảo vệ dữ liệu và evaluation cases.\n\n## Tiêu chí nghiệm thu thiết kế\nCó read-only architecture, permissions, safety test cases, không có quyền chuyển tiền.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-12 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 14/14.\n- **Kha nang bat dau:** CHI CHUAN BI; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Phac thao intent AI chi doc, tool permissions va evaluation test cases.\n- **Dieu kien chot:** Cho 06,08,10 chot data scope/API truoc tich hop AI.\n- **Ban giao cho:** 06,08; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** CHO CONTRACT DE TICH HOP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Lập intent catalog AI chỉ đọc và safety cases; không kích hoạt tool ngân hàng.\n- **Phụ thuộc để chốt:** Chờ nhóm 06/08/10.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n",
+      "comments": []
+    },
+    {
+      "number": 44,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/44",
+      "title": "[NHTBANK-13][P0] QA và kiểm toán – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:09:54Z",
+      "body": "# Phân công Nhóm 13 – QA và kiểm toán\n\n- **Nhóm logic:** 13; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P0; **Phụ thuộc:** 02,06,07,08 (nhận nháp sớm); **Gate:** QA-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nThiết kế test matrix độc lập cho SQL ACL/RLS, atomic transfer, idempotency/concurrency, webhooks, UI/E2E và build; xác định evidence gates.\n\n## Tiêu chí nghiệm thu thiết kế\nCó test matrix, PASS/FAIL/BLOCKED/NOT RUN, criteria và blocker; KHÔNG coi kiểm tra tĩnh là test PASS.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-13 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 7/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU KIEM TOAN THIET KE; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Lap test matrix doc lap cho SQL ACL/RLS, idempotency, crash/retry, API va UI; danh NOT RUN.\n- **Dieu kien chot:** Cho 02,06,07,08 dua ban thiet ke de phan bien va nghiem thu.\n- **Ban giao cho:** 01,07,08,14; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - BAN NHAP (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Viết test matrix dựa trên tài liệu và GATE; chưa chạy test.\n- **Phụ thuộc để chốt:** Nhận nháp từ 02/06/07/08 để hoàn thiện.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 13](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/13-qa-test-matrix.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã có ma trận QA và gate đánh giá độc lập; các test SQL/concurrency đề xuất vẫn NOT RUN.\n- **Đề xuất việc tiếp theo:** Phản biện SQL A3.6, AuthZ, API contract và điều kiện release; chỉ nâng PASS khi có log.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; chưa có xác nhận nhóm logic nhận việc. Giữ Issue OPEN; không coi gate PASS nếu thiếu bằng chứng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md).\n\n\n## Bàn giao Đợt 1 và nhiệm vụ Đợt 2 — 2026-11-06\n\n- **Tài liệu Đợt 1:** [13-qa-test-matrix.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/13-qa-test-matrix.md) — 12 tinh huong test du kien, SQL/Backend tests NOT RUN.\n- **Đợt 2:** [Bảng ưu tiên, gates và bàn giao](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Tiếp nhận:** CHƯA XÁC NHẬN; chưa có phản hồi từ cuộc trò chuyện/assignee phụ trách. Trạng thái artifact DRAFT PREPARED, gate CHƯA PASS.\n- **Yêu cầu:** phản biện source/contract, xuất HANDOFF có bằng chứng, không giả định test/SQL/APK PASS.\n",
+      "comments": []
+    },
+    {
+      "number": 45,
+      "url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45",
+      "title": "[NHTBANK-14][P1] GitHub và DevOps – nhiem vu thiet ke",
+      "state": "open",
+      "assignees": null,
+      "updated_at": "2026-11-06T09:10:23Z",
+      "body": "# Phân công Nhóm 14 – GitHub và DevOps\n\n- **Nhóm logic:** 14; đây là nhóm chuyên môn được mô tả, không phải GitHub assignee hoặc cuộc trò chuyện đang hoạt động.\n- **Ưu tiên:** P1; **Phụ thuộc:** 02,05,13; **Gate:** OPS-01; **Trạng thái:** PROPOSED / NOT RUN.\n- **Tài liệu:** [MASTER-STATUS v2](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/MASTER-STATUS.md), [HANDOFF-LOG](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/HANDOFF-LOG.md).\n\n## Nhiệm vụ\nKiểm kê read-only CI, PR, nhánh, workflow; thiết kế CI/CD, build artifacts APK, Preview env, branch protection, rollback, không phát sinh phí.\n\n## Tiêu chí nghiệm thu thiết kế\nCó repo audit references, CI/CD draft, environment matrix và release gates; không trigger workflow hoặc deploy.\n\n## Bằng chứng và giới hạn\nĐược trực tiếp cập nhật code, tài liệu, Issues và `main`; được chạy SQL/test/CI/APK/E2E/merge/deploy theo nhiệm vụ có preflight. Production và giao dịch thật cần xác minh môi trường và xác nhận giao dịch cụ thể. Không tự tuyên bố test/build PASS khi thiếu log. Mọi đầu ra phải ghi nhánh, version, bằng chứng hoặc KNOWN-HISTORICAL.\n\n## Cách nhóm ChatGPT tiếp nhận\nTrong cuộc trò chuyện NhTBank của nhóm này, gửi: “Tiếp quản nhiệm vụ NHTBANK-14 tại GitHub Issue này. Đọc MASTER-STATUS v2, đối chiếu nguồn, thực hiện phân tích và chuẩn bị phiếu bàn giao nhóm 01. Có thể sửa GitHub/main và chạy SQL đã review trên môi trường hợp lệ với preflight.”\n\n**Lưu ý:** Tạo Issue chỉ là giao nhiệm vụ trong GitHub; không thể tự gửi tin nhắn sang cuộc trò chuyện ChatGPT khác.\n\n<!-- NHTBANK-COORD-20261106-V3 -->\n## Dieu phoi Nhom 01 – 2026-11-06\n- **Thu tu:** 9/14.\n- **Kha nang bat dau:** SAN SANG BAT DAU KIEM KE; chi trong pham vi cong viec so bo neu phu thuoc chua chot.\n- **Trang thai tiep nhan:** CHUA XAC NHAN (khong GitHub assignee, chua co phan hoi nhan viec).\n- **Buoc dau:** Kiem ke workflow/CI/APK read-only, lap environment matrix va gate de xuat.\n- **Dieu kien chot:** Chot pipeline sau khi co input 02,05,13; khong kich hoat workflow.\n- **Ban giao cho:** 01,13; can artifact, nguon/SHA, gate, blocker va phieu handoff.\n- **Nguyen tac:** Khong gan nhan IN PROGRESS/VERIFIED chi vi Issue duoc sap lich. Khong chay SQL, test, build, giao dich that, merge hoac deploy theo lan cap nhat nay.\n\n## Điều phối trực tiếp ngày 2026-11-06\n\n- **Khả năng khởi động:** BAT DAU NGAY - KIEM KE (chỉ thiết kế/kiểm kê).\n- **Hành động đầu tiên:** Kiểm kê read-only Actions, trigger, artifact và branch protection; không kích hoạt CI.\n- **Phụ thuộc để chốt:** Chờ 02/05/13 để chốt workflow và release gate.\n- **Tiếp nhận:** CHƯA XÁC NHẬN.\n- **Bằng chứng:** chưa có test/SQL/build PASS trong đợt điều phối; yêu cầu phiếu bàn giao với source/SHA/commit.\n- **Quyền:** không tự chạy SQL, sửa code ngoài nhiệm vụ, merge hay deploy. Giữ Issue OPEN, không tự gán assignee.\n- [Bảng giao việc và trạng thái 14 nhóm](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/docs/dieu-phoi-14-nhom-20261106/docs/dieu-phoi/bang-giao-viec-20261106.md).\n\n## Quyền thực thi hiện hành — 2026-11-06\n\nChủ repository đã cấp quyền **trực tiếp chỉnh sửa mã nguồn, tài liệu, GitHub Issues và cập nhật nhánh `main`**, không cần xin lại quyền ghi cho từng nhiệm vụ. Được chạy SQL, unit/E2E, GitHub Actions, CI, build APK, merge và deploy khi gắn với nhiệm vụ cụ thể, đã xác minh môi trường/ảnh hưởng và có kiểm soát backup/rollback khi cần. Giao dịch tiền thật và cam kết chi phí vẫn cần thông tin và xác nhận cụ thể; không dùng PIN/demo làm giao dịch thật. Không tuyên bố PASS nếu thiếu log.\n\n**Quy chế ưu tiên:** [docs/dieu-phoi/quy-che-thuc-thi.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md). Các giới hạn chỉ-đọc/không ghi GitHub/không cập nhật main trong nội dung cũ của Issue được thay thế từ ngày trên.\n\n## Cập nhật điều phối Đợt 1 và đề xuất Đợt 2 – 2026-11-06\n\n- **Hiện vật đã tạo:** [Tài liệu Nhóm 14](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/14-ci-inventory.md) (bản nháp nghiên cứu do Nhóm 01 tổng hợp, không phải xác nhận AI đã nhận việc).\n- **Kết quả:** Đã kiểm kê workflow main, GitHub Pages, Android APK triggers; không có bằng chứng APK mới phát sinh từ thay đổi docs.\n- **Đề xuất việc tiếp theo:** Đối chiếu CI test coverage, artifact/version/icon, release gate QA; kiểm tra workflow mới theo commit thực.\n- **Đợt 2:** [Đề xuất 2A–2C và gate](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Trạng thái:** DOCUMENT DRAFT AVAILABLE; chưa có xác nhận nhóm logic nhận việc. Giữ Issue OPEN; không coi gate PASS nếu thiếu bằng chứng.\n- **Quyền thực hiện:** [Quy chế hiện hành](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/quy-che-thuc-thi.md).\n\n\n## Bàn giao Đợt 1 và nhiệm vụ Đợt 2 — 2026-11-06\n\n- **Tài liệu Đợt 1:** [14-ci-inventory.md](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/dot-1/14-ci-inventory.md) — Inventory workflow/CI ban nhap; khong coi la APK build da chay.\n- **Đợt 2:** [Bảng ưu tiên, gates và bàn giao](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/blob/main/docs/dieu-phoi/de-xuat-dot-2.md).\n- **Tiếp nhận:** CHƯA XÁC NHẬN; chưa có phản hồi từ cuộc trò chuyện/assignee phụ trách. Trạng thái artifact DRAFT PREPARED, gate CHƯA PASS.\n- **Yêu cầu:** phản biện source/contract, xuất HANDOFF có bằng chứng, không giả định test/SQL/APK PASS.\n",
+      "comments": []
+    }
+  ],
+  "checks": {
+    "local_build": {
+      "exit_code": 0,
+      "js_kb": 512.12
+    },
+    "local_vitest": {
+      "exit_code": 1,
+      "passed": 59,
+      "failed": 11,
+      "errors": 11,
+      "cause": "listen EPERM 127.0.0.1"
+    },
+    "local_backend_initial": {
+      "exit_code": 1,
+      "cause": "listen EPERM"
+    },
+    "local_backend_authorized": {
+      "exit_code": 0,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "local_apk_config": {
+      "exit_code": 0,
+      "passed": 1
+    },
+    "vitest_escalation": {
+      "status": "NOT_EXECUTED",
+      "cause": "Automatic approval review failed: usage limit; not a determination of unsafe action"
+    },
+    "local_e2e": "NOT RUN",
+    "sql": "NOT RUN",
+    "concurrency": "NOT RUN"
+  },
+  "ci_source": {
+    "run": 42194370164,
+    "job": 127813822396,
+    "head_sha": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+    "status": "completed",
+    "conclusion": "success",
+    "unit_passed": 70,
+    "backend_passed": 15,
+    "e2e_passed": 43,
+    "e2e_skipped": 8,
+    "pages_run": 42194370353,
+    "pages_build": "success",
+    "pages_deploy": "skipped",
+    "artifact_id": 13491108276,
+    "artifact_digest_from_api": "sha256:f142b990219cfc9aa0b25643e4b6efb9b18eb72aed4ebd52c6dbba1d1d11becd",
+    "artifact_download_verified": false
+  },
+  "sql_blobs": {
+    "core": "48ed0ab6adec0ffa3091e081924d051e2a6a2bda",
+    "assertions": "ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379"
+  },
+  "design_gates_passed": [],
+  "acknowledgement_other_groups": false
+}

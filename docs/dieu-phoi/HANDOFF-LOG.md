@@ -99,3 +99,25 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - Kiểm chứng:86 test local đạt, build Pages đạt; không có SQL/concurrency/E2E/nativeAPK/Production trong phiên. Không gọi gate PASS từ số test này.
 - Gửi theo tài liệu: đề xuất02/06/07/08/13 nhận D2-01..06 và03/14 nhận phần độc lập,04/05/09/11/12 chỉ bản sơ bộ. **ACK nhóm nhận vẫn PENDING**, không tự gửi tin nhắn sang các cuộc trò chuyện khác.
 - Điều kiện nhận: source version, artifact, reviewer, quyết định contract, blocker và gate tương ứng. Sự có mặt của tài liệu trên main không đồng nghĩa đã tiếp nhận/đã vận hành.
+
+## NB-NT-D1-20261106 — bàn giao nghiệm thu có phiên bản
+
+- **Bên lập:** Nhóm 01 trong cuộc trò chuyện hiện tại; **bên nhận dự kiến:** 10/02/06/07/08/13, song song 03/14.
+- **Nguồn kiểm tra:** `7192af6c28b51b56806b0b9c6827d2d0604bbc8a` trên main; 14 Issues đọc trực tiếp gồm body và toàn bộ comments (đều rỗng tại snapshot trước cập nhật). Không có assignee; không suy diễn ACK từ hoạt động của Nhóm 01.
+- **Artifact:** [báo cáo nghiệm thu](nghiem-thu-dot-1-20261106.md), [snapshot và runtime manifest](bang-chung-nghiem-thu-dot-1-20261106/doi-chieu.json); bản sửa nằm trong cùng commit chứa phiếu này.
+- **Đã xác minh:** source/blob SQL v2; 62 tệp local khớp runtime nguồn; local build/backend15/APK config1; log CI của nguồn có unit70/backend15/E2E43 đạt,8 skipped.
+- **Chưa xác minh:** gate thiết kế, SQL A3.6, ledger/concurrency, E2E local, thiết bị/APK native. Vitest local lỗi loopback; lượt xin chạy lại không được thực thi do auto-review hết hạn mức.
+- **Trạng thái:** ARTIFACT READY / ACK PENDING / REVIEW PENDING. Các phiếu dưới đây là hàng đợi bàn giao, không phải thông báo đã gửi hoặc nhóm đã nhận.
+
+| Handoff-ID | Từ → nhận dự kiến | Artifact đầu vào tại source commit ở trên | Việc / điều kiện nhận |
+| --- | --- | --- | --- |
+| NB-NT-D1-10 | 01→10/02 | dot-1/10-nghiep-vu-mvp.md | D2-01, owner review scope/fee/min-max/retention |
+| NB-NT-D1-02 | 10→02/06 | dot-1/02-kien-truc-api-v1.md | D2-02, field/error/auth contract có version |
+| NB-NT-D1-06 | 02→06/07/08/13 | dot-1/06-bao-mat-rbac.md | D2-03, principal/session/endpoint permission review |
+| NB-NT-D1-07 | 06→07/08/13 | dot-1/07-sql-v21-a36.md | D2-04, final unified diff + gate-definition provenance |
+| NB-NT-D1-08 | 07↔08→13 | dot-1/08-transfer-idempotency.md | D2-05, ledger/hash/replay/rollback hai vòng |
+| NB-NT-D1-13 | 07/08→13/14 | dot-1/13-qa-test-matrix.md | D2-06, review độc lập + runner/preflight/evidence |
+| NB-NT-D1-03 | 03→04/05/13 | dot-1/03-design-system.md | Token mapping/45 tiêu chí, UX review riêng |
+| NB-NT-D1-14 | 14→01/13 | dot-1/14-ci-inventory.md | Run/SHA/log/artifact; không suy gate từ CI xanh |
+
+**Đóng handoff:** người/agent nhận ACK có danh tính, phạm vi, source version và thời điểm; reviewer ghi kết quả trên đúng artifact. Sửa Issue trong lượt nghiệm thu chỉ cập nhật hồ sơ, không đại diện nhóm nhận ACK.

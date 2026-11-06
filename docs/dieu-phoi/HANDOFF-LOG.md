@@ -51,3 +51,12 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - Nhom 01 dang dieu phoi trong chat; khong dung thong tin nay lam bang chung cac nhom 02–14 da nhan viec.
 - **Dieu kien chuyen CHUA XAC NHAN -> DA TIEP NHAN:** co phan hoi tu nhom/agent/nguoi duoc giao, dinh kem issue, artifact, pham vi va thoi diem. Neu khong, giu PROPOSED.
 - Khong tu dong cap nhat GitHub Issues sau khi nhan ket qua o mot cuoc tro chuyen khac; can thao tac co quyen rieng.
+
+## Tình trạng nhận việc sau khi kiểm tra Issues – 2026-11-06
+
+- Nhóm 01 đã cập nhật điều phối và bảng giao việc trên nhánh tài liệu; đây là hoạt động trong cuộc trò chuyện hiện tại.
+- GitHub Issues #32–#45 đã được cập nhật về mức độ sẵn sàng; chưa có xác nhận 13 nhóm còn lại đã nhận việc hoặc bắt đầu triển khai.
+- **Sẵn sàng thiết kế:** 01, 02, 03, 06, 07, 08, 10, 13, 14.
+- **Chờ contract trước tích hợp:** 04, 05, 09, 11, 12.
+- Chi tiết, phụ thuộc và việc đầu tiên: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
+- Chưa được coi là bàn giao hợp lệ nếu không có xác nhận tiếp nhận, artifact, bằng chứng và `Handoff-ID`. Không tự gửi tin nhắn sang các cuộc trò chuyện khác.

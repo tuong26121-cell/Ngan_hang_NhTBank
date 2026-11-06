@@ -192,3 +192,12 @@
 ## Nhóm 13 — kết quả Đợt 2A ngày 2026-11-06
 
 Đã tiếp quản #44 và kiểm tra độc lập baseline `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`. [Báo cáo hiện hành](dot-2a/13-kiem-thu-nen-tang.md) thay cho trạng thái chưa tiếp nhận của Nhóm 13 ở các đoạn lịch sử. Đã thêm 10 HTTP tests, backend 25/25 và unit 70/70 PASS, build PASS, E2E 43 PASS/8 skip chủ ý; có log tự chạy. SQL NOT RUN; không chấp nhận runtime Auth/RBAC/ledger/concurrency/crash khi chưa implementation/preflight. GATE ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED cho nghiệm thu nền tảng. Handoff 01/14 có matrix/log/criteria; ACK nhận PENDING. Issue #44 OPEN.
+
+
+## Cập nhật xác minh ngày 07/11/2026 (Asia/Saigon)
+
+Đã đọc [báo cáo Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build PASS, E2E 43 PASS/8 skip; SQL và native APK NOT RUN. Đây là số liệu trong báo cáo QA đã nhận, không phải test chạy lại của Nhóm 14. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED theo quyết định QA. ACK nhận hiện vật HO-2A-13-14: đã đọc; ACK này không chấp thuận release.
+
+Đính chính giới hạn truy vấn CI ở bản đầu: fetch_commit_workflow_runs chỉ lọc run do pull_request, nên kết quả rỗng không chứng minh thiếu CI push. Truy vấn REST actions/runs theo head_sha đã xác minh main 295eff3811bc5654aaf6677a226eba7b4d0dd4d7 có Verify success [42196968950](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968950) và Pages workflow success [42196968799](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968799). Baseline 7192af6 cũng có Verify success 42194370164 và Pages workflow success 42194370353. Workflow success không tự chứng minh deploy job chạy hoặc gate bảo mật/thiết bị thật đạt.
+
+Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng dụng mới BLOCKED. Không tạo tag/version, APK, checksum hoặc URL phát hành mới. Giữ package 1.0.1; artifact lịch sử không được nhận làm release mới. Tiếp theo: owner 13 cung cấp nghiệm thu cuối đúng phạm vi; 01/14 khóa version/changelog; 14 baseline rollback và environment; 05/14 artifact/signature/icon/package/version/device. Tham chiếu [bàn giao chi tiết](ban-giao-dot-4-20261106.md).

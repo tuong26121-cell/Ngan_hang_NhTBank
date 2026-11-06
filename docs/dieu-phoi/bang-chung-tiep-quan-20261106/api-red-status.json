@@ -1,0 +1,1 @@
+{"command": "node --test scripts/kiem-thu/hop-dong-api.test.mjs", "exit_code": 1, "execution": "approved environment"}

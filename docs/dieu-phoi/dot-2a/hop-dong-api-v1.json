@@ -1,0 +1,929 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NhTBank — hợp đồng API sandbox",
+    "version": "1.0.0-draft.1",
+    "description": "Bản nháp máy đọc được để review/fixtures. Chỉ /healthz có implementation gateway hiện hữu; /v1 chưa được phục vụ. Schema validation không chứng minh AuthN/AuthZ, ledger, SQL hoặc concurrency hoạt động."
+  },
+  "x-contract-status": "PROPOSED",
+  "x-source-main": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+  "x-open-decisions": [
+    {
+      "id": "AUTH-ISSUER",
+      "blocking": "activation",
+      "decision": "Chưa chốt issuer/audience/algorithms/JWKS trust/claim mapping/session expiry/revocation; chưa có JWT verifier app."
+    },
+    {
+      "id": "TRANSFER-CONFIRMATION",
+      "blocking": "activation",
+      "decision": "Chưa chốt server confirmation ceremony/token; PIN demo123456 không phải ngân hàng, không được coi là xác thực server."
+    },
+    {
+      "id": "LEDGER-STORAGE",
+      "blocking": "integration",
+      "decision": "Chưa có schema ledger/internal balance và migration được nghiệm thu; SQL v2 import không làm ledger."
+    },
+    {
+      "id": "RETENTION-REPLAY",
+      "blocking": "integration",
+      "decision": "TTL/retention/replay horizon, cleanupstarted và terminal failure replay chưa chốt; không cài scheduler/cleanup."
+    },
+    {
+      "id": "PRODUCT-FEE",
+      "blocking": "release",
+      "decision": "Chính sách phí/lãi chưa cung cấp; không tự tạo fee field/chuyển tiền thật."
+    },
+    {
+      "id": "CURSOR-TRUST",
+      "blocking": "integration",
+      "decision": "Cần chốt ký/expiry và bindingcursor với principal/filter để chặn tampering."
+    }
+  ],
+  "x-design-decisions": {
+    "status": "PROPOSED_FOR_REVIEW",
+    "idempotency_key": "ASCII1..128 ký tự chữ/số/_/-",
+    "pagination": "limit1..100, default50",
+    "money": "chuỗi VNĐ min1000/max9007199254740991 cho amount, balance cho phép0; không tuyên bố toàn BIGINT range",
+    "normalization": "lowercaseUUID; descriptionrawcodepoints<=120 rồi NFC+trim; thiếu=empty"
+  },
+  "security": [
+    {
+      "BearerSession": []
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "operationId": "health",
+        "summary": "Sức khỏe gateway hiện có; không chứng minh provider/DB đã kết nối.",
+        "x-implementation-status": "IMPLEMENTED",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Response hiện có trong backend/sepay-sandbox-server.mjs; không dùng envelopev1.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me": {
+      "get": {
+        "operationId": "getMe",
+        "summary": "Danh tính và vai trò lấy từ nguồn server tin cậy",
+        "x-implementation-status": "PROPOSED",
+        "x-unimplemented": true,
+        "responses": {
+          "200": {
+            "description": "Kết quả của chính principal đã được server xác thực; dữ liệu sandbox.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        }
+      }
+    },
+    "/v1/sandbox/accounts": {
+      "get": {
+        "operationId": "listAccounts",
+        "summary": "Danh sách tài khoản sandbox của chính principal",
+        "x-implementation-status": "PROPOSED",
+        "x-unimplemented": true,
+        "responses": {
+          "200": {
+            "description": "Kết quả của chính principal đã được server xác thực; dữ liệu sandbox.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Cursor"
+          }
+        ]
+      }
+    },
+    "/v1/sandbox/transactions": {
+      "get": {
+        "operationId": "listTransactions",
+        "summary": "Lịch sử sandbox của chính principal",
+        "x-implementation-status": "PROPOSED",
+        "x-unimplemented": true,
+        "responses": {
+          "200": {
+            "description": "Kết quả của chính principal đã được server xác thực; dữ liệu sandbox.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Cursor"
+          }
+        ]
+      }
+    },
+    "/v1/sandbox/transfers": {
+      "post": {
+        "operationId": "createTransfer",
+        "summary": "Tạo chuyển nội bộ mô phỏng",
+        "x-implementation-status": "PROPOSED",
+        "x-unimplemented": true,
+        "responses": {
+          "201": {
+            "description": "Kết quả của chính principal đã được server xác thực; dữ liệu sandbox.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error409"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferRequest"
+              }
+            }
+          }
+        },
+        "x-idempotency": {
+          "namespace": [
+            "server principal UUID",
+            "sandbox.transfer.v1",
+            "Idempotency-Key"
+          ],
+          "hash": "SHA256 version1 + principal +scope + normalized ordered payload; không gồm key/JWT/request_id/timestamp retry",
+          "replay": "Cùng namespace/key/hash: đọc persisted receipt sau authorization, trước kiểm balance cho giao dịch mới; response status/body giữ như lần đầu201. Không ghi nợ lại.",
+          "conflict": "Cùng key khác hash:409 IDEMPOTENCY_KEY_REUSED kể cả khi đang xử lý. Chờ xử lý chưa xong/timeout:503 RETRYABLE_UNAVAILABLE; không nhận chuyển mới hoặc báo thành công giả.",
+          "durability": "DB ledger và receipt phải commit cùng idempotency row; chưa có implementation/durable guarantee."
+        }
+      }
+    },
+    "/v1/sandbox/transfers/{id}": {
+      "get": {
+        "operationId": "getTransfer",
+        "summary": "Đọc persisted receipt của chuyển mô phỏng thuộc principal",
+        "x-implementation-status": "PROPOSED",
+        "x-unimplemented": true,
+        "responses": {
+          "200": {
+            "description": "Kết quả của chính principal đã được server xác thực; dữ liệu sandbox.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransferResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TransferId"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerSession": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Mô tả hợp đồng đề xuất; không là mã xác minh JWT. Client không gửi role/service_role secret, không tự lấy principal từ body."
+      }
+    },
+    "parameters": {
+      "Limit": {
+        "in": "query",
+        "name": "limit",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 50
+        },
+        "description": "Trang50 mặc định, tối đa100; giới hạn giao thức đề xuất, không là chính sách tài chính."
+      },
+      "Cursor": {
+        "in": "query",
+        "name": "cursor",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "description": "Opaque cursor gắn scope người dùng/filter, backend phải kiểm toàn vẹn; cơ chế ký/expiry còn chờ Auth contract."
+      },
+      "TransferId": {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "IdempotencyKey": {
+        "in": "header",
+        "name": "Idempotency-Key",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/IdempotencyKey"
+        }
+      }
+    },
+    "schemas": {
+      "Amount": {
+        "type": "string",
+        "pattern": "^[1-9][0-9]*$",
+        "minLength": 4,
+        "maxLength": 16,
+        "format": "demo-vnd-amount",
+        "description": "Số nguyên VNĐ dạng chuỗi, từ1000 đến9007199254740991; giới hạn đề xuất tương thích safe integer của demo, không phải hạn mức ngân hàng."
+      },
+      "Balance": {
+        "type": "string",
+        "pattern": "^(0|[1-9][0-9]*)$",
+        "maxLength": 16,
+        "format": "demo-vnd-balance"
+      },
+      "TransferRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source_account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "recipient_account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["VND"]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 120
+          }
+        },
+        "required": [
+          "source_account_id",
+          "recipient_account_id",
+          "amount",
+          "currency"
+        ],
+        "x-semantic-validation": [
+          "source_account_id khác recipient_account_id sau chuẩn hóa lowercase UUID",
+          "description đếm Unicode code points trước NFC+trim; canonical thiếu description tương đương chuỗi rỗng",
+          "principal/scope/key/hash được xác định hoặc kiểm soát phía server, không nhận principal/role từ body"
+        ],
+        "x-normalization": {
+          "uuid": "lowercase",
+          "description": "NFC rồi trim, thiếu trường tương đương chuỗi rỗng",
+          "amount": "chuỗi thập phân không leading zero, không ép Number ở ranh giới API"
+        }
+      },
+      "Transfer": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source_account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "recipient_account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["VND"]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["completed"]
+          },
+          "sandbox": {
+            "type": "boolean",
+            "enum": [true]
+          }
+        },
+        "required": [
+          "id",
+          "source_account_id",
+          "recipient_account_id",
+          "amount",
+          "currency",
+          "description",
+          "created_at",
+          "status",
+          "sandbox"
+        ]
+      },
+      "Account": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "balance": {
+            "$ref": "#/components/schemas/Balance"
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["VND"]
+          },
+          "sandbox": {
+            "type": "boolean",
+            "enum": [true]
+          }
+        },
+        "required": ["id", "balance", "currency", "sandbox"]
+      },
+      "Me": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "roles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "customer",
+                "support",
+                "operations",
+                "risk_analyst",
+                "admin"
+              ]
+            }
+          }
+        },
+        "required": ["id", "roles"]
+      },
+      "Transaction": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "direction": {
+            "type": "string",
+            "enum": ["in", "out"]
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["VND"]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sandbox": {
+            "type": "boolean",
+            "enum": [true]
+          }
+        },
+        "required": [
+          "id",
+          "direction",
+          "amount",
+          "currency",
+          "description",
+          "created_at",
+          "sandbox"
+        ]
+      },
+      "MeResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Me"
+          }
+        },
+        "required": ["request_id", "data"]
+      },
+      "AccountsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              },
+              "next_cursor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              }
+            },
+            "required": ["items"]
+          }
+        },
+        "required": ["request_id", "data"]
+      },
+      "TransactionsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "items": {
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              },
+              "next_cursor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              }
+            },
+            "required": ["items"]
+          }
+        },
+        "required": ["request_id", "data"]
+      },
+      "TransferResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Transfer"
+          }
+        },
+        "required": ["request_id", "data"]
+      },
+      "HealthResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["ok"]
+          },
+          "environment": {
+            "type": "string",
+            "enum": ["sepay-sandbox"]
+          },
+          "connected": {
+            "type": "boolean",
+            "enum": [false]
+          }
+        },
+        "required": ["status", "environment", "connected"]
+      },
+      "IdempotencyKey": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128,
+        "pattern": "^[A-Za-z0-9_-]+$",
+        "description": "Ràng buộc giao thức đề xuất; không chứa dữ liệu nhạy cảm. Namespace server: principal + sandbox.transfer.v1 + key."
+      },
+      "Error400": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["VALIDATION_ERROR"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error401": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["UNAUTHENTICATED"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error403": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["FORBIDDEN"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error404": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["NOT_FOUND"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error409": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["IDEMPOTENCY_KEY_REUSED", "INSUFFICIENT_BALANCE"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error429": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["RATE_LIMITED"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      },
+      "Error503": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": ["RETRYABLE_UNAVAILABLE"]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": ["code", "message"]
+          }
+        },
+        "required": ["request_id", "error"]
+      }
+    },
+    "responses": {
+      "Error400": {
+        "description": "Lỗi hợp đồng 400; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error400"
+            }
+          }
+        }
+      },
+      "Error401": {
+        "description": "Lỗi hợp đồng 401; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error401"
+            }
+          }
+        }
+      },
+      "Error403": {
+        "description": "Lỗi hợp đồng 403; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error403"
+            }
+          }
+        }
+      },
+      "Error404": {
+        "description": "Lỗi hợp đồng 404; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error404"
+            }
+          }
+        }
+      },
+      "Error409": {
+        "description": "Lỗi hợp đồng 409; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error409"
+            }
+          }
+        }
+      },
+      "Error429": {
+        "description": "Lỗi hợp đồng 429; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error429"
+            }
+          }
+        }
+      },
+      "Error503": {
+        "description": "Lỗi hợp đồng 503; chưa có implementation endpoint v1.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error503"
+            }
+          }
+        }
+      }
+    }
+  }
+}

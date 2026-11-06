@@ -1,0 +1,61 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "backend",
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "api-tests",
+    "command": [
+      "npm",
+      "run",
+      "test:hop-dong"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "api-fixtures",
+    "command": [
+      "npm",
+      "run",
+      "kiem-tra:api"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "apk-config",
+    "command": [
+      "node",
+      "--test",
+      "scripts/kiem-thu/cau-hinh-apk.test.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "pages-build",
+    "command": [
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--base",
+      "/Ngan_hang_NhTBank/",
+      "--outDir",
+      "/workspace/tiep-quan-14-issues-20261106/dist-pages",
+      "--emptyOutDir"
+    ],
+    "exit_code": 0
+  }
+]

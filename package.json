@@ -10,7 +10,9 @@
     "test": "vitest run",
     "test:backend": "node --test backend/tests/*.test.mjs",
     "test:e2e": "playwright test",
-    "format:check": "prettier --check \"frontend/**/*.{js,jsx,css,html}\" \"*.js\" \"*.json\" \"*.md\" \"backend/*.md\" \"docs/*.md\" \"e2e/*.js\""
+    "format:check": "prettier --check \"frontend/**/*.{js,jsx,css,html}\" \"*.js\" \"*.json\" \"*.md\" \"backend/*.md\" \"docs/*.md\" \"e2e/*.js\"",
+    "test:hop-dong": "node --test scripts/kiem-thu/hop-dong-api.test.mjs",
+    "kiem-tra:api": "node scripts/kiem-tra-hop-dong-api.mjs"
   },
   "dependencies": {
     "canvas-confetti": "1.9.3",
@@ -22,6 +24,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@apidevtools/swagger-parser": "12.1.0",
     "@capacitor/android": "7.6.10",
     "@capacitor/cli": "7.6.10",
     "@capacitor/core": "7.6.10",
@@ -29,6 +32,8 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.0",
     "@vitejs/plugin-react": "4.7.0",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
     "autoprefixer": "10.4.21",
     "jsdom": "26.1.0",
     "postcss": "8.5.31",

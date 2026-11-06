@@ -1,0 +1,17 @@
+{
+  "base": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+  "working_tree": true,
+  "files": {
+    "package.json": "ca5189811e7078a23d899b0e97423d359f172cec84690128aa7fccaae03ed21f",
+    "package-lock.json": "4ad85cecd01de0d42bf286fb0fdb47f5b64b48158e8288d373546863e742880a",
+    ".github/workflows/verify-main-integration.yml": "aa726fabc943395a8e3481f3103db8c913ffcd0df25a6256ff0beb1f02311fea",
+    ".github/workflows/xay-dung-apk-android.yml": "7ce20f555c91367f0c4043b641010b635f98626d78a544af1efb3168444642ce",
+    "backend/lib/hop-dong-chuyen-tien.mjs": "8a4b47f3bd5e62039c8dc8cd73820a001b0d8875d3401860bb2a43645e457c2a",
+    "backend/tests/hop-dong-chuyen-tien.test.mjs": "efa11dd0bdc431925eb774d2d8e0a0765e52f020780031b5ee4d3dc1159df2a9",
+    "scripts/kiem-tra-hop-dong-api.mjs": "0c76d11f08a9036c22b2d5237d2518541457d15c6b99ed14f6bf96875bc9437e",
+    "scripts/kiem-thu/hop-dong-api.test.mjs": "fa148877af14caf77d64a135f97b3a60511e49f03a3093ea7d43620b0e3ec915",
+    "docs/dieu-phoi/dot-2a/hop-dong-api-v1.json": "46330609ef68824a043c6bd15405c16fe1e3a5194ccfe42eb8a65f65d97d4a1c",
+    "docs/dieu-phoi/dot-2a/mau-kiem-tra-api-v1.json": "ac1b840efe0038c00e9d9e703980383b8bc314c0bc6370ee7ef2ec1bd3417450",
+    "docs/dieu-phoi/dot-2a/de-xuat-sql-v2.patch": "73675695bb3ce7b458267f4e27c5172ffa30b375662cafed6cdd64a1fe0a08e6"
+  }
+}

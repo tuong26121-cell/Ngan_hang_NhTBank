@@ -1,0 +1,7 @@
+{
+  "command": "gh api repos/tuong26121-cell/Ngan_hang_NhTBank --jq {full_name,default_branch,permissions}",
+  "exit_code": 1,
+  "observed_error": "Get https://api.github.com/repos/tuong26121-cell/Ngan_hang_NhTBank: Forbidden",
+  "conclusion": "BLOCKED: GitHub REST operations including Issue updates; Git HTTPS push access does not establish REST access",
+  "recorded_from": "actual tool output in this session"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "file": ".github/workflows/build-ios-signed-ipa.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 7
+  },
+  {
+    "file": ".github/workflows/deploy-pages.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 4
+  },
+  {
+    "file": ".github/workflows/verify-main-integration.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 7
+  },
+  {
+    "file": ".github/workflows/check-buttons.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 5
+  },
+  {
+    "file": ".github/workflows/xay-dung-apk-android.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 7
+  },
+  {
+    "file": ".github/workflows/build-ios-unsigned-ipa.yml",
+    "yaml": "VERIFIED",
+    "shell_blocks": 5
+  }
+]

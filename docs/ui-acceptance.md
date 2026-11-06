@@ -224,3 +224,7 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Chua ket luan dat toan bo 45 tieu chi, camera, ban phim ao hoac chi so hieu nang. Khong sua luong giao dich, khong deploy website, khong Release.
 
 - Run GitHub `41499928650` (commit `7acc6836fb7a411dcd046d4c2fa4e293c3f18cc2`): unit dat, build web dat, E2E 43 dat / 8 skipped; loi npm 10.9.9 `Cannot read properties of null (reading edgesOut)` khi cai bo sung Capacitor sau npm ci. Chuyen Capacitor thanh devDependencies co phien ban co dinh va lockfile de chi cai bang npm ci; can run moi xac nhan APK.
+
+## Kiểm chứng Đợt2B — 06/11/2026
+
+Không thay CSS/component trong lượt này. WorkflowAPK được sửa để E2E dùng productionrootdist thaydevserver.43ca đạt,8ca viewport desktop bỏ qua trong2mobileprojects (51tổng); indexHTTPkhớpdist và asset khôngđổi tronglầnchạy. [Log](dieu-phoi/bang-chung-tiep-quan-20261106/production-e2e.log). Đây là Chromiumemulation trênLinux, không chấm45tiêu chí hoặc máy thật đãnghiệmthu. P0máy thật/safearea/keyboard/contrasttoàndiện vẫn còn mở.

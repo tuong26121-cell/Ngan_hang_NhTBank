@@ -1,0 +1,4 @@
+{
+  "command": "npm run build -- --base /",
+  "exit_code": 0
+}

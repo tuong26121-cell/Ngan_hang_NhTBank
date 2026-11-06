@@ -1,0 +1,16 @@
+
+> nhtbank@1.0.1 test
+> vitest run
+
+
+ RUN  v5.0.5 /workspace/nhtbank-dieu-phoi-20261106
+
+
+ Test Files  7 passed (7)
+      Tests  70 passed (70)
+   Start at  09:34:47
+   Duration  9.70s (tests 35%, environment 31%, transform 15%, import 9%, setup 9%)
+
+Environment  jsdom was created 7 times · 6.96s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments

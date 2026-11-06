@@ -20,6 +20,8 @@ jobs:
         run: npm ci
       - name: Unit and sandbox gateway tests
         run: npm test
+      - name: Kiem thu hop dong OpenAPI va fixture
+        run: npm run test:hop-dong
       - name: Backend sandbox security tests
         run: npm run test:backend
       - name: Build production web at GitHub Pages subpath

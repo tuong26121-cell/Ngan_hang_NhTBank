@@ -43,13 +43,39 @@ jobs:
         run: |
           npm ci
           npm test
+          npm run test:hop-dong
           node --test scripts/kiem-thu/cau-hinh-apk.test.mjs
       - name: Xay dung tai nguyen web
         run: npm run build
       - name: Kiem thu giao dien va nhan phien ban
         run: |
           npx playwright install --with-deps chromium
-          npm run test:e2e -- --max-failures=1
+          # Test the root-base production assets that Capacitor will copy into the APK.
+          if curl --silent --max-time 1 http://127.0.0.1:4173/ >/dev/null 2>&1; then
+            echo "Cong 4173 dang duoc su dung; khong dung server khac de kiem thu."
+            exit 1
+          fi
+          node node_modules/vite/bin/vite.js preview frontend --config vite.config.js --host 127.0.0.1 --port 4173 --strictPort --base / > /tmp/nhtbank-apk-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true; wait "$preview_pid" 2>/dev/null || true' EXIT
+          ready=false
+          for attempt in {1..30}; do
+            if ! kill -0 "$preview_pid" 2>/dev/null; then
+              cat /tmp/nhtbank-apk-preview.log
+              exit 1
+            fi
+            if curl --fail --silent http://127.0.0.1:4173/ > /tmp/nhtbank-apk-preview-index.html; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          if [[ "$ready" != true ]]; then
+            cat /tmp/nhtbank-apk-preview.log
+            exit 1
+          fi
+          cmp dist/index.html /tmp/nhtbank-apk-preview-index.html
+          NHT_TEST_URL=http://127.0.0.1:4173/ npm run test:e2e -- --max-failures=1
       - name: Chuan bi du an Android Capacitor
         run: |
           npx cap add android

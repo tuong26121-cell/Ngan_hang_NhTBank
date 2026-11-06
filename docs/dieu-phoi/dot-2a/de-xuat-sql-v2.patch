@@ -1,0 +1,265 @@
+--- a/docs/sql-drafts/archive/v2/20261031_000001_nhtbank_core_schema.draft.sql
++++ b/docs/sql-drafts/archive/v2/20261031_000001_nhtbank_core_schema.draft.sql
+@@ -9,6 +9,19 @@
+ 
+ begin;
+ 
++-- REVIEW CANDIDATE ONLY: not an accepted migration or runtime result.
++-- This two-file proposal targets PostgreSQL 17 and the postgres DDL role.
++do $$
++begin
++  if current_user <> 'postgres' then
++    raise exception 'Expected effective DDL role postgres; current_user=%', current_user;
++  end if;
++  if current_setting('server_version_num')::integer not between 170000 and 179999 then
++    raise exception 'This proposal requires PostgreSQL 17 catalog/privilege review';
++  end if;
++end;
++$$;
++
+ create schema if not exists private authorization postgres;
+ 
+ do $$
+@@ -26,7 +39,8 @@
+ end;
+ $$;
+ 
+-revoke all on schema private from public, anon, authenticated;
++-- Remove stale service_role CREATE as well as client/PUBLIC schema ACLs.
++revoke all on schema private from public, anon, authenticated, service_role;
+ grant usage on schema private to service_role;
+ 
+ -- Default privileges are scoped to the object-creating role. DDL is expected
+@@ -57,6 +71,7 @@
+ end;
+ $$;
+ 
++alter function private.set_updated_at() owner to postgres;
+ revoke all on function private.set_updated_at() from public, anon, authenticated, service_role;
+ 
+ create trigger profiles_set_updated_at
+@@ -157,7 +172,7 @@
+ -- triggers; export important audit events to an independently controlled sink.
+ create table private.audit_events (
+   id bigint generated always as identity primary key,
+-  actor_user_id uuid references auth.users(id) on delete set null,
++  actor_user_id uuid, -- Historical actor UUID snapshot; not a mutable auth.users FK.
+   actor_type text not null check (actor_type in ('user', 'admin', 'system', 'provider')),
+   action varchar(120) not null check (length(btrim(action)) > 0),
+   entity_type varchar(120) not null check (length(btrim(entity_type)) > 0),
+@@ -168,8 +183,8 @@
+     check (pg_catalog.pg_column_size(metadata) <= 8192),
+   created_at timestamptz not null default pg_catalog.now()
+ );
+--- actor_user_id may become NULL when the referenced auth.users row is deleted;
+--- actor_type preserves the historical actor classification.
++-- Preserve actor_user_id and actor_type after deletion of an auth.users row.
++-- Retention/redaction of this historical identifier needs a separate policy.
+ 
+ create index audit_events_actor_time_idx
+   on private.audit_events(actor_user_id, created_at desc);
+@@ -189,6 +204,7 @@
+ end;
+ $$;
+ 
++alter function private.reject_audit_mutation() owner to postgres;
+ revoke all on function private.reject_audit_mutation() from public, anon, authenticated, service_role;
+ 
+ create trigger audit_events_no_update_delete
+@@ -209,6 +225,16 @@
+ alter table private.idempotency_keys enable row level security;
+ alter table private.audit_events enable row level security;
+ 
++-- Neutralize unexpected GLOBAL default grants on these seven owned objects.
++-- Deliberately do not revoke ALL ON ALL TABLES/SEQUENCES in schema private:
++-- that could modify unrelated application objects in a shared schema.
++revoke all on table private.profiles, private.user_roles,
++  private.sandbox_accounts, private.sandbox_transactions, private.webhook_inbox,
++  private.idempotency_keys, private.audit_events
++  from public, anon, authenticated, service_role;
++revoke all on sequence private.audit_events_id_seq
++  from public, anon, authenticated, service_role;
++
+ -- Narrow backend grants. service_role bypasses RLS and must never reach clients.
+ grant select, insert, update on private.profiles to service_role;
+ grant select, insert, delete on private.user_roles to service_role;
+--- a/docs/sql-drafts/archive/v2/20261031_000002_nhtbank_security_assertions.draft.sql
++++ b/docs/sql-drafts/archive/v2/20261031_000002_nhtbank_security_assertions.draft.sql
+@@ -20,11 +20,17 @@
+     'audit_events'
+   ];
+   forbidden_privileges text[] := array[
+-    'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'TRUNCATE', 'REFERENCES', 'TRIGGER'
++    'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'TRUNCATE', 'REFERENCES', 'TRIGGER', 'MAINTAIN'
+   ];
++  expected_privileges text[];
++  f_name text;
+   audit_id bigint;
+   rejected boolean;
+ begin
++  if current_setting('server_version_num')::integer not between 170000 and 179999 then
++    raise exception 'This proposal requires PostgreSQL 17';
++  end if;
++
+   if current_user <> 'postgres' then
+     raise exception 'Run assertions as postgres; current_user is %', current_user;
+   end if;
+@@ -40,6 +46,13 @@
+   if has_schema_privilege('anon', 'private', 'USAGE')
+      or has_schema_privilege('authenticated', 'private', 'USAGE') then
+     raise exception 'FAIL: client role has USAGE on private schema';
++  end if;
++
++  if has_schema_privilege('anon', 'private', 'CREATE')
++     or has_schema_privilege('authenticated', 'private', 'CREATE')
++     or has_schema_privilege('service_role', 'private', 'CREATE')
++     or not has_schema_privilege('service_role', 'private', 'USAGE') then
++    raise exception 'FAIL: private schema CREATE/USAGE privilege boundary';
+   end if;
+ 
+   foreach t in array app_tables loop
+@@ -62,7 +75,7 @@
+       join pg_catalog.pg_roles owner_role on owner_role.oid = c.relowner
+       where n.nspname = 'private'
+         and c.relname = t
+-        and owner_role.rolname in ('anon', 'authenticated', 'service_role')
++        and owner_role.rolname <> 'postgres'
+     ) then
+       raise exception 'FAIL: untrusted role owns private.%', t;
+     end if;
+@@ -76,30 +89,97 @@
+ 
+     if has_table_privilege('service_role', format('private.%I', t), 'TRUNCATE')
+        or has_table_privilege('service_role', format('private.%I', t), 'REFERENCES')
+-       or has_table_privilege('service_role', format('private.%I', t), 'TRIGGER') then
++       or has_table_privilege('service_role', format('private.%I', t), 'TRIGGER')
++       or has_table_privilege('service_role', format('private.%I', t), 'MAINTAIN') then
+       raise exception 'FAIL: service_role has elevated table privilege on private.%', t;
+     end if;
+   end loop;
+ 
+-  -- Verify the intended narrow server grants and absence of high-risk grants.
+-  if not has_table_privilege('service_role', 'private.profiles', 'SELECT')
+-     or not has_table_privilege('service_role', 'private.profiles', 'UPDATE')
+-     or has_table_privilege('service_role', 'private.profiles', 'DELETE')
+-     or not has_table_privilege('service_role', 'private.user_roles', 'INSERT')
+-     or has_table_privilege('service_role', 'private.user_roles', 'UPDATE')
+-     or not has_table_privilege('service_role', 'private.user_roles', 'DELETE')
+-     or not has_table_privilege('service_role', 'private.webhook_inbox', 'UPDATE')
+-     or not has_table_privilege('service_role', 'private.audit_events', 'INSERT')
+-     or has_table_privilege('service_role', 'private.audit_events', 'UPDATE')
+-     or has_table_privilege('service_role', 'private.audit_events', 'DELETE')
+-     or has_table_privilege('service_role', 'private.audit_events', 'TRUNCATE') then
+-    raise exception 'FAIL: service_role grants differ from the intended least-privilege matrix';
+-  end if;
+-
+-  if not has_sequence_privilege('service_role', 'private.audit_events_id_seq', 'USAGE')
+-     or has_sequence_privilege('anon', 'private.audit_events_id_seq', 'USAGE')
+-     or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', 'USAGE') then
+-    raise exception 'FAIL: audit sequence grants are incorrect';
++  -- Exact effective matrix: ownership implicitly includes grant options, so
++  -- owner postgres is checked separately and is not treated as an ACL violation.
++  foreach t in array app_tables loop
++    expected_privileges := case t
++      when 'profiles' then array['SELECT', 'INSERT', 'UPDATE']
++      when 'user_roles' then array['SELECT', 'INSERT', 'DELETE']
++      when 'sandbox_accounts' then array['SELECT', 'INSERT', 'UPDATE']
++      when 'sandbox_transactions' then array['SELECT', 'INSERT']
++      when 'webhook_inbox' then array['SELECT', 'INSERT', 'UPDATE']
++      when 'idempotency_keys' then array['SELECT', 'INSERT', 'UPDATE']
++      when 'audit_events' then array['SELECT', 'INSERT']
++      else array[]::text[]
++    end;
++    foreach p in array forbidden_privileges loop
++      if has_table_privilege('service_role', format('private.%I', t), p)
++         is distinct from (p = any(expected_privileges)) then
++        raise exception 'FAIL: effective service_role % on private.% differs', p, t;
++      end if;
++      if has_table_privilege('service_role', format('private.%I', t), p || ' WITH GRANT OPTION') then
++        raise exception 'FAIL: service_role grant option % on private.%', p, t;
++      end if;
++    end loop;
++  end loop;
++
++  -- A table ACL revoke is not a column ACL revoke. There are no designed
++  -- column grants in this server-only contract, except a table owner's rights.
++  if exists (
++    select 1 from pg_catalog.pg_attribute a
++    join pg_catalog.pg_class c on c.oid = a.attrelid
++    join pg_catalog.pg_namespace n on n.oid = c.relnamespace
++    cross join lateral pg_catalog.aclexplode(a.attacl) acl
++    where n.nspname = 'private' and c.relname = any(app_tables)
++      and a.attnum > 0 and not a.attisdropped
++      and acl.grantee <> c.relowner
++  ) then
++    raise exception 'FAIL: unexpected explicit non-owner column ACL';
++  end if;
++
++  foreach p in array array['USAGE', 'SELECT', 'UPDATE'] loop
++    if has_sequence_privilege('anon', 'private.audit_events_id_seq', p)
++       or has_sequence_privilege('authenticated', 'private.audit_events_id_seq', p)
++       or (has_sequence_privilege('service_role', 'private.audit_events_id_seq', p)
++           is distinct from (p = any(array['USAGE', 'SELECT'])))
++       or has_sequence_privilege('service_role', 'private.audit_events_id_seq', p || ' WITH GRANT OPTION') then
++      raise exception 'FAIL: audit sequence privilege/grant option % differs', p;
++    end if;
++  end loop;
++  if not exists (
++    select 1 from pg_catalog.pg_class c
++    join pg_catalog.pg_namespace n on n.oid = c.relnamespace
++    join pg_catalog.pg_roles r on r.oid = c.relowner
++    where n.nspname = 'private' and c.relname = 'audit_events_id_seq'
++      and c.relkind = 'S' and r.rolname = 'postgres'
++  ) then
++    raise exception 'FAIL: audit sequence owner is not postgres';
++  end if;
++
++  -- Scope to the two functions supplied by this v2 proposal; do not infer
++  -- ownership/EXECUTE for an unrelated private function from these checks.
++  foreach f_name in array array['set_updated_at', 'reject_audit_mutation'] loop
++    if not exists (
++      select 1 from pg_catalog.pg_proc f
++      join pg_catalog.pg_namespace n on n.oid = f.pronamespace
++      join pg_catalog.pg_roles r on r.oid = f.proowner
++      where n.nspname = 'private' and f.proname = f_name
++        and f.pronargs = 0 and r.rolname = 'postgres'
++        and not f.prosecdef
++        and 'search_path=""' = any(coalesce(f.proconfig, array[]::text[]))
++    ) then
++      raise exception 'FAIL: function % owner, security mode or search_path', f_name;
++    end if;
++    if has_function_privilege('anon', format('private.%I()', f_name), 'EXECUTE')
++       or has_function_privilege('authenticated', format('private.%I()', f_name), 'EXECUTE')
++       or has_function_privilege('service_role', format('private.%I()', f_name), 'EXECUTE') then
++      raise exception 'FAIL: untrusted EXECUTE on private.%', f_name;
++    end if;
++  end loop;
++
++  -- Deleting an auth user must not mutate an append-only audit row via FK.
++  if exists (
++    select 1 from pg_catalog.pg_constraint con
++    where con.conrelid = 'private.audit_events'::regclass
++      and con.contype = 'f' and con.confrelid = 'auth.users'::regclass
++  ) then
++    raise exception 'FAIL: audit snapshot retains a mutable auth.users FK';
+   end if;
+ 
+   -- Verify no PUBLIC EXECUTE ACL remains on private functions.
+@@ -111,6 +191,8 @@
+       coalesce(f.proacl, pg_catalog.acldefault('f', f.proowner))
+     ) acl
+     where n.nspname = 'private'
++      and f.proname in ('set_updated_at', 'reject_audit_mutation')
++      and f.pronargs = 0
+       and acl.grantee = 0
+       and acl.privilege_type = 'EXECUTE'
+   ) then
+@@ -209,7 +291,7 @@
+     raise exception 'FAIL: inconsistent processed webhook state was accepted';
+   end if;
+ 
+-  raise notice 'PASS: client isolation, RLS, ownership, grants, function ACLs, idempotency, webhook constraints and audit guards';
++  raise notice 'PASS for assertions executed here only; NOT backend replay/concurrency, default-ACL probes or SET ROLE acceptance';
+ end;
+ $$;
+ 

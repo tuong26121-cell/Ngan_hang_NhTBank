@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "dist_unchanged_during_e2e": true,
+  "command": "NHT_CHROMIUM_PATH=/usr/bin/chromium + workflow APK E2E step using root production preview (skip browser download: installed system Chromium)"
+}

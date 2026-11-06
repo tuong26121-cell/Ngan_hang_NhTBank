@@ -1,0 +1,50 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✔ chuẩn hóa payload mà không thay đầu vào (18.136342ms)
+✔ thứ tự trường, UUID hoa/thường và Unicode tương đương cho cùng fingerprint (8.921724ms)
+✔ namespace principal khác không dùng chung fingerprint (13.130597ms)
+✔ cùng key nhưng số tiền/nội dung khác có fingerprint khác (0.322723ms)
+✔ description thiếu và rỗng cùng nghĩa; tính theo Unicode codepoint (5.15852ms)
+✔ giữ nguyên độ chính xác số tiền ở cận safe integer (7.171263ms)
+✔ từ chối amount "999" (0.457002ms)
+✔ từ chối amount "0" (0.125853ms)
+✔ từ chối amount "-1000" (0.170023ms)
+✔ từ chối amount "1000.0" (0.283561ms)
+✔ từ chối amount "1e3" (2.476449ms)
+✔ từ chối amount "01000" (4.003327ms)
+✔ từ chối amount " 1000" (0.150813ms)
+✔ từ chối amount "9007199254740992" (6.348181ms)
+✔ từ chối amount 1000 (0.15728ms)
+✔ từ chối amount null (0.122559ms)
+✔ không nhận trường client principal_id (6.029294ms)
+✔ không nhận trường client role (0.081762ms)
+✔ không nhận trường client request_sha256 (0.096103ms)
+✔ không nhận trường client idempotency_key (3.935293ms)
+✔ không nhận trường client __proto__ (1.039977ms)
+✔ từ chối tài khoản trùng, currency sai và payload không phải object (2.638816ms)
+✔ principal chưa định danh bị từ chối; utility không phải token verifier (0.161086ms)
+✔ HMAC accepts an exact raw-body signature within the timestamp window (4.609175ms)
+✔ HMAC rejects a modified body, wrong secret, malformed headers and stale timestamps (0.571528ms)
+✔ health endpoint is unauthenticated, non-sensitive and has defensive headers (88.669407ms)
+✔ unknown route returns 404 and transaction endpoint rejects non-GET (19.940886ms)
+✔ transactions endpoint rejects absent and malformed internal bearer credentials (17.026953ms)
+✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (25.269054ms)
+✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (17.252424ms)
+✔ transactions endpoint rejects provider records outside the configured sandbox account (7.364847ms)
+✔ transactions endpoint hides upstream errors and malformed payloads (14.723791ms)
+✔ webhook refuses to ACK a valid signature before durable storage exists (12.768858ms)
+✔ webhook rejects invalid HMAC without exposing details (13.896379ms)
+✔ webhook requires configured secret and strict JSON media type (25.865223ms)
+✔ webhook enforces the raw request body size ceiling (13.1087ms)
+✔ webhook route rejects non-POST requests (7.205615ms)
+✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.428458ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 766.791712

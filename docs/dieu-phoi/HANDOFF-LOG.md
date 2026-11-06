@@ -99,3 +99,11 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - Kiểm chứng:86 test local đạt, build Pages đạt; không có SQL/concurrency/E2E/nativeAPK/Production trong phiên. Không gọi gate PASS từ số test này.
 - Gửi theo tài liệu: đề xuất02/06/07/08/13 nhận D2-01..06 và03/14 nhận phần độc lập,04/05/09/11/12 chỉ bản sơ bộ. **ACK nhóm nhận vẫn PENDING**, không tự gửi tin nhắn sang các cuộc trò chuyện khác.
 - Điều kiện nhận: source version, artifact, reviewer, quyết định contract, blocker và gate tương ứng. Sự có mặt của tài liệu trên main không đồng nghĩa đã tiếp nhận/đã vận hành.
+
+## HO-TAKEOVER-20261106 — chủrepository giao Nhóm01 tiếp quản14Issues
+
+- Đầu vào: main7192af6; yêu cầu trực tiếp tự động theo4đợt trong phiên. Nhóm01 nhận scope điều phối/triển khai, không suy ra14GitHubassignee đã nhận.
+- Artifact: [bảng tiếp quản](tiep-quan-14-issues.md), [báo cáo](bao-cao-tiep-quan-20261106.md), OpenAPI/fixture/candidateSQL/permissioncontract tại dot-2a, nghiêncứu09/11/12 tại dot-2c.
+- Kiểm chứng:114localtests/41fixtures,43productionE2E/8skip, Pagesbuild vàsyntax; [sourcechecksum/log](bang-chung-tiep-quan-20261106/).
+- Tiếp nhận GitHub: BLOCKED RESTForbidden;14update draft đã tạo, chưa ghiIssues. Auth/DB/ledger/GATEprovenance và nghiệmthurelease còn thiếu.
+- KhôngSQL/migration/provider/giao dịch thật/deploy. Không giữ trạng thái dự án PROPOSED như thể chưa làm gì, cũng không chuyển toànscope thành VERIFIED từ các artifact đã có.

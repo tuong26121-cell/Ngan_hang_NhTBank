@@ -1,0 +1,256 @@
+
+> nhtbank@1.0.1 kiem-tra:api
+> node scripts/kiem-tra-hop-dong-api.mjs
+
+{
+  "passed": 41,
+  "failed": 0,
+  "results": [
+    {
+      "name": "chuyen-hop-le",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "amount-max-safe",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "description-khong-bat-buoc",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "unicode-120-codepoints",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "principal-khong-duoc-client-tu-dat",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "role-tu-client",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "number-thay-chuoi",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "zero",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "duoi-minimum",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "vuot-safe-integer",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "so-am",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "thap-phan",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "leading-zero",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "currency-khac",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "description-null",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "description-121",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "uuid-sai",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "tu-chuyen",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "tu-chuyen-khac-case",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "key-hop-le",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "key-rong",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "key-qua-dai",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "key-khoang-trang",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "key-unicode",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "health-hien-co",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "health-khong-duoc-claim-ket-noi",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "loi-VALIDATION_ERROR",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-UNAUTHENTICATED",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-FORBIDDEN",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-NOT_FOUND",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-IDEMPOTENCY_KEY_REUSED",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-INSUFFICIENT_BALANCE",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-RATE_LIMITED",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-RETRYABLE_UNAVAILABLE",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "loi-409-sai-code",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "loi-401-sai-http-code",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "so-du-zero",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "so-du-tran",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "response-transfer",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "name": "response-khong-tien-that",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "name": "pagination-empty",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ]
+}

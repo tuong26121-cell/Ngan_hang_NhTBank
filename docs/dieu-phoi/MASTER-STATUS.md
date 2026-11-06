@@ -259,3 +259,7 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 Đã tiếp quản #45, đồng bộ main e940a9c và giữ hiện vật Nhóm 03/02/06/13. Sáu workflow được rà soát; backend security đầy đủ, Pages gate Chromium trước deploy, APK PR main/root production E2E, giữ OpenAPI/fixture/wrapper/version/checksum gates. Sửa đồng bộ E2E bằng heading đúng màn hình, thêm regression điều hướng 6 vòng trên 3 profile; không đổi frontend, tăng timeout hoặc retry để che lỗi.
 
 Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Run đúng SHA được cập nhật ở [OPS-01](dot-2b/ops-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.
+
+## Nhóm 09 — tiếp nhận Đợt 2C, bàn giao 07/11/2026 (Asia/Saigon)
+
+Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-sepay-webhook.md) và [handoff HO-2C-09](HANDOFF-LOG.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend subset 27/27, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.

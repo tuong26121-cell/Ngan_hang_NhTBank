@@ -1,0 +1,24 @@
+{
+  "baseline": "ba22b0dc5de7b14553036a19b240390025713c52",
+  "backend": {
+    "command": "npm run test:backend",
+    "exit_code": 0,
+    "passed": 27,
+    "failed": 0
+  },
+  "e2e": {
+    "command": "NHT_CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e",
+    "exit_code": 1,
+    "passed": 42,
+    "skipped": 8,
+    "failed": 1
+  },
+  "node": "v24.19.0",
+  "test_source_sha256": "d7924d3343ce332c5a2e4c4f4cce3b559c80266280e846748e7b4e878644839c",
+  "e2e_targeted_rerun": {
+    "command": "NHT_CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e -- e2e/bank.spec.js --project=android --grep=complete Sandbox journey",
+    "exit_code": 0,
+    "passed": 1,
+    "failed": 0
+  }
+}

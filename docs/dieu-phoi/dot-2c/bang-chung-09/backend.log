@@ -1,0 +1,19 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✖ backend/tests/sepay-sandbox-security.test.mjs (94.052794ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.5607
+
+✖ failing tests:
+
+test at backend/tests/sepay-sandbox-security.test.mjs:1:1
+✖ backend/tests/sepay-sandbox-security.test.mjs (94.052794ms)
+  'test failed'

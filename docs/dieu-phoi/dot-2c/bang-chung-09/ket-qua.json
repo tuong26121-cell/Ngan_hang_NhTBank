@@ -1,0 +1,19 @@
+[
+  {
+    "name": "backend",
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 1
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 1
+  }
+]

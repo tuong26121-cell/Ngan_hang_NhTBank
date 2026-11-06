@@ -1,0 +1,336 @@
+
+> nhtbank@1.0.1 test
+> vitest run
+
+
+ RUN  v5.0.5 /workspace/Ngan_hang_NhTBank
+
+ ❯ backend/sepay-sandbox-server.test.js (12 tests | 11 failed) 55069ms
+   ❯ Sandbox gateway security boundary (12)
+     × exposes non-sensitive health and no cache or cross-origin access 5008ms
+     × rejects unauthorized data reads before calling provider 5002ms
+     × fails closed when required configuration is absent 5004ms
+     × uses only fixed sandbox endpoint, scoped account and server-side token 5006ms
+     × rejects records outside the authorized account 5001ms
+     × rejects malformed provider data without leaking records 5006ms
+     × hides upstream exceptions and failure details 5001ms
+     × blocks unsupported HTTP methods and routes 5006ms
+     × never ACKs webhook without durable storage, even for valid signature 5001ms
+     × caps webhook request body size 5005ms
+     × rejects webhook unless its secret is provisioned 5026ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > exposes non-sensitive health and no cache or cross-origin access
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:41:5
+     39|
+     40| describe("Sandbox gateway security boundary", () => {
+     41|   it("exposes non-sensitive health and no cache or cross-origin access…
+       |     ^
+     42|     const base = await launch();
+     43|     const res = await fetch(base + "/healthz");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > rejects unauthorized data reads before calling provider
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:49:5
+     47|     expect(await res.json()).toEqual({ status: "ok", environment: "sep…
+     48|   });
+     49|   it("rejects unauthorized data reads before calling provider", async …
+       |     ^
+     50|     const upstream = vi.fn();
+     51|     const base = await launch({}, upstream);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > fails closed when required configuration is absent
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:60:5
+     58|     expect(upstream).not.toHaveBeenCalled();
+     59|   });
+     60|   it("fails closed when required configuration is absent", async () =>…
+       |     ^
+     61|     const base = await launch({ NHT_SANDBOX_BANK_ACCOUNT_ID: "" });
+     62|     const response = await fetch(base + "/api/transactions", { headers…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > uses only fixed sandbox endpoint, scoped account and server-side token
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:65:5
+     63|     expect(response.status).toBe(503);
+     64|   });
+     65|   it("uses only fixed sandbox endpoint, scoped account and server-side…
+       |     ^
+     66|     const upstream = vi.fn(async () =>
+     67|       new Response(JSON.stringify({ status: "success", data: [TX, { ..…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > rejects records outside the authorized account
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:82:5
+     80|     expect(options.headers.Authorization).toBe("Bearer " + SEPAY);
+     81|   });
+     82|   it("rejects records outside the authorized account", async () => {
+       |     ^
+     83|     const upstream = vi.fn(async () => new Response(JSON.stringify({
+     84|       status: "success", data: [{ ...TX, bank_account_id: "00000000-00…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > rejects malformed provider data without leaking records
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:91:5
+     89|     expect((await res.json()).error).toBe("sandbox_account_scope_misma…
+     90|   });
+     91|   it("rejects malformed provider data without leaking records", async …
+       |     ^
+     92|     const upstream = vi.fn(async () => new Response(JSON.stringify({ s…
+     93|     const base = await launch({}, upstream);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > hides upstream exceptions and failure details
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:96:5
+     94|     expect((await fetch(base + "/api/transactions", { headers: auth })…
+     95|   });
+     96|   it("hides upstream exceptions and failure details", async () => {
+       |     ^
+     97|     const upstream = vi.fn(async () => { throw new Error("Do not leak …
+     98|     const base = await launch({}, upstream);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > blocks unsupported HTTP methods and routes
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:103:5
+    101|     expect(await res.text()).not.toContain("Do not leak secret");
+    102|   });
+    103|   it("blocks unsupported HTTP methods and routes", async () => {
+       |     ^
+    104|     const base = await launch();
+    105|     expect((await fetch(base + "/api/transactions", { method: "POST" }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > never ACKs webhook without durable storage, even for valid signature
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:118:5
+    116|     expect(verifySePayWebhook(raw, timestamp, sig, "wrong", NOW)).toBe…
+    117|   });
+    118|   it("never ACKs webhook without durable storage, even for valid signa…
+       |     ^
+    119|     const base = await launch({ SEPAY_WEBHOOK_SECRET: SECRET });
+    120|     const raw = JSON.stringify(TX);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > caps webhook request body size
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:134:5
+    132|     expect((await good.json()).error).toBe("durable_webhook_storage_no…
+    133|   });
+    134|   it("caps webhook request body size", async () => {
+       |     ^
+    135|     const base = await launch({ SEPAY_WEBHOOK_SECRET: SECRET });
+    136|     const res = await fetch(base + "/api/webhooks/sepay", {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  backend/sepay-sandbox-server.test.js > Sandbox gateway security boundary > rejects webhook unless its secret is provisioned
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ backend/sepay-sandbox-server.test.js:141:5
+    139|     expect(res.status).toBe(413);
+    140|   });
+    141|   it("rejects webhook unless its secret is provisioned", async () => {
+       |     ^
+    142|     const base = await launch();
+    143|     const res = await fetch(base + "/api/webhooks/sepay", { method: "P…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 11 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "exposes non-sensitive health and no cache or cross-origin access". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "rejects unauthorized data reads before calling provider". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "fails closed when required configuration is absent". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "uses only fixed sandbox endpoint, scoped account and server-side token". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "rejects records outside the authorized account". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "rejects malformed provider data without leaking records". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "hides upstream exceptions and failure details". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "blocks unsupported HTTP methods and routes". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "never ACKs webhook without durable storage, even for valid signature". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "caps webhook request body size". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+Error: listen EPERM: operation not permitted 127.0.0.1
+ ❯ Server.setupListenHandle [as _listen2] node:net:2145:21
+ ❯ listenInCluster node:net:2224:12
+ ❯ node:net:2448:7
+ ❯ processTicksAndRejections node:internal/process/task_queues:90:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'EPERM', errno: -1, syscall: 'listen', address: '127.0.0.1' }
+This error originated in "backend/sepay-sandbox-server.test.js" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "rejects webhook unless its secret is provisioned". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed | 6 passed (7)
+      Tests  11 failed | 59 passed (70)
+     Errors  11 errors
+   Start at  09:37:40
+   Duration  64.10s (tests 93%, environment 5%, setup 1%, import 1%)
+
+    Isolate  7 workers spawned · ~556ms startup each (spawn + environment, per file)
+             at least ~3.34s faster with isolate: false — reuses workers across files instead of one per file
+

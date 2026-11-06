@@ -1,0 +1,37 @@
+[
+  {
+    "name": "backend-mo-quyen",
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "unit-mo-quyen",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "build-mo-quyen",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "e2e-mo-quyen",
+    "command": [
+      "npm",
+      "run",
+      "test:e2e"
+    ],
+    "exit_code": 1
+  }
+]

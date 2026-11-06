@@ -253,3 +253,31 @@ test("sandbox HTTP server applies bounded request/header/keep-alive settings", (
   assert.equal(server.keepAliveTimeout, 5_000);
   assert.equal(server.maxHeadersCount, 50);
 });
+
+test("retry with a fresh signature on a new server still fails closed without storage", async t => {
+  const body = Buffer.from('{"id":92704}');
+  for (const offset of [0, 600_000]) {
+    const now = FIXED_NOW + offset;
+    const base = await startServer(t, {
+      env: { SEPAY_WEBHOOK_SECRET: WEBHOOK_SECRET }, clock: () => now
+    });
+    const response = await postWebhook(base, { body, timestamp: String(Math.floor(now / 1000)) });
+    assert.equal(response.status, 503);
+    assert.deepEqual(await response.json(), { error: "durable_webhook_storage_not_configured" });
+  }
+});
+
+test("webhook error responses do not echo synthetic sensitive payload or credentials", async t => {
+  const base = await startServer(t, {
+    env: { SEPAY_WEBHOOK_SECRET: WEBHOOK_SECRET }, clock: () => FIXED_NOW
+  });
+  const body = Buffer.from('{"id":92704,"accountNumber":"MOCK-ACCOUNT-PRIVATE","content":"MOCK-PRIVATE-NOTE"}');
+  const timestamp = String(Math.floor(FIXED_NOW / 1000));
+  for (const signature of [sign(body, timestamp), "sha256=" + "0".repeat(64)]) {
+    const response = await postWebhook(base, { body, timestamp, signature });
+    assert.equal(response.status, signature === sign(body, timestamp) ? 503 : 401);
+    const output = await response.text();
+    for (const marker of [WEBHOOK_SECRET, signature, "MOCK-ACCOUNT-PRIVATE", "MOCK-PRIVATE-NOTE"])
+      assert.equal(output.includes(marker), false);
+  }
+});

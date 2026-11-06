@@ -170,3 +170,10 @@ Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2
 ## HO-2B-14-01/03/05/13 — 07/11/2026 (Asia/Saigon)
 
 Nhóm14 tiếp quản #45 và ACK hiện vật QA13, đồng bộ e940a9c, giữ UI03 và Auth/API02/06. Bàn giao [OPS-01](dot-2b/ops-01.md), inventory/run/log/artifact lịch sử. Workflow đã giữ/bổ sung backend security, hợp đồng API, Pages/APK production Chromium, APK PR main; thêm E2E regression điều hướng và chờ đúng heading thay marker chung. Local unit70/backend73/contract5/config1/build/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích); run exact-SHA đang kiểm chứng. CI dùng marker không lưu artifact/cache, không deploy Pages; vẫn chạy đủ security/build/tests. Chưa đóng OPS-01 release hoặc Issue #45; protection/allowance/native device/backend/database còn giới hạn. Không dùng Pages hoặc APK lịch sử làm nghiệm thu release mới.
+## HO-2C-09-06070813-20261106 — Nhóm 09 tiếp nhận Issue #40
+
+- Đã tiếp nhận theo yêu cầu trực tiếp của chủ repository; thời điểm bàn giao 07/11/2026 Asia/Saigon, bằng chứng ban đầu 06/11/2026 UTC. Nhóm nhận 01/06/07/08/13: ACK PENDING.
+- [Thiết kế 0.1 và risk register](dot-2c/09-sepay-webhook.md); [log/exit codes](dot-2c/bang-chung-09/). Baseline cuối ba22b0dc5de7b14553036a19b240390025713c52; commit bàn giao tra lịch sử Git của hiện vật.
+- Đã đối chiếu tài liệu SePay hiện hành và draft 06/07/08, bổ sung hai mock tests; backend cuối 27/27 PASS, unit 70/70 PASS, build exit 0. E2E và giới hạn xem kết quả cuối trong hiện vật, không dùng kết quả này để chứng nhận durable recovery.
+- TÍCH HỢP BLOCKED: B09-06/07/08 chưa chốt; B09-ENV chưa có credential/quyền mạng Test Mode. Inbox chỉ ID/hash chưa đủ phục hồi work. Giữ webhook 503, Issue OPEN; SEC/DB/TX chưa nghiệm thu.
+- Cần 06 review source/tenant trust và redaction; 07/08 chốt normalized durable work, namespace/hash, receipt, lease/fencing và retention; 13 kiểm DB concurrency/crash/restore. Không gọi Live, ngân hàng thật, không SQL/deploy backend.

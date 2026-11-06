@@ -1,0 +1,14 @@
+
+> nhtbank@1.0.1 test:e2e
+> playwright test e2e/bank.spec.js --project=android --grep=complete Sandbox journey
+
+[WebServer] (node:3421) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:3439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (18.8s)
+
+  1 passed (20.3s)

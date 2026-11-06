@@ -5,11 +5,11 @@
 
 ## 1. Nguyên tắc và trạng thái
 
-- **Nguồn điều phối:** tài liệu bản nháp trong môi trường làm việc; không đồng bộ tự động qua các cuộc trò chuyện.
+- **Nguồn điều phối:** tài liệu trên GitHub `main`, GitHub Issues #32–45 và [quy chế thực thi hiện hành](quy-che-thuc-thi.md); cuộc trò chuyện không tự nhận việc từ Issue nếu chưa có cơ chế gửi.
 - **Định hướng:** Website + Mobile App Android-first; backend/API chung, PostgreSQL/Supabase development, giao dịch mô phỏng; giao diện Futuristic 3D nền sáng, rõ chữ.
-- **Quyền mặc định:** chỉ đọc, phân tích, thiết kế, phản biện. Việc ghi repository, chạy SQL/test, merge/deploy, kết nối ngân hàng thật hoặc phát sinh chi phí đều phải được phép riêng.
+- **Quyền hiện hành (2026-11-06):** chủ repository đã cho phép trực tiếp sửa mã/tài liệu/Issues trên GitHub, commit `main`, chạy SQL/test/Actions/CI/APK/E2E, merge và deploy khi nhiệm vụ cụ thể, preflight và bằng chứng đầy đủ; không cần xin lại quyền ghi mỗi lần. Giao dịch thật/chi phí cần điều kiện và xác nhận riêng cho hành động tài chính cụ thể. Xem [quy chế](quy-che-thuc-thi.md).
 - **Nhóm 01:** đã lập và cập nhật tài liệu điều phối; **không** có nghĩa 13 nhóm kia đã được kích hoạt tự động.
-- **Mốc lịch sử Nhóm 07:** A3.5 sửa thiết kế SQL v2.1; A3.6 chưa được kiểm chứng hoàn thành. Core SHA lịch sử `48ed0ab6adec0ffa3091e081924d051e2a6a2bda`, Assertions SHA `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`; cần xác minh lại nguồn tại `codex/nhtbank-sql-hardening-20261031` trước khi lập diff.
+- **Mốc lịch sử Nhóm 07:** A3.5 sửa thiết kế SQL v2.1; A3.6 chưa được kiểm chứng hoàn thành. Core SHA lịch sử `48ed0ab6adec0ffa3091e081924d051e2a6a2bda`, Assertions SHA `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`; nhánh `codex/nhtbank-sql-hardening-20261031` đã trả 404 khi đọc; dùng hai file `docs/sql-drafts/archive/v2/` trên `main` có SHA khớp để tham chiếu, xác minh lại khi thao tác.
 - **Không áp dụng:** `testing-v3` cho v2, `reversed` trước khi có reversal workflow, kết luận idempotency/concurrency PASS khi chưa có log.
 
 **Trạng thái:** `PROPOSED` (đề xuất), `IN PROGRESS` (có hoạt động có bằng chứng), `BLOCKED` (thiếu điều kiện), `NOT RUN` (chưa thực thi kiểm thử), `FAIL` (có bằng chứng không đạt), `VERIFIED` (được xác minh bằng chứng trực tiếp), `KNOWN-HISTORICAL` (điểm neo lịch sử chưa tái kiểm). Việc tạo tài liệu bản nháp **không** tự đổi backlog sang VERIFIED.
@@ -35,7 +35,7 @@
 
 **Xử lý phụ thuộc hai chiều 07 ↔ 08:** Vòng 1 Nhóm 07 cung cấp schema draft, Nhóm 08 cung cấp transaction/idempotency contract; vòng 2 đối chiếu các giả định, Nhóm 06 đánh giá bảo mật và Nhóm 13 phản biện độc lập. Không bắt cả hai nhóm chờ nhau hoàn tất toàn bộ.
 
-**Nhóm 13 được khởi động QA design sớm:** có thể viết test matrix từ nháp; chỉ nghiệm thu kiểm thử sau khi có log chạy thật và được phép thực thi.
+**Nhóm 13 được khởi động QA design sớm:** có thể viết test matrix từ nháp; được quyền chạy kiểm thử phù hợp khi đủ điều kiện; chỉ nghiệm thu sau khi có log chạy thật.
 
 ## 3. Backlog ưu tiên 14 hạng mục
 
@@ -61,7 +61,7 @@
 1. **Đợt 1 – Điều phối và hợp đồng nền tảng (01, 02, 10):** scope MVP, kiến trúc, API draft và version control tài liệu. Các nhóm an toàn có thể phản biện sơ bộ đồng thời.
 2. **Đợt 2 – Bảo mật, dữ liệu và chuyển khoản (06, 07, 08, 13):** threat model, SQL v2.1 A3.6, atomic transfer/idempotency, test matrix. Nhóm 07/08 trao đổi hai vòng; QA không được tự chứng nhận test PASS.
 3. **Đợt 3 – Giao diện và chuẩn bị quy trình build (03, 04, 05, 14):** design system, web/mobile MVP plans, CI/CD design. Phần thiết kế có thể thực hiện song song với đợt 2, nhưng tích hợp phải chờ contract cần thiết.
-4. **Đợt 4 – Mở rộng (09, 11, 12):** SePay Sandbox, Admin, AI read-only; không mở kết nối Production.
+4. **Đợt 4 – Mở rộng (09, 11, 12):** SePay Sandbox, Admin, AI read-only; Production chỉ được triển khai khi có môi trường, quyền và kiểm soát kỹ thuật được xác minh.
 
 ## 5. Gate điều phối (đều là cổng nghiệm thu thiết kế, không phải kết quả build/test)
 
@@ -70,11 +70,11 @@
 | COORD-01 | 01 + 10 | MVP scope, phân công, các phiên bản tài liệu và handoff rõ | Đề xuất / chưa nghiệm thu |
 | ARCH-01 | 02 | API contract v1, dataflow, authorization boundary có phản biện | Đề xuất / chưa nghiệm thu |
 | SEC-01 | 06 + 13 | Threat model và RBAC có bằng chứng review | Đề xuất / chưa nghiệm thu |
-| DB-01 | 07 + 13 | Unified diff v2.1 + ma trận ACL + GATE-01..10 được review, chưa chạy SQL | Đề xuất / NOT RUN |
+| DB-01 | 07 + 13 | Unified diff v2.1 + ma trận ACL + GATE-01..10 được review; SQL chỉ thực thi khi bản migration và môi trường đã xác minh | Đề xuất / NOT RUN |
 | TX-01 | 08 + 13 | Atomic transfer, replay và concurrency contract có test cases | Đề xuất / NOT RUN |
 | UX-01 | 03 | Design system tương thích app/web, accessibility review | Đề xuất / chưa nghiệm thu |
 | QA-01 | 13 | Test matrix, PASS/FAIL/BLOCKED và tiêu chuẩn evidence | Đề xuất / test NOT RUN |
-| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; không deploy | Đề xuất / NOT RUN |
+| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; được deploy theo nhiệm vụ đủ điều kiện | Đề xuất / NOT RUN |
 
 ## 6. Checklist nghiệm thu áp dụng cho mọi nhóm
 
@@ -84,7 +84,7 @@
 - [ ] Có rủi ro, giả định và đề xuất giảm thiểu.
 - [ ] Có acceptance criteria cụ thể, kiểm chứng được.
 - [ ] Không nhận PASS/VERIFIED nếu thiếu bằng chứng tương ứng.
-- [ ] Không vượt quyền ghi repository, chạy SQL/test, merge hoặc deploy.
+- [ ] Thực hiện quyền GitHub/main và kiểm thử đã được cấp; riêng SQL, Production và thao tác tài chính phải có preflight/giới hạn hành động rõ ràng.
 - [ ] Có handoff ID và cập nhật vào HANDOFF-LOG khi thật sự bàn giao.
 
 ## 7. Evidence và quy tắc chuyển trạng thái
@@ -123,7 +123,7 @@
 - Dang giu PROPOSED, gate chua PASS; SQL, test, CI, APK va E2E chua duoc chay trong luot dieu phoi.
 - Xem [Bang giao viec 14 nhom](bang-giao-viec-20261106.md) va [huong dan nhan viec](huong-dan-phan-cong.md). Issue da duoc bo sung phan loai khoi dong va trang thai tiep nhan; khong gui tin nhan tu dong den ChatGPT threads.
 - Nguon nhat ky: [Issue #32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) den [Issue #45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45).
-- **Gioi han:** chi cap nhat documentation/issue tren nhanh tai lieu; khong merge main, khong chay SQL/workflow, khong deployment.
+- **Quy chế hiện hành:** mọi nhóm có thể sửa trực tiếp `main` và kích hoạt quy trình test/build/CI/deploy cần thiết cho nhiệm vụ khi đã kiểm tra ảnh hưởng; tuân thủ [quy-che-thuc-thi.md](quy-che-thuc-thi.md). Ghi nhận ở đoạn lịch sử trên chỉ mô tả đợt cũ.
 
 ## 11. Kết quả đánh giá khả năng khởi động – 2026-11-06
 
@@ -134,4 +134,10 @@
 - Nguồn chi tiết: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md); điều kiện bắt đầu đã được ghi trực tiếp trên 14 GitHub Issues.
 - Kiểm chứng lại SQL: nhánh `codex/nhtbank-sql-hardening-20261031` trả 404; hai file trong `main/docs/sql-drafts/archive/v2/` vẫn có SHA core `48ed0ab6adec0ffa3091e081924d051e2a6a2bda` và assertions `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`.
 - **Không đổi trạng thái backlog PROPOSED thành VERIFIED** vì mới xác định khả năng khởi động, chưa có artifact bàn giao/kiểm thử.
-- Không chạy SQL, build, test, Actions, merge hay deploy trong đợt này.
+- Tại thời điểm đợt đánh giá readiness trước đó, chưa chạy SQL, build, test, Actions, merge hay deploy; từ 2026-11-06 các bước này đã được cho phép theo quy chế hiện hành.
+
+## 12. Quyền và trạng thái mới từ 2026-11-06
+
+- Chủ repository cho phép các nhóm trực tiếp chỉnh sửa mã/tài liệu/Issues, cập nhật `main`, chạy CI/Actions/APK/E2E/merge/deploy phù hợp yêu cầu; xem [quy chế](quy-che-thuc-thi.md).
+- Đã có một commit tài liệu điều phối lên `main` vào 2026-11-06; nguồn là lịch sử GitHub, không phải chứng cứ cho các gate SQL/Backend.
+- Cấm đoán blanket trong bản nháp cũ bị thay thế. Vẫn yêu cầu preflight cho SQL, hệ thống thật, Production, chi phí và bằng chứng PASS.

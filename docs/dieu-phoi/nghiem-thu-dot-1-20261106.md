@@ -1,5 +1,16 @@
 # Báo cáo nghiệm thu Đợt 1 — NhTBank Nhóm 01
 
+## Hậu kiểm hoàn tất — 07/11/2026 (Asia/Saigon)
+
+- Commit nghiệm thu đã ghi lên main: [8b9c3ba629fb6db217f0cd720d7b1d3639ca775a](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/8b9c3ba629fb6db217f0cd720d7b1d3639ca775a), 12 tệp tài liệu/bằng chứng; đã đọc lại 12/12 tệp và khớp nội dung bản vá. MASTER-STATUS, HANDOFF-LOG, ROADMAP và đề xuất Đợt2 đã nằm trong commit này.
+- Đã đọc lại **14/14 Issues #32–45** sau cập nhật: đều OPEN, đều có liên kết commit/báo cáo nghiệm thu. Không gán assignee hoặc ACK thay nhóm logic.
+- [CI đúng commit nghiệm thu — run42196758349](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196758349), job127821885013: completed/success. Đã đọc log: **70 unit,15 backend,43 E2E đạt;8 E2E skipped**; production build thành công. Không thay bằng chứng SQL/concurrency hoặc review gate.
+- [Pages đúng commit — run42196758253](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196758253): build success; **deploy skipped** theo marker. Không có deployment mới từ commit nghiệm thu.
+- Bổ sung hậu kiểm này chỉ đổi báo cáo; không suy CI của8b9c3ba là CI của commit hậu kiểm hoặc main mới hơn. Không cần chạy lại runtime chỉ vì thêm kết quả quan sát vào tài liệu.
+- main có cập nhật công việc khác sau commit nghiệm thu; giữ nguyên chúng. Kết luận Đợt1 chỉ áp dụng source/artifact đã nêu, không tự nghiệm thu Đợt2A/Đợt4.
+- **Kết luận giữ nguyên:** lượt rà soát/sửa tài liệu và đồng bộ Issues hoàn tất; bốn blocker D1-P0-01..04 còn mở, các gate thiết kế REVIEW PENDING/BLOCKED. Các giới hạn local EPERM/auto-review ở bảng kiểm thử bên dưới là lịch sử thực tế, không được xóa vì CI đã xanh.
+
+
 Ngày 2026-11-06; repository `tuong26121-cell/Ngan_hang_NhTBank`; nguồn đọc trực tiếp main `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`. Bản sửa và báo cáo thuộc commit chứa tệp này, tra SHA tại lịch sử GitHub. Chỉ sửa tài liệu/bằng chứng; không đổi SQL/runtime.
 
 ## Kết luận

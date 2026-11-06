@@ -1,7 +1,7 @@
 # HANDOFF-LOG – NhTBank
 
 > **BẢN NHÁP – 2026-11-01**  
-> Phạm vi: phân tích và điều phối; chưa kiểm tra GitHub trực tiếp trong lượt này; không chạy SQL, không ghi repository, không merge/deploy.  
+> **Lịch sử 2026-11-01:** chỉ lập handoff. **Hiện hành 2026-11-06:** cho phép trực tiếp sửa `main`/Issues, chạy SQL/test/Actions/APK/E2E/merge/deploy theo nhiệm vụ khi đủ preflight; xem [quy chế](quy-che-thuc-thi.md).  
 > Quy ước: **KNOWN-HISTORICAL** = thông tin ghi nhận từ công việc trước, chưa xác minh lại; **PROPOSED** = đề xuất; **NOT RUN** = chưa chạy; **BLOCKED** = chờ điều kiện/bằng chứng; **VERIFIED** chỉ khi có bằng chứng hiện thời.
 
 ## Phiếu bàn giao mẫu
@@ -12,7 +12,7 @@ Từ nhóm: 07
 Đến nhóm: 13
 Tiêu đề: Review độc lập SQL v2.1 A3.6
 Nguồn: repository/branch/path/commit-SHA (xác minh lại)
-Phạm vi: chỉ thiết kế, review; không thực thi
+Phạm vi: thiết kế/review, thực thi thay đổi và test liên quan nếu đã đáp ứng điều kiện của nhiệm vụ và quy chế
 Artifact: liên kết/nội dung diff và GATE matrix
 Điều đã xác minh: (bằng chứng)
 Điều chỉ đề xuất: (thiết kế, giả định)
@@ -33,7 +33,7 @@ Trạng thái: PROPOSED
 
 **Lưu ý:** Việc ghi một phiếu vào file này không tự động gửi thông báo hoặc đồng bộ các cuộc trò chuyện khác.
 
-## Quy tắc bàn giao v2 (đề xuất)
+## Quy tắc bàn giao v2 (đang áp dụng cho điều phối)
 
 Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version artifact, bằng chứng, trạng thái và nhóm nhận. Mẫu đầy đủ xem `MASTER-STATUS.md` v2 mục 8. Các dòng handoff khởi tạo ở trên **chưa được gửi**, không tạo ra nhiệm vụ tự động.
 
@@ -60,3 +60,6 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - **Chờ contract trước tích hợp:** 04, 05, 09, 11, 12.
 - Chi tiết, phụ thuộc và việc đầu tiên: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
 - Chưa được coi là bàn giao hợp lệ nếu không có xác nhận tiếp nhận, artifact, bằng chứng và `Handoff-ID`. Không tự gửi tin nhắn sang các cuộc trò chuyện khác.
+
+
+> **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.

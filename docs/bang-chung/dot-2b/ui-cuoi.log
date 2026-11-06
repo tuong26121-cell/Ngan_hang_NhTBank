@@ -1,0 +1,14 @@
+
+Running 5 tests using 2 workers
+
+(node:4306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4307) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/he-thiet-ke.spec.js:4:1 › UX-01 tokens, keyboard, reduced motion and short auth screen (16.6s)
+  ✓  2 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (20.7s)
+  ✓  3 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (17.6s)
+  ✓  4 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (16.6s)
+  ✓  5 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (15.4s)
+
+  5 passed (59.9s)

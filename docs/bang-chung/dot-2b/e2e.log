@@ -1,0 +1,96 @@
+
+> nhtbank@1.0.1 test:e2e
+> playwright test
+
+
+Running 51 tests using 2 workers
+
+(node:1331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (8.3s)
+  ✓   1 [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (8.8s)
+  ✓   3 [desktop] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (17.7s)
+  ✓   5 [desktop] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (8.2s)
+  ✓   6 [desktop] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (9.8s)
+  ✓   4 [desktop] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (41.7s)
+  ✓   7 [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (47.5s)
+  ✓   8 [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (51.4s)
+  ✓   9 [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (12.8s)
+  ✓  11 [desktop] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (6.7s)
+  ✓  10 [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (12.3s)
+  ✓  12 [desktop] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (11.5s)
+  ✓  13 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (11.1s)
+  ✓  14 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (7.4s)
+  ✓  15 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (8.1s)
+  ✓  16 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (9.6s)
+(node:2859) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [desktop] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (10.2s)
+(node:2967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  18 [mobile] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (9.1s)
+  ✓  19 [mobile] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (8.3s)
+  ✓  20 [mobile] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (16.4s)
+  ✓  22 [mobile] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (16.9s)
+  ✓  23 [mobile] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (10.3s)
+  ✓  21 [mobile] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (58.1s)
+  ✓  24 [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (28.2s)
+  ✓  26 [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (5.9s)
+  ✓  27 [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (6.8s)
+  ✓  28 [mobile] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (3.7s)
+  ✓  25 [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (27.5s)
+  -  30 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px
+  -  31 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px
+  -  32 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px
+  -  33 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px
+  ✓  29 [mobile] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (10.1s)
+(node:4048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 [mobile] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (11.3s)
+(node:4194) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  35 [android] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (13.5s)
+  ✓  36 [android] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (17.1s)
+  ✓  37 [android] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (28.1s)
+  ✓  39 [android] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (20.2s)
+  ✓  40 [android] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (12.1s)
+  ✘  38 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (1.1m)
+(node:5088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  41 [android] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (31.0s)
+  ✓  43 [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (6.8s)
+  ✓  44 [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (6.9s)
+  ✓  45 [android] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (4.6s)
+  ✓  42 [android] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (31.4s)
+  -  47 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px
+  -  48 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px
+  -  49 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px
+  -  50 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px
+  ✓  46 [android] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (12.4s)
+  ✓  51 [android] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (9.1s)
+
+
+  1) [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ────────────
+
+    Test timeout of 60000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/bank-complete-Sandbox-journey-without-console-errors-android/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/bank-complete-Sandbox-journey-without-console-errors-android/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-complete-Sandbox-journey-without-console-errors-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-complete-Sandbox-journey-without-console-errors-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ─────────────
+  8 skipped
+  42 passed (6.8m)

@@ -1,0 +1,13 @@
+
+Running 4 tests using 2 workers
+
+(node:821) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (9.2s)
+  ✓  1 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (9.2s)
+  ✓  4 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (7.8s)
+  ✓  3 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (8.3s)
+
+  4 passed (19.8s)

@@ -152,3 +152,8 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 ## HO-D3-01-20261107 — kiểm chứng tích hợp tổng thể
 
 Nhóm01 ACK đã đọc/nhận HO-2A-13-01 và HO-2A-13-14; không chấp thuận release. Nguồn `main@ba22b0dc5de7b14553036a19b240390025713c52`; [báo cáo](ket-qua-dot-3-20261107.md) có tám gate,11 thành phần, D3-01..09, owner/Issue, acceptance và bằng chứng. CI SHA295eff3 xác minh unit70/backend25/build/E2E43 đạt,8 skipped; SQL/Auth app/ledger/concurrency/APK tích hợp vẫn chưa nghiệm thu. Đợt3 BLOCKED. Gửi công việc qua Issues #32–45; ACK riêng của bên nhận còn chờ, không gửi lệnh sang các cuộc trò chuyện khác. Quyền ghi main và chạy kiểm thử theo yêu cầu hiện hành; không chạy migration chưa review hoặc giao dịch thật.
+## NB-D2B-03 — 06/11/2026 — Nhóm 03 → 04/05/11/13
+
+Tiếp quản Issue #34 theo yêu cầu trực tiếp trong phiên. Nguồn main `7192af6`, phiên bản triển khai truy bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Artifact: [tokens/component specification](../he-thiet-ke.md), [45 tiêu chí](../ui-acceptance.md), [bằng chứng](../bang-chung/dot-2b/). Đã chuẩn bị CSS dùng chung và test contract, giữ nghiệp vụ mô phỏng. Trạng thái nhận: ACK PENDING; không gửi tin nhắn/khẳng định các nhóm đã nhận. UX-01 chưa nghiệm thu toàn bộ: thiết bị thật, bàn phím ảo, hiệu năng và heap cần Nhóm 13 xác minh; API/PRD vẫn cần nhóm 02/10 chốt trước tích hợp.
+
+Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2E42 đạt/1 timeout/8 bỏ qua, ca Android chạy riêng lại1/1 đạt; UI cuối5/5. UX-01 IMPLEMENTED / PARTIALLY VERIFIED, chưa PASS toàn bộ. Chi tiết và giới hạn theo ui-acceptance; không xác nhận ACK thay bên nhận.

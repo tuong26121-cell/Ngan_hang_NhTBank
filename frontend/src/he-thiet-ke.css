@@ -1,0 +1,232 @@
+/* Nguon tokens va component contract: docs/he-thiet-ke.md. */
+:root {
+  --nht-primary: #0c3699;
+  --nht-navy: #102b45;
+  --nht-cyan: #16c6df;
+  --nht-ink: #17233d;
+  --nht-muted: #52627c;
+  --nht-surface: #fff;
+  --nht-page: #f5faff;
+  --nht-glass: rgba(255, 255, 255, 0.94);
+  --nht-blue-wash: #edf3ff;
+  --nht-border: #8ba4bd;
+  --nht-success: #08725b;
+  --nht-error: #a42332;
+  --nht-error-wash: #fff1f4;
+  --nht-focus: #075ba7;
+  --nht-space-1: 4px;
+  --nht-space-2: 8px;
+  --nht-space-3: 12px;
+  --nht-space-4: 16px;
+  --nht-space-6: 24px;
+  --nht-space-8: 32px;
+  --nht-radius-control: 12px;
+  --nht-radius-card: 24px;
+  --nht-radius-pill: 999px;
+  --nht-shadow-card: 0 12px 32px #102b4512, inset 0 1px 0 #fff;
+  --nht-shadow-raised: 0 8px 20px #0c369926;
+  --nht-font: "Be Vietnam Pro", system-ui, sans-serif;
+  --nht-text-small: 12px;
+  --nht-text-body: 14px;
+  --nht-text-input: 16px;
+  --nht-duration: 160ms;
+}
+body {
+  background: var(--nht-page);
+  color: var(--nht-ink);
+  font-family: var(--nht-font);
+  line-height: 1.6;
+}
+.app-shell .workspace {
+  background: linear-gradient(160deg, var(--nht-page), #edf8ff);
+}
+.home-shell .workspace::before {
+  background:
+    radial-gradient(ellipse at 0 0, #16c6df50, transparent 55%),
+    linear-gradient(120deg, #102b45, #0c3699);
+}
+.app-shell .topbar {
+  background: var(--nht-navy);
+}
+.home-shell .topbar {
+  background: transparent;
+}
+.panel,
+.auth-card {
+  background: var(--nht-glass);
+  border: 1px solid #bcd9ec;
+  border-radius: var(--nht-radius-card);
+  box-shadow: var(--nht-shadow-card);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .panel,
+  .auth-card {
+    backdrop-filter: blur(12px);
+  }
+}
+.button,
+.auth-card button {
+  min-width: 44px;
+  min-height: 44px;
+  transition:
+    background-color var(--nht-duration),
+    box-shadow var(--nht-duration),
+    transform var(--nht-duration);
+}
+.primary,
+.auth-primary {
+  background: var(--nht-primary);
+  color: var(--nht-surface);
+  border-radius: var(--nht-radius-control);
+  font-size: var(--nht-text-body);
+  box-shadow: var(--nht-shadow-raised);
+}
+.primary:hover:enabled,
+.auth-primary:hover:enabled {
+  background: var(--nht-navy);
+}
+.secondary,
+.chip {
+  border-color: var(--nht-border);
+  border-radius: var(--nht-radius-control);
+  color: var(--nht-primary);
+  background: var(--nht-surface);
+}
+.button:active:enabled,
+.auth-card button:active:enabled {
+  transform: translateY(1px);
+}
+button:disabled,
+button[aria-busy="true"] {
+  cursor: wait;
+}
+button:disabled {
+  opacity: 1;
+  background: #e4eaf2;
+  color: #52627c;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--nht-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #fff;
+}
+.app-shell .sidebar .nav-item.selected {
+  color: var(--nht-primary);
+  background: var(--nht-blue-wash);
+  box-shadow: inset 0 3px var(--nht-primary);
+}
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea,
+.auth-fields > input,
+.vietqr-form input:not([type="checkbox"]),
+.vietqr-form select {
+  min-height: 44px;
+  font-size: var(--nht-text-input);
+  color: var(--nht-ink);
+  background: var(--nht-surface);
+  border: 1px solid var(--nht-border);
+  border-radius: var(--nht-radius-control);
+  scroll-margin-block: 100px;
+}
+input::placeholder {
+  color: var(--nht-muted);
+  opacity: 1;
+}
+[aria-invalid="true"] {
+  border-color: var(--nht-error) !important;
+}
+.form-error,
+.auth-error {
+  color: var(--nht-error);
+  background: var(--nht-error-wash);
+  border-left: 3px solid var(--nht-error);
+  padding: var(--nht-space-3);
+  border-radius: var(--nht-radius-control);
+  font-size: var(--nht-text-small);
+}
+.auth-notice {
+  color: var(--nht-success);
+}
+.auth-screen {
+  overflow-y: auto;
+  align-items: start;
+  background:
+    radial-gradient(ellipse at top left, #16c6df40, transparent 60%),
+    var(--nht-page);
+}
+.auth-card {
+  margin-block: auto;
+  max-height: none;
+  flex-shrink: 0;
+}
+.auth-heading p,
+.auth-footer,
+.auth-heading > span {
+  display: block;
+  font-size: var(--nht-text-small);
+  color: var(--nht-muted);
+}
+.auth-card .auth-heading h1 {
+  font-size: clamp(22px, 5vw, 29px);
+}
+.auth-card .auth-fields label {
+  font-size: var(--nht-text-small);
+}
+.auth-card .auth-links button {
+  padding-inline: var(--nht-space-2);
+}
+.auth-check {
+  min-height: 44px;
+}
+.vietqr-footnote,
+.vietqr-ticket-hint,
+.vietqr-heading p,
+.security-note,
+.demo-notice {
+  font-size: var(--nht-text-small);
+  line-height: 1.65;
+}
+.sandbox-pill {
+  color: var(--nht-navy);
+  background: var(--nht-blue-wash);
+  font-size: var(--nht-text-small);
+}
+.brand-mark img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .button:hover,
+  .button:active,
+  .auth-card button:active:enabled {
+    transform: none;
+  }
+}
+@media (forced-colors: active) {
+  .panel,
+  .button,
+  .nav-item.selected {
+    border: 1px solid CanvasText;
+  }
+}
+/* Chu tren cac be mat thuong hieu toi. */
+.topbar .brand .nhan-phien-ban {
+  color: #fff;
+}
+.reference-balance.balance-card {
+  background:
+    radial-gradient(ellipse at 100% 0%, #16c6df45, transparent 65%),
+    linear-gradient(115deg, var(--nht-navy), var(--nht-primary));
+}

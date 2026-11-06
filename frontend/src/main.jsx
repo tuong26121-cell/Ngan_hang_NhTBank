@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { getDisplayMode } from "./components/ReferenceArt";
 import "./styles.css";
 import "./reference-theme.css";
+import "./he-thiet-ke.css";
 document.documentElement.dataset.display = getDisplayMode();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

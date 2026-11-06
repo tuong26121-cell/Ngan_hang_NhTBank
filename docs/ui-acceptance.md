@@ -228,3 +228,72 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 ## Kiểm chứng Đợt2B — 06/11/2026
 
 Không thay CSS/component trong lượt này. WorkflowAPK được sửa để E2E dùng productionrootdist thaydevserver.43ca đạt,8ca viewport desktop bỏ qua trong2mobileprojects (51tổng); indexHTTPkhớpdist và asset khôngđổi tronglầnchạy. [Log](dieu-phoi/bang-chung-tiep-quan-20261106/production-e2e.log). Đây là Chromiumemulation trênLinux, không chấm45tiêu chí hoặc máy thật đãnghiệmthu. P0máy thật/safearea/keyboard/contrasttoàndiện vẫn còn mở.
+## Đợt 2B — Nhóm 03, UX-01 — 06/11/2026
+
+Nguồn main trước sửa `7192af6`; commit thực thi xác định bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Đặc tả bàn giao: [he-thiet-ke.md](he-thiet-ke.md). Bộ bằng chứng: [dot-2b](bang-chung/dot-2b/). Baseline 4/4 viewport đạt; ảnh trước/sau 390 px. Không sửa backend/lib, dữ liệu, nhãn Sandbox hoặc luồng giao dịch.
+
+Các trạng thái dưới đây chỉ áp dụng phạm vi Chromium Linux và source đã kiểm tra; **UX-01 CHƯA NGHIỆM THU TOÀN BỘ**. P0 thiết bị thật và bộ nhớ còn cần xác minh. Tài liệu Đợt 1/PRD/API vẫn là bản nháp; không chốt tích hợp cho nhóm 04/05/11.
+
+| Mã  | Kết quả rà soát Đợt 2B / bằng chứng                                                      |
+| --- | ---------------------------------------------------------------------------------------- |
+| A01 | Nền sáng, navy/cyan; tokens và ảnh sau sửa                                               |
+| A02 | Gradient navy/cyan, ảnh Chromium; chưa kiểm tra phân tầng trên máy thật                  |
+| A03 | Test tỷ lệ 5 cặp token chữ; chưa audit toàn bộ pixel minh họa/glass trên thiết bị        |
+| A04 | Logo giữ tỷ lệ qua object-fit; ảnh 390 px                                                |
+| A05 | Nguồn token cuối cascade, Be Vietnam Pro nội bộ; CSS chuyên biệt cũ còn giữ cho minh họa |
+| B01 | Header logo, avatar, thông báo hiện hữu; ảnh và E2E                                      |
+| B02 | Số dư/tài khoản mô phỏng không đổi; E2E                                                  |
+| B03 | Ẩn/hiện giữ giá trị; acceptance và test bàn phím                                         |
+| B04 | Chức năng chính giữ nguyên, E2E navigation                                               |
+| B05 | DOM overflow/vùng chạm kiểm tra ở 4 chiều rộng                                           |
+| B06 | Thang spacing 4/8/12/16/24/32; card hiện có và ảnh                                       |
+| C01 | Button ≥44 px; thêm test auth 320×480, 4 viewport màn chính                              |
+| C02 | Hover/active/focus theo contract; E2E nút                                                |
+| C03 | Giữ SVG/Lucide và icon 3D nguồn; không thay ý nghĩa                                      |
+| C04 | Token bo góc control/card/pill; minh họa có bo riêng                                     |
+| C05 | Hồi quy luồng mô phỏng E2E; không thay cơ chế chống nhấn lặp                             |
+| C06 | Native disabled giữ nguyên; style disabled rõ; test flows hiện có                        |
+| D01 | Bóng và highlight nhẹ, ảnh đối chiếu                                                     |
+| D02 | Glass trắng 94%, fallback nền; ảnh Chromium                                              |
+| D03 | Chưa đo frame pacing trên thiết bị thật                                                  |
+| D04 | Active 1 px, duration 160 ms; reduced-motion không dịch                                  |
+| D05 | Test computed transition=0s; MotionConfig/useReducedMotion giữ nguyên                    |
+| D06 | E2E tương tác/QR/điều hướng; chưa kiểm tra GPU yếu                                       |
+| E01 | 5 mục giữ nguyên, acceptance kiểm tra tên                                                |
+| E02 | Acceptance mở từng màn đúng heading                                                      |
+| E03 | aria-current và selected có nền/viền                                                     |
+| E04 | Thanh cố định giữ nguyên; cuộn nội dung, cần xác minh máy thật                           |
+| E05 | Giữ env safe-area; chưa nghiệm thu thanh hệ thống Android/iOS thật                       |
+| F01 | Chromium giả lập Pixel 7; Android thật chưa kiểm tra                                     |
+| F02 | Viewport iPhone dùng Chromium; Safari iOS chưa kiểm tra                                  |
+| F03 | 320/360/390/430 px có assertions overflow và target                                      |
+| F04 | Đổi viewport ngang 844×width trong acceptance; cảm biến thật chưa kiểm tra               |
+| F05 | Auth được cuộn trên 320×480; bàn phím ảo thật chưa kiểm tra                              |
+| G01 | LCP chưa đo theo cấu hình nghiệm thu thống nhất                                          |
+| G02 | INP chưa đo                                                                              |
+| G03 | CLS chưa đo                                                                              |
+| G04 | Chưa profile heap/lặp dài; không đánh dấu đạt                                            |
+| G05 | Các hành trình hiện có bắt pageerror; kết quả chi tiết tại e2e.log                       |
+| G06 | Chưa đo trên thiết bị GPU yếu                                                            |
+| H01 | Bộ hồi quy unit/E2E; xem log kết quả cuối                                                |
+| H02 | Diff không đổi lib/backend hoặc dữ liệu mô phỏng                                         |
+| H03 | Không thêm bước nghiệp vụ; E2E hành trình hiện hữu                                       |
+| H04 | Sandbox, banner và cảnh báo QR giữ nguyên, ảnh/test                                      |
+| H05 | Không thêm secret/dependency/network integration; diff review                            |
+| H06 | Giữ QR cục bộ và chuyển tiền demo; E2E QR/luồng Sandbox                                  |
+
+Không coi build hoặc token contrast là bằng chứng toàn bộ 45 tiêu chí đạt. Nhóm 13 tiếp nhận ma trận này để xác minh các mục còn thiếu trước đóng gate.
+
+### Kết quả chạy cuối và bàn giao
+
+Chốt báo cáo ngày 07/11/2026 (Asia/Saigon); các log của phiên chạy ghi ngày máy UTC 06/11.
+
+- Unit: **70/70 đạt**, 7 tệp test; `bang-chung/dot-2b/unit.log`.
+- Build production: **đạt**, cảnh báo bundle JS >500 kB; `build.log`.
+- E2E toàn bộ hiện có: **42 đạt, 1 timeout, 8 bỏ qua có chủ đích** (viewport đã chạy ở desktop); `e2e.log`. Ca hành trình Android timeout 60 giây, chụp ở màn Lịch sử; giữ bằng chứng `android-timeout.md`. Chạy riêng lại **1/1 đạt trong 33,4 giây**, giữ nguyên timeout và assertions; `android-chay-lai.log`. Chưa kết luận chắc chắn nguyên nhân timeout, không gọi lần chạy toàn bộ là PASS.
+- Kiểm tra UI cuối: **5/5 đạt**, gồm 320/360/390/430 px, form 320×480, keyboard/focus, token contrast và reduced-motion; `ui-cuoi.log`.
+- Năm cặp token chữ đạt ngưỡng 4,5:1; số đo tại `tuong-phan.md`. Không đại diện audit mọi màu hiển thị.
+- Ảnh trước/sau và cả bốn viewport cuối được lưu trong `bang-chung/dot-2b/`. Kiểm tra trực quan ảnh 390 px đã sửa nhãn phiên bản trắng trên header navy; thẻ tài khoản navy/cyan, nhãn Sandbox giữ nguyên.
+- Prettier các tệp code mới và `git diff --check` đạt. Không đổi `frontend/src/lib`, backend, package hoặc lockfile.
+
+**UX-01: IMPLEMENTED / PARTIALLY VERIFIED, chưa PASS nghiệm thu toàn bộ.** Artifact bàn giao Nhóm 04/05/11/13 AVAILABLE; ACK PENDING. Còn thiết bị thật, bàn phím ảo, Safari, hiệu năng, heap và kiểm chứng lại độ ổn định ca Android. Main commit dùng nhãn `[khong-trien-khai-web]` để các workflow kiểm tra có thể chạy mà không tự xuất bản Pages trong đợt bàn giao này.

@@ -105,3 +105,10 @@
 - Chưa chạy SQL, kiểm thử, build APK hoặc deployment.
 - Chưa gửi phiếu bàn giao đến các cuộc trò chuyện khác; các nhóm chưa tự hoạt động.
 - Chưa có bằng chứng để tuyên bố bất kỳ gate kỹ thuật nào PASS.
+
+## 10. Dong bo GitHub – 2026-11-06
+
+- Nguoi dung cho phep day 5 tai lieu quan ly 14 nhom len nhanh tinh nang docs/dieu-phoi-14-nhom-20261106. Khong ghi vao main.
+- Da tao 14 GitHub Issues tu #32 den #45. Danh sach va huong dan o [huong-dan-phan-cong.md](huong-dan-phan-cong.md).
+- Issues la hang doi nhiem vu, khong phai thong bao da gui vao ChatGPT hoac bang chung 14 agent dang lam viec.
+- Tat ca backlog van PROPOSED. SQL/test/build van NOT RUN neu khong co bang chung thuc thi.

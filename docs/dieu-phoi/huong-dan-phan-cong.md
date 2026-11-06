@@ -4,7 +4,7 @@
 
 ## Nguon
 - Repo: tuong26121-cell/Ngan_hang_NhTBank.
-- Nhanh tai lieu: docs/dieu-phoi-14-nhom-20261106, chua merge main.
+- Nguồn tài liệu hiện hành: nhánh `main`, thư mục `docs/dieu-phoi/` (nhánh tài liệu cũ chỉ giữ lịch sử).
 - Tai lieu: MASTER-STATUS.md v2, ARCHITECTURE.md, DECISIONS.md, HANDOFF-LOG.md, ROADMAP.md.
 - Trang thai nhiem vu: PROPOSED. Test, SQL, APK build: NOT RUN neu khong co log.
 
@@ -33,13 +33,13 @@
 4. Nhom phai xac minh nguon va nop phieu HANDOFF; nhom 01 kiem chung truoc khi thay doi trang thai.
 
 ### Cau lenh tiep nhan mau
-"Tiep quan nhiem vu NHTBANK-XX tai https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/NN. Doc MASTER-STATUS v2 tren nhanh docs/dieu-phoi-14-nhom-20261106; kiem tra phu thuoc, pham vi, bang chung; chi phan tich thiet ke. Khong chay SQL, khong sua GitHub, khong merge, khong deploy, khong ket noi ngan hang that. Xuat ket qua va phieu ban giao cho nhom 01."
+"Tiep quan nhiem vu NHTBANK-XX tai https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/NN. Doc MASTER-STATUS hien hanh tren main; kiem tra phu thuoc, pham vi, bang chung; duoc sua code, tai lieu, GitHub Issues, cap nhat main va chay SQL/CI/build/E2E/deploy trong pham vi nhiem vu khi da kiem tra an toan va moi truong. Giao dich tien that can xac nhan cu the moi giao dich. Xuat ket qua va phieu ban giao cho nhom 01."
 
-## Gioi han quan trong
+## Quyen thuc thi va kiem soat quan trong
 - Issue la noi luu danh sach viec, khong phai GitHub assignee la AI hay chuoi chat.
 - Chua co chat nao duoc tao hoac tu dong duoc gui tin tu nhung Issue nay.
 - Muon chay dinh ky/tu dong can su dung Automation/Dots/workflow da duoc cau hinh rieng; dot nay chua thiet lap.
-- Khong cap nhat main, khong tu y chay SQL, test, build, merge hay deploy.
+- Da duoc chu repository cho phep cap nhat truc tiep `main`, sua issues, chay SQL/test/build/Actions/E2E/merge/deploy khi co nhiem vu ro rang va preflight. Xem [quy-che-thuc-thi.md](quy-che-thuc-thi.md).
 - Moi HANDOFF can ID, dau vao va version, evidence, blocker, Gate-ID, nhom gui/nhan, trang thai.
 - Nhom 07 va 08 trao doi hai vong; nhom 06 va 13 phan bien doc lap.
 
@@ -50,9 +50,12 @@
 - **CHI CHUAN BI / CHO CONTRACT TICH HOP:** 04 (#35), 05 (#36), 09 (#40), 11 (#42), 12 (#43).
 - **Tiep nhan:** CHUA XAC NHAN cho 14/14. Khong co assignee hay phan hoi nhan viec.
 - Bang cong viec chi tiet: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
-- Khong tu dong tao agent/chat, khong tu dong chay code; chi la luong giao viec dung GitHub Issues.
+- GitHub Issues khong tu tao agent/chat. Cac nhom/AI co the duoc giao va thuc thi code thong qua cong cu duoc ket noi, theo quy che, nhung can he thong dieu phoi rieng de tu dong nhan viec.
 
 ## Trạng thái sẵn sàng đã rà soát – 2026-11-06
 
 - Bảng phân loại READY/WAIT và trạng thái nhận việc thực tế: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
 - Đã cập nhật trực tiếp 14 GitHub Issues. Không có nhóm AI nào tự nhận việc chỉ nhờ Issue được chỉnh sửa.
+
+
+> **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.

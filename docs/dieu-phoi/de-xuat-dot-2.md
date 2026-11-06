@@ -78,3 +78,11 @@
 - HO-2-13-14: release gates -> CI; HO-2-14-01: CI/build/artifact evidence -> MASTER-STATUS.
 
 **Chot de xuat:** bat dau 2A theo chuoi 10 -> 02 -> 06 -> 07 <-> 08 -> 13; duy tri 03/14 song song; 04/05/09/11/12 chuan bi trong khi cho gate. Trang thai DOT 2: PROPOSED, chua chay SQL/concurrency/APK trong dot dieu phoi nay.
+
+## 9. Cap nhat khi thuc hien Dot 1 va CI tren main — 2026-11-06
+
+- Cac tai lieu Dot 1 da duoc luu trong `docs/dieu-phoi/dot-1/`; day la ban nhap duoc tao tai GitHub, chua co xac nhan 14 AI agent hoat dong.
+- **Thay doi CI da thuc hien:** [commit 7f14b3e](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/7f14b3ead1a84e209886a72ae5f4f4b75501492f) them buoc `npm run test:backend` vao `verify-main-integration.yml`. Source `package.json` da co script `node --test backend/tests/*.test.mjs`.
+- **Evidence cho Dot 2B:** [GitHub Actions run 42192443494](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42192443494), chua danh dau PASS cho backend test cho den khi run hoan thanh va kiem tra steps/log.
+- **Dot 2A van bi chan:** SQL draft v2.1 chua co unified diff reviewed va local SQL preflight; Auth server va transfer backend chua duoc trien khai; khong duoc dao nguoc gate.
+- **Nhan viec:** Nhom 01 dieu phoi, Issues #32–45 de theo doi; trang thai DA TIEP NHAN phai co nguoi/agent va ack/commit artifact cu the. Doc file nay khong tu dong kich hoat cac cuoc tro chuyen.

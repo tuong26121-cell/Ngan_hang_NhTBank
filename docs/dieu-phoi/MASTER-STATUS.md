@@ -157,3 +157,12 @@
 - Nhóm 13 mới thiết kế 12 test case, chưa chạy SQL/backend concurrency. Nhóm 03/14 chưa đổi CSS hoặc workflow trong đợt 1.
 - [Đề xuất Đợt 2](de-xuat-dot-2.md) đặt thứ tự 10→02→06→07↔08→13, đồng thời 03/14; chờ contract cho 04/05/09/11/12.
 - Bằng chứng CI của commit tài liệu là tách biệt; không biến CI unit PASS thành SQL/concurrency PASS.
+
+## 13. Dot 1 (9 hien vat thiet ke) va de xuat Dot 2 — 2026-11-06
+
+- **Da tao tren main:** 9 file dac ta/thiet ke trong [dot-1/](dot-1/) theo thu tu 01 (#32) → 10 (#41) → 02 (#33) → 06 (#37) → 07 (#38) ↔ 08 (#39) → 13 (#44), song song 03 (#34) va 14 (#45).
+- **De xuat Dot 2:** xem [de-xuat-dot-2.md](de-xuat-dot-2.md) gom 2A chot MVP/API/AuthZ/SQL/Transfer/QA; 2B giao dien/CI; 2C SePay Test Mode/Admin/AI; chua chap thuan gate ky thuat.
+- **CI bo sung:** commit [7f14b3e](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/7f14b3ead1a84e209886a72ae5f4f4b75501492f) them `npm run test:backend` vao workflow verify-main. Link [run 42192443494](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42192443494); chi ghi PASS neu run hoan thanh success.
+- **Trang thai nhan viec:** 9 tai lieu la output dieu phoi duoc tao tren GitHub, khong co nghia 9 cuoc tro chuyen AI da nhan viec; 14 Issues van la hang doi.
+- **SQL v2.1 A3.6:** co ke hoach hunk, **chua co unified diff cuoi/khong chay migration**. Tranh `testing-v3` cho v2; pending GATE-01..10.
+- **Dot 2 tich hop:** nhom 04/05/09/11/12 van cho contract; duoc nghien cuu/mock UI doc lap.

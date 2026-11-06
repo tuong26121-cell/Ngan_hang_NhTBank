@@ -60,3 +60,10 @@
 3. 03 chốt UI tokens; 04/05 được triển khai phần giao diện độc lập/sandbox mock; 14 review CI/Android APK và release evidence.
 4. 09/11/12 nghiên cứu SePay Test Mode, Admin/AI read-only, chờ contract trước tích hợp.
 Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de-xuat-dot-2.md).
+
+## Cap nhat thuc te Dot 1 va de xuat Dot 2 — 2026-11-06
+
+- Da co 9 ban nhap Dot 1 tren `main/docs/dieu-phoi/dot-1/`. Cau truc: 01→10→02→06→07↔08→13, 03/14 song song. Day la output thiet ke, khong phai gate PASS hoac agent tiep nhan.
+- Tien trinh Dot 2 duoc chia [2A/2B/2C](de-xuat-dot-2.md). **2A**: chot nghiep vu/API/AuthZ, review DB/Transfer hai vong va QA. **2B**: UI Web/Android, CI/backend tests. **2C**: SePay Test Mode, Admin, AI read-only sau contract.
+- CI main duoc bo sung buoc `npm run test:backend` tai commit [7f14b3e](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/7f14b3ead1a84e209886a72ae5f4f4b75501492f); can doi chieu [run 42192443494](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42192443494) truoc khi danh dau QA/OPS PASS.
+- Nhan viec: Issues 32–45 van la hang doi tren GitHub; chua co he thong auto-dispatch sang 14 ChatGPT threads.

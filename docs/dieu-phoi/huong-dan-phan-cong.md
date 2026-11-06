@@ -51,3 +51,8 @@
 - **Tiep nhan:** CHUA XAC NHAN cho 14/14. Khong co assignee hay phan hoi nhan viec.
 - Bang cong viec chi tiet: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
 - Khong tu dong tao agent/chat, khong tu dong chay code; chi la luong giao viec dung GitHub Issues.
+
+## Trạng thái sẵn sàng đã rà soát – 2026-11-06
+
+- Bảng phân loại READY/WAIT và trạng thái nhận việc thực tế: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md).
+- Đã cập nhật trực tiếp 14 GitHub Issues. Không có nhóm AI nào tự nhận việc chỉ nhờ Issue được chỉnh sửa.

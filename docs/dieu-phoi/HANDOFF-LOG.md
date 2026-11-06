@@ -77,3 +77,17 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 | HO-2-13-14 | 13 -> 14 | QA release gates -> CI | PROPOSED / chua ACK |
 
 9 bản chuyên môn trong [dot-1/](dot-1/) là artifact nguồn do nhóm điều phối soạn. Handoff chỉ xác nhận khi có người nhận, artifact/version, kết quả review; tạo Issue không làm chatbot khác tự khởi chạy. Xem [đề xuất Đợt 2](de-xuat-dot-2.md).
+
+## Phiếu bàn giao dự thảo Đợt 1 — 2026-11-06
+| ID | Bên gửi → nhận | Tài liệu | Tiếp nhận |
+|---|---|---|---|
+| NB-D1-01 | 01→10/02 | [Điều phối](dot-1/01-dieu-phoi.md) | ACK PENDING |
+| NB-D1-02 | 10→02/06/08 | [MVP](dot-1/10-nghiep-vu-mvp.md) | ACK PENDING |
+| NB-D1-03 | 02→06/07/08 | [API](dot-1/02-kien-truc-api-v1.md) | ACK PENDING |
+| NB-D1-04 | 06→07/08/13 | [RBAC](dot-1/06-bao-mat-rbac.md) | ACK PENDING |
+| NB-D1-05 | 07→08/13 | [SQL A3.6](dot-1/07-sql-v21-a36.md) | ACK PENDING; diff chưa hoàn tất |
+| NB-D1-06 | 08→07/13 | [Idempotency](dot-1/08-transfer-idempotency.md) | ACK PENDING |
+| NB-D1-07 | 13→07/08/14 | [QA](dot-1/13-qa-test-matrix.md) | ACK PENDING, tests NOT RUN |
+| NB-D1-08 | 03→04/05 | [UI](dot-1/03-design-system.md) | ACK PENDING |
+| NB-D1-09 | 14→01/05/13 | [CI](dot-1/14-ci-inventory.md) | ACK PENDING |
+Đây là phiếu chuyển giao do Nhóm 01 đề xuất, không phải đã có xác nhận của nhóm nhận; xem [Đợt 2](de-xuat-dot-2.md).

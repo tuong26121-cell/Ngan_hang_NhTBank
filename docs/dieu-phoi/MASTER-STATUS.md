@@ -149,3 +149,11 @@
 - SQL source v2 đã đọc trên main: SHA core `48ed0ab6adec0ffa3091e081924d051e2a6a2bda`; assertions `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`. A3.6 mới có *hunk plan*, chưa có unified diff chốt; SQL NOT RUN.
 - **Tài liệu DRAFT CREATED; gate/chấp thuận**: COORD-01/ARCH-01/SEC-01/DB-01/TX-01/UX-01/QA-01/OPS-01 chưa được xác nhận PASS. GitHub Issues vẫn OPEN và chưa có xác nhận các nhóm logic đã tiếp nhận.
 - Quyền thực hiện kỹ thuật theo [quy-che-thuc-thi.md](quy-che-thuc-thi.md); không nhầm quyền thực thi với bài test/giao dịch đã chạy.
+
+## 13. Kết quả Đợt 1 và hướng Đợt 2 — 2026-11-06
+- Đã tạo 9 tài liệu thiết kế/kiểm kê tại [dot-1/](dot-1/) cho 01,10,02,06,07,08,13 và 03/14 song song.
+- Trạng thái tài liệu: DRAFT PREPARED; không coi là 9 agent đã nhận việc; toàn bộ gate cần review độc lập.
+- Nhóm 07 mới có danh sách hunk SQL A3.6, chưa có unified diff cuối hoặc kiểm thử; Nhóm 08 mới có idempotency design, chưa code persistent transfer.
+- Nhóm 13 mới thiết kế 12 test case, chưa chạy SQL/backend concurrency. Nhóm 03/14 chưa đổi CSS hoặc workflow trong đợt 1.
+- [Đề xuất Đợt 2](de-xuat-dot-2.md) đặt thứ tự 10→02→06→07↔08→13, đồng thời 03/14; chờ contract cho 04/05/09/11/12.
+- Bằng chứng CI của commit tài liệu là tách biệt; không biến CI unit PASS thành SQL/concurrency PASS.

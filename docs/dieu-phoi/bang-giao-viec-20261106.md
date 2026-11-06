@@ -68,3 +68,10 @@
 
 
 > **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.
+
+## Cập nhật Đợt 1 và Đợt 2 — 2026-11-06
+- Đợt 1 đã có [9 đặc tả, kiểm kê](dot-1/), chưa có xác nhận tiếp nhận bởi các cuộc trò chuyện riêng.
+- 01 → 10 → 02 → 06 → 07 ↔ 08 → 13: kết quả ban đầu ở mức DRAFT PREPARED; 03/14 làm song song ở mức bản nháp.
+- Nhóm 07 A3.6 chưa chốt unified diff; không tự chạy SQL v2 archive hoặc runner v3; các hợp đồng Backend và RBAC cần review.
+- [Đề xuất Đợt 2 chi tiết](de-xuat-dot-2.md) có danh sách ưu tiên, đầu vào, điều kiện gate và phân phối 14 nhóm.
+- 04/05/09/11/12 vẫn có thể kiểm kê và sửa độc lập theo quyền ủy quyền, nhưng chưa đủ điều kiện tuyên bố tích hợp với API/provider.

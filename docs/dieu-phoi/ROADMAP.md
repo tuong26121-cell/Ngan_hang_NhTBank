@@ -53,3 +53,10 @@
 - **Song song 2B:** 03 hoàn thiện tokens/45 UI requirements, 14 kiểm kê CI/run; nhóm 04 Website và 05 Android chỉ tích hợp khi ARCH/SEC/UX contract đầy đủ.
 - **Chuẩn bị 2C:** 09 SePay Test Mode, 11 Admin, 12 AI read-only; chưa tích hợp thật cho đến khi có gate.
 - Xem [de-xuat-dot-2.md](de-xuat-dot-2.md) để biết đường găng, tiêu chí nghiệm thu và phiếu bàn giao; không tự gắn PASS cho gate.
+
+## Đợt 2 sau kết quả Đợt 1 — đề xuất 2026-11-06
+1. 10/01 review nghiệp vụ MVP và acceptance; 02/06 chốt API v1/authorization.
+2. 07↔08 khóa schema/transaction/idempotency contract hai vòng; 13 phản biện độc lập SQL và concurrency.
+3. 03 chốt UI tokens; 04/05 được triển khai phần giao diện độc lập/sandbox mock; 14 review CI/Android APK và release evidence.
+4. 09/11/12 nghiên cứu SePay Test Mode, Admin/AI read-only, chờ contract trước tích hợp.
+Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de-xuat-dot-2.md).

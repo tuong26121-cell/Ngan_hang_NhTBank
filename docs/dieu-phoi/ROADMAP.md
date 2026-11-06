@@ -84,3 +84,8 @@ Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de
 ## Sau kiểm chứng thực tế Đợt1 — 06/11/2026
 
 [Báo cáo thực hiện](ket-qua-dot-1-20261106.md):86 test local đạt, Pages build/syntax đạt; SQL/GATE/concurrency/nativeAPK/E2E trong phiên chưa chạy. [Đợt2 mục10](de-xuat-dot-2.md) thay kế hoạch chung bằng6 đầu việc chốt contract,03/14 độc lập và5 nhóm nghiên cứu sơ bộ. Không tạo lại bản nháp đã có, không coi kiểm kê là nghiệm thu tích hợp.
+
+
+## Đợt 4 — rà soát tiếp ngày 07/11/2026 (Asia/Saigon)
+
+PARTIAL: bàn giao tài liệu; Website/APK mới BLOCKED. Đã nhận [kết quả Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build đạt, E2E 43 đạt/8 skip; đây là kết quả được ghi trong báo cáo QA, không phải nghiệm thu release cuối. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 còn BLOCKED; native APK NOT RUN. Tiếp theo: 13 chốt nghiệm thu đúng phạm vi/SHA; 01/14 thống nhất version/changelog; 14 xác minh CI, môi trường và baseline rollback; 05/14 build và kiểm chữ ký/package/logo/version, thiết bị thật. [Bàn giao và recovery plan](ban-giao-dot-4-20261106.md). Không phát hành dịch vụ ngân hàng thật hoặc giao dịch tiền thật.

@@ -52,3 +52,16 @@
 ## Phạm vi quyền
 - Chỉ cập nhật tài liệu và GitHub Issues theo yêu cầu mới nhất của người dùng, trên nhánh tài liệu; không thay đổi `main`.
 - Không chạy SQL, GitHub Actions, CI, APK build, E2E, merge, deploy hoặc giao dịch ngân hàng thật.
+
+
+## Thu tu dieu phoi hanh dong (de xuat)
+
+**Dot 1 – Bat dau nghien cuu/thiet ke ngay:** 01 (#32) → 10 (#41) → 02 (#33) → 06 (#37) → 07 (#38) ↔ 08 (#39) → 13 (#44). Co the thiet ke ban nhap song song, khong doi toan bo gate PASS.
+
+**Song song – Kiem ke doc lap:** 03 (#34), 14 (#45), UI tokens va CI inventory. Khong tich hop hoac kich hoat workflow.
+
+**Cho contract – Chi nghien cuu so bo:** 04 (#35), 05 (#36), 09 (#40), 11 (#42), 12 (#43).
+
+**Tiep nhan:** 14/14 Issues #32–#45 khong GitHub assignee, khong comment tiep nhan tai thoi diem doi chieu. Khong nham kha nang bat dau voi da nhan viec.
+
+**Nguon SQL v2:** main HEAD tai luc doi chieu fb5a2f231c0d1ec210a7b2368cc41268695a0508. File core archive/v2 SHA 48ed0ab6adec0ffa3091e081924d051e2a6a2bda; assertions archive/v2 SHA ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379. Khong tu dong chay SQL hoac dung testing-v3 cho v2.

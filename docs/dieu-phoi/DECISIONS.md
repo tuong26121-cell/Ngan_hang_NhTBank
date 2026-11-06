@@ -29,3 +29,10 @@ Ghi yêu cầu → phân tích ảnh hưởng các nhóm → owner phản biện
 | ADR-012 | 07 ↔ 08 trao đổi schema/API qua hai vòng, có phản biện 06 và 13 | PROPOSED |
 | ADR-013 | Phân biệt gate thiết kế và gate chạy test/build/deploy; không suy diễn VERIFIED | PROPOSED |
 | ADR-014 | `MASTER-STATUS.md` v2 là bảng phụ thuộc/backlog bản nháp; không đồng bộ tự động sang các cuộc trò chuyện | PROPOSED |
+
+## Quyết định mới – 2026-11-06
+
+| ID | Quyết định | Trạng thái |
+|---|---|---|
+| ADR-015 | Đồng bộ 5 tài liệu lên nhánh riêng, không thay đổi main. | Đã thực hiện |
+| ADR-016 | Dùng 14 GitHub Issues làm nơi tiếp nhận nhiệm vụ; không coi Issues là tự gửi sang các cuộc trò chuyện ChatGPT. | Đã tạo Issues; chưa kích hoạt nhóm chat |

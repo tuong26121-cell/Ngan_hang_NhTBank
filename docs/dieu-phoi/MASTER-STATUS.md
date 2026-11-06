@@ -1,7 +1,7 @@
 # MASTER-STATUS – NhTBank, 14 nhóm (v3: kiểm tra GitHub 2026-11-06)
 
 > **BẢN NHÁP v3 – 2026-11-06 (v2 lưu ở các mục lịch sử)**  
-> Cập nhật từ bản nháp trước và ma trận phụ thuộc Nhóm 01 đã thống nhất ở mức đề xuất. Không kiểm tra GitHub trực tiếp trong lượt cập nhật, không chạy SQL, không sửa repository, không merge/deploy.
+> Ghi nhận lịch sử: bản đầu là bản phân tích. Từ 2026-11-06 quy chế mới cho phép cập nhật trực tiếp `main`, GitHub Issues, SQL/test/CI/APK/E2E và deploy trong phạm vi nhiệm vụ có kiểm soát; xem [quy-che-thuc-thi.md](quy-che-thuc-thi.md).
 
 ## 1. Nguyên tắc và trạng thái
 

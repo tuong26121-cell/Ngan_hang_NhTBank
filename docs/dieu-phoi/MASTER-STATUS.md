@@ -1,5 +1,16 @@
 # MASTER-STATUS – NhTBank, 14 nhóm (v3: kiểm tra GitHub 2026-11-06)
 
+## Đợt 3 — Tích hợp tổng thể, cập nhật 07/11/2026 (Asia/Saigon)
+
+**BLOCKED — chưa hoàn thành.** Nguồn kiểm chứng `ba22b0dc5de7b14553036a19b240390025713c52`. Đã ACK nhận QA HO-2A-13-01/14, không chấp thuận release. [Báo cáo tám gate và từng thành phần](ket-qua-dot-3-20261107.md) là nguồn trạng thái Đợt 3 mới; các bảng PROPOSED/không ACK phía dưới giữ giá trị lịch sử.
+
+- CI SHA295eff3: đã đọc job127822542994/run42196968950: unit70/backend25/build đạt; E2E43 đạt/8 skipped. Chỉ docs khác main snapshot; [bằng chứng](dot-3/bang-chung-20261107/kiem-chung.json). Local phiên trước: unit70/backend15/build/E2E43 đạt,8 skipped.
+- COORD-01 IN PROGRESS, chưa PASS; ARCH-01/SEC-01/DB-01/TX-01/UX-01/QA-01/OPS-01 BLOCKED nghiệm thu tích hợp.
+- Supabase NhTBank tồn tại; public/private tables và migrations inventory rỗng; chưa được nghiệm thu development. Không chạy SQL/seed/deploy/giao dịch thật.
+- D3-01..09 đã xác định owner/Issue/điều kiện mở khóa; không dùng UI demo/Pages build làm bằng chứng backend+DB hoặc APK native.
+- Nhận bàn giao Đợt4 tài liệu PARTIAL không thay thế nghiệm thu Đợt3. Issue OPEN, không tự coi các nhóm logic đều đang chạy.
+
+
 ## Snapshot nghiệm thu hiện hành — 2026-11-06
 
 - Nguồn đọc trực tiếp: main `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`, 14 Issues #32–45 và toàn bộ 10 tệp trong `dot-1/` (9 bản nhóm và 1 bản sơ bộ). [Báo cáo nghiệm thu](nghiem-thu-dot-1-20261106.md) là điểm tra cứu hiện hành; các snapshot bên dưới giữ theo thời điểm lịch sử.

@@ -1,0 +1,44 @@
+
+> nhtbank@1.0.1 test:e2e
+> playwright test --max-failures=1
+
+
+Running 51 tests using 2 workers
+
+(node:1039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (1ms)
+Testing stopped early after 1 maximum allowed failures.
+  ✘   2 [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (1ms)
+
+
+  1) [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+  1 interrupted
+    [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+  49 did not run
+  1 error was not a part of any test, see above for details

@@ -1,0 +1,27 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✔ HMAC accepts an exact raw-body signature within the timestamp window (1.441582ms)
+✔ HMAC rejects a modified body, wrong secret, malformed headers and stale timestamps (0.349557ms)
+✔ health endpoint is unauthenticated, non-sensitive and has defensive headers (26.184623ms)
+✔ unknown route returns 404 and transaction endpoint rejects non-GET (8.645255ms)
+✔ transactions endpoint rejects absent and malformed internal bearer credentials (7.575653ms)
+✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (4.875821ms)
+✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (3.505704ms)
+✔ transactions endpoint rejects provider records outside the configured sandbox account (3.261413ms)
+✔ transactions endpoint hides upstream errors and malformed payloads (4.400958ms)
+✔ webhook refuses to ACK a valid signature before durable storage exists (5.465323ms)
+✔ webhook rejects invalid HMAC without exposing details (4.224327ms)
+✔ webhook requires configured secret and strict JSON media type (8.453411ms)
+✔ webhook enforces the raw request body size ceiling (2.715917ms)
+✔ webhook route rejects non-POST requests (1.584794ms)
+✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.157002ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 157.869656

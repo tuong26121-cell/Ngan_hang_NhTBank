@@ -124,3 +124,14 @@
 - Xem [Bang giao viec 14 nhom](bang-giao-viec-20261106.md) va [huong dan nhan viec](huong-dan-phan-cong.md). Issue da duoc bo sung phan loai khoi dong va trang thai tiep nhan; khong gui tin nhan tu dong den ChatGPT threads.
 - Nguon nhat ky: [Issue #32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) den [Issue #45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45).
 - **Gioi han:** chi cap nhat documentation/issue tren nhanh tai lieu; khong merge main, khong chay SQL/workflow, khong deployment.
+
+## 11. Kết quả đánh giá khả năng khởi động – 2026-11-06
+
+- Đã đọc trực tiếp 14 GitHub Issues #32–#45 và kiểm tra MASTER-STATUS v2.
+- **9/14 nhóm có thể bắt đầu thiết kế/kiểm kê ngay:** 01, 02, 03, 06, 07, 08, 10, 13, 14.
+- **5/14 nhóm chờ contract trước khi tích hợp:** 04, 05, 09, 11, 12. Có thể khảo sát hiện trạng/wireframe, không tự tích hợp.
+- Nhóm 01 đang điều phối trong cuộc trò chuyện hiện tại, nhưng không có GitHub assignee. Nhóm 02–14 chưa có xác nhận tiếp nhận công việc; các Issue vẫn OPEN.
+- Nguồn chi tiết: [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md); điều kiện bắt đầu đã được ghi trực tiếp trên 14 GitHub Issues.
+- Kiểm chứng lại SQL: nhánh `codex/nhtbank-sql-hardening-20261031` trả 404; hai file trong `main/docs/sql-drafts/archive/v2/` vẫn có SHA core `48ed0ab6adec0ffa3091e081924d051e2a6a2bda` và assertions `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`.
+- **Không đổi trạng thái backlog PROPOSED thành VERIFIED** vì mới xác định khả năng khởi động, chưa có artifact bàn giao/kiểm thử.
+- Không chạy SQL, build, test, Actions, merge hay deploy trong đợt này.

@@ -1,6 +1,6 @@
-# MASTER-STATUS – NhTBank, 14 nhóm (v2)
+# MASTER-STATUS – NhTBank, 14 nhóm (v3: kiểm tra GitHub 2026-11-06)
 
-> **BẢN NHÁP v2 – 2026-11-05**  
+> **BẢN NHÁP v3 – 2026-11-06 (v2 lưu ở các mục lịch sử)**  
 > Cập nhật từ bản nháp trước và ma trận phụ thuộc Nhóm 01 đã thống nhất ở mức đề xuất. Không kiểm tra GitHub trực tiếp trong lượt cập nhật, không chạy SQL, không sửa repository, không merge/deploy.
 
 ## 1. Nguyên tắc và trạng thái
@@ -99,7 +99,7 @@
 
 `Handoff-ID | Nhóm gửi → nhóm nhận | Phiên bản tài liệu | Repo/branch/SHA đã xác minh hoặc historical | Đầu ra | Bằng chứng | Giả định/rủi ro | Tiêu chí nhận | Trạng thái | Việc tiếp theo`
 
-## 9. Chưa thực hiện
+## 9. Chưa thực hiện theo mốc v2 (trước khi đồng bộ)
 
 - Chưa kiểm tra trực tiếp HEAD/PR/workflow GitHub trong lượt cập nhật này.
 - Chưa chạy SQL, kiểm thử, build APK hoặc deployment.
@@ -112,3 +112,15 @@
 - Da tao 14 GitHub Issues tu #32 den #45. Danh sach va huong dan o [huong-dan-phan-cong.md](huong-dan-phan-cong.md).
 - Issues la hang doi nhiem vu, khong phai thong bao da gui vao ChatGPT hoac bang chung 14 agent dang lam viec.
 - Tat ca backlog van PROPOSED. SQL/test/build van NOT RUN neu khong co bang chung thuc thi.
+
+
+## 11. Trang thai dieu phoi sau kiem tra truc tiep 2026-11-06
+
+- Da doi chieu GitHub Issues #32–#45: **14/14 OPEN**, **0/14 GitHub assignee**, **0/14 binh luan tiep nhan** tai thoi diem kiem tra.
+- **9/14 nhom co the bat dau cong viec thiet ke/kiem ke so bo**: 01, 02, 03, 06, 07, 08, 10, 13, 14. Khong co nghia da nhan viec.
+- **5/14 nhom chi chuan bi trong khi cho contract de tich hop**: 04, 05, 09, 11, 12. Khong mo tich hop, deploy hay goi API that.
+- **Trang thai tiep nhan:** CHUA XAC NHAN cho 14/14 GitHub Issues; Nhom 01 dang dieu phoi trong cuoc tro chuyen nay nhung khong co GitHub assignee/hand-off ack.
+- Dang giu PROPOSED, gate chua PASS; SQL, test, CI, APK va E2E chua duoc chay trong luot dieu phoi.
+- Xem [Bang giao viec 14 nhom](bang-giao-viec-20261106.md) va [huong dan nhan viec](huong-dan-phan-cong.md). Issue da duoc bo sung phan loai khoi dong va trang thai tiep nhan; khong gui tin nhan tu dong den ChatGPT threads.
+- Nguon nhat ky: [Issue #32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) den [Issue #45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45).
+- **Gioi han:** chi cap nhat documentation/issue tren nhanh tai lieu; khong merge main, khong chay SQL/workflow, khong deployment.

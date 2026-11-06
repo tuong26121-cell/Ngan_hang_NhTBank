@@ -36,3 +36,11 @@ Ghi yêu cầu → phân tích ảnh hưởng các nhóm → owner phản biện
 |---|---|---|
 | ADR-015 | Đồng bộ 5 tài liệu lên nhánh riêng, không thay đổi main. | Đã thực hiện |
 | ADR-016 | Dùng 14 GitHub Issues làm nơi tiếp nhận nhiệm vụ; không coi Issues là tự gửi sang các cuộc trò chuyện ChatGPT. | Đã tạo Issues; chưa kích hoạt nhóm chat |
+
+
+## ADR-017 – Phan luong khoi dong 14 nhom (2026-11-06)
+
+- Quyet dinh: 9 nhom co the bat dau thiet ke/kiem ke, 5 nhom chi chuan bi truoc khi contract duoc chot. Du kien, chua phai tien do da hoan thanh.
+- Thu thap bang chung: 14/14 Issues OPEN; 0 assignee; 0 binh luan nhan viec tai thoi diem doi chieu.
+- Nhom 01 cap nhat [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md), thong tin duoc xem la trang thai dieu phoi, khong la ket qua test/compile/deploy.
+- Khong merge main, khong chay SQL/CI, khong gan AI ao lam GitHub assignee.

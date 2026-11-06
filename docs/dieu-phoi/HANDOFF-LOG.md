@@ -36,3 +36,9 @@ Trạng thái: PROPOSED
 ## Quy tắc bàn giao v2 (đề xuất)
 
 Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version artifact, bằng chứng, trạng thái và nhóm nhận. Mẫu đầy đủ xem `MASTER-STATUS.md` v2 mục 8. Các dòng handoff khởi tạo ở trên **chưa được gửi**, không tạo ra nhiệm vụ tự động.
+
+## Ghi nhan phan cong tren GitHub – 2026-11-06
+
+- Da tao 14 GitHub Issues (#32–#45) tuong ung 14 nhom; xem [huong-dan-phan-cong.md](huong-dan-phan-cong.md).
+- Chua gui tu dong phieu ban giao vao cuoc tro chuyen ChatGPT nao; cac handoff du kien van chua duoc tiep nhan.
+- Viec nhan viec can phieu HANDOFF co bang chung, chu khong phai suy dien tu Issue da tao.

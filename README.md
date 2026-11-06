@@ -143,3 +143,12 @@ NhTBank Demo. Khong viet so phien ban truc tiep len hinh logo.
 APK Debug cua moi runner co the dung khoa ky debug khac nhau; neu Android bao
 khong tuong thich chu ky voi ban cu, can go ban demo cu roi cai lai (tai khoan
 mau luu cuc bo se mat). Chua cau hinh khoa ky on dinh hay ban Release.
+
+
+## Đợt 4 — phát hành và bàn giao, 06/11/2026
+
+**PARTIAL: đã bàn giao tài liệu; Website/APK mới BLOCKED.** [Báo cáo release gates, artifact, checksum lịch sử, hướng dẫn và rollback](docs/dieu-phoi/ban-giao-dot-4-20261106.md) tại commit tài liệu `0325a9e79eb9acb129898c7815baeba364a5c827`. Handoff-ID: NB-D4-20261106-01; 01/14 → 13/05/06/07/08; chưa có ACK nghiệm thu cuối.
+
+Nguồn kiểm tra `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`, package 1.0.1. Nhóm 13 mới đang kiểm toán Đợt 2A; chưa có báo cáo nghiệm thu cuối. CI run lịch sử 42192443494 success không chứng minh HEAD đạt; truy vấn run/status HEAD trả rỗng. Không tạo tag, build APK mới hoặc deploy trong đợt này. Asset demo-apk-latest thuộc commit cũ, chưa tải lại xác minh; không phải artifact Đợt 4. Không có checksum/URL ứng dụng mới.
+
+Mở khóa: 13 nghiệm thu đúng SHA/scope; 01 khóa version/changelog; 14 có CI/E2E đúng SHA, environment/baseline rollback và artifact đã kiểm chứng; 05 kiểm tra chữ ký/package/logo/version và thiết bị Android. DB/transfer/backend giữ BLOCKED theo gate riêng. Demo không phải ngân hàng được cấp phép; không giao dịch tiền thật. Các số liệu lịch sử bên trên giữ nguyên giá trị tại mốc cũ.

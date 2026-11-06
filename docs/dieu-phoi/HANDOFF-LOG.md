@@ -63,3 +63,17 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 
 
 > **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.
+
+## Hang doi handoff Dot 1 -> Dot 2 (2026-11-06)
+
+| ID | Tu -> Den | Noi dung | Trang thai |
+|---|---|---|---|
+| HO-2-10-02 | 10 -> 02 | PRD MVP va validation transfer -> OpenAPI | PROPOSED / chua ACK |
+| HO-2-02-06 | 02 -> 06 | Auth/session boundary -> threat/RBAC | PROPOSED / chua ACK |
+| HO-2-02-07-08 | 02 -> 07/08 | API+schema+atomic transfer two-pass | PROPOSED / chua ACK |
+| HO-2-07-13 | 07 -> 13 | Unified diff A3.6 khi co -> SQL static review | BLOCKED / chua co final diff |
+| HO-2-08-13 | 08 -> 13 | Idempotency + concurrency scenarios | PROPOSED / chua ACK |
+| HO-2-03-04-05 | 03 -> 04/05 | Design tokens va UI states | PROPOSED / chua ACK |
+| HO-2-13-14 | 13 -> 14 | QA release gates -> CI | PROPOSED / chua ACK |
+
+9 bản chuyên môn trong [dot-1/](dot-1/) là artifact nguồn do nhóm điều phối soạn. Handoff chỉ xác nhận khi có người nhận, artifact/version, kết quả review; tạo Issue không làm chatbot khác tự khởi chạy. Xem [đề xuất Đợt 2](de-xuat-dot-2.md).

@@ -50,3 +50,9 @@ Ghi yêu cầu → phân tích ảnh hưởng, quyền và môi trường → th
 - **Đã được chủ repository phê duyệt:** cập nhật `main`, GitHub Issues và tài liệu trực tiếp; chạy SQL/Actions/CI/APK/E2E/merge/deploy theo nhiệm vụ khi đủ preflight.
 - Hủy hiệu lực các hạn chế quy trình trước đó ở dạng cấm ghi/chỉ đọc; các ghi nhận lịch sử và gate nghiệm thu vẫn giữ nguyên.
 - Không tự chuyển tiền thật, thanh toán chi phí hay chạy migration chưa định danh. Xem [quy chế thực thi](quy-che-thuc-thi.md).
+
+## ADR-020 – De xuat Dot 2 duoc lap tu Dot 1 (2026-11-06)
+
+- Chấp nhận **thứ tự đề xuất** 01 -> 10 -> 02 -> 06 -> 07 <-> 08 -> 13; 03/14 song song và 04/05/09/11/12 chuẩn bị trong khi chờ contract.
+- Nhóm 01 đã tổng hợp 9 bản thảo trong [dot-1/](dot-1/). [de-xuat-dot-2.md](de-xuat-dot-2.md) xác định 2A/2B/2C và gate. Điều này không chuyển trạng thái Issues sang VERIFIED hoặc xác nhận agent tự nhận nhiệm vụ.
+- SQL v2 A3.6 chưa có final unified diff/test runtime; dòng lịch sử và SHA nguồn giữ nguyên. Quyền thay đổi `main` theo quy chế, kiểm soát gate/Production/giao dịch thật vẫn áp dụng.

@@ -141,3 +141,11 @@
 - Chủ repository cho phép các nhóm trực tiếp chỉnh sửa mã/tài liệu/Issues, cập nhật `main`, chạy CI/Actions/APK/E2E/merge/deploy phù hợp yêu cầu; xem [quy chế](quy-che-thuc-thi.md).
 - Đã có một commit tài liệu điều phối lên `main` vào 2026-11-06; nguồn là lịch sử GitHub, không phải chứng cứ cho các gate SQL/Backend.
 - Cấm đoán blanket trong bản nháp cũ bị thay thế. Vẫn yêu cầu preflight cho SQL, hệ thống thật, Production, chi phí và bằng chứng PASS.
+
+## 13. Dot 1 da co artifact; de xuat Dot 2 – 2026-11-06
+
+- Đã ghi 9 bản nghiên cứu/thiết kế vòng đầu cho Nhóm 01/10/02/06/07/08/13 và 03/14 vào [`dot-1/`](dot-1/). Đây là tài liệu do trung tâm điều phối tổng hợp, **không phải** bằng chứng 9 AI agents đã nhận việc.
+- [Đề xuất Đợt 2](de-xuat-dot-2.md): 2A 10 -> 02 -> 06 -> 07 <-> 08 -> 13; 2B 03/14 + UI 04/05 khi đủ contract; 2C 09/11/12 theo gate.
+- SQL source v2 đã đọc trên main: SHA core `48ed0ab6adec0ffa3091e081924d051e2a6a2bda`; assertions `ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379`. A3.6 mới có *hunk plan*, chưa có unified diff chốt; SQL NOT RUN.
+- **Tài liệu DRAFT CREATED; gate/chấp thuận**: COORD-01/ARCH-01/SEC-01/DB-01/TX-01/UX-01/QA-01/OPS-01 chưa được xác nhận PASS. GitHub Issues vẫn OPEN và chưa có xác nhận các nhóm logic đã tiếp nhận.
+- Quyền thực hiện kỹ thuật theo [quy-che-thuc-thi.md](quy-che-thuc-thi.md); không nhầm quyền thực thi với bài test/giao dịch đã chạy.

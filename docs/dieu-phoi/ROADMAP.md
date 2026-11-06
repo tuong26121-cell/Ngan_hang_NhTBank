@@ -45,3 +45,11 @@
 **Gate điều phối:** COORD-01, ARCH-01, SEC-01, DB-01, TX-01, UX-01, QA-01, OPS-01. Toàn bộ đang ở mức thiết kế/đề xuất; không có test được chạy trong lượt cập nhật. Chi tiết điều kiện nằm tại `MASTER-STATUS.md` v2 mục 5.
 
 > **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.
+
+## Chuyen Dot 1 sang Dot 2 – 2026-11-06
+
+- Đợt 1 đã tạo 9 tài liệu nghiên cứu/thiết kế trong [dot-1/](dot-1/); dựa trên mã nguồn hiện tại, chưa có review nghiệm thu hoặc nhận việc tự động.
+- **Đợt 2A:** 10 chốt PRD -> 02 API v1 -> 06 threat/RBAC -> 07/08 vòng 1/vòng 2 schema+idempotency -> 13 độc lập QA.
+- **Song song 2B:** 03 hoàn thiện tokens/45 UI requirements, 14 kiểm kê CI/run; nhóm 04 Website và 05 Android chỉ tích hợp khi ARCH/SEC/UX contract đầy đủ.
+- **Chuẩn bị 2C:** 09 SePay Test Mode, 11 Admin, 12 AI read-only; chưa tích hợp thật cho đến khi có gate.
+- Xem [de-xuat-dot-2.md](de-xuat-dot-2.md) để biết đường găng, tiêu chí nghiệm thu và phiếu bàn giao; không tự gắn PASS cho gate.

@@ -1,0 +1,40 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "backend",
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "apk-config",
+    "command": [
+      "node",
+      "--test",
+      "scripts/kiem-thu/cau-hinh-apk.test.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "build-pages",
+    "command": [
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--base",
+      "/Ngan_hang_NhTBank/"
+    ],
+    "exit_code": 0
+  }
+]

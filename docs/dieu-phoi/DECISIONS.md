@@ -56,3 +56,11 @@ Ghi yêu cầu → phân tích ảnh hưởng, quyền và môi trường → th
 - Chấp nhận **thứ tự đề xuất** 01 -> 10 -> 02 -> 06 -> 07 <-> 08 -> 13; 03/14 song song và 04/05/09/11/12 chuẩn bị trong khi chờ contract.
 - Nhóm 01 đã tổng hợp 9 bản thảo trong [dot-1/](dot-1/). [de-xuat-dot-2.md](de-xuat-dot-2.md) xác định 2A/2B/2C và gate. Điều này không chuyển trạng thái Issues sang VERIFIED hoặc xác nhận agent tự nhận nhiệm vụ.
 - SQL v2 A3.6 chưa có final unified diff/test runtime; dòng lịch sử và SHA nguồn giữ nguyên. Quyền thay đổi `main` theo quy chế, kiểm soát gate/Production/giao dịch thật vẫn áp dụng.
+
+## ADR-021 — Đối chiếu vòng2 và căn cứ cho Đợt2 (06/11/2026)
+
+- Không áp lại9 bản nháp đã có hoặc bản vá CI backend đã có ở7f14b3e. Chỉ bổ sung mâu thuẫn/thiếu sót có chứng cứ.
+- Error409 đề xuất dùng `IDEMPOTENCY_KEY_REUSED` nhất quán; role mapping và state API/DB phân biệt rõ, không đổi SQL hoặc viết backend chưa chốt contract.
+- `GATE-01`–`GATE-10` ở tài liệu07 là mapping đề xuất chưa xác minh định nghĩa gốc; giữ trạng thái CHƯA KIỂM CHỨNG, không lấy runtime v3 thay v2.
+-86 test local và build/syntax đã kiểm chứng riêng; các gate SQL/atomic concurrency/thiết bị/production chưa đạt nghiệm thu. Chi tiết [báo cáo](ket-qua-dot-1-20261106.md).
+- Đợt2A chốt các quyết định D2-01..06;2B làm03/14 độc lập;2C giữ nghiên cứu sơ bộ04/05/09/11/12. Agent review trong phiên không tạo GitHub assignee hoặc ACK hộ nhóm logic.

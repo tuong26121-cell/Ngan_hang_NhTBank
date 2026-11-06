@@ -91,3 +91,11 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 | NB-D1-08 | 03→04/05 | [UI](dot-1/03-design-system.md) | ACK PENDING |
 | NB-D1-09 | 14→01/05/13 | [CI](dot-1/14-ci-inventory.md) | ACK PENDING |
 Đây là phiếu chuyển giao do Nhóm 01 đề xuất, không phải đã có xác nhận của nhóm nhận; xem [Đợt 2](de-xuat-dot-2.md).
+
+## HO-D1-R2-20261106 — phản biện và kiểm chứng thực tế trong phiên
+
+- Bên thực hiện: agent chính điều phối; hai agent phụ `ra_soat_thiet_ke` và `kiem_ke_ci` nhận task cụ thể trong phiên, có báo cáo trả về. Đây không phải ACK của các nhóm logic02–14 trên GitHub.
+- Nguồn: runtime/workflow `b6499a3afc2533eb3564c58c50675c4fde9a3cb6`; tiếp main `3d05f6e` chỉ thêm24 dòng tài liệu. Artifact: [kết quả](ket-qua-dot-1-20261106.md), [phản biện độc lập](bang-chung-20261106/phan-bien-thiet-ke.md), [mã thoát](bang-chung-20261106/test-status.json).
+- Kiểm chứng:86 test local đạt, build Pages đạt; không có SQL/concurrency/E2E/nativeAPK/Production trong phiên. Không gọi gate PASS từ số test này.
+- Gửi theo tài liệu: đề xuất02/06/07/08/13 nhận D2-01..06 và03/14 nhận phần độc lập,04/05/09/11/12 chỉ bản sơ bộ. **ACK nhóm nhận vẫn PENDING**, không tự gửi tin nhắn sang các cuộc trò chuyện khác.
+- Điều kiện nhận: source version, artifact, reviewer, quyết định contract, blocker và gate tương ứng. Sự có mặt của tài liệu trên main không đồng nghĩa đã tiếp nhận/đã vận hành.

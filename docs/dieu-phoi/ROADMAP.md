@@ -67,3 +67,7 @@ Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de
 - Tien trinh Dot 2 duoc chia [2A/2B/2C](de-xuat-dot-2.md). **2A**: chot nghiep vu/API/AuthZ, review DB/Transfer hai vong va QA. **2B**: UI Web/Android, CI/backend tests. **2C**: SePay Test Mode, Admin, AI read-only sau contract.
 - CI main duoc bo sung buoc `npm run test:backend` tai commit [7f14b3e](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/7f14b3ead1a84e209886a72ae5f4f4b75501492f); can doi chieu [run 42192443494](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42192443494) truoc khi danh dau QA/OPS PASS.
 - Nhan viec: Issues 32–45 van la hang doi tren GitHub; chua co he thong auto-dispatch sang 14 ChatGPT threads.
+
+## Sau kiểm chứng thực tế Đợt1 — 06/11/2026
+
+[Báo cáo thực hiện](ket-qua-dot-1-20261106.md):86 test local đạt, Pages build/syntax đạt; SQL/GATE/concurrency/nativeAPK/E2E trong phiên chưa chạy. [Đợt2 mục10](de-xuat-dot-2.md) thay kế hoạch chung bằng6 đầu việc chốt contract,03/14 độc lập và5 nhóm nghiên cứu sơ bộ. Không tạo lại bản nháp đã có, không coi kiểm kê là nghiệm thu tích hợp.

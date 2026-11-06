@@ -26,3 +26,18 @@
 - Do not introduce image/font assets from external paid provider; reuse approved logo and source assets.
 
 **Phan cong:** audit tokens component states and issue #34; **ket qua:** draft spec, **chua** sua CSS hay chay UI/a11y audit; UX-01 NOT PASS. Ban giao 04/05/11/13.
+
+## Kiểm kê token từ mã hiện tại — 06/11/2026
+
+Chỉ kiểm kê và lập bản nháp mapping, không đổi CSS/runtime trong đợt này. Các màu đề xuất ở bảng trước chưa được chấp thuận thay nhận diện hiện hữu.
+
+| Thành phần | Nguồn đang có | Mapping để Nhóm 03 review |
+| --- | --- | --- |
+| primary / ink / muted | `styles.css` :root phần acceptance: `--nht-primary:#0c3699`, `--nht-ink:#17233d`, `--nht-muted:#52627c` | Tái sử dụng token đã có; không thêm hệ màu song song |
+| surface / wash | `--nht-surface:#fff`, `--nht-blue-wash:#edf3ff` | Phân biệt nền trang và card trước khi hợp nhất |
+| theme nền / chữ | `reference-theme.css` :root/body: `#edf6ff` / `#173957` | Override sau styles.css theo thứ tự import main.jsx; cần đo computed style |
+| focus | styles.css button/input/select focus-visible; reference-theme.css anchor 3px #1377c9 | Audit màu/độ tương phản mọi nền, chưa chấm đạt nhờ selector |
+| vùng chạm | styles.css `.button` min-width/min-height44px; icon-button44px | Kiểm tra kích thước DOM khi responsive trước acceptance |
+| motion | MotionConfig reducedMotion=user và media query cả hai CSS | Kiểm thử reduce với component/animation thực tế |
+
+Giữ 45 tiêu chí A01–H06 ở trạng thái nghiệm thu có bằng chứng riêng; việc kiểm kê token không thay `docs/ui-acceptance.md` thành đạt và không tạo thay đổi giao diện cần chạy thiết bị lại.

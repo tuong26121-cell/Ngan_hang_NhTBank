@@ -31,6 +31,15 @@ NEW --atomic claim--> PROCESSING --commit transfer + result--> COMPLETED
 - Key expiration policy: `expires_at` does not remove unique constraint; agree retention/cleanup and replay horizon before implementing.
 
 ## API error and test handoff
-`400 VALIDATION_ERROR`; `401 UNAUTHENTICATED`; `403 FORBIDDEN`; `409 IDEMPOTENCY_CONFLICT`; `409 INSUFFICIENT_BALANCE`; `503 RETRYABLE_UNAVAILABLE` are proposed, not implemented.
+`400 VALIDATION_ERROR`; `401 UNAUTHENTICATED`; `403 FORBIDDEN`; `409 IDEMPOTENCY_KEY_REUSED`; `409 INSUFFICIENT_BALANCE`; `503 RETRYABLE_UNAVAILABLE` are proposed, not implemented.
 
 **Ban giao:** 07 SQL schema primitives, 06 auth/role checks, 13 integration stress tests. **TX-01:** draft complete only; no backend code written and concurrency NOT RUN.
+
+## Đối chiếu hợp đồng vòng 2 — 06/11/2026
+
+- Mã lỗi bản nháp thống nhất với Nhóm 02: `409 IDEMPOTENCY_KEY_REUSED`; nghĩa là cùng namespace/key nhưng khác request hash. Đây là quyết định tài liệu để review, chưa có endpoint thực thi.
+- Trạng thái API `PROCESSING` chỉ là nhãn trình bày đề xuất tương ứng DB `started`; `COMPLETED` tương ứng `completed`; DB `failed` chưa có chính sách replay lỗi được chốt. Không đổi enum SQL để khớp tên sơ đồ.
+- Với transaction một pha: kiểm tra token/shape/ownership trước; claim key rồi so hash/replay trước khi kiểm tra số dư hiện tại cho yêu cầu mới. Retry giao dịch đã commit vẫn phải trả receipt cũ khi số dư sau lần trước không còn đủ. Hash khác phải conflict kể cả giao dịch cũ còn xử lý. Cần đặc tả mã chờ/timeout khi claim chưa kết thúc.
+- SQL v2 `transactions` là nguồn giao dịch Test Mode, chưa có account balance/ledger nội bộ. Không dùng bản ghi nhập từ provider làm posting ghi nợ. Cần schema ledger riêng được Nhóm 07/08 review trước backend transfer.
+- Tiền qua API/DB: đề xuất chuỗi số nguyên VNĐ để không mất độ chính xác BIGINT; frontend chỉ chuyển sang Number sau kiểm tra safe integer. Canonical hash bao gồm version, scope, tài khoản nguồn/đích, amount, currency, nội dung đã chuẩn hóa; không bao gồm JWT, timestamp retry hay request ID. Unicode/whitespace/null/omitted còn phải khóa bằng fixture trước tích hợp.
+- Retention, replay của terminal failure và chính sách dọn `started` vẫn **CHƯA CHỐT**. Không bịa TTL, không thêm cleanup job trong đợt nghiên cứu.

@@ -28,3 +28,11 @@
 - QA-01..12 tests listed as NOT RUN for proposed new backend/SQL. `QA-01` coordination design gate: REVIEW PENDING; not PASS.
 
 **Ban giao:** 01 (risk), 07 (SQL blockers), 08 (integration matrix), 14 (release gates).
+
+## Điều kiện phản biện bổ sung — 06/11/2026
+
+- `QA-01` trong bảng test là test SQL; gate điều phối `QA-01` là nghiệm thu test matrix. Khi báo cáo phải ghi namespace `TEST:QA-01` hoặc `GATE:QA-01` để tránh nhầm. Cả hai chưa đạt nghiệm thu runtime.
+- `GATE-01`–`GATE-10` ở tài liệu Nhóm 07 mới là mapping đề xuất. Thiếu gate-definition artifact gốc là blocker truy nguyên, không phải SQL runtime FAIL.
+- Bổ sung regression replay: dùng hết số dư bằng lần chuyển đầu, retry cùng key/hash vẫn trả persisted receipt, không kiểm tra lại như giao dịch mới. Thử conflict khi trạng thái còn processing; hai principal cùng key; hash với amount lớn/Unicode/null/omitted.
+- Không dùng mock đơn luồng/unit frontend để chứng minh 10 connection độc lập hoặc atomic ledger; trace phải cho thấy commit/rollback và business record đếm từ DB disposable đã định danh.
+- Review thiết kế bởi agent phụ trong cùng phiên là bằng chứng phản biện tài liệu, không phải xác nhận tiếp nhận từ các cuộc trò chuyện của 14 nhóm hay pentest độc lập tổ chức.

@@ -86,3 +86,30 @@
 - **Evidence cho Dot 2B:** [GitHub Actions run 42192443494](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42192443494), chua danh dau PASS cho backend test cho den khi run hoan thanh va kiem tra steps/log.
 - **Dot 2A van bi chan:** SQL draft v2.1 chua co unified diff reviewed va local SQL preflight; Auth server va transfer backend chua duoc trien khai; khong duoc dao nguoc gate.
 - **Nhan viec:** Nhom 01 dieu phoi, Issues #32–45 de theo doi; trang thai DA TIEP NHAN phai co nguoi/agent va ack/commit artifact cu the. Doc file nay khong tu dong kich hoat cac cuoc tro chuyen.
+
+## 10. Cập nhật sau thực hiện và phản biện Đợt 1 — 06/11/2026
+
+Đợt 1 đã có9 bản thảo trước phiên này. Lượt này kiểm chứng lại14 Issues (OPEN, assignee rỗng, timeline không có phản hồi),2 blob SQL v2, kiểm kê token/CSS và workflow, bổ sung5 nhóm sơ bộ tại [bản nghiên cứu](dot-1/so-bo-nhom-cho-contract.md). Agent phụ đã thực hiện phản biện thiết kế và kiểm kê CI trong phiên hiện tại; **không phải14 nhóm logic đã tiếp nhận Issue**. [Báo cáo thực hiện](ket-qua-dot-1-20261106.md) và [log](bang-chung-20261106/) là nguồn kết quả.
+
+### 2A — Việc cần chốt sau phản biện
+
+| ID | Việc tiếp theo / bên phụ trách đề xuất | Đã làm ở Đợt1 | Điều kiện đóng / trạng thái |
+| --- | --- | --- | --- |
+| D2-01 | 01/10: PRD v1, fee/retention/replay horizon | Đối chiếu MVP demo và acceptance | Owner review; các giá trị còn thiếu chưa tự đặt → CHƯA CHỐT |
+| D2-02 | 02/08/13: error/field-level OpenAPI v1 | Thống nhất bản nháp409 `IDEMPOTENCY_KEY_REUSED`; ghi phạm vi hash/amount VNĐ ở08 | Schema máy đọc được +fixtures lỗi, pagination, session/confirmation và QA review → CÒN MỞ |
+| D2-03 | 06/07/11: role/permission mapping | Tách customer/user alias, auditor chưa có enum và service_role hạ tầng | Ma trận deny-by-default từng endpoint, source claim và reviewer → CÒN MỞ |
+| D2-04 | 07↔08: schema transfer và replay | Tách PROCESSING/started, COMPLETED/completed; làm rõ v2 import không là ledger; retry đọc receipt trước balance mới | Hai vòng:07 schema draft →08 ledger/lock/hash/replay →06/13 review; failed/TTL/cleanup còn mở |
+| D2-05 | 07/13: A3.6 và truy nguyên GATE | Blob v2 khớp; đánh dấu GATE01–10 là mapping đề xuất chưa có definition gốc | Final unified diff, provenance gate/version và runner v2 an toàn; DB-01 BỊ CHẶN nghiệm thu, SQL CHƯA CHẠY |
+| D2-06 | 13/14: evidence gates |86 local tests đạt, build Pages đạt,6 YAML/34shell blocks syntax đạt | Không thay SQL/concurrency/E2E runtime; trace mới gắn đúng SHA/run/môi trường |
+
+### 2B — Phần độc lập được tiếp tục
+
+- 03: mapping token nguồn đã ghi; bước sau hợp nhất từng token có task UI và acceptance riêng, không đổi hệ màu theo bảng nháp chưa review.
+- 14: đã sửa inventory cũ; backend security test **đã có trên main**, không áp lại. Chỉ sửa workflow khi có lỗi/task cụ thể. APK production-assets E2E là cải tiến đề xuất, chưa chạy build mới.
+- 04/05: bản sơ bộ sitemap/screen states sẵn để review; phạm vi hiện tại vẫn chỉ sơ bộ theo yêu cầu này. Mở tích hợp sau ARCH/SEC/UX có acceptance, không đợi mọi gate để nghiên cứu.
+
+### 2C — Contract trước tích hợp mở rộng
+
+09 Test Mode/durable ACK;11 admin scoped RBAC;12 AI read-only intents: có skeleton nghiên cứu tại bản sơ bộ, chưa có server/provider tích hợp. Không chọn thông số phí/retention/nhà cung cấp thay chủ sản phẩm. Không cấp quyền chuyển tiền thật hay kích hoạt dịch vụ có phí.
+
+**Trạng thái hiện hành:** Đợt1 nghiên cứu và local verification đã thực hiện trong phạm vi trên; Đợt2 là đề xuất cụ thể chờ chốt contract, không tuyên bố các gate runtime đã đạt.

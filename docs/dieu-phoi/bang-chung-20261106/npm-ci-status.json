@@ -1,0 +1,1 @@
+{"command": ["npm", "ci", "--no-audit", "--no-fund"], "exit_code": 0}

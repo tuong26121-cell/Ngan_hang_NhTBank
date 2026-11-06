@@ -73,3 +73,7 @@ Main đã tiến đến ba22b0dc5de7b14553036a19b240390025713c52. Đã merge bì
 `git diff --check` với tệp.patch có cảnh báo khoảng trắng ở các dòng context rỗng của unifieddiff. Giữ nguyên byte của patch để bảo toàn khả năng áp vàSHA256; kiểm diffcheck các nguồn khác riêng. `git apply --check` vẫn đạt, không chứng minh SQL hợp lệ. Không áp candidateSQL vào archive/DB.
 
 Thiếu đầu vào để bước tiếp: identitydevelopment/trustedissuer/confirmation, policyretention/fee và migrationreview+targetPG17; đã hỏi phần môi trường không chứa credential. Có thể review contract/patch ngay; không phát hành toàn ứng dụng từ kết quả này.
+
+## Đồng bộ nguồn SQL và điều phối mới
+
+Push đầu bị từ chối fast-forward vì main nhận b2cb329/6cce289. Đã fetch và merge thông thường, giữ báo cáo Đợt3 và gói SQLv2.1 của Nhóm07. Không forcepush. CandidateSQLpatch cũ trong task này được đánh dấu lịch sử, không áp chồng hoặc thay thế gói mới. Gói mới có diff/assertions/staticchecker, vẫn SQL NOTRUN/DB-01BLOCKED. Chưa có thay đổi frontend/backend runtime/workflow/package từ hai commit đồng thời này, nên kết quả124tests không bị đổi đầu vào.

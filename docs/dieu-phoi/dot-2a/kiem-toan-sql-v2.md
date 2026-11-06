@@ -1,5 +1,10 @@
 # Kiểm toán tĩnh SQL v2 và đề xuất hardening A3.6
 
+## Đính chính sau nguồn mới 07/11/2026
+
+Nhóm07 đã bàn giao gói đầy đủ hơn tại [phien-ban-v21](../../sql-drafts/phien-ban-v21/ban-giao-a36.md), commit6cce289. Candidatepatch ở tài liệu này là lịch sử review trước nguồn mới, **không là bản cần áp tiếp hoặc bản thay thế gói Nhóm07**. Các phân tích dưới đây giữ đúng snapshot7192af6; DB-01 vẫn BLOCKED, không có SQLruntime.
+
+
 Ngày: **06/11/2026**. Nguồn điều phối đầu phiên `main` **7192af6c28b51b56806b0b9c6827d2d0604bbc8a**. Thực hiện trong vai trò chuyên môn Nhóm07/13 theo phân công của Nhóm01; không tự nhận GitHub assignee hay xác nhận tiếp nhận bởi các cuộc trò chuyện khác.
 
 ## Kết quả và ranh giới bằng chứng

@@ -1,5 +1,10 @@
 # MASTER-STATUS – NhTBank, 14 nhóm (v3: kiểm tra GitHub 2026-11-06)
 
+## Nguồn SQL mới được giữ khi đồng bộ lần hai — 07/11/2026
+
+Main6cce289 bổ sung [gói SQL v2.1/A3.6 của Nhóm07](../sql-drafts/phien-ban-v21/ban-giao-a36.md): có diff/assertions/kiểmtra tĩnh, **SQL NOT RUN, DB-01 BLOCKED**. Phiên điều phối giữ gói này làm đầu vào review tiếp theo; không tạo lại diff đã bàn giao hoặc dùng candidatepatch trước đó làm bản thay thế. [Candidate cũ](dot-2a/de-xuat-sql-v2.patch) được giữ để truy nguyên, không là migration hiện hành. GATEprovenance/PG17runtime/target/migrationacceptance vẫn chưa được suy ra từ kiểmtra văn bản.
+
+
 ## Trạng thái sau đồng bộ main ngày07/11/2026 — Asia/Saigon
 
 - Đã hợp nhất main `ba22b0dc5de7b14553036a19b240390025713c52`, bảo toàn nghiệm thu Đợt1,10test QA nền tảng và báo cáo khóa phát hành của phiên khác. Không lặp hoặc ghi đè các kết quả đó.
@@ -21,6 +26,17 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 
 
 ## Kết quả thực hiện Đợt 1 trong phiên 06/11/2026
+
+
+## Đợt 3 — Tích hợp tổng thể, cập nhật 07/11/2026 (Asia/Saigon)
+
+**BLOCKED — chưa hoàn thành.** Nguồn kiểm chứng `ba22b0dc5de7b14553036a19b240390025713c52`. Đã ACK nhận QA HO-2A-13-01/14, không chấp thuận release. [Báo cáo tám gate và từng thành phần](ket-qua-dot-3-20261107.md) là nguồn trạng thái Đợt 3 mới; các bảng PROPOSED/không ACK phía dưới giữ giá trị lịch sử.
+
+- CI SHA295eff3: đã đọc job127822542994/run42196968950: unit70/backend25/build đạt; E2E43 đạt/8 skipped. Chỉ docs khác main snapshot; [bằng chứng](dot-3/bang-chung-20261107/kiem-chung.json). Local phiên trước: unit70/backend15/build/E2E43 đạt,8 skipped.
+- COORD-01 IN PROGRESS, chưa PASS; ARCH-01/SEC-01/DB-01/TX-01/UX-01/QA-01/OPS-01 BLOCKED nghiệm thu tích hợp.
+- Supabase NhTBank tồn tại; public/private tables và migrations inventory rỗng; chưa được nghiệm thu development. Không chạy SQL/seed/deploy/giao dịch thật.
+- D3-01..09 đã xác định owner/Issue/điều kiện mở khóa; không dùng UI demo/Pages build làm bằng chứng backend+DB hoặc APK native.
+- Nhận bàn giao Đợt4 tài liệu PARTIAL không thay thế nghiệm thu Đợt3. Issue OPEN, không tự coi các nhóm logic đều đang chạy.
 
 
 ## Snapshot nghiệm thu hiện hành — 2026-11-06

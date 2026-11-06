@@ -1,0 +1,12 @@
+[
+  {
+    "name": "unit",
+    "exit_code": 0,
+    "tail": "\n> nhtbank@1.0.1 test\n> vitest run\n\n\n RUN  v5.0.5 /workspace/Ngan_hang_NhTBank\n\n\n Test Files  7 passed (7)\n      Tests  70 passed (70)\n   Start at  09:39:50\n   Duration  7.06s (tests 58%, environment 26%, setup 9%, import 6%, transform 1%)\n\n    Isolate  7 workers spawned · ~332ms startup each (spawn + environment, per file)\n             at least ~1.99s faster with isolate: false — reuses workers across files instead of one per file\n\n"
+  },
+  {
+    "name": "backend",
+    "exit_code": 0,
+    "tail": "h endpoint is unauthenticated, non-sensitive and has defensive headers (26.184623ms)\n✔ unknown route returns 404 and transaction endpoint rejects non-GET (8.645255ms)\n✔ transactions endpoint rejects absent and malformed internal bearer credentials (7.575653ms)\n✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (4.875821ms)\n✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (3.505704ms)\n✔ transactions endpoint rejects provider records outside the configured sandbox account (3.261413ms)\n✔ transactions endpoint hides upstream errors and malformed payloads (4.400958ms)\n✔ webhook refuses to ACK a valid signature before durable storage exists (5.465323ms)\n✔ webhook rejects invalid HMAC without exposing details (4.224327ms)\n✔ webhook requires configured secret and strict JSON media type (8.453411ms)\n✔ webhook enforces the raw request body size ceiling (2.715917ms)\n✔ webhook route rejects non-POST requests (1.584794ms)\n✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.157002ms)\nℹ tests 15\nℹ suites 0\nℹ pass 15\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 157.869656\n"
+  }
+]

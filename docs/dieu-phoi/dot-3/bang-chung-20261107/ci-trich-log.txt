@@ -1,0 +1,12 @@
+Source SHA: 295eff3811bc5654aaf6677a226eba7b4d0dd4d7
+Run: 42196968950 Job: 127822542994
+Filtered excerpt; full original log at GitHub job URL.
+2026-11-06T09:42:15.2915533Z [2m      Tests [22m [1m[32m70 passed[39m[22m[90m (70)[39m
+2026-11-06T09:42:15.7539199Z # tests 25
+2026-11-06T09:42:15.7539602Z # pass 25
+2026-11-06T09:42:15.7539802Z # fail 0
+2026-11-06T09:42:15.7540253Z # skipped 0
+2026-11-06T09:42:19.5963044Z [32m✓ built in 3.44s[39m
+2026-11-06T09:42:43.5778886Z Running 51 tests using 2 workers
+2026-11-06T09:44:49.4516922Z   8 skipped
+2026-11-06T09:44:49.4517519Z   43 passed (2.1m)

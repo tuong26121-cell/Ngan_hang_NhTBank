@@ -146,3 +146,9 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 ## HO-TAKEOVER-MERGE-20261107 — giữ kết quả đồng thời
 
 Đã đọc và tiếp nhận hiện vật HO-2A-13-01/14 (69f2d46) và báo cáo Đợt4 trênmainba22b0d. Giữ10HTTPtests mới và trạng thái releaseBLOCKED. Merge ởf72ca1b không ghi đè main. Backend48/48 và contract5/5 sau merge; tổng124localtests,41fixture; log có namespace riêng. Tiếp nhận hiện vật không là phê duyệt SQL hoặc release. SnapshotIssues hiện có comment32/35/44/45,14assignee vẫn rỗng; APIghi của phiên nàyForbidden. [Báo cáo](bao-cao-tiep-quan-20261106.md).
+
+
+
+## HO-D3-01-20261107 — kiểm chứng tích hợp tổng thể
+
+Nhóm01 ACK đã đọc/nhận HO-2A-13-01 và HO-2A-13-14; không chấp thuận release. Nguồn `main@ba22b0dc5de7b14553036a19b240390025713c52`; [báo cáo](ket-qua-dot-3-20261107.md) có tám gate,11 thành phần, D3-01..09, owner/Issue, acceptance và bằng chứng. CI SHA295eff3 xác minh unit70/backend25/build/E2E43 đạt,8 skipped; SQL/Auth app/ledger/concurrency/APK tích hợp vẫn chưa nghiệm thu. Đợt3 BLOCKED. Gửi công việc qua Issues #32–45; ACK riêng của bên nhận còn chờ, không gửi lệnh sang các cuộc trò chuyện khác. Quyền ghi main và chạy kiểm thử theo yêu cầu hiện hành; không chạy migration chưa review hoặc giao dịch thật.

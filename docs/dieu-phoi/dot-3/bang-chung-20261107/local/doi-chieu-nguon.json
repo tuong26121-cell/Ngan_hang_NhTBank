@@ -1,0 +1,7 @@
+{
+  "remote_commit": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+  "local_commit": "fb5a2f231c0d1ec210a7b2368cc41268695a0508",
+  "compared_paths": 62,
+  "mismatches": [],
+  "limitation": "working tree source read separately; docs/workflows differ from local HEAD"
+}

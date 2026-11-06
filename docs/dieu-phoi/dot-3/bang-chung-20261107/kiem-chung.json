@@ -1,0 +1,101 @@
+{
+  "observed_date": "2026-11-07",
+  "timezone": "Asia/Saigon",
+  "source_sha": "ba22b0dc5de7b14553036a19b240390025713c52",
+  "ci": {
+    "source_sha": "295eff3811bc5654aaf6677a226eba7b4d0dd4d7",
+    "run_id": 42196968950,
+    "job_id": 127822542994,
+    "unit_passed": 70,
+    "backend_passed": 25,
+    "e2e_passed": 43,
+    "e2e_skipped": 8,
+    "build": "success",
+    "log_read": true
+  },
+  "runtime_comparison": {
+    "baseline": "295eff3811bc5654aaf6677a226eba7b4d0dd4d7",
+    "head": "ba22b0dc5de7b14553036a19b240390025713c52",
+    "changed_paths": [
+      "README.md",
+      "docs/dieu-phoi/HANDOFF-LOG.md",
+      "docs/dieu-phoi/MASTER-STATUS.md",
+      "docs/dieu-phoi/ROADMAP.md",
+      "docs/dieu-phoi/ban-giao-dot-4-20261106.md",
+      "docs/dieu-phoi/nghiem-thu-dot-1-20261106.md"
+    ],
+    "deleted_paths": []
+  },
+  "artifact": {
+    "id": 13492991134,
+    "node_id": "MDg6QXJ0aWZhY3QxMzQ5Mjk5MTEzNA==",
+    "name": "main-integration-playwright",
+    "size_in_bytes": 11002093,
+    "url": "https://api.github.com/repos/tuong26121-cell/Ngan_hang_NhTBank/actions/artifacts/13492991134",
+    "archive_download_url": "https://api.github.com/repos/tuong26121-cell/Ngan_hang_NhTBank/actions/artifacts/13492991134/zip",
+    "expired": false,
+    "digest": "sha256:4e8852682a853add559780a247206464f11e8eeda0621084572f1262886989e3",
+    "created_at": "2026-11-06T09:44:57Z",
+    "updated_at": "2026-11-06T09:44:57Z",
+    "expires_at": "2026-11-13T09:44:54Z",
+    "workflow_run": {
+      "id": 42196968950,
+      "repository_id": 1432688414,
+      "head_repository_id": 1432688414,
+      "head_branch": "main",
+      "head_sha": "295eff3811bc5654aaf6677a226eba7b4d0dd4d7"
+    }
+  },
+  "pages": {
+    "run_id": 42303579266,
+    "source_sha": "ba22b0dc5de7b14553036a19b240390025713c52",
+    "build": "success",
+    "deploy": "skipped"
+  },
+  "supabase": {
+    "project": "swyrvrpnvygaxxxumyyk",
+    "name": "NhTBank",
+    "status": "ACTIVE_HEALTHY",
+    "postgres": "17.11.0.003",
+    "tables_in_public_private": [],
+    "migrations": [],
+    "development_accepted": false,
+    "write_executed": false
+  },
+  "local": {
+    "source_comparison": {
+      "remote_commit": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+      "local_commit": "fb5a2f231c0d1ec210a7b2368cc41268695a0508",
+      "compared_paths": 62,
+      "mismatches": [],
+      "limitation": "working tree source read separately; docs/workflows differ from local HEAD"
+    },
+    "unit": 70,
+    "backend": 15,
+    "build_exit_code": 0,
+    "e2e_passed": 43,
+    "e2e_skipped": 8,
+    "e2e_exit_code": 0,
+    "notes": [
+      "Run date 2026-11-06",
+      "Initial loopback tests blocked by sandbox EPERM; allowed network rerun passed",
+      "Initial E2E browser missing; rerun via /usr/bin/chromium on production preview subpath passed",
+      "Does not verify new backend25 suite locally"
+    ]
+  },
+  "gates": {
+    "COORD_01": "IN PROGRESS / NOT ACCEPTED",
+    "ARCH_01": "BLOCKED",
+    "SEC_01": "BLOCKED",
+    "DB_01": "BLOCKED / SQL NOT RUN",
+    "TX_01": "BLOCKED",
+    "UX_01": "BLOCKED INTEGRATION",
+    "QA_01": "BLOCKED OVERALL",
+    "OPS_01": "BLOCKED OVERALL"
+  },
+  "limitations": [
+    "Artifact metadata only; ZIP not unpacked, digest not independently recomputed",
+    "Browser emulation is not native Android/device verification",
+    "No SQL migration, deployment or real banking transaction"
+  ]
+}

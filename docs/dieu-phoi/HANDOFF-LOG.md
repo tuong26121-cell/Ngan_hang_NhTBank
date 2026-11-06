@@ -42,3 +42,12 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - Da tao 14 GitHub Issues (#32–#45) tuong ung 14 nhom; xem [huong-dan-phan-cong.md](huong-dan-phan-cong.md).
 - Chua gui tu dong phieu ban giao vao cuoc tro chuyen ChatGPT nao; cac handoff du kien van chua duoc tiep nhan.
 - Viec nhan viec can phieu HANDOFF co bang chung, chu khong phai suy dien tu Issue da tao.
+
+
+## Dot phan cong 2026-11-06 – chua co phieu tiep nhan
+
+- [Bang giao viec](bang-giao-viec-20261106.md) phan 9 nhom du dieu kien bat dau thiet ke/kiem ke va 5 nhom chi chuan bi.
+- 14/14 Issues #32–#45 dang OPEN, khong assignee, khong binh luan xac nhan nhan viec tai thoi diem doi chieu.
+- Nhom 01 dang dieu phoi trong chat; khong dung thong tin nay lam bang chung cac nhom 02–14 da nhan viec.
+- **Dieu kien chuyen CHUA XAC NHAN -> DA TIEP NHAN:** co phan hoi tu nhom/agent/nguoi duoc giao, dinh kem issue, artifact, pham vi va thoi diem. Neu khong, giu PROPOSED.
+- Khong tu dong cap nhat GitHub Issues sau khi nhan ket qua o mot cuoc tro chuyen khac; can thao tac co quyen rieng.

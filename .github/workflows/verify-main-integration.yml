@@ -20,6 +20,8 @@ jobs:
         run: npm ci
       - name: Unit and sandbox gateway tests
         run: npm test
+      - name: Backend sandbox security tests
+        run: npm run test:backend
       - name: Build production web at GitHub Pages subpath
         run: npm run build -- --base /Ngan_hang_NhTBank/
       - name: Install Chromium for E2E

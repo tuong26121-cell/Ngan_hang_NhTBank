@@ -8,9 +8,9 @@
 - SePay gateway khong ACK webhook truoc durable storage; chua co transfer engine san sang.
 
 ## Flow nhap cua POST /v1/sandbox/transfers (chua implemented)
-1. Backend verify JWT, principal, account ownership, transaction_type=transfer, VND integer, balance va request validation.
+1. Backend verify JWT, principal, account ownership, transaction_type=transfer, VND integer va request validation; chua kiem tra so du hien tai o buoc nay.
 2. Canonicalize request fields va tinh SHA256; idempotency namespace = principal+operation scope+key.
-3. Trong DB transaction, claim unique key; neu da co, lock/load persisted record, compare hash. Hash khac → conflict; hash giong da committed → replay persisted result.
+3. Trong DB transaction, claim unique key; neu da co, lock/load persisted record, compare hash. Hash khac → conflict; hash giong da committed → replay persisted result truoc khi kiem tra so du cho giao dich moi.
 4. Lock account rows theo thu tu on dinh, validate available balance, ghi double entries/business record, persisted idempotency status/resource_id trong **cung transaction**; commit nguyen tu.
 5. Neu retry sau commit HTTP response bi that lac, reconstruct ket qua tu resource_id/business record; khong ghi them transaction.
 6. Retryable failure truoc commit rollback; khong phan phoi cung idempotency response cho request khac principal.

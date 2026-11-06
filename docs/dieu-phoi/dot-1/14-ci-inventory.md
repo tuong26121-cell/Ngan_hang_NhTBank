@@ -32,3 +32,9 @@ Nguồn runtime/workflow `b6499a3afc2533eb3564c58c50675c4fde9a3cb6`; main kế t
 - Log/mã thoát lưu ở [bằng chứng](../bang-chung-20261106/). Đây là local Linux, không chứng minh SQL, GATE-01–10, E2E hoặc thiết bị thật.
 - Integration đã cover backend, Pages tập trung frontend. Không cần nhân bản test vào mọi workflow chỉ để có thay đổi. APK E2E đang dùng dev server; muốn chứng minh đúng bytes trong APK cần kiểm production root-base dist và checksum ở nhiệm vụ build riêng.
 - Preflight lần push tài liệu: chỉ `docs/dieu-phoi/**`; marker `[khong-trien-khai-web]` bỏ job Pages deploy, integration/Pages build vẫn có thể tự chạy, APK/iOS không khớp paths. Không dispatch workflow trả phí/macOS, không gọi API ngân hàng/DB. Hạn mức và branch protection chưa được API xác minh; nếu nền tảng từ chối phải báo, không vượt qua.
+
+## Đối chiếu CI nguồn khi nghiệm thu Đợt 1
+
+Nguồn `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`: [integration 42194370164](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42194370164) completed/success, đã đọc job127813822396 và log: unit70/backend15/E2E43 đạt,8 skipped. [Pages42194370353](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42194370353) build success, deploy skipped. Không suy website đã deploy từ kết luận success của workflow.
+
+Artifact main-integration-playwright ID13491108276 được API báo chưa expired khi đọc, digest từ API/log upload; chưa tải ZIP để tự xác minh. main chưa protected tại lần đọc; không thay rules. Commit nghiệm thu dùng marker tài liệu, cần đọc run đúng SHA mới sau ghi. OPS-01 vẫn REVIEW PENDING; xem [báo cáo](../nghiem-thu-dot-1-20261106.md).

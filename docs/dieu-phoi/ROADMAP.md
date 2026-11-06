@@ -11,6 +11,19 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - SEC/DB/TX vàP0release còn BLOCKED; SQL/GATE/concurrency/thiếtbịthật/Production NOTRUN. Không dùng41fixtures hoặcE2Edemo làm kết quảSQL.
 
 
+## Mốc hiện hành sau nghiệm thu Đợt 1 — 2026-11-06
+
+[Báo cáo nghiệm thu](nghiem-thu-dot-1-20261106.md) ghi kết quả có điều kiện: hoàn tất rà soát/sửa tài liệu, chưa chấp thuận gate. Các phân đợt cũ dưới đây là lịch sử kế hoạch; thứ tự dùng tiếp theo là 01→10→02→06→07↔08→13, 03/14 song song.
+
+1. **2A / D2-01:** 01/10 chốt chính sách MVP còn mở, owner review PRD; không tự chọn fee/TTL.
+2. **2A / D2-02..03:** 02/06 hoàn thiện OpenAPI field-level và AuthN/AuthZ/session/permission matrix, QA phản biện.
+3. **2A / D2-04..05:** 07↔08 hai vòng: tách ledger khỏi SQL import v2; final diff A3.6, canonical hash, replay/retention và atomicity.
+4. **2A / D2-06:** 13 review từng gate/version/hunk; chỉ chạy SQL/concurrency khi bản vá đã review và disposable target được định danh. Điều kiện đóng D1-P0-01..04 trong báo cáo.
+5. **Song song 03/14:** review token/UI và CI/evidence; 04/05/09/11/12 tiếp tục sơ bộ, tích hợp phụ thuộc vẫn khóa.
+
+CI nguồn 7192af6 đã đọc log: unit70/backend15/E2E43 đạt,8 skipped; Pages deploy skipped. Đây không phải nghiệm thu A3.6, nativeAPK hay thiết bị thật. Quyết định tiếp tục 2A là bước tiếp theo, không tự coi đề xuất này đã được thực hiện.
+
+
 > **BẢN NHÁP – 2026-11-01**  
 > **Lịch sử 2026-11-01:** chỉ lập kế hoạch. **Quy chế hiện hành 2026-11-06:** được trực tiếp cập nhật `main`, sửa Issues, chạy SQL/Actions/CI/APK/E2E/merge/deploy khi đủ điều kiện nhiệm vụ. [Chi tiết](quy-che-thuc-thi.md).  
 > Quy ước: **KNOWN-HISTORICAL** = thông tin ghi nhận từ công việc trước, chưa xác minh lại; **PROPOSED** = đề xuất; **NOT RUN** = chưa chạy; **BLOCKED** = chờ điều kiện/bằng chứng; **VERIFIED** chỉ khi có bằng chứng hiện thời.
@@ -82,3 +95,8 @@ Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de
 ## Sau kiểm chứng thực tế Đợt1 — 06/11/2026
 
 [Báo cáo thực hiện](ket-qua-dot-1-20261106.md):86 test local đạt, Pages build/syntax đạt; SQL/GATE/concurrency/nativeAPK/E2E trong phiên chưa chạy. [Đợt2 mục10](de-xuat-dot-2.md) thay kế hoạch chung bằng6 đầu việc chốt contract,03/14 độc lập và5 nhóm nghiên cứu sơ bộ. Không tạo lại bản nháp đã có, không coi kiểm kê là nghiệm thu tích hợp.
+
+
+## Đợt 4 — rà soát tiếp ngày 07/11/2026 (Asia/Saigon)
+
+PARTIAL: bàn giao tài liệu; Website/APK mới BLOCKED. Đã nhận [kết quả Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build đạt, E2E 43 đạt/8 skip; đây là kết quả được ghi trong báo cáo QA, không phải nghiệm thu release cuối. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 còn BLOCKED; native APK NOT RUN. Tiếp theo: 13 chốt nghiệm thu đúng phạm vi/SHA; 01/14 thống nhất version/changelog; 14 xác minh CI, môi trường và baseline rollback; 05/14 build và kiểm chữ ký/package/logo/version, thiết bị thật. [Bàn giao và recovery plan](ban-giao-dot-4-20261106.md). Không phát hành dịch vụ ngân hàng thật hoặc giao dịch tiền thật.

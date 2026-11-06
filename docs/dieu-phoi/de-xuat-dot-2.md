@@ -14,7 +14,7 @@
 
 | Nhom | Issue | Tai lieu tren main | Tiep nhan |
 |---|---|---|---|
-| 01 | [#32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) | [01-dieu-phoi.md](dot-1/01-dieu-phoi.md) | DRAFT / chưa có tiếp nhận |
+| 01 | [#32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) | [01-dieu-phoi.md](dot-1/01-dieu-phoi.md) | DRAFT / Nhóm 01 đang điều phối trong chat; không đại diện ACK nhóm khác |
 | 10 | [#41](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/41) | [10-nghiep-vu-mvp.md](dot-1/10-nghiep-vu-mvp.md) | DRAFT / chưa có tiếp nhận |
 | 02 | [#33](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/33) | [02-kien-truc-api-v1.md](dot-1/02-kien-truc-api-v1.md) | DRAFT / chưa có tiếp nhận |
 | 06 | [#37](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/37) | [06-bao-mat-rbac.md](dot-1/06-bao-mat-rbac.md) | DRAFT / chưa có tiếp nhận |
@@ -113,3 +113,14 @@
 09 Test Mode/durable ACK;11 admin scoped RBAC;12 AI read-only intents: có skeleton nghiên cứu tại bản sơ bộ, chưa có server/provider tích hợp. Không chọn thông số phí/retention/nhà cung cấp thay chủ sản phẩm. Không cấp quyền chuyển tiền thật hay kích hoạt dịch vụ có phí.
 
 **Trạng thái hiện hành:** Đợt1 nghiên cứu và local verification đã thực hiện trong phạm vi trên; Đợt2 là đề xuất cụ thể chờ chốt contract, không tuyên bố các gate runtime đã đạt.
+
+## 11. Đầu vào nghiệm thu để bắt đầu 2A — 2026-11-06
+
+[Báo cáo nghiệm thu Đợt 1](nghiem-thu-dot-1-20261106.md) thay snapshot cũ làm điểm tra cứu hiện hành. D2-01..06 tiếp tục là danh sách công việc; không tạo lại bản nháp và không coi cập nhật Issues là nhóm đã nhận.
+
+- D1-P0-01 → D2-01..03: review PRD/OpenAPI/permission/session trước tích hợp API.
+- D1-P0-02 → D2-04..05: ledger riêng, canonical hash, replay trước balance mới, crash/atomicity/retention; import SQL v2 không là ledger.
+- D1-P0-03 → D2-04 + D2-06: final A3.6 diff, nguồn định nghĩa gate, reviewer và target PostgreSQL17 disposable.
+- D1-P0-04 → D2-06: log SQL/AuthZ/10 connection/crash/retry trên đúng version; CI ứng dụng hiện có không thay bằng chứng này.
+
+Nguồn ứng dụng `7192af6` có CI unit70/backend15/E2E43 đạt,8 skipped; chưa phải gate thiết kế PASS. Các tệp sửa trong nghiệm thu vẫn là bản nháp cần review. Các lựa chọn tiếp tục: **A** chốt contract D2-01..03 trước (khuyến nghị); **B** rà final diff A3.6 độc lập, giữ tích hợp khóa cho đến khi các contract đủ.

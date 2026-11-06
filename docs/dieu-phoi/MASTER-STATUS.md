@@ -13,6 +13,21 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 
 ## Kết quả thực hiện Đợt 1 trong phiên 06/11/2026
 
+
+## Snapshot nghiệm thu hiện hành — 2026-11-06
+
+- Nguồn đọc trực tiếp: main `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`, 14 Issues #32–45 và toàn bộ 10 tệp trong `dot-1/` (9 bản nhóm và 1 bản sơ bộ). [Báo cáo nghiệm thu](nghiem-thu-dot-1-20261106.md) là điểm tra cứu hiện hành; các snapshot bên dưới giữ theo thời điểm lịch sử.
+- **Kết luận:** hoàn tất lượt rà soát và sửa tài liệu; **chưa nghiệm thu gate thiết kế hoặc tích hợp**. COORD/ARCH/SEC/DB/TX/QA/UX/OPS đều REVIEW PENDING/BLOCKED, không tự PASS.
+- Chuỗi: **01 → 10 → 02 → 06 → 07 ↔ 08 → 13**; 03/14 có phần độc lập song song; 04/05/09/11/12 chờ contract trước tích hợp.
+- P0 chặn tích hợp backend/DB: D1-P0-01 API/AuthZ; D1-P0-02 ledger/idempotency; D1-P0-03 final diff A3.6 + provenance gate + môi trường; D1-P0-04 QA runtime. Đây là blocker nghiệm thu, không phải khẳng định sự cố Production.
+- CI nguồn `7192af6`: [run 42194370164](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42194370164) success, log unit70/backend15/E2E43 đạt +8 skipped. Pages [42194370353](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42194370353): build success, deploy skipped. Không dùng chúng thay kết quả SQL/concurrency hoặc CI của commit nghiệm thu mới.
+- Kiểm tra local trong lượt này: 62 tệp runtime/config/test/lock khớp blob nguồn; build exit0; backend15 và APK config1 đạt. Vitest mặc định exit1 (59 đạt/11 lỗi do loopback EPERM); chạy lại ngoài sandbox chưa thực thi vì auto-review hết hạn mức. E2E local chưa chạy. [Bằng chứng máy đọc được](bang-chung-nghiem-thu-dot-1-20261106/doi-chieu.json).
+- Nhóm 01 đang thực hiện yêu cầu trong chat này. Issues còn OPEN; 02–14 chưa có bằng chứng ACK riêng. Việc cập nhật Issue/tạo tài liệu không khởi động AI khác.
+- Bàn giao Đợt 2A theo D2-01..06 có sẵn, bổ sung [điều kiện đóng P0](nghiem-thu-dot-1-20261106.md); chưa tự bắt đầu Đợt 2A.
+
+
+## Lịch sử kiểm chứng ở phiên trước — giữ nguyên phạm vi bằng chứng
+
 - Nguồn đầu phiên main `b6499a3afc2533eb3564c58c50675c4fde9a3cb6`; đã đồng bộ fast-forward `3d05f6e` khi main có thêm liên kết tài liệu. Giữ các ghi nhận SHA/trạng thái cũ bên dưới ở giá trị lịch sử.
 - Đã nghiên cứu chuỗi01→10→02→06→07↔08→13;03/14 kiểm kê song song;04/05/09/11/12 có bản sơ bộ, chưa tích hợp.
 - Kết quả thực thi local: **86 đạt/0 lỗi/0 skipped** (70 Vitest,15 backend,1 cấu hình APK), build Pages đạt,6 YAML/34shell blocks syntax đạt. [Log và exit code](bang-chung-20261106/); không chứng minh SQL/GATE/E2E/thiết bị thật.
@@ -146,7 +161,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - Nguon nhat ky: [Issue #32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) den [Issue #45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45).
 - **Quy chế hiện hành:** mọi nhóm có thể sửa trực tiếp `main` và kích hoạt quy trình test/build/CI/deploy cần thiết cho nhiệm vụ khi đã kiểm tra ảnh hưởng; tuân thủ [quy-che-thuc-thi.md](quy-che-thuc-thi.md). Ghi nhận ở đoạn lịch sử trên chỉ mô tả đợt cũ.
 
-## 11. Kết quả đánh giá khả năng khởi động – 2026-11-06
+## 12. Kết quả đánh giá khả năng khởi động – 2026-11-06
 
 - Đã đọc trực tiếp 14 GitHub Issues #32–#45 và kiểm tra MASTER-STATUS v2.
 - **9/14 nhóm có thể bắt đầu thiết kế/kiểm kê ngay:** 01, 02, 03, 06, 07, 08, 10, 13, 14.
@@ -157,13 +172,13 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - **Không đổi trạng thái backlog PROPOSED thành VERIFIED** vì mới xác định khả năng khởi động, chưa có artifact bàn giao/kiểm thử.
 - Tại thời điểm đợt đánh giá readiness trước đó, chưa chạy SQL, build, test, Actions, merge hay deploy; từ 2026-11-06 các bước này đã được cho phép theo quy chế hiện hành.
 
-## 12. Quyền và trạng thái mới từ 2026-11-06
+## 13. Quyền và trạng thái mới từ 2026-11-06
 
 - Chủ repository cho phép các nhóm trực tiếp chỉnh sửa mã/tài liệu/Issues, cập nhật `main`, chạy CI/Actions/APK/E2E/merge/deploy phù hợp yêu cầu; xem [quy chế](quy-che-thuc-thi.md).
 - Đã có một commit tài liệu điều phối lên `main` vào 2026-11-06; nguồn là lịch sử GitHub, không phải chứng cứ cho các gate SQL/Backend.
 - Cấm đoán blanket trong bản nháp cũ bị thay thế. Vẫn yêu cầu preflight cho SQL, hệ thống thật, Production, chi phí và bằng chứng PASS.
 
-## 13. Dot 1 da co artifact; de xuat Dot 2 – 2026-11-06
+## 14. Dot 1 da co artifact; de xuat Dot 2 – 2026-11-06
 
 - Đã ghi 9 bản nghiên cứu/thiết kế vòng đầu cho Nhóm 01/10/02/06/07/08/13 và 03/14 vào [`dot-1/`](dot-1/). Đây là tài liệu do trung tâm điều phối tổng hợp, **không phải** bằng chứng 9 AI agents đã nhận việc.
 - [Đề xuất Đợt 2](de-xuat-dot-2.md): 2A 10 -> 02 -> 06 -> 07 <-> 08 -> 13; 2B 03/14 + UI 04/05 khi đủ contract; 2C 09/11/12 theo gate.
@@ -171,7 +186,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - **Tài liệu DRAFT CREATED; gate/chấp thuận**: COORD-01/ARCH-01/SEC-01/DB-01/TX-01/UX-01/QA-01/OPS-01 chưa được xác nhận PASS. GitHub Issues vẫn OPEN và chưa có xác nhận các nhóm logic đã tiếp nhận.
 - Quyền thực hiện kỹ thuật theo [quy-che-thuc-thi.md](quy-che-thuc-thi.md); không nhầm quyền thực thi với bài test/giao dịch đã chạy.
 
-## 13. Kết quả Đợt 1 và hướng Đợt 2 — 2026-11-06
+## 15. Kết quả Đợt 1 và hướng Đợt 2 — 2026-11-06
 - Đã tạo 9 tài liệu thiết kế/kiểm kê tại [dot-1/](dot-1/) cho 01,10,02,06,07,08,13 và 03/14 song song.
 - Trạng thái tài liệu: DRAFT PREPARED; không coi là 9 agent đã nhận việc; toàn bộ gate cần review độc lập.
 - Nhóm 07 mới có danh sách hunk SQL A3.6, chưa có unified diff cuối hoặc kiểm thử; Nhóm 08 mới có idempotency design, chưa code persistent transfer.
@@ -179,7 +194,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - [Đề xuất Đợt 2](de-xuat-dot-2.md) đặt thứ tự 10→02→06→07↔08→13, đồng thời 03/14; chờ contract cho 04/05/09/11/12.
 - Bằng chứng CI của commit tài liệu là tách biệt; không biến CI unit PASS thành SQL/concurrency PASS.
 
-## 13. Dot 1 (9 hien vat thiet ke) va de xuat Dot 2 — 2026-11-06
+## 16. Dot 1 (9 hien vat thiet ke) va de xuat Dot 2 — 2026-11-06
 
 - **Da tao tren main:** 9 file dac ta/thiet ke trong [dot-1/](dot-1/) theo thu tu 01 (#32) → 10 (#41) → 02 (#33) → 06 (#37) → 07 (#38) ↔ 08 (#39) → 13 (#44), song song 03 (#34) va 14 (#45).
 - **De xuat Dot 2:** xem [de-xuat-dot-2.md](de-xuat-dot-2.md) gom 2A chot MVP/API/AuthZ/SQL/Transfer/QA; 2B giao dien/CI; 2C SePay Test Mode/Admin/AI; chua chap thuan gate ky thuat.
@@ -187,3 +202,16 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 - **Trang thai nhan viec:** 9 tai lieu la output dieu phoi duoc tao tren GitHub, khong co nghia 9 cuoc tro chuyen AI da nhan viec; 14 Issues van la hang doi.
 - **SQL v2.1 A3.6:** co ke hoach hunk, **chua co unified diff cuoi/khong chay migration**. Tranh `testing-v3` cho v2; pending GATE-01..10.
 - **Dot 2 tich hop:** nhom 04/05/09/11/12 van cho contract; duoc nghien cuu/mock UI doc lap.
+
+## Nhóm 13 — kết quả Đợt 2A ngày 2026-11-06
+
+Đã tiếp quản #44 và kiểm tra độc lập baseline `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`. [Báo cáo hiện hành](dot-2a/13-kiem-thu-nen-tang.md) thay cho trạng thái chưa tiếp nhận của Nhóm 13 ở các đoạn lịch sử. Đã thêm 10 HTTP tests, backend 25/25 và unit 70/70 PASS, build PASS, E2E 43 PASS/8 skip chủ ý; có log tự chạy. SQL NOT RUN; không chấp nhận runtime Auth/RBAC/ledger/concurrency/crash khi chưa implementation/preflight. GATE ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED cho nghiệm thu nền tảng. Handoff 01/14 có matrix/log/criteria; ACK nhận PENDING. Issue #44 OPEN.
+
+
+## Cập nhật xác minh ngày 07/11/2026 (Asia/Saigon)
+
+Đã đọc [báo cáo Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build PASS, E2E 43 PASS/8 skip; SQL và native APK NOT RUN. Đây là số liệu trong báo cáo QA đã nhận, không phải test chạy lại của Nhóm 14. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED theo quyết định QA. ACK nhận hiện vật HO-2A-13-14: đã đọc; ACK này không chấp thuận release.
+
+Đính chính giới hạn truy vấn CI ở bản đầu: fetch_commit_workflow_runs chỉ lọc run do pull_request, nên kết quả rỗng không chứng minh thiếu CI push. Truy vấn REST actions/runs theo head_sha đã xác minh main 295eff3811bc5654aaf6677a226eba7b4d0dd4d7 có Verify success [42196968950](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968950) và Pages workflow success [42196968799](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968799). Baseline 7192af6 cũng có Verify success 42194370164 và Pages workflow success 42194370353. Workflow success không tự chứng minh deploy job chạy hoặc gate bảo mật/thiết bị thật đạt.
+
+Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng dụng mới BLOCKED. Không tạo tag/version, APK, checksum hoặc URL phát hành mới. Giữ package 1.0.1; artifact lịch sử không được nhận làm release mới. Tiếp theo: owner 13 cung cấp nghiệm thu cuối đúng phạm vi; 01/14 khóa version/changelog; 14 baseline rollback và environment; 05/14 artifact/signature/icon/package/version/device. Tham chiếu [bàn giao chi tiết](ban-giao-dot-4-20261106.md).

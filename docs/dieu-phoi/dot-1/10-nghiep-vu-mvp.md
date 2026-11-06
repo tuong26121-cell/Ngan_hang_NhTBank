@@ -29,3 +29,10 @@
 6. Khong thay `PIN demo` bang xac thuc tien that; UI sandbox co canh bao ro.
 
 **Ban giao:** 02 (API), 06 (RBAC), 07 (DB), 08 (transfer), 13 (tests). **Trang thai:** PRD ban nhap, chua duoc phe duyet nghiep vu; khong co test runtime.
+
+## Phân biệt hiện trạng và tiêu chí tương lai
+
+- Validation tối thiểu 1.000 VNĐ, tên người nhận 2–80 ký tự và tài khoản 6–19 chữ số ở trên là hành vi frontend hiện có. Không suy diễn đó là field contract đã chốt cho transfer nội bộ qua API v1.
+- Phương án API dùng chuỗi số nguyên VNĐ phải giữ chính xác BIGINT; demo Number chỉ nhận safe integer. Fee, min/max API, tự chuyển cùng tài khoản, trạng thái tài khoản, retention và replay horizon vẫn cần quyết định nghiệp vụ có reviewer.
+- MVP-02 “cùng nguồn” là yêu cầu cho hệ thống bền vững tương lai. Dữ liệu seed hiện tại là mẫu hiển thị cùng số dư khởi tạo, không phải ledger có thể cộng lịch sử để đối soát.
+- Chuyển các quyết định này sang D2-01 trong [Đợt 2](../de-xuat-dot-2.md); chưa phê duyệt PRD hoặc COORD-01.

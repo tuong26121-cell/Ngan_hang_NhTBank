@@ -107,3 +107,38 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 - Kiểm chứng:114localtests/41fixtures,43productionE2E/8skip, Pagesbuild vàsyntax; [sourcechecksum/log](bang-chung-tiep-quan-20261106/).
 - Tiếp nhận GitHub: BLOCKED RESTForbidden;14update draft đã tạo, chưa ghiIssues. Auth/DB/ledger/GATEprovenance và nghiệmthurelease còn thiếu.
 - KhôngSQL/migration/provider/giao dịch thật/deploy. Không giữ trạng thái dự án PROPOSED như thể chưa làm gì, cũng không chuyển toànscope thành VERIFIED từ các artifact đã có.
+
+
+## NB-NT-D1-20261106 — bàn giao nghiệm thu có phiên bản
+
+- **Bên lập:** Nhóm 01 trong cuộc trò chuyện hiện tại; **bên nhận dự kiến:** 10/02/06/07/08/13, song song 03/14.
+- **Nguồn kiểm tra:** `7192af6c28b51b56806b0b9c6827d2d0604bbc8a` trên main; 14 Issues đọc trực tiếp gồm body và toàn bộ comments (đều rỗng tại snapshot trước cập nhật). Không có assignee; không suy diễn ACK từ hoạt động của Nhóm 01.
+- **Artifact:** [báo cáo nghiệm thu](nghiem-thu-dot-1-20261106.md), [snapshot và runtime manifest](bang-chung-nghiem-thu-dot-1-20261106/doi-chieu.json); bản sửa nằm trong cùng commit chứa phiếu này.
+- **Đã xác minh:** source/blob SQL v2; 62 tệp local khớp runtime nguồn; local build/backend15/APK config1; log CI của nguồn có unit70/backend15/E2E43 đạt,8 skipped.
+- **Chưa xác minh:** gate thiết kế, SQL A3.6, ledger/concurrency, E2E local, thiết bị/APK native. Vitest local lỗi loopback; lượt xin chạy lại không được thực thi do auto-review hết hạn mức.
+- **Trạng thái:** ARTIFACT READY / ACK PENDING / REVIEW PENDING. Các phiếu dưới đây là hàng đợi bàn giao, không phải thông báo đã gửi hoặc nhóm đã nhận.
+
+| Handoff-ID | Từ → nhận dự kiến | Artifact đầu vào tại source commit ở trên | Việc / điều kiện nhận |
+| --- | --- | --- | --- |
+| NB-NT-D1-10 | 01→10/02 | dot-1/10-nghiep-vu-mvp.md | D2-01, owner review scope/fee/min-max/retention |
+| NB-NT-D1-02 | 10→02/06 | dot-1/02-kien-truc-api-v1.md | D2-02, field/error/auth contract có version |
+| NB-NT-D1-06 | 02→06/07/08/13 | dot-1/06-bao-mat-rbac.md | D2-03, principal/session/endpoint permission review |
+| NB-NT-D1-07 | 06→07/08/13 | dot-1/07-sql-v21-a36.md | D2-04, final unified diff + gate-definition provenance |
+| NB-NT-D1-08 | 07↔08→13 | dot-1/08-transfer-idempotency.md | D2-05, ledger/hash/replay/rollback hai vòng |
+| NB-NT-D1-13 | 07/08→13/14 | dot-1/13-qa-test-matrix.md | D2-06, review độc lập + runner/preflight/evidence |
+| NB-NT-D1-03 | 03→04/05/13 | dot-1/03-design-system.md | Token mapping/45 tiêu chí, UX review riêng |
+| NB-NT-D1-14 | 14→01/13 | dot-1/14-ci-inventory.md | Run/SHA/log/artifact; không suy gate từ CI xanh |
+
+**Đóng handoff:** người/agent nhận ACK có danh tính, phạm vi, source version và thời điểm; reviewer ghi kết quả trên đúng artifact. Sửa Issue trong lượt nghiệm thu chỉ cập nhật hồ sơ, không đại diện nhóm nhận ACK.
+## HO-2A-13-01 / HO-2A-13-14 — 2026-11-06
+
+Nhóm 13 đã tiếp quản Issue #44 theo lệnh người dùng. Bàn giao 01 (#32) và 14 (#45): [matrix, GATE, blockers và criteria](dot-2a/13-kiem-thu-nen-tang.md), [metadata/log](dot-2a/bang-chung-nhom-13/ket-qua.json), suite `backend/tests/nen-tang-doc-lap.test.mjs`. Baseline main `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`; commit chứa phiếu này là version bàn giao, link SHA cụ thể gửi trong Issues sau push. Backend 25/25; unit 70/70; build exit 0; E2E 43 PASS/8 skip chủ ý sau sửa đường dẫn browser local. SQL/ledger concurrency/crash recovery NOT RUN; ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 BLOCKED nghiệm thu nền tảng. B01 môi trường, B02 thiếu runtime, B03 thiếu SQL reviewed, B04 ledger/contract mở. ACK nhóm nhận PENDING; Issue giữ OPEN. Không tuyên bố gửi vào cuộc trò chuyện ChatGPT khác.
+
+
+## Cập nhật xác minh ngày 07/11/2026 (Asia/Saigon)
+
+Đã đọc [báo cáo Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build PASS, E2E 43 PASS/8 skip; SQL và native APK NOT RUN. Đây là số liệu trong báo cáo QA đã nhận, không phải test chạy lại của Nhóm 14. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED theo quyết định QA. ACK nhận hiện vật HO-2A-13-14: đã đọc; ACK này không chấp thuận release.
+
+Đính chính giới hạn truy vấn CI ở bản đầu: fetch_commit_workflow_runs chỉ lọc run do pull_request, nên kết quả rỗng không chứng minh thiếu CI push. Truy vấn REST actions/runs theo head_sha đã xác minh main 295eff3811bc5654aaf6677a226eba7b4d0dd4d7 có Verify success [42196968950](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968950) và Pages workflow success [42196968799](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42196968799). Baseline 7192af6 cũng có Verify success 42194370164 và Pages workflow success 42194370353. Workflow success không tự chứng minh deploy job chạy hoặc gate bảo mật/thiết bị thật đạt.
+
+Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng dụng mới BLOCKED. Không tạo tag/version, APK, checksum hoặc URL phát hành mới. Giữ package 1.0.1; artifact lịch sử không được nhận làm release mới. Tiếp theo: owner 13 cung cấp nghiệm thu cuối đúng phạm vi; 01/14 khóa version/changelog; 14 baseline rollback và environment; 05/14 artifact/signature/icon/package/version/device. Tham chiếu [bàn giao chi tiết](ban-giao-dot-4-20261106.md).

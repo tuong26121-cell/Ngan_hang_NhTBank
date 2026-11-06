@@ -1,0 +1,1338 @@
+
+> nhtbank@1.0.1 test:e2e
+> playwright test
+
+[WebServer] (node:926) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 51 tests using 2 workers
+
+(node:958) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:959) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (5ms)
+  ✘   2 [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (1ms)
+(node:1019) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [desktop] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (1ms)
+  ✘   4 [desktop] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (5ms)
+(node:1045) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1039) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [desktop] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (1ms)
+  ✘   6 [desktop] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (1ms)
+(node:1060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (1ms)
+  ✘   8 [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (1ms)
+(node:1094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1106) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (2ms)
+  ✘  10 [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (2ms)
+(node:1130) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 [desktop] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (1ms)
+  ✘  11 [desktop] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (1ms)
+(node:1154) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1155) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  13 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (1ms)
+  ✘  14 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (1ms)
+(node:1186) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  15 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (1ms)
+  ✘  16 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (1ms)
+(node:1214) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1225) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  17 [desktop] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (2ms)
+  ✘  18 [mobile] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (2ms)
+(node:1250) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  19 [mobile] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (1ms)
+  ✘  20 [mobile] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (1ms)
+(node:1282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1289) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  22 [mobile] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (1ms)
+  ✘  21 [mobile] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (1ms)
+(node:1308) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  23 [mobile] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (2ms)
+  ✘  24 [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (1ms)
+(node:1332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1338) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  25 [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (1ms)
+  ✘  26 [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (1ms)
+(node:1356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1363) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (1ms)
+  ✘  28 [mobile] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (1ms)
+(node:1380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1386) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (2ms)
+  ✘  30 [mobile] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (1ms)
+(node:1404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1411) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (2ms)
+  ✘  32 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (1ms)
+(node:1434) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [mobile] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (2ms)
+  ✘  34 [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (1ms)
+(node:1452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1459) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [android] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked (1ms)
+  ✘  36 [android] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username (1ms)
+(node:1476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1483) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  37 [android] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally (2ms)
+  ✘  38 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (1ms)
+(node:1500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1507) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  39 [android] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (1ms)
+  ✘  40 [android] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (21ms)
+(node:1524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1531) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  41 [android] › e2e/buttons.spec.js:5:3 › buttons respond in android layout (2ms)
+  ✘  42 [android] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout (1ms)
+(node:1548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1555) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  43 [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows (1ms)
+  ✘  44 [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android (5ms)
+(node:1572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1578) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  45 [android] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap (2ms)
+  ✘  46 [android] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (1ms)
+(node:1592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1603) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  47 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (3ms)
+  ✘  48 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (1ms)
+(node:1620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  49 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (1ms)
+(node:1627) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  50 [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (1ms)
+(node:1640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  51 [android] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR (1ms)
+
+
+  1) [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-complete-Sandbox-journey-without-console-errors-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-complete-Sandbox-journey-without-console-errors-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-complete-Sandbox-journey-without-console-errors-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [desktop] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-keyboard-login-notifications-and-reduced-motion-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-keyboard-login-notifications-and-reduced-motion-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-keyboard-login-notifications-and-reduced-motion-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [desktop] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ───────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-android-layout-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-android-layout-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-android-layout-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ───────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-windows-layout-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-windows-layout-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-windows-layout-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--54022-andbox-session-from-android-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--54022-andbox-session-from-android-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--54022-andbox-session-from-android-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [desktop] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [desktop] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-320px-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-320px-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-320px-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-360px-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-360px-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-360px-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-390px-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-390px-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-390px-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-430px-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-430px-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-430px-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [desktop] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [mobile] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [mobile] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [mobile] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [mobile] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-complete-Sandbox-journey-without-console-errors-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-complete-Sandbox-journey-without-console-errors-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-complete-Sandbox-journey-without-console-errors-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [mobile] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-keyboard-login-notifications-and-reduced-motion-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-keyboard-login-notifications-and-reduced-motion-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-keyboard-login-notifications-and-reduced-motion-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [mobile] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ───────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-android-layout-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-android-layout-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-android-layout-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ───────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-windows-layout-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-windows-layout-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-windows-layout-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--54022-andbox-session-from-android-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--54022-andbox-session-from-android-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--54022-andbox-session-from-android-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [mobile] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [mobile] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-320px-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-320px-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-320px-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-360px-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-360px-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-360px-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-390px-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-390px-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-390px-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-430px-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-430px-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-430px-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [mobile] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-mobile/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [android] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-storage-fallback-auth-0c42a--browser-storage-is-blocked-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [android] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-NT-splash-single-view-a4472-ion-and-remembered-username-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  37) [android] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-settings-change-passw-5094b-ery-code-reset-work-locally-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  38) [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-complete-Sandbox-journey-without-console-errors-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-complete-Sandbox-journey-without-console-errors-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-complete-Sandbox-journey-without-console-errors-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  39) [android] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-keyboard-login-notifications-and-reduced-motion-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-keyboard-login-notifications-and-reduced-motion-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-keyboard-login-notifications-and-reduced-motion-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  40) [android] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ───────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/bank-support-dialog-traps-focus-and-closes-with-Escape-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  41) [android] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ──────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-android-layout-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-android-layout-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-android-layout-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  42) [android] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ──────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-buttons-respond-in-windows-layout-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-buttons-respond-in-windows-layout-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-buttons-respond-in-windows-layout-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  43) [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--54022-andbox-session-from-android-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--54022-andbox-session-from-android-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--54022-andbox-session-from-android-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  44) [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/buttons-switching-layouts--ead5d-andbox-session-from-windows-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  45) [android] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/phien-ban-Nhan-phien-ban-hien-thi-ro-tren-man-dang-nhap-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  46) [android] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/scan-qr-middle-QR-navigati-bd14b-nd-offers-safe-bank-handoff-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  47) [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-320px-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-320px-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-320px-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  48) [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-360px-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-360px-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-360px-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  49) [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-390px-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-390px-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-390px-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  50) [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/ui-acceptance-acceptance-UI-at-430px-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-acceptance-acceptance-UI-at-430px-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-acceptance-acceptance-UI-at-430px-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  51) [android] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 
+
+    Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-android/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-android/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/vietqr-VietQR-opt-in-works-461af-ws-without-touching-demo-QR-android/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  51 failed
+    [desktop] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+    [desktop] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+    [desktop] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+    [desktop] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ─────────────
+    [desktop] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ──────────
+    [desktop] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ─────────
+    [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ────────────────────────
+    [desktop] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ────────────────────────
+    [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+    [desktop] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+    [desktop] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ──────────
+    [desktop] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+    [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ─────────────────────────────
+    [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ─────────────────────────────
+    [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ─────────────────────────────
+    [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ─────────────────────────────
+    [desktop] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 
+    [mobile] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+    [mobile] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+    [mobile] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+    [mobile] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ──────────────
+    [mobile] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ───────────
+    [mobile] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ──────────
+    [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ─────────────────────────
+    [mobile] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ─────────────────────────
+    [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+    [mobile] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+    [mobile] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ───────────
+    [mobile] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+    [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ──────────────────────────────
+    [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ──────────────────────────────
+    [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ──────────────────────────────
+    [mobile] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ──────────────────────────────
+    [mobile] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 
+    [android] › e2e/auth-storage-fallback.spec.js:3:1 › authentication remains usable when browser storage is blocked 
+    [android] › e2e/auth.spec.js:4:1 › NT splash, single viewport, registration and remembered username 
+    [android] › e2e/auth.spec.js:27:1 › settings change password and recovery code reset work locally 
+    [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors ─────────────
+    [android] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion ──────────
+    [android] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape ─────────
+    [android] › e2e/buttons.spec.js:5:3 › buttons respond in android layout ────────────────────────
+    [android] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ────────────────────────
+    [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from android 
+    [android] › e2e/buttons.spec.js:126:3 › switching layouts preserves the active sandbox session from windows 
+    [android] › e2e/phien-ban.spec.js:3:1 › Nhan phien ban hien thi ro tren man dang nhap ──────────
+    [android] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff 
+    [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px ─────────────────────────────
+    [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px ─────────────────────────────
+    [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px ─────────────────────────────
+    [android] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px ─────────────────────────────
+    [android] › e2e/vietqr.spec.js:4:1 › VietQR opt-in works on Android and Windows without touching demo QR 

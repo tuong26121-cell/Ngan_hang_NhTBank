@@ -1,0 +1,59 @@
+{
+  "recorded_at_utc": "2026-11-06T09:39:56.601461+00:00",
+  "baseline_commit": "7192af6c28b51b56806b0b9c6827d2d0604bbc8a",
+  "branch": "kiem-thu/nhom-13-dot-2a",
+  "node": "v24.19.0",
+  "npm": "11.9.0",
+  "sql_execution": "NOT RUN; B01/B03",
+  "runs": [
+    {
+      "command": "npm run test:backend",
+      "exit_code": 0,
+      "result": "15 passed",
+      "log": "backend-truoc.log",
+      "sha256": "5a44b4682a563772d4e876a20e0d3781f5067c384831bc07d9877ebde3ba385b"
+    },
+    {
+      "command": "npm run test:backend",
+      "exit_code": 0,
+      "result": "25 passed, 0 failed",
+      "log": "backend-sau.log",
+      "sha256": "8d560b4bfe4cad62a031526892ac3254fef9dc955bcd9b593a29e2a08ff54e7c"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "result": "70 passed, 7 files",
+      "log": "unit.log",
+      "sha256": "3c72cae7416117ff97f555f7a551733d3552e341dd092c83a71f8087a70749a6"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "build successful; chunk size warning",
+      "log": "build.log",
+      "sha256": "c7adc4d886ffb052a49416ad02a7e9ce4c16e9a95ee8f44f36a6fb54ed9fb5c0"
+    },
+    {
+      "command": "npm run test:e2e",
+      "exit_code": 1,
+      "result": "51 launch failures; missing cached browser",
+      "log": "e2e.log",
+      "sha256": "2288dc9745402be533c490526a8f6d0dec93b485c4c9db204325308c0704b7cb"
+    },
+    {
+      "command": "NHT_CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e",
+      "exit_code": 0,
+      "result": "43 passed, 8 intentionally skipped",
+      "log": "e2e-chromium.log",
+      "sha256": "fb429d98117faa110c5082085d64f1ed814ff991800c922cf648d4e6d7a779f4"
+    },
+    {
+      "command": "3 disposable source mutants; node --test backend/tests/nen-tang-doc-lap.test.mjs",
+      "exit_code": 0,
+      "result": "3/3 detected, each mutant exit 1",
+      "log": "mutation.log",
+      "sha256": "e9a2e879c12d33282baca57086d2757d793aabfceafc35e7a97b70845957eeea"
+    }
+  ]
+}

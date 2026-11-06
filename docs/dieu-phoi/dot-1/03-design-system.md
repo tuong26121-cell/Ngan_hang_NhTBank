@@ -21,7 +21,7 @@
 
 ## UI gates
 - A03 contrast 4.5:1 body, 3:1 large; C01 touch target ≥44x44 CSS px; responsive 320,360,390,430 widths.
-- C02 feedback of touch; C05 prevent duplicate transfers; C06 disabled controls inert; focus visible; screen reader announces errors.
+- C02 feedback of touch; C05 visual confirmation to discourage repeated activation; C06 disabled controls inert; focus visible; screen reader announces errors.
 - Data/state labels must explicitly say `MO PHONG`, balance PIN demo not represent secured banking.
 - Do not introduce image/font assets from external paid provider; reuse approved logo and source assets.
 
@@ -41,3 +41,7 @@ Chỉ kiểm kê và lập bản nháp mapping, không đổi CSS/runtime trong 
 | motion | MotionConfig reducedMotion=user và media query cả hai CSS | Kiểm thử reduce với component/animation thực tế |
 
 Giữ 45 tiêu chí A01–H06 ở trạng thái nghiệm thu có bằng chứng riêng; việc kiểm kê token không thay `docs/ui-acceptance.md` thành đạt và không tạo thay đổi giao diện cần chạy thiết bị lại.
+
+## Giới hạn C05
+
+C05 trong chuẩn UI là phản hồi thao tác để tránh nhấn lặp ngoài ý muốn. Đạt C05 không chứng minh idempotency backend hoặc ngăn double debit; các điều kiện đó thuộc TX-01 và TEST:QA-07..09. Chưa thay CSS hoặc nghiệm thu UX-01.

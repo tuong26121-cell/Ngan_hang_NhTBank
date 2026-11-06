@@ -12,6 +12,9 @@
     "scripts/kiem-thu/hop-dong-api.test.mjs": "fa148877af14caf77d64a135f97b3a60511e49f03a3093ea7d43620b0e3ec915",
     "docs/dieu-phoi/dot-2a/hop-dong-api-v1.json": "46330609ef68824a043c6bd15405c16fe1e3a5194ccfe42eb8a65f65d97d4a1c",
     "docs/dieu-phoi/dot-2a/mau-kiem-tra-api-v1.json": "ac1b840efe0038c00e9d9e703980383b8bc314c0bc6370ee7ef2ec1bd3417450",
-    "docs/dieu-phoi/dot-2a/de-xuat-sql-v2.patch": "73675695bb3ce7b458267f4e27c5172ffa30b375662cafed6cdd64a1fe0a08e6"
-  }
+    "docs/dieu-phoi/dot-2a/de-xuat-sql-v2.patch": "73675695bb3ce7b458267f4e27c5172ffa30b375662cafed6cdd64a1fe0a08e6",
+    "backend/tests/nen-tang-doc-lap.test.mjs": "4f221c332bce589cd1eb44daa1a6605ec22f7e399c316e5f3030a7e15f3cbd37"
+  },
+  "merged_main": "ba22b0dc5de7b14553036a19b240390025713c52",
+  "post_merge_backend_tests": 48
 }

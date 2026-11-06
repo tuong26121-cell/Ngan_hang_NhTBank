@@ -1,0 +1,60 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✔ chuẩn hóa payload mà không thay đầu vào (6.156162ms)
+✔ thứ tự trường, UUID hoa/thường và Unicode tương đương cho cùng fingerprint (2.348979ms)
+✔ namespace principal khác không dùng chung fingerprint (0.558089ms)
+✔ cùng key nhưng số tiền/nội dung khác có fingerprint khác (0.58874ms)
+✔ description thiếu và rỗng cùng nghĩa; tính theo Unicode codepoint (1.403722ms)
+✔ giữ nguyên độ chính xác số tiền ở cận safe integer (0.174426ms)
+✔ từ chối amount "999" (0.172358ms)
+✔ từ chối amount "0" (0.161572ms)
+✔ từ chối amount "-1000" (0.228322ms)
+✔ từ chối amount "1000.0" (0.595119ms)
+✔ từ chối amount "1e3" (0.1379ms)
+✔ từ chối amount "01000" (0.082556ms)
+✔ từ chối amount " 1000" (0.058359ms)
+✔ từ chối amount "9007199254740992" (3.264013ms)
+✔ từ chối amount 1000 (0.199325ms)
+✔ từ chối amount null (0.084164ms)
+✔ không nhận trường client principal_id (0.499479ms)
+✔ không nhận trường client role (0.09585ms)
+✔ không nhận trường client request_sha256 (0.087832ms)
+✔ không nhận trường client idempotency_key (0.045072ms)
+✔ không nhận trường client __proto__ (0.042776ms)
+✔ từ chối tài khoản trùng, currency sai và payload không phải object (0.217229ms)
+✔ principal chưa định danh bị từ chối; utility không phải token verifier (0.117276ms)
+✔ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (68.47016ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (19.303978ms)
+✔ N13-HMAC-01 signed timestamp offset -301 seconds (16.256867ms)
+✔ N13-HMAC-01 signed timestamp offset -300 seconds (8.549166ms)
+✔ N13-HMAC-01 signed timestamp offset 300 seconds (6.232549ms)
+✔ N13-HMAC-01 signed timestamp offset 301 seconds (5.380165ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (6.024417ms)
+✔ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (43.990371ms)
+✔ N13-WH-02 retry after server recreation still refuses ACK (18.45366ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (13.697854ms)
+✔ HMAC accepts an exact raw-body signature within the timestamp window (3.008287ms)
+✔ HMAC rejects a modified body, wrong secret, malformed headers and stale timestamps (0.944578ms)
+✔ health endpoint is unauthenticated, non-sensitive and has defensive headers (67.129054ms)
+✔ unknown route returns 404 and transaction endpoint rejects non-GET (19.649297ms)
+✔ transactions endpoint rejects absent and malformed internal bearer credentials (18.50601ms)
+✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (10.650134ms)
+✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (8.591214ms)
+✔ transactions endpoint rejects provider records outside the configured sandbox account (7.737863ms)
+✔ transactions endpoint hides upstream errors and malformed payloads (8.372471ms)
+✔ webhook refuses to ACK a valid signature before durable storage exists (11.035194ms)
+✔ webhook rejects invalid HMAC without exposing details (12.621905ms)
+✔ webhook requires configured secret and strict JSON media type (13.640545ms)
+✔ webhook enforces the raw request body size ceiling (12.849416ms)
+✔ webhook route rejects non-POST requests (4.628816ms)
+✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.283148ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 48
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 579.158797

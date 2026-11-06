@@ -1,15 +1,15 @@
 # DECISIONS – NhTBank
 
 > **BẢN NHÁP – 2026-11-01**  
-> Phạm vi: phân tích và điều phối; chưa kiểm tra GitHub trực tiếp trong lượt này; không chạy SQL, không ghi repository, không merge/deploy.  
+> **Mốc bản nháp 2026-11-01** chỉ phân tích. **Quy chế hiện hành 2026-11-06:** cho phép trực tiếp sửa GitHub/`main` và chạy SQL, CI, build, E2E, merge, deploy khi đủ điều kiện; xem [quy chế](quy-che-thuc-thi.md).  
 > Quy ước: **KNOWN-HISTORICAL** = thông tin ghi nhận từ công việc trước, chưa xác minh lại; **PROPOSED** = đề xuất; **NOT RUN** = chưa chạy; **BLOCKED** = chờ điều kiện/bằng chứng; **VERIFIED** chỉ khi có bằng chứng hiện thời.
 
 | ID | Quyết định / giả định | Loại | Lý do | Thời điểm rà lại |
 |---|---|---|---|---|
 | ADR-001 | Website + Mobile App, Android-first | Hướng dự án đã nêu | Chung Backend, tránh chia tách dữ liệu | Khi lựa chọn mobile framework |
 | ADR-002 | Futuristic 3D, sáng và tương phản cao | Hướng UI đã nêu | Đồng bộ nhận diện | Khi khóa design system |
-| ADR-003 | Sandbox/local/development là mặc định | Ràng buộc | Ngăn giao dịch thật và giảm chi phí | Trước bất kỳ deployment nào |
-| ADR-004 | Không chạy SQL/ghi GitHub khi chưa có phê duyệt | Ràng buộc | Ngăn thay đổi ngoài phạm vi | Trước từng thao tác ghi/thực thi |
+| ADR-003 | Sandbox/local/development là mặc định khi chưa có môi trường thực đã thẩm định; tích hợp thực được nghiên cứu/triển khai theo nhiệm vụ đủ điều kiện | Ràng buộc an toàn hiện hành | Tách tiền thật khỏi dữ liệu mẫu, quản trị chi phí | Trước kết nối/triển khai môi trường thực |
+| ADR-004 | Chủ repository đã ủy quyền trực tiếp ghi `main`, sửa GitHub Issues, chạy SQL/CI/build/E2E và deploy theo nhiệm vụ; không cần xin lại quyền ghi mỗi lần | Quyền hiện hành từ 2026-11-06 | Tăng tốc triển khai có kiểm soát và bằng chứng | Trước hành động rủi ro phải xác minh đích, khả năng rollback, chi phí |
 | ADR-005 | SQL v2.1 là bản thiết kế, A3.5 chưa test | Trạng thái lịch sử | Chưa có log runtime | Trước A3.6 / khi lấy bằng chứng mới |
 | ADR-006 | Phạm vi transfer; không thêm reversed | Ràng buộc hiện thời | Chưa có reversal workflow | Khi có thiết kế reversal riêng |
 | ADR-007 | Kiểm toán độc lập không do tác giả tự công nhận PASS | Quy chế đề xuất | Giảm xác nhận thiên lệch | Khi định nghĩa gate nhóm 13 |
@@ -19,7 +19,7 @@
 
 ## Quy trình thay đổi quyết định
 
-Ghi yêu cầu → phân tích ảnh hưởng các nhóm → owner phản biện → người dùng phê duyệt nếu tác động mã/chi phí/hệ thống → cập nhật quyết định và ghi vào HANDOFF-LOG.
+Ghi yêu cầu → phân tích ảnh hưởng, quyền và môi trường → thực hiện trên `main` hoặc nhánh review theo rủi ro (đã có ủy quyền ghi mã/tài liệu) → chạy kiểm thử phù hợp → cập nhật quyết định và HANDOFF-LOG. Giao dịch tiền thật cần xác nhận cụ thể từng giao dịch; chi phí và thay đổi phá hủy dữ liệu cần kiểm soát riêng.
 
 ## Bổ sung quyết định điều phối v2 (đề xuất, chưa phê duyệt riêng)
 
@@ -34,7 +34,7 @@ Ghi yêu cầu → phân tích ảnh hưởng các nhóm → owner phản biện
 
 | ID | Quyết định | Trạng thái |
 |---|---|---|
-| ADR-015 | Đồng bộ 5 tài liệu lên nhánh riêng, không thay đổi main. | Đã thực hiện |
+| ADR-015 | Đợt đồng bộ đầu đưa tài liệu lên nhánh riêng; sau đó tài liệu đã được chuyển vào `main`. | Lịch sử đã hoàn tất |
 | ADR-016 | Dùng 14 GitHub Issues làm nơi tiếp nhận nhiệm vụ; không coi Issues là tự gửi sang các cuộc trò chuyện ChatGPT. | Đã tạo Issues; chưa kích hoạt nhóm chat |
 
 
@@ -43,4 +43,10 @@ Ghi yêu cầu → phân tích ảnh hưởng các nhóm → owner phản biện
 - Quyet dinh: 9 nhom co the bat dau thiet ke/kiem ke, 5 nhom chi chuan bi truoc khi contract duoc chot. Du kien, chua phai tien do da hoan thanh.
 - Thu thap bang chung: 14/14 Issues OPEN; 0 assignee; 0 binh luan nhan viec tai thoi diem doi chieu.
 - Nhom 01 cap nhat [bang-giao-viec-20261106.md](bang-giao-viec-20261106.md), thong tin duoc xem la trang thai dieu phoi, khong la ket qua test/compile/deploy.
-- Khong merge main, khong chay SQL/CI, khong gan AI ao lam GitHub assignee.
+- Ghi nhận lịch sử lúc khảo sát: chưa merge main/chạy SQL/CI. Quyền hiện hành cho phép cập nhật `main` và thực hiện tác vụ kỹ thuật theo [quy chế](quy-che-thuc-thi.md). Không gán AI ảo làm GitHub assignee.
+
+## ADR-018 — Quyền thực thi trực tiếp trên GitHub (2026-11-06)
+
+- **Đã được chủ repository phê duyệt:** cập nhật `main`, GitHub Issues và tài liệu trực tiếp; chạy SQL/Actions/CI/APK/E2E/merge/deploy theo nhiệm vụ khi đủ preflight.
+- Hủy hiệu lực các hạn chế quy trình trước đó ở dạng cấm ghi/chỉ đọc; các ghi nhận lịch sử và gate nghiệm thu vẫn giữ nguyên.
+- Không tự chuyển tiền thật, thanh toán chi phí hay chạy migration chưa định danh. Xem [quy chế thực thi](quy-che-thuc-thi.md).

@@ -1,0 +1,192 @@
+MUTANT auth-bypass: exit=1
+✖ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (25.475612ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (10.121018ms)
+✔ N13-HMAC-01 signed timestamp offset -301 seconds (7.855501ms)
+✔ N13-HMAC-01 signed timestamp offset -300 seconds (5.72674ms)
+✔ N13-HMAC-01 signed timestamp offset 300 seconds (3.973454ms)
+✔ N13-HMAC-01 signed timestamp offset 301 seconds (3.131177ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (2.709313ms)
+✔ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (13.635241ms)
+✔ N13-WH-02 retry after server recreation still refuses ACK (5.072536ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (3.15926ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.280955
+
+✖ failing tests:
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:46:1
+✖ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (25.475612ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  502 !== 401
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-zpsrj7tl/backend/tests/nen-tang-doc-lap.test.mjs:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 502,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+MUTANT webhook-ack-before-durability: exit=1
+✔ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (29.372441ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (7.554608ms)
+✔ N13-HMAC-01 signed timestamp offset -301 seconds (7.76216ms)
+✖ N13-HMAC-01 signed timestamp offset -300 seconds (3.820835ms)
+✖ N13-HMAC-01 signed timestamp offset 300 seconds (3.527423ms)
+✔ N13-HMAC-01 signed timestamp offset 301 seconds (2.769774ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (2.944767ms)
+✖ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (13.235899ms)
+✖ N13-WH-02 retry after server recreation still refuses ACK (3.154082ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (3.748816ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 6
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.298803
+
+✖ failing tests:
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:76:3
+✖ N13-HMAC-01 signed timestamp offset -300 seconds (3.820835ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-8toapw09/backend/tests/nen-tang-doc-lap.test.mjs:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:76:3
+✖ N13-HMAC-01 signed timestamp offset 300 seconds (3.527423ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-8toapw09/backend/tests/nen-tang-doc-lap.test.mjs:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:93:1
+✖ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (13.235899ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-8toapw09/backend/tests/nen-tang-doc-lap.test.mjs:101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:106:1
+✖ N13-WH-02 retry after server recreation still refuses ACK (3.154082ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-8toapw09/backend/tests/nen-tang-doc-lap.test.mjs:109:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+MUTANT timestamp-too-wide: exit=1
+✔ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (29.70579ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (6.906724ms)
+✖ N13-HMAC-01 signed timestamp offset -301 seconds (6.142596ms)
+✔ N13-HMAC-01 signed timestamp offset -300 seconds (4.872365ms)
+✔ N13-HMAC-01 signed timestamp offset 300 seconds (3.019309ms)
+✖ N13-HMAC-01 signed timestamp offset 301 seconds (2.595362ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (3.314353ms)
+✔ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (13.303651ms)
+✔ N13-WH-02 retry after server recreation still refuses ACK (4.774448ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (3.309675ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.159467
+
+✖ failing tests:
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:76:3
+✖ N13-HMAC-01 signed timestamp offset -301 seconds (6.142596ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  503 !== 401
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-t7b0mrh0/backend/tests/nen-tang-doc-lap.test.mjs:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 503,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/nen-tang-doc-lap.test.mjs:76:3
+✖ N13-HMAC-01 signed timestamp offset 301 seconds (2.595362ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  503 !== 401
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-t7b0mrh0/backend/tests/nen-tang-doc-lap.test.mjs:80:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 503,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+

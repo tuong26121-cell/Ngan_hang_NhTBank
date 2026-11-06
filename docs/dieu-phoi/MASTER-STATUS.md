@@ -188,3 +188,7 @@
 - **Trang thai nhan viec:** 9 tai lieu la output dieu phoi duoc tao tren GitHub, khong co nghia 9 cuoc tro chuyen AI da nhan viec; 14 Issues van la hang doi.
 - **SQL v2.1 A3.6:** co ke hoach hunk, **chua co unified diff cuoi/khong chay migration**. Tranh `testing-v3` cho v2; pending GATE-01..10.
 - **Dot 2 tich hop:** nhom 04/05/09/11/12 van cho contract; duoc nghien cuu/mock UI doc lap.
+
+## Nhóm 13 — kết quả Đợt 2A ngày 2026-11-06
+
+Đã tiếp quản #44 và kiểm tra độc lập baseline `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`. [Báo cáo hiện hành](dot-2a/13-kiem-thu-nen-tang.md) thay cho trạng thái chưa tiếp nhận của Nhóm 13 ở các đoạn lịch sử. Đã thêm 10 HTTP tests, backend 25/25 và unit 70/70 PASS, build PASS, E2E 43 PASS/8 skip chủ ý; có log tự chạy. SQL NOT RUN; không chấp nhận runtime Auth/RBAC/ledger/concurrency/crash khi chưa implementation/preflight. GATE ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 vẫn BLOCKED cho nghiệm thu nền tảng. Handoff 01/14 có matrix/log/criteria; ACK nhận PENDING. Issue #44 OPEN.

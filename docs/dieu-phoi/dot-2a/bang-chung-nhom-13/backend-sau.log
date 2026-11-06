@@ -1,0 +1,37 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✔ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (82.944992ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (66.424069ms)
+✔ N13-HMAC-01 signed timestamp offset -301 seconds (18.271092ms)
+✔ N13-HMAC-01 signed timestamp offset -300 seconds (15.76102ms)
+✔ N13-HMAC-01 signed timestamp offset 300 seconds (3.816516ms)
+✔ N13-HMAC-01 signed timestamp offset 301 seconds (8.274317ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (7.953615ms)
+✔ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (64.807333ms)
+✔ N13-WH-02 retry after server recreation still refuses ACK (15.831506ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (3.487281ms)
+✔ HMAC accepts an exact raw-body signature within the timestamp window (1.318692ms)
+✔ HMAC rejects a modified body, wrong secret, malformed headers and stale timestamps (0.358179ms)
+✔ health endpoint is unauthenticated, non-sensitive and has defensive headers (68.462333ms)
+✔ unknown route returns 404 and transaction endpoint rejects non-GET (11.627457ms)
+✔ transactions endpoint rejects absent and malformed internal bearer credentials (9.970296ms)
+✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (10.813792ms)
+✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (47.421759ms)
+✔ transactions endpoint rejects provider records outside the configured sandbox account (8.24332ms)
+✔ transactions endpoint hides upstream errors and malformed payloads (18.738505ms)
+✔ webhook refuses to ACK a valid signature before durable storage exists (58.385446ms)
+✔ webhook rejects invalid HMAC without exposing details (16.352809ms)
+✔ webhook requires configured secret and strict JSON media type (13.195363ms)
+✔ webhook enforces the raw request body size ceiling (6.731037ms)
+✔ webhook route rejects non-POST requests (6.59308ms)
+✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.799742ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 825.225066

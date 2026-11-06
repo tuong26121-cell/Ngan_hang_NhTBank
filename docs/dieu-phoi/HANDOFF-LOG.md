@@ -121,3 +121,6 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 | NB-NT-D1-14 | 14→01/13 | dot-1/14-ci-inventory.md | Run/SHA/log/artifact; không suy gate từ CI xanh |
 
 **Đóng handoff:** người/agent nhận ACK có danh tính, phạm vi, source version và thời điểm; reviewer ghi kết quả trên đúng artifact. Sửa Issue trong lượt nghiệm thu chỉ cập nhật hồ sơ, không đại diện nhóm nhận ACK.
+## HO-2A-13-01 / HO-2A-13-14 — 2026-11-06
+
+Nhóm 13 đã tiếp quản Issue #44 theo lệnh người dùng. Bàn giao 01 (#32) và 14 (#45): [matrix, GATE, blockers và criteria](dot-2a/13-kiem-thu-nen-tang.md), [metadata/log](dot-2a/bang-chung-nhom-13/ket-qua.json), suite `backend/tests/nen-tang-doc-lap.test.mjs`. Baseline main `7192af6c28b51b56806b0b9c6827d2d0604bbc8a`; commit chứa phiếu này là version bàn giao, link SHA cụ thể gửi trong Issues sau push. Backend 25/25; unit 70/70; build exit 0; E2E 43 PASS/8 skip chủ ý sau sửa đường dẫn browser local. SQL/ledger concurrency/crash recovery NOT RUN; ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 BLOCKED nghiệm thu nền tảng. B01 môi trường, B02 thiếu runtime, B03 thiếu SQL reviewed, B04 ledger/contract mở. ACK nhóm nhận PENDING; Issue giữ OPEN. Không tuyên bố gửi vào cuộc trò chuyện ChatGPT khác.

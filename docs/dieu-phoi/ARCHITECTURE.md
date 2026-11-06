@@ -1,7 +1,7 @@
 # ARCHITECTURE – NhTBank (bản phác thảo)
 
 > **BẢN NHÁP – 2026-11-01**  
-> Phạm vi: phân tích và điều phối; chưa kiểm tra GitHub trực tiếp trong lượt này; không chạy SQL, không ghi repository, không merge/deploy.  
+> **Phạm vi khi lập bản nháp 2026-11-01:** chỉ phân tích. **Quyền hiện hành từ 2026-11-06:** được sửa trực tiếp GitHub/`main`, chạy SQL/test/build/CI và deploy theo nhiệm vụ và preflight. Xem [quy chế](quy-che-thuc-thi.md).  
 > Quy ước: **KNOWN-HISTORICAL** = thông tin ghi nhận từ công việc trước, chưa xác minh lại; **PROPOSED** = đề xuất; **NOT RUN** = chưa chạy; **BLOCKED** = chờ điều kiện/bằng chứng; **VERIFIED** chỉ khi có bằng chứng hiện thời.
 
 ## Thành phần và luồng đề xuất
@@ -41,9 +41,9 @@ flowchart TD
 - Nhóm 06 + 07 + 08 → 13 (threat model + schema + transfer → security testing).
 - Nhóm 13 → 14 (gates → CI/release policy).
 
-## Ngoài phạm vi hiện tại
+## Mở rộng phạm vi có kiểm soát
 
-Production, ngân hàng thật, chuyển khoản thật, reversal workflow, sử dụng v3 runner cho SQL v2 và phát hành app.
+Được triển khai, build APK và chuẩn bị Production khi nhiệm vụ và điều kiện kỹ thuật đầy đủ. Giao dịch ngân hàng thật vẫn cần hệ thống hợp lệ, chi tiết giao dịch và xác nhận cho từng lệnh; không biến transfer sandbox thành tiền thật. Reversal phải có workflow riêng; không dùng runner v3 cho SQL v2. Tham chiếu [quy chế](quy-che-thuc-thi.md).
 
 ## Phụ lục điều phối v2 (2026-11-05, PROPOSED)
 

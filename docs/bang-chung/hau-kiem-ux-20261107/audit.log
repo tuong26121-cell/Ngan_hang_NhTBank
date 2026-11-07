@@ -1,0 +1,58 @@
+{
+  "audits": 21,
+  "violations": [],
+  "metrics": [
+    {
+      "width": 320,
+      "vitals": {},
+      "interactionCount": 11,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    },
+    {
+      "width": 390,
+      "vitals": {},
+      "interactionCount": 91,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    },
+    {
+      "width": 1440,
+      "vitals": {},
+      "interactionCount": 11,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    }
+  ],
+  "heap": [
+    {
+      "round": 0,
+      "cycles": 10,
+      "usedSize": 11392316,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 3171560,
+      "backingStorageSize": 1172144
+    },
+    {
+      "round": 1,
+      "cycles": 20,
+      "usedSize": 11457772,
+      "totalSize": 12103680,
+      "embedderHeapUsedSize": 3087296,
+      "backingStorageSize": 1172100
+    },
+    {
+      "round": 2,
+      "cycles": 30,
+      "usedSize": 11503004,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 3094264,
+      "backingStorageSize": 1172100
+    },
+    {
+      "round": 3,
+      "cycles": 40,
+      "usedSize": 11555592,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 2828648,
+      "backingStorageSize": 1172100
+    }
+  ]
+}

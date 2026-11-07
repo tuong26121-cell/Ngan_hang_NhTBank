@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:3980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/scan-qr.spec.js:22:1 › middle QR navigation opens camera screen, decodes local upload and offers safe bank handoff (4.5s)
+  ✓  2 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 320px (3.3s)
+  ✓  3 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 360px (3.3s)
+  ✓  4 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 390px (3.5s)
+  ✓  5 [desktop] › e2e/ui-acceptance.spec.js:5:3 › acceptance UI at 430px (3.1s)
+
+  5 passed (19.8s)

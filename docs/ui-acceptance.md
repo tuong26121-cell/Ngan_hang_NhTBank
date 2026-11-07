@@ -297,3 +297,13 @@ Chốt báo cáo ngày 07/11/2026 (Asia/Saigon); các log của phiên chạy gh
 - Prettier các tệp code mới và `git diff --check` đạt. Không đổi `frontend/src/lib`, backend, package hoặc lockfile.
 
 **UX-01: IMPLEMENTED / PARTIALLY VERIFIED, chưa PASS nghiệm thu toàn bộ.** Artifact bàn giao Nhóm 04/05/11/13 AVAILABLE; ACK PENDING. Còn thiết bị thật, bàn phím ảo, Safari, hiệu năng, heap và kiểm chứng lại độ ổn định ca Android. Main commit dùng nhãn `[khong-trien-khai-web]` để các workflow kiểm tra có thể chạy mà không tự xuất bản Pages trong đợt bàn giao này.
+
+## Hậu kiểm chủ động UX-01 — 07/11/2026
+
+Xem [báo cáo và bằng chứng](bang-chung/hau-kiem-ux-20261107/README.md). CI đúng SHA1894c45: Verify/Pages workflow/APK success; Pages deploy skipped. Đã chạy21 audit axe ở320/390/1440px; sửa3 nhãn ARIA generic bằng output/group, sửa tương phản chữ hero QR≈3,42:1 bằng gradient navy/primary. Sau sửa0 violation tự động; contrast glass/gradient vẫn cần review thủ công, không coi toàn bộ A03 đạt.
+
+Bàn phím/focus/Escape/reduced-motion:4/4 đạt. Android production chạy lặp5/5,44–52s, giữ timeout/assertions; chưa tái hiện timeout, chưa chứng minh nguyên nhân gốc. LCP372–508ms, CLS0,020–0,084, INP64–104ms (15 tương tác/viewport, lượt lab riêng); giữ phép đo trước INP424ms khi có tải đồng thời. Heap sau GC tăng0,156MiB từ chu kỳ10→40 (1,43%); chưa thấy tăng lớn trong thử ngắn, chưa xác nhận không leak dài hạn. Unit70/70 và build đạt.
+
+Cập nhật bằng chứng A03/C03/D05/G01/G02/G03/G04/G05/H01 trong phạm vi lab; **UX-01 vẫn PARTIALLY VERIFIED**, chưa nghiệm thu toàn bộ45 tiêu chí. Thiết bị thật, keyboard ảo, Safari, safe-area, screen reader, field performance, contrast đầy đủ và ACK bên nhận còn chờ. Patch không đổi nghiệp vụ; commit dùng `[khong-trien-khai-web]`.
+
+Đối chiếu pixel cuối:303 dòng mẫu ở390px,0 cờ sau cuộn tránh overlay; ghi chú camera11,37:1, chữ giới thiệu QR sau sửa10,18:1. Giữ dữ liệu trước/sau cuộn. Hồi quy responsive320/360/390/430 và scanner cuối5/5 đạt. Không thay phạm vi giới hạn nghiệm thu nêu trên.

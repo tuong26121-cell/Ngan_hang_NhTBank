@@ -86,9 +86,13 @@ export function AnimatedMoney({ value, hidden = false }) {
     return () => animation.stop();
   }, [value, hidden, reduce]);
   return (
-    <span ref={ref} aria-label={hidden ? "Số dư đã ẩn" : `${money(value)} VNĐ`}>
+    <output
+      ref={ref}
+      aria-live="off"
+      aria-label={hidden ? "Số dư đã ẩn" : `${money(value)} VNĐ`}
+    >
       {hidden ? "••••••••" : money(value)}
-    </span>
+    </output>
   );
 }
 export function SecurityNote() {

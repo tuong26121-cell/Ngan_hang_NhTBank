@@ -161,3 +161,7 @@ Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2
 ## Đợt2A — xác thực API cục bộ, 07/11/2026
 
 Đã thêm module JOSE xác minh JWT và guard quyền tài nguyên; auth25/25, toàn backend73/73, unit70/70, contract5/5 (148test không cộng trùng), Pagesbuild đạt. [Báo cáo/giới hạn](mo-khoa-auth-20261107.md), [log](bang-chung-auth-20261107/). VERIFIED chỉ module local; APImiddleware/provider/session-revocation/confirmation/DB/ledger chưa tích hợp. SEC/DB/TX và release vẫn BLOCKED. Chưa SQL/deploy/tiền thật.
+
+### NB-D2B-03 — hậu kiểm07/11/2026
+
+03→04/05/11/13: [bằng chứng bổ sung](../bang-chung/hau-kiem-ux-20261107/README.md), patch output/group ARIA và contrast hero QR. CI1894c45 success3 workflow; Android lặp5/5; keyboard4/4; lab Web Vitals/heap có số đo và giới hạn. UX-01 PARTIALLY VERIFIED; ACK nhóm nhận PENDING, không chấp thuận release hay nghiệm thu thiết bị thật.

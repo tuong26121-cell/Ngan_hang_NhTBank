@@ -230,3 +230,7 @@ input::placeholder {
     radial-gradient(ellipse at 100% 0%, #16c6df45, transparent 65%),
     linear-gradient(115deg, var(--nht-navy), var(--nht-primary));
 }
+/* QR hero: keep readable contrast across the entire text area. */
+.scan-hero {
+  background: linear-gradient(125deg, var(--nht-navy), var(--nht-primary));
+}

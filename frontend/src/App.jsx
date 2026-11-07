@@ -232,7 +232,11 @@ export default function App() {
                   </div>
                   <section className="panel history-panel">
                     <div className="history-toolbar">
-                      <div className="filter-tabs" aria-label="Lọc giao dịch">
+                      <div
+                        className="filter-tabs"
+                        role="group"
+                        aria-label="Lọc giao dịch"
+                      >
                         {[
                           ["all", "Tất cả"],
                           ["income", "Tiền vào"],

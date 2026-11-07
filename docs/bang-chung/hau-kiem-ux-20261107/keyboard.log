@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:3062) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (23.5s)
+  ✓  2 [desktop] › e2e/bank.spec.js:134:1 › keyboard login, notifications and reduced motion (3.2s)
+  ✓  3 [desktop] › e2e/bank.spec.js:157:1 › support dialog traps focus and closes with Escape (2.9s)
+  ✓  4 [desktop] › e2e/he-thiet-ke.spec.js:4:1 › UX-01 tokens, keyboard, reduced motion and short auth screen (4.2s)
+
+  4 passed (36.0s)

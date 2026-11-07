@@ -1,0 +1,336 @@
+{
+  "source": "e940a9c",
+  "environment": "Linux Chromium headless, production preview, no CPU/network throttling",
+  "audits": [
+    {
+      "width": 320,
+      "name": "login",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 15
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 320,
+      "name": "register",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 14
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 320,
+      "name": "Trang chủ",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 2
+        },
+        {
+          "id": "color-contrast",
+          "count": 71
+        }
+      ],
+      "passes": 22
+    },
+    {
+      "width": 320,
+      "name": "Giao dịch",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 24
+        }
+      ],
+      "passes": 26
+    },
+    {
+      "width": 320,
+      "name": "Quét QR",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 16
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 320,
+      "name": "Lịch sử",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 32
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 320,
+      "name": "Cá nhân",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 26
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 390,
+      "name": "login",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 15
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 390,
+      "name": "register",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 14
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 390,
+      "name": "Trang chủ",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 2
+        },
+        {
+          "id": "color-contrast",
+          "count": 72
+        }
+      ],
+      "passes": 22
+    },
+    {
+      "width": 390,
+      "name": "Giao dịch",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 26
+        }
+      ],
+      "passes": 26
+    },
+    {
+      "width": 390,
+      "name": "Quét QR",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 16
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 390,
+      "name": "Lịch sử",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 32
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 390,
+      "name": "Cá nhân",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 25
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 1440,
+      "name": "login",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 15
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 1440,
+      "name": "register",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 14
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "width": 1440,
+      "name": "Trang chủ",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 2
+        },
+        {
+          "id": "color-contrast",
+          "count": 76
+        }
+      ],
+      "passes": 22
+    },
+    {
+      "width": 1440,
+      "name": "Giao dịch",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 21
+        }
+      ],
+      "passes": 26
+    },
+    {
+      "width": 1440,
+      "name": "Quét QR",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 11
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 1440,
+      "name": "Lịch sử",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1
+        },
+        {
+          "id": "color-contrast",
+          "count": 28
+        }
+      ],
+      "passes": 24
+    },
+    {
+      "width": 1440,
+      "name": "Cá nhân",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 22
+        }
+      ],
+      "passes": 24
+    }
+  ],
+  "metrics": [
+    {
+      "width": 320,
+      "vitals": {},
+      "interactionCount": 11,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    },
+    {
+      "width": 390,
+      "vitals": {},
+      "interactionCount": 91,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    },
+    {
+      "width": 1440,
+      "vitals": {},
+      "interactionCount": 11,
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36"
+    }
+  ],
+  "heap": [
+    {
+      "round": 0,
+      "cycles": 10,
+      "usedSize": 11392316,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 3171560,
+      "backingStorageSize": 1172144
+    },
+    {
+      "round": 1,
+      "cycles": 20,
+      "usedSize": 11457772,
+      "totalSize": 12103680,
+      "embedderHeapUsedSize": 3087296,
+      "backingStorageSize": 1172100
+    },
+    {
+      "round": 2,
+      "cycles": 30,
+      "usedSize": 11503004,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 3094264,
+      "backingStorageSize": 1172100
+    },
+    {
+      "round": 3,
+      "cycles": 40,
+      "usedSize": 11555592,
+      "totalSize": 12365824,
+      "embedderHeapUsedSize": 2828648,
+      "backingStorageSize": 1172100
+    }
+  ]
+}

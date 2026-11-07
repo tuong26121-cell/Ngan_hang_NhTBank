@@ -1,0 +1,20 @@
+
+Running 5 tests using 2 workers
+
+(node:1432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1433) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (44.3s)
+(node:1824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (47.2s)
+(node:1958) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (48.4s)
+(node:2135) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (52.2s)
+  ✓  5 [android] › e2e/bank.spec.js:3:1 › complete Sandbox journey without console errors (47.1s)
+
+  5 passed (2.5m)

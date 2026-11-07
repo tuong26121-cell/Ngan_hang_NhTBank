@@ -1,0 +1,119 @@
+[
+  {
+    "width": 320,
+    "vitals": {
+      "LCP": {
+        "value": 864,
+        "rating": "good",
+        "entries": 1
+      },
+      "CLS": {
+        "value": 0.05315080295138888,
+        "rating": "good",
+        "entries": 2
+      },
+      "INP": {
+        "value": 168,
+        "rating": "good",
+        "entries": 3
+      }
+    },
+    "interactionCount": 15,
+    "visibility": "visible",
+    "supported": [
+      "element",
+      "event",
+      "first-input",
+      "interaction-contentful-paint",
+      "largest-contentful-paint",
+      "layout-shift",
+      "long-animation-frame",
+      "longtask",
+      "mark",
+      "measure",
+      "navigation",
+      "paint",
+      "resource",
+      "soft-navigation",
+      "visibility-state"
+    ]
+  },
+  {
+    "width": 390,
+    "vitals": {
+      "LCP": {
+        "value": 908,
+        "rating": "good",
+        "entries": 1
+      },
+      "CLS": {
+        "value": 0.08400563805792972,
+        "rating": "good",
+        "entries": 2
+      },
+      "INP": {
+        "value": 424,
+        "rating": "needs-improvement",
+        "entries": 1
+      }
+    },
+    "interactionCount": 15,
+    "visibility": "visible",
+    "supported": [
+      "element",
+      "event",
+      "first-input",
+      "interaction-contentful-paint",
+      "largest-contentful-paint",
+      "layout-shift",
+      "long-animation-frame",
+      "longtask",
+      "mark",
+      "measure",
+      "navigation",
+      "paint",
+      "resource",
+      "soft-navigation",
+      "visibility-state"
+    ]
+  },
+  {
+    "width": 1440,
+    "vitals": {
+      "LCP": {
+        "value": 1044,
+        "rating": "good",
+        "entries": 1
+      },
+      "CLS": {
+        "value": 0.01984335562414266,
+        "rating": "good",
+        "entries": 2
+      },
+      "INP": {
+        "value": 120,
+        "rating": "good",
+        "entries": 1
+      }
+    },
+    "interactionCount": 15,
+    "visibility": "visible",
+    "supported": [
+      "element",
+      "event",
+      "first-input",
+      "interaction-contentful-paint",
+      "largest-contentful-paint",
+      "layout-shift",
+      "long-animation-frame",
+      "longtask",
+      "mark",
+      "measure",
+      "navigation",
+      "paint",
+      "resource",
+      "soft-navigation",
+      "visibility-state"
+    ]
+  }
+]

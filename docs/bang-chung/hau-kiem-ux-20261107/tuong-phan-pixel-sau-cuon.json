@@ -1,0 +1,2127 @@
+{
+  "samples": 303,
+  "flags": [],
+  "all": [
+    {
+      "screen": "Cá nhân",
+      "text": "Trang chủ",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Giao dịch",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Quét QR",
+      "ratio": 4.98,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Lịch sử",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Cá nhân",
+      "ratio": 9.42,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "NhT",
+      "ratio": 14.45,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Bank",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Phiên bản",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "1.0.1",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "·",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Bản thử cục bộ",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "NT",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(22, 79, 140)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Ngân hàng mô phỏng · Không giao dịch tiền thật",
+      "ratio": 7.84,
+      "limit": 4.5,
+      "color": "rgb(36, 78, 119)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "DÀNH RIÊNG CHO BẠN",
+      "ratio": 5.84,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Cá nhân",
+      "ratio": 14.73,
+      "limit": 3,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Chút riêng của bạn, trong từng trải nghiệm.",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "NT",
+      "ratio": 5.2,
+      "limit": 3,
+      "color": "rgb(90, 63, 36)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Nguyễn Nhựt Tường",
+      "ratio": 15.62,
+      "limit": 3,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Thành viên NhTBank · Sandbox",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Chủ tài khoản",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Nguyễn Nhựt Tường",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Số tài khoản mẫu",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "0788818374",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Số dư mô phỏng",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "4.056.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "VNĐ",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Bảo mật đăng nhập",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "PIN mô phỏng 6 chữ số",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Lưu trữ dữ liệu",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Trong bộ nhớ phiên",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.33,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Trung tâm hỗ trợ",
+      "ratio": 10.46,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Đăng xuất và xóa dữ liệu phiên",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "© 2026 NhTBank. Chạm đến điều tốt đẹp.",
+      "ratio": 5.64,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Điện thoại",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "/",
+      "ratio": 5.23,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Cá nhân",
+      "text": "Máy tính",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Trang chủ",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Giao dịch",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Quét QR",
+      "ratio": 4.98,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Lịch sử",
+      "ratio": 9.42,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Cá nhân",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "NhT",
+      "ratio": 14.45,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Bank",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Phiên bản",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "1.0.1",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "·",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Bản thử cục bộ",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "NT",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(22, 79, 140)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Ngân hàng mô phỏng · Không giao dịch tiền thật",
+      "ratio": 7.84,
+      "limit": 4.5,
+      "color": "rgb(36, 78, 119)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "DẤU ẤN MỖI NGÀY",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Lịch sử giao dịch",
+      "ratio": 14.73,
+      "limit": 3,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Theo dõi từng khoản thu chi, thật rõ ràng.",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Tất cả",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Tiền vào",
+      "ratio": 5.66,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Tiền ra",
+      "ratio": 5.66,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Lương tháng 10",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Lương & thu nhập",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "+",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "15.000.000",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "₫",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "25-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Thu",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Highlands Coffee",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Ăn uống",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "59.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "25-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Chi",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Trần Minh Anh",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Chuyển tiền",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "250.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "24-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Chi",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Spotify Premium",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Giải trí",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "59.000",
+      "ratio": 15.59,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "23-10",
+      "ratio": 6.17,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "·",
+      "ratio": 6.17,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Chi",
+      "ratio": 6.17,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Dữ liệu mẫu và giao dịch của phiên hiện tại. Đăng xuất hoặc tải lại trang sẽ đặt lại dữ liệu.",
+      "ratio": 6.17,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Dữ liệu mẫu và giao dịch của phiên hiện tại. Đăng xuất hoặc tải lại trang sẽ đặt lại dữ liệu.",
+      "ratio": 6.17,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Điện thoại",
+      "ratio": 4.95,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "/",
+      "ratio": 4.74,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Lịch sử",
+      "text": "Máy tính",
+      "ratio": 4.94,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Trang chủ",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Giao dịch",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Quét QR",
+      "ratio": 8.39,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Lịch sử",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Cá nhân",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "NhT",
+      "ratio": 14.45,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Bank",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Phiên bản",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "1.0.1",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "·",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Bản thử cục bộ",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "NT",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(22, 79, 140)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Ngân hàng mô phỏng · Không giao dịch tiền thật",
+      "ratio": 7.84,
+      "limit": 4.5,
+      "color": "rgb(36, 78, 119)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Trang chủ",
+      "ratio": 9.9,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "QUÉT TRÊN THIẾT BỊ · KHÔNG TẢI LÊN",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(35, 96, 154)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Quét mã QR",
+      "ratio": 12.67,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Đưa camera vào mã VietQR hoặc chọn ảnh từ máy.",
+      "ratio": 10.18,
+      "limit": 4.5,
+      "color": "rgb(222, 247, 255)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Không truy cập được camera",
+      "ratio": 6.93,
+      "limit": 4.5,
+      "color": "rgb(182, 218, 250)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Chọn ảnh QR",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Quét lại",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Camera chỉ hoạt động trên HTTPS và khi bạn cho phép. Ảnh được đọc tại thiết bị, không gửi tới máy chủ NhTBank.",
+      "ratio": 11.37,
+      "limit": 4.5,
+      "color": "rgb(183, 215, 237)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Camera chỉ hoạt động trên HTTPS và khi bạn cho phép. Ảnh được đọc tại thiết bị, không gửi tới máy chủ NhTBank.",
+      "ratio": 11.37,
+      "limit": 4.5,
+      "color": "rgb(183, 215, 237)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Chờ mã VietQR",
+      "ratio": 11.3,
+      "limit": 3,
+      "color": "rgb(21, 56, 118)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Khi quét thành công, thông tin ngân hàng, tài khoản nhận và số tiền sẽ xuất hiện tại đây. Không có giao dịch tự động.",
+      "ratio": 5.43,
+      "limit": 4.5,
+      "color": "rgb(83, 107, 143)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Khi quét thành công, thông tin ngân hàng, tài khoản nhận và số tiền sẽ xuất hiện tại đây. Không có giao dịch tự động.",
+      "ratio": 5.43,
+      "limit": 4.5,
+      "color": "rgb(83, 107, 143)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Khi quét thành công, thông tin ngân hàng, tài khoản nhận và số tiền sẽ xuất hiện tại đây. Không có giao dịch tự động.",
+      "ratio": 5.43,
+      "limit": 4.5,
+      "color": "rgb(83, 107, 143)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Tạo QR nhận tiền",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "© 2026 NhTBank. Chạm đến điều tốt đẹp.",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Điện thoại",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "/",
+      "ratio": 5.23,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Quét QR",
+      "text": "Máy tính",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Trang chủ",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Giao dịch",
+      "ratio": 9.42,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Quét QR",
+      "ratio": 4.98,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Lịch sử",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Cá nhân",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "NhT",
+      "ratio": 14.45,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Bank",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Phiên bản",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "1.0.1",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "·",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Bản thử cục bộ",
+      "ratio": 14.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "NT",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(22, 79, 140)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ngân hàng mô phỏng · Không giao dịch tiền thật",
+      "ratio": 7.84,
+      "limit": 4.5,
+      "color": "rgb(36, 78, 119)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Về tổng quan",
+      "ratio": 9.9,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "KẾT NỐI NHỮNG ĐIỀU QUAN TRỌNG",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Chuyển tiền",
+      "ratio": 14.73,
+      "limit": 3,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Trao gửi một chút, gắn kết nhiều hơn.",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "1",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Thông tin",
+      "ratio": 9.89,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "2",
+      "ratio": 5.27,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Kiểm tra",
+      "ratio": 5.83,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "3",
+      "ratio": 5.27,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Xác nhận PIN",
+      "ratio": 5.82,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Bạn muốn gửi đến ai?",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Số dư mô phỏng:",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "4.056.000",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "VNĐ",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ngân hàng nhận",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Số tài khoản",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Tên người nhận",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Số tiền (VNĐ)",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Nội dung chuyển khoản",
+      "ratio": 6.08,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "(không bắt buộc)",
+      "ratio": 6.13,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Tiếp tục",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.64,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "© 2026 NhTBank. Chạm đến điều tốt đẹp.",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Điện thoại",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "/",
+      "ratio": 5.23,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Giao dịch",
+      "text": "Máy tính",
+      "ratio": 5.46,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Trang chủ",
+      "ratio": 9.42,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Giao dịch",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Quét QR",
+      "ratio": 4.98,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Lịch sử",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Cá nhân",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "NhT",
+      "ratio": 8.47,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Bank",
+      "ratio": 9.12,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Phiên bản",
+      "ratio": 8.68,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "1.0.1",
+      "ratio": 9.46,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "·",
+      "ratio": 9.73,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Bản thử cục bộ",
+      "ratio": 10.06,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "NT",
+      "ratio": 5.86,
+      "limit": 4.5,
+      "color": "rgb(22, 79, 140)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Ngân hàng mô phỏng · Không giao dịch tiền thật",
+      "ratio": 10.26,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "NHTBANK · TÀI CHÍNH TRONG TẦM TAY",
+      "ratio": 9.77,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "✦",
+      "ratio": 11.45,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Xin chào, Nhựt Tường",
+      "ratio": 10.27,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Một thế giới tiện ích trong một chạm.",
+      "ratio": 10.8,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "TÀI KHOẢN THANH TOÁN",
+      "ratio": 11.34,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "SANDBOX",
+      "ratio": 7.73,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "NhTBank · 0788 818 374",
+      "ratio": 11.44,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "4.056.000",
+      "ratio": 10.97,
+      "limit": 3,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "VNĐ",
+      "ratio": 10.05,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "NGUYỄN NHỰT TƯỜNG",
+      "ratio": 12.81,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "· Tài khoản mẫu",
+      "ratio": 11.34,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Chuyển tiền",
+      "ratio": 12.78,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Nạp tiền",
+      "ratio": 12.28,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Tiền gửi",
+      "ratio": 11.58,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Vay nhanh",
+      "ratio": 10.76,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "DỮ LIỆU MẪU · THÁNG 10/2026",
+      "ratio": 5.87,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Dòng tiền tháng này",
+      "ratio": 11.92,
+      "limit": 4.5,
+      "color": "rgb(23, 57, 87)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Tiền vào",
+      "ratio": 5.62,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "+15.000.000",
+      "ratio": 15.59,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 15.59,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Tiền ra",
+      "ratio": 5.62,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "−368.000",
+      "ratio": 15.59,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 15.59,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Chỉ tính giao dịch trong Sandbox.",
+      "ratio": 5.62,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "KHÁM PHÁ NHTBANK",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Tiện ích cho bạn",
+      "ratio": 11.94,
+      "limit": 4.5,
+      "color": "rgb(23, 57, 87)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Bản xem trước",
+      "ratio": 5.17,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "MỚI",
+      "ratio": 4.71,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Ưu đãi",
+      "ratio": 8.24,
+      "limit": 4.5,
+      "color": "rgb(52, 81, 110)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Thanh toán",
+      "ratio": 8.24,
+      "limit": 4.5,
+      "color": "rgb(52, 81, 110)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Quà tặng",
+      "ratio": 8.24,
+      "limit": 4.5,
+      "color": "rgb(52, 81, 110)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Mục tiêu",
+      "ratio": 8.24,
+      "limit": 4.5,
+      "color": "rgb(52, 81, 110)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Cài đặt",
+      "ratio": 8.24,
+      "limit": 4.5,
+      "color": "rgb(52, 81, 110)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "DÒNG TIỀN CỦA BẠN",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Giao dịch gần đây",
+      "ratio": 11.94,
+      "limit": 4.5,
+      "color": "rgb(23, 57, 87)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Xem tất cả",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(12, 54, 153)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Lương tháng 10",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Công ty TNHH Sáng Tạo",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "+",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "15.000.000",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 5.89,
+      "limit": 4.5,
+      "color": "rgb(8, 114, 91)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "25-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Thu",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Highlands Coffee",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Thanh toán tại cửa hàng",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "59.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "25-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Chi",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Trần Minh Anh",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Bữa tối cuối tuần",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "250.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "24-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Chi",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Spotify Premium",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Gói cá nhân hàng tháng",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "−",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "59.000",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "₫",
+      "ratio": 15.62,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "23-10",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "·",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Chi",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Gửi hôm nay. An tâm ngày mai.",
+      "ratio": 14.18,
+      "limit": 4.5,
+      "color": "rgb(23, 35, 61)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Sản phẩm minh họa · Không nhận tiền gửi",
+      "ratio": 5.11,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "© 2026 NhTBank. Chạm đến điều tốt đẹp.",
+      "ratio": 5.74,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.73,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Ứng dụng mô phỏng · Không nhập PIN, OTP hoặc mật khẩu ngân hàng thật",
+      "ratio": 5.73,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Điện thoại",
+      "ratio": 5.45,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "/",
+      "ratio": 5.22,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "Trang chủ",
+      "text": "Máy tính",
+      "ratio": 5.45,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "register",
+      "text": "NhT",
+      "ratio": 13.44,
+      "limit": 3,
+      "color": "rgb(17, 43, 101)"
+    },
+    {
+      "screen": "register",
+      "text": "Bank",
+      "ratio": 13.44,
+      "limit": 4.5,
+      "color": "rgb(17, 43, 101)"
+    },
+    {
+      "screen": "register",
+      "text": "TÀI CHÍNH TRONG TẦM TAY",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "register",
+      "text": "Phiên bản",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "1.0.1",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "·",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "Bản thử cục bộ",
+      "ratio": 9.81,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "TRẢI NGHIỆM MÔ PHỎNG",
+      "ratio": 6.15,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "register",
+      "text": "Đăng ký tài khoản",
+      "ratio": 11.24,
+      "limit": 3,
+      "color": "rgb(11, 56, 122)"
+    },
+    {
+      "screen": "register",
+      "text": "Tài khoản thử nghiệm lưu tại thiết bị. Không nhập mật khẩu ngân hàng thật.",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "register",
+      "text": "Tài khoản thử nghiệm lưu tại thiết bị. Không nhập mật khẩu ngân hàng thật.",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "register",
+      "text": "Tên đăng nhập",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "Mật khẩu mới",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "Nhập lại mật khẩu",
+      "ratio": 9.81,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "register",
+      "text": "Tạo tài khoản demo",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "register",
+      "text": "Quay lại đăng nhập",
+      "ratio": 6.84,
+      "limit": 4.5,
+      "color": "rgb(7, 91, 167)"
+    },
+    {
+      "screen": "register",
+      "text": "Điện thoại",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "register",
+      "text": "/",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "register",
+      "text": "Máy tính",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "register",
+      "text": "NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "register",
+      "text": "NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "NhT",
+      "ratio": 13.44,
+      "limit": 3,
+      "color": "rgb(17, 43, 101)"
+    },
+    {
+      "screen": "login",
+      "text": "Bank",
+      "ratio": 13.44,
+      "limit": 4.5,
+      "color": "rgb(17, 43, 101)"
+    },
+    {
+      "screen": "login",
+      "text": "TÀI CHÍNH TRONG TẦM TAY",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "Phiên bản",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "1.0.1",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "·",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "Bản thử cục bộ",
+      "ratio": 9.81,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "TRẢI NGHIỆM MÔ PHỎNG",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "Đăng nhập NhTBank",
+      "ratio": 11.24,
+      "limit": 3,
+      "color": "rgb(11, 56, 122)"
+    },
+    {
+      "screen": "login",
+      "text": "Tài khoản thử nghiệm lưu tại thiết bị. Không nhập mật khẩu ngân hàng thật.",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "Tài khoản thử nghiệm lưu tại thiết bị. Không nhập mật khẩu ngân hàng thật.",
+      "ratio": 6.16,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "Tên đăng nhập",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "Mật khẩu",
+      "ratio": 9.79,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "Ghi nhớ tên đăng nhập (không lưu mật khẩu)",
+      "ratio": 9.83,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "Ghi nhớ tên đăng nhập (không lưu mật khẩu)",
+      "ratio": 9.83,
+      "limit": 4.5,
+      "color": "rgb(22, 68, 121)"
+    },
+    {
+      "screen": "login",
+      "text": "Đăng nhập",
+      "ratio": 10.48,
+      "limit": 4.5,
+      "color": "rgb(255, 255, 255)"
+    },
+    {
+      "screen": "login",
+      "text": "Quên mật khẩu?",
+      "ratio": 6.84,
+      "limit": 4.5,
+      "color": "rgb(7, 91, 167)"
+    },
+    {
+      "screen": "login",
+      "text": "Đăng ký tài khoản",
+      "ratio": 6.85,
+      "limit": 4.5,
+      "color": "rgb(7, 91, 167)"
+    },
+    {
+      "screen": "login",
+      "text": "Điện thoại",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "login",
+      "text": "/",
+      "ratio": 5.63,
+      "limit": 4.5,
+      "color": "rgb(82, 105, 135)"
+    },
+    {
+      "screen": "login",
+      "text": "Máy tính",
+      "ratio": 5.88,
+      "limit": 4.5,
+      "color": "rgb(18, 104, 168)"
+    },
+    {
+      "screen": "login",
+      "text": "NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    },
+    {
+      "screen": "login",
+      "text": "NhTBank Sandbox · Không kết nối ngân hàng thật · Không chuyển tiền thật",
+      "ratio": 6.18,
+      "limit": 4.5,
+      "color": "rgb(82, 98, 124)"
+    }
+  ]
+}

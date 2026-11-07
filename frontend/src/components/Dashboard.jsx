@@ -139,6 +139,7 @@ export default function Dashboard({ balance, transactions, navigate }) {
             </div>
             <div
               className="reference-quick-actions"
+              role="group"
               aria-label="Tiện ích nhanh"
             >
               {shortcuts.map(({ label, icon, page }) => (

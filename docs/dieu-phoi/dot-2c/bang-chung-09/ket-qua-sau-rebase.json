@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 0,
+    "log": "backend-sau-rebase.log"
+  },
+  {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "log": "unit-sau-rebase.log"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "log": "build-sau-rebase.log"
+  }
+]

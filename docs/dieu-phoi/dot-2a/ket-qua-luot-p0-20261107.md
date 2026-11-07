@@ -38,3 +38,13 @@
 5. Nhóm 13 đọc kết luận CI đúng SHA mới, bổ sung các tests P0 độc lập; update gate chỉ theo log thực.
 
 **Quy tắc:** ACK/PRD/spec/CI không thay thế nghiệm thu DB, durable transfer, release hoặc giao dịch thật.
+
+## Bổ sung Nhóm 02/08/13 - kiểm tra đối chiếu OpenAPI và code
+
+- Trước khi sửa, đã đọc lại `main@2cbde19d088c09c9a381513a0bf3931b39bc42c9`, `package.json`, `scripts/kiem-tra-hop-dong-api.mjs`, OpenAPI v1 draft và bộ test `backend/tests/hop-dong-chuyen-tien.test.mjs`.
+- Đã thêm kiểm thử đối chiếu cấu trúc OpenAPI `/v1/sandbox/transfers` → `Idempotency-Key` header → schema với `canonicalizeIdempotencyKey()`. Kiểm tra `required=true`, `1..128`, pattern ASCII, key phân biệt chữ hoa/thường, giá trị từ chối; giữ rõ endpoint là `PROPOSED`. [Commit kiểm thử `ea6b2da48af9ffa248816f7d7c03e1f9d53dfce3`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/ea6b2da48af9ffa248816f7d7c03e1f9d53dfce3).
+- **Bằng chứng CI trước bổ sung:** [Verify `42331060236`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331060236) tại source `8e1c91b75bf86d84a9f5080d0b5d150d55720906` = **SUCCESS**, các bước unit, OpenAPI/fixtures, backend security, build, Chromium E2E đều success; đây là bằng chứng cho commit **trước** test mới. APK `42331060230` và Pages `42331060292` = **CANCELLED**, không tuyên bố đã phát hành.
+- **Bằng chứng CI test mới:** [Verify `42331345217`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345217), [APK `42331345281`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345281), [Pages `42331345235`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345235) đều **IN_PROGRESS tại thời điểm đối chiếu**; chưa được ghi PASS cho commit `ea6b2da`. Không có log kiểm thử local nguyên repository do `git ls-remote` bị DNS `Could not resolve host: github.com`.
+- Chỉ bổ sung kiểm thử ở lớp hợp đồng, không sửa OpenAPI/schema SQL, không gắn HTTP route, không gọi provider, không động tới tiền hoặc database. Nhóm 10/02/06 vẫn cần quyết định có reviewer; 07↔08 cần ledger/recovery/SQL preflight; 13 chỉ nâng trạng thái sau kiểm tra kết luận CI đúng SHA.
+
+**Trạng thái gate không đổi:** COORD-01 đang review; ARCH-01 / SEC-01 / DB-01 / TX-01 / QA-01 ở mức **BLOCKED hoặc PARTIAL** theo phạm vi. SQL **NOT RUN**.

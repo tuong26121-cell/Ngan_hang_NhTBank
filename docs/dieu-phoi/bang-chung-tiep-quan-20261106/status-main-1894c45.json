@@ -1,0 +1,10 @@
+[
+  {
+    "command": "npm run build -- --base /",
+    "exit_code": 0
+  },
+  {
+    "command": "production root E2E with system Chromium",
+    "exit_code": 0
+  }
+]

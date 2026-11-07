@@ -243,3 +243,7 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 ## Nhóm 03 — Đợt 2B thực thi ngày 06/11/2026
 
 Đã tiếp quản #34 trong phiên theo yêu cầu chủ repository, sửa giao diện trên main. Artifact: [hệ thiết kế](../he-thiet-ke.md), [45 tiêu chí và giới hạn nghiệm thu](../ui-acceptance.md), [log/ảnh](../bang-chung/dot-2b/). Tokens/component contract AVAILABLE; bàn giao 04/05/11/13 ACK PENDING. UX-01 chưa nghiệm thu toàn bộ do thiếu kiểm tra thiết bị thật/bàn phím ảo/hiệu năng/heap; không chốt API/PRD thay nhóm 02/10. Kết quả test/build tách biệt và ghi theo log cuối trong artifact, không tự nâng gate backend/SQL.
+
+## Kiểm chứng production giao diện mới — 07/11/2026
+
+Đã đồng bộ main1894c453775ebb48a28c6111dba737199542bb1c, giữ hệ thiết kế Nhóm03. Build root production exit0; E2E toàn bộ **44 đạt,0 lỗi,10 skipped/54**, exit0,3,4phút.10skip gồm4viewport chỉ chạy desktop và1test contractUI chỉ chạy desktop, không lặp trên2profile mobile. [Log](bang-chung-tiep-quan-20261106/e2e-main-1894c45.log), [exitcode](bang-chung-tiep-quan-20261106/status-main-1894c45.json). Không sửa timeout/assertions để đạt. Đây là lần kiểm chứng mới; giữ nguyên log42đạt/1timeout của Nhóm03, chưa kết luận nguyên nhân timeout lịch sử. Chromium giả lập không thay thiết bị thật; UX/SQL/auth/ledger/releaseP0 vẫn còn mở.

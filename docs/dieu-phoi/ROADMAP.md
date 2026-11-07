@@ -109,3 +109,7 @@ Toàn bộ điều kiện, nguồn, blocker và gate: [Đề xuất Đợt 2](de
 ## Đợt 4 — rà soát tiếp ngày 07/11/2026 (Asia/Saigon)
 
 PARTIAL: bàn giao tài liệu; Website/APK mới BLOCKED. Đã nhận [kết quả Nhóm 13 Đợt 2A](dot-2a/13-kiem-thu-nen-tang.md): unit 70/70, backend 25/25, build đạt, E2E 43 đạt/8 skip; đây là kết quả được ghi trong báo cáo QA, không phải nghiệm thu release cuối. ARCH-01/SEC-01/DB-01/TX-01/QA-01/OPS-01 còn BLOCKED; native APK NOT RUN. Tiếp theo: 13 chốt nghiệm thu đúng phạm vi/SHA; 01/14 thống nhất version/changelog; 14 xác minh CI, môi trường và baseline rollback; 05/14 build và kiểm chữ ký/package/logo/version, thiết bị thật. [Bàn giao và recovery plan](ban-giao-dot-4-20261106.md). Không phát hành dịch vụ ngân hàng thật hoặc giao dịch tiền thật.
+
+## Kiểm chứng production giao diện mới — 07/11/2026
+
+Đã đồng bộ main1894c453775ebb48a28c6111dba737199542bb1c, giữ hệ thiết kế Nhóm03. Build root production exit0; E2E toàn bộ **44 đạt,0 lỗi,10 skipped/54**, exit0,3,4phút.10skip gồm4viewport chỉ chạy desktop và1test contractUI chỉ chạy desktop, không lặp trên2profile mobile. [Log](bang-chung-tiep-quan-20261106/e2e-main-1894c45.log), [exitcode](bang-chung-tiep-quan-20261106/status-main-1894c45.json). Không sửa timeout/assertions để đạt. Đây là lần kiểm chứng mới; giữ nguyên log42đạt/1timeout của Nhóm03, chưa kết luận nguyên nhân timeout lịch sử. Chromium giả lập không thay thiết bị thật; UX/SQL/auth/ledger/releaseP0 vẫn còn mở.

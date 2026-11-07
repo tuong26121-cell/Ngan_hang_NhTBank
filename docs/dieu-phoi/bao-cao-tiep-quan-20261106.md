@@ -77,3 +77,7 @@ Thiếu đầu vào để bước tiếp: identitydevelopment/trustedissuer/conf
 ## Đồng bộ nguồn SQL và điều phối mới
 
 Push đầu bị từ chối fast-forward vì main nhận b2cb329/6cce289. Đã fetch và merge thông thường, giữ báo cáo Đợt3 và gói SQLv2.1 của Nhóm07. Không forcepush. CandidateSQLpatch cũ trong task này được đánh dấu lịch sử, không áp chồng hoặc thay thế gói mới. Gói mới có diff/assertions/staticchecker, vẫn SQL NOTRUN/DB-01BLOCKED. Chưa có thay đổi frontend/backend runtime/workflow/package từ hai commit đồng thời này, nên kết quả124tests không bị đổi đầu vào.
+
+## Kiểm chứng production giao diện mới — 07/11/2026
+
+Đã đồng bộ main1894c453775ebb48a28c6111dba737199542bb1c, giữ hệ thiết kế Nhóm03. Build root production exit0; E2E toàn bộ **44 đạt,0 lỗi,10 skipped/54**, exit0,3,4phút.10skip gồm4viewport chỉ chạy desktop và1test contractUI chỉ chạy desktop, không lặp trên2profile mobile. [Log](bang-chung-tiep-quan-20261106/e2e-main-1894c45.log), [exitcode](bang-chung-tiep-quan-20261106/status-main-1894c45.json). Không sửa timeout/assertions để đạt. Đây là lần kiểm chứng mới; giữ nguyên log42đạt/1timeout của Nhóm03, chưa kết luận nguyên nhân timeout lịch sử. Chromium giả lập không thay thiết bị thật; UX/SQL/auth/ledger/releaseP0 vẫn còn mở.

@@ -70,3 +70,20 @@ export function createTransferFingerprint(principalId, request) {
   });
   return createHash("sha256").update(canonical, "utf8").digest("hex");
 }
+
+/**
+ * Validate the opaque replay key at the API boundary. A key is NOT a
+ * confirmation token or authentication credential. Never trim, lowercase,
+ * or otherwise normalize it: byte-for-byte equality matters for replay.
+ * The future durable namespace must include trusted principal + operation scope.
+ */
+export function canonicalizeIdempotencyKey(key) {
+  if (
+    typeof key !== "string" ||
+    key.length < 1 ||
+    key.length > 128 ||
+    !/^[A-Za-z0-9_-]+$/.test(key)
+  )
+    invalid();
+  return key;
+}

@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   canonicalizeTransferRequest,
   createTransferFingerprint,
@@ -134,5 +135,46 @@ test("Idempotency-Key từ chối key trống, ký tự lạ và quá dài", () 
     undefined, {}, ["a"]
   ]) {
     assert.throws(() => canonicalizeIdempotencyKey(key), /VALIDATION_ERROR/);
+  }
+});
+
+test("OpenAPI Idempotency-Key đồng nhất với validator backend tại ranh giới", async () => {
+  const contract = JSON.parse(
+    await readFile(
+      new URL("../../docs/dieu-phoi/dot-2a/hop-dong-api-v1.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const operation = contract.paths["/v1/sandbox/transfers"].post;
+  const parameter = contract.components.parameters.IdempotencyKey;
+  const schema = contract.components.schemas.IdempotencyKey;
+  assert.equal(operation["x-implementation-status"], "PROPOSED");
+  assert.ok(operation.parameters.some((p) =>
+    p.$ref === "#/components/parameters/IdempotencyKey"
+  ));
+  assert.equal(parameter.in, "header");
+  assert.equal(parameter.name, "Idempotency-Key");
+  assert.equal(parameter.required, true);
+  assert.equal(parameter.schema.$ref, "#/components/schemas/IdempotencyKey");
+  assert.equal(schema.type, "string");
+  assert.equal(schema.minLength, 1);
+  assert.equal(schema.maxLength, 128);
+  assert.equal(schema.pattern, "^[A-Za-z0-9_-]+$");
+  const regex = new RegExp(schema.pattern, "u");
+  for (const value of [
+    "A", "z", "_", "-", "A".repeat(128), "", "A".repeat(129),
+    "A.b", "A b", "á", "A\\nB", null, 10,
+  ]) {
+    const schemaAllows = typeof value === "string" &&
+      value.length >= schema.minLength &&
+      value.length <= schema.maxLength && regex.test(value);
+    let runtimeAllows = true;
+    try {
+      assert.equal(canonicalizeIdempotencyKey(value), value);
+    } catch (error) {
+      assert.match(error.message, /VALIDATION_ERROR/);
+      runtimeAllows = false;
+    }
+    assert.equal(runtimeAllows, schemaAllows, String(value));
   }
 });

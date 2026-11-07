@@ -159,8 +159,8 @@ export default function Dashboard({ balance, transactions, navigate }) {
           <section className="panel reference-cashflow">
             <div className="section-title">
               <div>
-                <span className="eyebrow">DỮ LIỆU MẪU · THÁNG 10/2026</span>
-                <h2>Dòng tiền tháng này</h2>
+                <span className="eyebrow">DỮ LIỆU DEMO · TRONG PHIÊN</span>
+                <h2>Dòng tiền trong phiên</h2>
               </div>
               <TrendingUp size={22} />
             </div>
@@ -188,7 +188,8 @@ export default function Dashboard({ balance, transactions, navigate }) {
               </div>
             ))}
             <p className="cashflow-caption">
-              Chỉ tính giao dịch trong Sandbox.
+              Gồm dữ liệu mẫu và giao dịch demo trong phiên; không phải sao kê
+              ngân hàng.
             </p>
           </section>
         </div>

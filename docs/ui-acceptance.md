@@ -177,8 +177,6 @@ Chưa nghiệm thu chính thức: các P0 cần thiết bị thật, rà tương
 
 Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm tra: head `87c32ac44eef3e5084f4aac60d69ca44234f85a1`; commit bổ sung được nhận diện bằng lịch sử PR #19. Bổ sung project Pixel 7 và bằng chứng tải script/CSS; giữ dữ liệu và ứng dụng hiện có. Chưa tái hiện lỗi người dùng trên thiết bị thật, chưa xác định nguyên nhân gốc, chưa nghiệm thu P0 và không kết luận đã sửa xong. Đối chiếu đủ 45 mã trong báo cáo; không thay trạng thái các phép đo chưa thực hiện.
 
-
-
 ## PR #19 — sửa thao tác chuyển giao diện (30/10/2026)
 
 - **Phát hiện từ mã nguồn:** `DisplaySwitcher` trước bản sửa dùng `<a href="?view=...">`, tạo điều hướng toàn trang. NhTBank giữ `authenticated`, số dư mô phỏng, lịch sử phát sinh trong React `useState`; tải lại làm mất toàn bộ phiên. Đường chuyển chế độ chỉ thay đổi CSS `html[data-display]`, không đòi hỏi reload.
@@ -203,7 +201,6 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - A01/A03/B01/C01/C02/C05: cần rà thao tác máy thật, focus, tương phản, kích thước nút và thanh điều hướng; chưa đánh dấu nghiệm thu P0 khi chưa có bằng chứng trực tiếp.
 - Không thay đổi giao dịch Sandbox, không dùng PIN demo để truy cập ngân hàng và không mở API giao dịch thật.
 
-
 ## Bổ sung 30/10/2026 — Logo NT, 20 biểu tượng màu và màn xác thực một trang
 
 - Nguồn icon: hai ảnh chủ ứng dụng gửi trực tiếp. Logo **NT** riêng từ ảnh nền xanh lam/vàng; bỏ logo **V xanh lá** trong mockup. Bộ 20 biểu tượng chức năng được cắt giữ tỷ lệ và gom vào atlas WebP 5×4, ánh xạ trong `ReferenceArt.jsx`.
@@ -212,7 +209,6 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - A04/A05/C03 (logo và icon), B01/B05 (bố cục), C01/C02/C05 (nút, phản hồi), D và E (thông báo bảo mật/riêng tư) phải được rà soát trên thiết bị thật. **Không tự đánh dấu đạt toàn bộ 45 tiêu chí.**
 - Tài nguyên ảnh đính kèm đi theo `import.meta.env.BASE_URL` để tương thích đường dẫn GitHub Pages khi build production. Cần kiểm tra riêng khi xuất HTML standalone.
 - Bằng chứng E2E/CI và ảnh nghiệm thu chỉ được đánh dấu đạt sau khi GitHub Actions trên commit cuối thành công. Camera thật, bàn phím ảo, các thiết bị nhỏ vẫn chưa được kiểm tra trực tiếp.
-
 
 ## Logo launcher va nhan phien ban — 03/11/2026
 
@@ -228,6 +224,7 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 ## Kiểm chứng Đợt2B — 06/11/2026
 
 Không thay CSS/component trong lượt này. WorkflowAPK được sửa để E2E dùng productionrootdist thaydevserver.43ca đạt,8ca viewport desktop bỏ qua trong2mobileprojects (51tổng); indexHTTPkhớpdist và asset khôngđổi tronglầnchạy. [Log](dieu-phoi/bang-chung-tiep-quan-20261106/production-e2e.log). Đây là Chromiumemulation trênLinux, không chấm45tiêu chí hoặc máy thật đãnghiệmthu. P0máy thật/safearea/keyboard/contrasttoàndiện vẫn còn mở.
+
 ## Đợt 2B — Nhóm 03, UX-01 — 06/11/2026
 
 Nguồn main trước sửa `7192af6`; commit thực thi xác định bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Đặc tả bàn giao: [he-thiet-ke.md](he-thiet-ke.md). Bộ bằng chứng: [dot-2b](bang-chung/dot-2b/). Baseline 4/4 viewport đạt; ảnh trước/sau 390 px. Không sửa backend/lib, dữ liệu, nhãn Sandbox hoặc luồng giao dịch.
@@ -307,3 +304,83 @@ Bàn phím/focus/Escape/reduced-motion:4/4 đạt. Android production chạy l�
 Cập nhật bằng chứng A03/C03/D05/G01/G02/G03/G04/G05/H01 trong phạm vi lab; **UX-01 vẫn PARTIALLY VERIFIED**, chưa nghiệm thu toàn bộ45 tiêu chí. Thiết bị thật, keyboard ảo, Safari, safe-area, screen reader, field performance, contrast đầy đủ và ACK bên nhận còn chờ. Patch không đổi nghiệp vụ; commit dùng `[khong-trien-khai-web]`.
 
 Đối chiếu pixel cuối:303 dòng mẫu ở390px,0 cờ sau cuộn tránh overlay; ghi chú camera11,37:1, chữ giới thiệu QR sau sửa10,18:1. Giữ dữ liệu trước/sau cuộn. Hồi quy responsive320/360/390/430 và scanner cuối5/5 đạt. Không thay phạm vi giới hạn nghiệm thu nêu trên.
+
+## Đợt 2B — Website / Issue #35 — 06/11/2026
+
+### Nguồn, phạm vi và trạng thái API
+
+- Source nền: `7192af6`, đã đồng bộ `main` đến `6cce289` và đọc cập nhật contract/design/PRD; commit bàn giao: `git log -1 --format=%H -- frontend/src/App.jsx`. Các bằng chứng cũ phía trên là lịch sử, không thay cho kết quả đợt này.
+- Đã đọc trực tiếp source Website, `docs/dieu-phoi/dot-1/03-design-system.md` (blob `a5c474b455744c5eeaf510721617d8d03fecc8bb`), `02-kien-truc-api-v1.md` (`3cc803fef8bdae87d58aeb5fb16d6538fd9a96a3`), `06-bao-mat-rbac.md` (`bf6fb79de729d5d7efb6204dfb8b32fb18bd84f9`), PRD Nhóm 10 và `ui-standard.md`.
+- Các endpoint `/v1/me`, accounts, transactions, transfers vẫn **PROPOSED**; chưa có contract field-level, Auth server và ledger backend được nghiệm thu. Không tích hợp API, gateway SePay hay dữ liệu thật. ARCH-01/SEC-01/TX-01/DB-01 không được nâng PASS.
+- Giữ token hiện hữu theo mapping Nhóm 03; không dùng bảng màu nháp để thay nhận diện. Không thêm dependency hoặc provider.
+
+### Màn hình và thay đổi
+
+| Màn                              | Kết quả trong phạm vi demo Website                                                                                                                                                                                                                                         |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trang chủ / dashboard / số dư    | Giữ dashboard, ẩn/hiện số dư và lối tắt; sửa “tháng này” thành “trong phiên” vì tổng bao gồm dữ liệu mẫu tháng 10 và giao dịch mới.                                                                                                                                        |
+| Đăng nhập / đăng ký / khôi phục  | Giữ auth cục bộ, thông báo lỗi/đang xử lý và fallback storage; không cho đổi chế độ khi đang gửi; input 16px/44px, cho cuộn ở màn thấp; cảnh báo không dùng mật khẩu thật luôn hiển thị.                                                                                   |
+| Chuyển khoản sandbox / biên nhận | Giữ kiểm tra số tiền VNĐ nguyên, số dư, PIN demo và khóa gửi trùng; số dư/lịch sử cập nhật cùng phiên. Không coi chống double-click là idempotency backend.                                                                                                                |
+| Lịch sử                          | Lọc tiền vào/ra, tìm kiếm và ngày bao gồm hai đầu theo giờ Việt Nam; báo khoảng ngày đảo; đếm kết quả với live region, empty state và xóa bộ lọc. Bộ lọc được xóa khi đăng xuất. Tất cả giao dịch của mô hình hiện tại đều hoàn tất mô phỏng, không giả trạng thái server. |
+| Hồ sơ / bảo mật                  | Hiển thị username đăng nhập demo riêng với chủ tài khoản mẫu dùng chung; PIN chỉ xác nhận giao dịch demo. Sửa hướng dẫn hỗ trợ cũ nhầm PIN là đăng nhập.                                                                                                                   |
+| Tiết kiệm / vay                  | Màn **BẢN XEM TRƯỚC · DEMO**, có đường về tổng quan; chưa mở sổ, tính lãi, nhận tiền hoặc nhận hồ sơ vay theo PRD hiện hành.                                                                                                                                               |
+| Nạp demo / quét QR / tiện ích    | Giữ luồng hiện có; cảnh báo sandbox và permission/error states. Không kích hoạt dịch vụ thanh toán.                                                                                                                                                                        |
+| Bàn phím                         | Skip link đến main; chuyển màn đưa focus đến h1 mới. Giữ dialog/Escape và reduced motion.                                                                                                                                                                                  |
+
+Không tạo trạng thái “đang gọi API”/“hết phiên server” giả cho dữ liệu bộ nhớ đồng bộ. Lỗi API và expired-session thật còn chờ contract; không có phiên server để mô phỏng như đang vận hành.
+
+### Kiểm chứng đợt này
+
+Kết quả local cuối ngày 07/11/2026 (Asia/Saigon), source đồng bộ `6cce289` + bản sửa Website:
+
+- `npm test`: **70/70 đạt**, [log](bang-chung/website-dot-2b/unit.txt).
+- `npm run test:backend`: **25/25 đạt**, gồm bộ kiểm thử nền tảng mới trên main, [log](bang-chung/website-dot-2b/backend.txt).
+- `npm run build -- --base /Ngan_hang_NhTBank/`: **đạt**, [log](bang-chung/website-dot-2b/build.txt). Cảnh báo bundle JS 514 kB còn tồn tại; chưa coi đây là đo hiệu suất.
+- `NHT_CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e`: **49 đạt, 8 bỏ qua, 0 lỗi**, [log](bang-chung/website-dot-2b/e2e.txt). 8 ca viewport được bỏ qua có chủ đích trên mobile/android vì đã chạy đủ 4 chiều rộng trên desktop. 6 ca Website mới đều đạt trên ba cấu hình.
+- `npm run lint`: **không chạy được — thiếu script**, [log](bang-chung/website-dot-2b/lint.txt). Không bổ sung linter/dependency ngoài phạm vi. Prettier các tệp sửa và `git diff --check` đạt; [log định dạng](bang-chung/website-dot-2b/dinh-dang.txt).
+- Đã xem ảnh [trang chủ 320px](bang-chung/website-dot-2b/trang-chu-320.png) và [tiết kiệm desktop](bang-chung/website-dot-2b/tiet-kiem-desktop.png). Thanh điều hướng cố định trong ảnh toàn trang ở vị trí viewport gốc; nội dung cuộn được.
+- Review độc lập không còn blocker; fixture request test đã sửa trước run cuối. Bằng chứng Actions được bổ sung tại Issue #35 sau push, không suy từ local thành CI PASS.
+
+Môi trường: Linux, Node 24.19.0, Chromium 154.0.8037.57; mobile/iPhone 13/Pixel 7 trong Playwright là cấu hình giả lập, không phải thiết bị thật. Không có ESLint/lint script trong repo; kiểm tra Prettier tệp thay đổi và `git diff --check` được ghi riêng, không gọi đó là lint ngữ nghĩa.
+
+### Đối chiếu 45 mã của Đợt 2B
+
+| Mã                  | Bằng chứng / giới hạn của đợt này                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| A01,A02,A04,A05     | Giữ hệ màu/logo và shared controls; không thay token nền.                                                   |
+| A03                 | Chưa rà tương phản toàn diện; nút auth chuyển nền đặc #0c3699/chữ trắng. Không nghiệm thu toàn bộ contrast. |
+| B01,B02,B03,B04     | Giữ header, số dư mẫu và lối tắt; hồi quy hành trình/ẩn hiện số dư.                                         |
+| B05,B06             | E2E responsive; spacing cần review thẩm mỹ/thiết bị thật riêng.                                             |
+| C01                 | E2E đo vùng chạm các màn chính; auth được đặt input/nút ≥44px.                                              |
+| C02,C03,C04,C05,C06 | Shared states/icons; aria-current/pressed; unit gửi trùng và disabled, auth không chuyển mode khi busy.     |
+| D01,D02,D04,D06     | Giữ motif/trang trí; không thêm animation/overlay chặn nội dung.                                            |
+| D03                 | Chưa đo frame rate.                                                                                         |
+| D05                 | Giữ reduced-motion; E2E bật reduce.                                                                         |
+| E01,E02,E03,E04     | Giữ năm tab; E2E điều hướng và focus nội dung mới; skip link.                                               |
+| E05                 | Safe area có CSS, chưa thử thiết bị thật.                                                                   |
+| F01,F02             | Android/iOS thật chưa xác minh; không dùng Chromium giả lập để kết luận.                                    |
+| F03,F04             | E2E các viewport 320/360/390/430 và xoay; auth thêm 320×480.                                                |
+| F05                 | Font input 16px và cuộn; bàn phím ảo thật và text zoom chưa xác minh.                                       |
+| G01,G02,G03,G04     | Chưa đo LCP/INP/CLS/heap dài hạn.                                                                           |
+| G05,G06             | Hành trình E2E kiểm lỗi JS; hiệu suất thiết bị thật chưa xác minh.                                          |
+| H01,H02,H03         | Hồi quy unit/E2E; giữ dữ liệu mẫu, transfer/QR, thêm bộ lọc không thêm bước chuyển tiền.                    |
+| H04,H05,H06         | Nhãn demo/preview rõ, không thêm secret/API; QR và tiền chỉ mô phỏng.                                       |
+
+Chưa nghiệm thu chính thức UX-01: P0 thiết bị thật, rà contrast toàn diện và bộ nhớ dài hạn còn chưa xác minh. Phần nghiệm thu backend nằm ngoài kết quả Website demo này.
+
+### Đồng bộ liên nhóm trước push — 07/11/2026
+
+Push đầu bị từ chối do main tiến đến `d61e714`; đã rebase, giữ nguyên phần nghiệm thu của Nhóm 03 và cập nhật CI của Nhóm 14. Đã đọc `docs/he-thiet-ke.md`, CSS token cuối cascade `he-thiet-ke.css`, contract máy đọc `hop-dong-api-v1.json` (draft.1) và `mo-khoa-auth-20261107.md`. Contract hiện có field-level draft và module JWT/authorization local, nhưng chưa có route v1, trust config development, ledger/confirmation và integration gate. Vì vậy vẫn không nối API. Các nhận định “chưa có field-level contract/Auth” ở phần nguồn trước đó mô tả snapshot 7192af6/6cce289; không thay thế hiện trạng mới này.
+
+CSS auth bổ sung cục bộ được bỏ khi hợp nhất vì Design System Nhóm 03 hiện đã cung cấp cuộn dọc, input 16px/44px, nút 44px và cảnh báo hiển thị. Website dùng CSS token chung được nhập cuối thay vì tạo hệ override song song. Giữ thay đổi busy/state trong AuthGate. Kết quả local của snapshot trước giữ nguyên tính lịch sử; kiểm thử bản hợp nhất được ghi bổ sung dưới đây.
+
+### Kết quả bản hợp nhất cuối trước push
+
+- Nền `0a363c3`: thay đổi sau `d61e714` chỉ bổ sung tài liệu và hai ca backend, không đổi runtime Website. Không ghi đè cập nhật từ nhóm khác.
+- **70/70 unit**, **75/75 backend**, **5/5 contract**, **41/41 API fixtures** và **build subpath đạt**. Log tương ứng: [unit](bang-chung/website-dot-2b/unit-hop-nhat.txt), [backend](bang-chung/website-dot-2b/backend-hop-nhat.txt), [contract](bang-chung/website-dot-2b/contract-hop-nhat.txt), [fixtures](bang-chung/website-dot-2b/api-hop-nhat.txt), [build](bang-chung/website-dot-2b/build-hop-nhat.txt).
+- **53 E2E đạt, 10 bỏ qua có chủ đích, 0 lỗi**; [log](bang-chung/website-dot-2b/e2e-hop-nhat.txt). 8 ca viewport và 2 ca computed-token trùng được bỏ qua trên cấu hình mobile/android, đã chạy ở desktop. Ca điều hướng nhanh của Nhóm 14 và 6 ca Website mới đều đạt. Các fixtures API là kiểm tra schema, không là gọi API server.
+- Prettier tệp thay đổi và `git diff --check` đạt. Lint vẫn thiếu script, không báo PASS.
+- Ảnh bản hợp nhất: [trang chủ 320px](bang-chung/website-dot-2b/trang-chu-320-hop-nhat.png), [tiết kiệm desktop](bang-chung/website-dot-2b/tiet-kiem-desktop-hop-nhat.png).
+- Theo preflight CI Nhóm 14 trong `docs/dieu-phoi/dot-2b/ops-01.md`, upload artifact/budget chưa được xác minh. Commit dùng `[khong-luu-artifact] [khong-trien-khai-web]`: giữ toàn bộ test/build/checksum, bỏ upload và deploy Pages. Không coi mã trên main là website công khai đã cập nhật. Kết quả workflow đúng SHA được ghi ở Issue #35 sau push; không sửa workflow để che lỗi test.
+
+Giới hạn còn nguyên: API chưa đủ gate tích hợp, tiết kiệm/vay chỉ preview, thiết bị thật/Safari/bàn phím ảo/text zoom và hiệu suất dài hạn chưa nghiệm thu. Giữ Issue #35 mở cho phần phụ thuộc.

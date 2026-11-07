@@ -158,10 +158,20 @@ export function TransactionList({ transactions, compact = false }) {
     </div>
   );
 }
-export function Page({ children, className = "" }) {
+export function Page({ children, className = "", focusOnMount = false }) {
+  const content = useRef(null);
+  useEffect(() => {
+    if (!focusOnMount) return;
+    const heading = content.current?.querySelector("h1");
+    if (heading) {
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
+  }, [focusOnMount]);
   const reduce = useReducedMotion();
   return (
     <motion.div
+      ref={content}
       className={className}
       initial={reduce ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}

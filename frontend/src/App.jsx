@@ -2,7 +2,6 @@ import { useCallback, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import {
   LogOut,
-  Bell,
   ChevronDown,
   ArrowUpRight,
   ShieldCheck,
@@ -45,7 +44,37 @@ export default function App() {
   const [help, setHelp] = useState(false);
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
-  const login = useCallback((username) => { setCurrentUser(username); setAuthenticated(true); }, []);
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const dateError = fromDate && toDate && fromDate > toDate;
+  const visibleTransactions = transactions.filter((t) => {
+    const day = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Ho_Chi_Minh",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date(t.date));
+    return (
+      !dateError &&
+      (!fromDate || day >= fromDate) &&
+      (!toDate || day <= toDate) &&
+      (filter === "all" ||
+        (filter === "income" ? t.amount > 0 : t.amount < 0)) &&
+      `${t.name} ${t.detail}`
+        .toLocaleLowerCase("vi")
+        .includes(query.trim().toLocaleLowerCase("vi"))
+    );
+  });
+  function clearFilters() {
+    setFilter("all");
+    setQuery("");
+    setFromDate("");
+    setToDate("");
+  }
+  const login = useCallback((username) => {
+    setCurrentUser(username);
+    setAuthenticated(true);
+  }, []);
   function navigate(next) {
     setPage(next);
     setNotifications(false);
@@ -70,8 +99,7 @@ export default function App() {
     setCurrentUser("");
     setBalance(INITIAL_BALANCE);
     setTransactions(initialTransactions);
-    setFilter("all");
-    setQuery("");
+    clearFilters();
     setPage("dashboard");
     setNotifications(false);
     setHelp(false);
@@ -92,6 +120,9 @@ export default function App() {
     <div
       className={`app-shell ${page === "dashboard" ? "home-shell" : "detail-shell"}`}
     >
+      <a className="skip-link" href="#main-content">
+        Đến nội dung chính
+      </a>
       <aside className="sidebar">
         <Brand />
         <span className="sidebar-label">KHÔNG GIAN CỦA BẠN</span>
@@ -202,9 +233,9 @@ export default function App() {
           <ShieldCheck size={16} />
           <span>Ngân hàng mô phỏng · Không giao dịch tiền thật</span>
         </div>
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           <AnimatePresence mode="wait">
-            <Page key={page}>
+            <Page key={page} focusOnMount>
               {page === "dashboard" && (
                 <Dashboard
                   balance={balance}
@@ -259,18 +290,51 @@ export default function App() {
                         onChange={(e) => setQuery(e.target.value)}
                       />
                     </div>
-                    <TransactionList
-                      transactions={transactions.filter(
-                        (t) =>
-                          (filter === "all" ||
-                            (filter === "income"
-                              ? t.amount > 0
-                              : t.amount < 0)) &&
-                          `${t.name} ${t.detail}`
-                            .toLocaleLowerCase("vi")
-                            .includes(query.toLocaleLowerCase("vi")),
-                      )}
-                    />
+                    <div className="history-dates">
+                      <label htmlFor="history-from">
+                        Từ ngày
+                        <input
+                          id="history-from"
+                          type="date"
+                          value={fromDate}
+                          aria-invalid={Boolean(dateError)}
+                          aria-describedby={
+                            dateError ? "history-date-error" : undefined
+                          }
+                          onChange={(e) => setFromDate(e.target.value)}
+                        />
+                      </label>
+                      <label htmlFor="history-to">
+                        Đến ngày
+                        <input
+                          id="history-to"
+                          type="date"
+                          value={toDate}
+                          aria-invalid={Boolean(dateError)}
+                          aria-describedby={
+                            dateError ? "history-date-error" : undefined
+                          }
+                          onChange={(e) => setToDate(e.target.value)}
+                        />
+                      </label>
+                      <Button className="secondary" onClick={clearFilters}>
+                        Xóa bộ lọc
+                      </Button>
+                    </div>
+                    {dateError && (
+                      <p
+                        id="history-date-error"
+                        role="alert"
+                        className="auth-error"
+                      >
+                        Ngày kết thúc phải từ ngày bắt đầu trở đi.
+                      </p>
+                    )}
+                    <p role="status" className="muted">
+                      {visibleTransactions.length} giao dịch demo · Ngày theo
+                      giờ Việt Nam · Đã hoàn tất mô phỏng
+                    </p>
+                    <TransactionList transactions={visibleTransactions} />
                     <p className="muted text-xs mt-5">
                       Dữ liệu mẫu và giao dịch của phiên hiện tại. Đăng xuất
                       hoặc tải lại trang sẽ đặt lại dữ liệu.
@@ -294,10 +358,17 @@ export default function App() {
                     <div className="profile-body">
                       <span className="avatar large">NT</span>
                       <h2>{OWNER}</h2>
-                      <p className="muted">Thành viên NhTBank · Sandbox</p>
+                      <p className="muted">
+                        Hồ sơ mẫu dùng chung · Không phải thông tin ngân hàng
+                        của tài khoản đăng nhập
+                      </p>
                       <dl className="review-list">
                         <div>
-                          <dt>Chủ tài khoản</dt>
+                          <dt>Tên đăng nhập demo</dt>
+                          <dd>{currentUser}</dd>
+                        </div>
+                        <div>
+                          <dt>Chủ tài khoản mẫu</dt>
                           <dd>{OWNER}</dd>
                         </div>
                         <div>
@@ -309,15 +380,22 @@ export default function App() {
                           <dd>{money(balance)} VNĐ</dd>
                         </div>
                         <div>
-                          <dt>Bảo mật đăng nhập</dt>
-                          <dd>PIN mô phỏng 6 chữ số</dd>
+                          <dt>Xác nhận giao dịch demo</dt>
+                          <dd>
+                            PIN công khai 123456 · Không phải bảo mật ngân hàng
+                          </dd>
                         </div>
                         <div>
                           <dt>Lưu trữ dữ liệu</dt>
                           <dd>Trong bộ nhớ phiên</dd>
                         </div>
                       </dl>
-                      <Button className="secondary mt-4" onClick={() => navigate("settings")}>Mở cài đặt bảo mật</Button>
+                      <Button
+                        className="secondary mt-4"
+                        onClick={() => navigate("settings")}
+                      >
+                        Mở cài đặt bảo mật
+                      </Button>
                       <SecurityNote />
                       <Button
                         className="text-button mt-4"
@@ -369,8 +447,9 @@ export default function App() {
           <CircleHelp size={32} className="text-royal" />
           <h2 id="help-title">Chào bạn, chúng tôi ở đây.</h2>
           <p>
-            Đăng nhập và xác nhận giao dịch với PIN <strong>123456</strong>.
-            Chuyển tiền chỉ cập nhật số dư mô phỏng trong phiên này.
+            Đăng nhập bằng tài khoản demo đã đăng ký trên thiết bị. Xác nhận
+            giao dịch với PIN demo <strong>123456</strong>. Chuyển tiền chỉ cập
+            nhật số dư mô phỏng trong phiên này.
           </p>
           <p>
             Đăng xuất hoặc tải lại trang để khôi phục dữ liệu mẫu. QR được tạo
@@ -404,7 +483,7 @@ function ProductPage({ type, navigate }) {
         <span className={`shortcut-icon ${savings ? "purple" : "orange"}`}>
           {savings ? <Landmark size={32} /> : <Wallet size={32} />}
         </span>
-        <span className="tag mt-6">BẢN XEM TRƯỚC</span>
+        <span className="tag mt-6">BẢN XEM TRƯỚC · DEMO</span>
         <h2>
           {savings
             ? "Ươm mầm những điều tốt đẹp."

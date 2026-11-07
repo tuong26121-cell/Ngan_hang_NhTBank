@@ -1,0 +1,16 @@
+
+> nhtbank@1.0.1 test
+> vitest run
+
+
+ RUN  v5.0.5 /workspace/Ngan_hang_NhTBank
+
+
+ Test Files  7 passed (7)
+      Tests  70 passed (70)
+   Start at  22:22:22
+   Duration  6.92s (tests 58%, environment 25%, setup 8%, import 6%, transform 1%)
+
+    Isolate  7 workers spawned · ~300ms startup each (spawn + environment, per file)
+             at least ~1.80s faster with isolate: false — reuses workers across files instead of one per file
+

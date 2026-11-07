@@ -1,5 +1,6 @@
 name: Verify NhTBank main integration
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
   push:
@@ -15,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
       - name: Install dependencies
         run: npm ci
       - name: Unit and sandbox gateway tests
@@ -24,6 +25,8 @@ jobs:
         run: npm run test:hop-dong
       - name: Backend sandbox security tests
         run: npm run test:backend
+      - name: Kiem thu cau hinh APK
+        run: node --test scripts/kiem-thu/cau-hinh-apk.test.mjs
       - name: Build production web at GitHub Pages subpath
         run: npm run build -- --base /Ngan_hang_NhTBank/
       - name: Install Chromium for E2E
@@ -35,9 +38,10 @@ jobs:
             if curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null; then break; fi
             sleep 1
           done
+          curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null
           NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e -- --max-failures=1
       - name: Archive Playwright evidence
-        if: always()
+        if: ${{ always() && !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         uses: actions/upload-artifact@v7.0.2
         with:
           name: main-integration-playwright

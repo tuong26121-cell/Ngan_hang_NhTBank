@@ -1,7 +1,7 @@
 name: Check button interactions
 on:
   pull_request:
-    branches: ["NhTBank"]
+    branches: ["main"]
 permissions:
   contents: read
 jobs:
@@ -13,9 +13,11 @@ jobs:
       - uses: actions/setup-node@v7.1.0
         with:
           node-version: "22"
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
       - run: npm ci
       - run: npm test
+      - run: npm run test:backend
+      - run: npm run test:hop-dong
       - run: npm run build -- --base /Ngan_hang_NhTBank/
       - run: npx playwright install --with-deps chromium
       - name: Test production build at Pages subpath
@@ -25,9 +27,10 @@ jobs:
             if curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null; then break; fi
             sleep 1
           done
+          curl --fail --silent http://127.0.0.1:4173/Ngan_hang_NhTBank/ >/dev/null
           NHT_TEST_URL=http://127.0.0.1:4173/Ngan_hang_NhTBank/ npm run test:e2e -- --max-failures=1
       - uses: actions/upload-artifact@v7.0.2
-        if: always()
+        if: ${{ always() && !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         with:
           name: button-interaction-results
           path: |

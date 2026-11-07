@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     permissions:
       contents: read
       pages: read
@@ -27,7 +28,7 @@ jobs:
         uses: actions/setup-node@v7.1.0
         with:
           node-version: "22"
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v6.0.0
@@ -35,11 +36,38 @@ jobs:
         run: npm ci
       - name: Test application
         run: npm test
+      - name: Backend sandbox security tests
+        run: npm run test:backend
+      - name: Kiem thu hop dong API
+        run: npm run test:hop-dong
       - name: Build React application for the Pages path
         run: npm run build -- --base "${{ steps.pages.outputs.base_path }}/"
+      - name: Install Chromium for E2E
+        run: npx playwright install --with-deps chromium
+      - name: Kiem thu goi Website truoc khi trien khai
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort --base "$PAGES_BASE_PATH/" &
+          for attempt in {1..30}; do
+            if curl --fail --silent "http://127.0.0.1:4173$PAGES_BASE_PATH/" >/dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent "http://127.0.0.1:4173$PAGES_BASE_PATH/" >/dev/null
+          NHT_TEST_URL="http://127.0.0.1:4173$PAGES_BASE_PATH/" npm run test:e2e -- --max-failures=1
+      - name: Luu bang chung Chromium
+        if: ${{ always() && !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: bang-chung-pages-${{ github.sha }}
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 1
       - name: Keep the deployment static
         run: touch dist/.nojekyll
       - name: Upload website
+        if: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: dist
@@ -48,8 +76,9 @@ jobs:
 
   deploy:
     # APK-only merges may build without deploying the public website.
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[khong-trien-khai-web]')
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[khong-trien-khai-web]') && !contains(github.event.head_commit.message, '[khong-luu-artifact]')
     needs: build
+    timeout-minutes: 10
     runs-on: ubuntu-24.04
     permissions:
       pages: write

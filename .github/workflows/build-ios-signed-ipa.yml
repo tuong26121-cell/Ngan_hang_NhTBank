@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
       - name: Validate required signing configuration
         env:
           IOS_CERTIFICATE_P12_BASE64: ${{ secrets.IOS_CERTIFICATE_P12_BASE64 }}
@@ -60,6 +60,8 @@ jobs:
         run: |
           npm ci
           npm test
+          npm run test:backend
+          npm run test:hop-dong
           npm run build
       - name: Create iOS native project
         run: |
@@ -111,6 +113,7 @@ jobs:
           cp "$IPA_FILE" "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
           unzip -tq "$GITHUB_WORKSPACE/NhTBank-iOS-signed.ipa"
       - uses: actions/upload-artifact@v7.0.2
+        if: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         with:
           name: NhTBank-iOS-signed-IPA
           path: NhTBank-iOS-signed.ipa

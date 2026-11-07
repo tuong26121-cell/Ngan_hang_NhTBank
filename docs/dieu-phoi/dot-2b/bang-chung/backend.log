@@ -1,0 +1,37 @@
+
+> nhtbank@1.0.1 test:backend
+> node --test backend/tests/*.test.mjs
+
+✔ N13-AUTH-01 client role/owner headers and query cannot replace internal authentication (35.862713ms)
+✔ N13-SCOPE-01 client account query cannot retarget the configured provider account (8.891578ms)
+✔ N13-HMAC-01 signed timestamp offset -301 seconds (7.253762ms)
+✔ N13-HMAC-01 signed timestamp offset -300 seconds (5.024871ms)
+✔ N13-HMAC-01 signed timestamp offset 300 seconds (4.398062ms)
+✔ N13-HMAC-01 signed timestamp offset 301 seconds (3.348098ms)
+✔ N13-HMAC-02 semantically equal JSON with different raw bytes invalidates signature (3.4492ms)
+✔ N13-WH-01 ten concurrent valid replays all refuse ACK without durability (18.528222ms)
+✔ N13-WH-02 retry after server recreation still refuses ACK (6.5653ms)
+✔ N13-RETRY-01 upstream timeout is redacted; next independent request can succeed (4.505774ms)
+✔ HMAC accepts an exact raw-body signature within the timestamp window (1.371887ms)
+✔ HMAC rejects a modified body, wrong secret, malformed headers and stale timestamps (0.366539ms)
+✔ health endpoint is unauthenticated, non-sensitive and has defensive headers (31.325913ms)
+✔ unknown route returns 404 and transaction endpoint rejects non-GET (8.075594ms)
+✔ transactions endpoint rejects absent and malformed internal bearer credentials (7.241765ms)
+✔ transactions endpoint fails closed when sandbox configuration is missing or invalid (4.436611ms)
+✔ transactions endpoint calls only the fixed sandbox provider with bounded query and redirect rejection (3.402309ms)
+✔ transactions endpoint rejects provider records outside the configured sandbox account (3.264744ms)
+✔ transactions endpoint hides upstream errors and malformed payloads (5.793033ms)
+✔ webhook refuses to ACK a valid signature before durable storage exists (6.094294ms)
+✔ webhook rejects invalid HMAC without exposing details (5.105162ms)
+✔ webhook requires configured secret and strict JSON media type (5.775136ms)
+✔ webhook enforces the raw request body size ceiling (3.728568ms)
+✔ webhook route rejects non-POST requests (1.792116ms)
+✔ sandbox HTTP server applies bounded request/header/keep-alive settings (0.195193ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 339.549168

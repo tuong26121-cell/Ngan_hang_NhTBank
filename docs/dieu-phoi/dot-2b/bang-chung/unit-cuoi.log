@@ -1,0 +1,16 @@
+
+> nhtbank@1.0.1 test
+> vitest run
+
+
+ RUN  v5.0.5 /workspace/Ngan_hang_NhTBank
+
+
+ Test Files  7 passed (7)
+      Tests  70 passed (70)
+   Start at  01:57:42
+   Duration  8.75s (tests 51%, environment 28%, setup 9%, transform 6%, import 6%)
+
+Environment  jsdom was created 7 times · 2.18s total, 28% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments

@@ -1,0 +1,455 @@
+{
+  "queried_at": "2026-11-07 Asia/Saigon",
+  "retained_runs_examined": 260,
+  "note": "Snapshot read-only; includes 12 latest runs and latest retained run per workflow. New patch CI NOT RUN pending storage/billing preflight.",
+  "runs": [
+    {
+      "id": 42303579266,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "ba22b0dc5de7b14553036a19b240390025713c52",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303579266",
+      "created_at": "2026-11-06T22:17:41Z"
+    },
+    {
+      "id": 42303579263,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "ba22b0dc5de7b14553036a19b240390025713c52",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303579263",
+      "created_at": "2026-11-06T22:17:41Z"
+    },
+    {
+      "id": 42303532682,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "a1804def6498c700584df70c25cca6348ad5e373",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303532682",
+      "created_at": "2026-11-06T22:17:21Z"
+    },
+    {
+      "id": 42303532627,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "a1804def6498c700584df70c25cca6348ad5e373",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303532627",
+      "created_at": "2026-11-06T22:17:21Z"
+    },
+    {
+      "id": 42303497042,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "8e347f12de19dd824d2e9d366ebc8125152379fb",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303497042",
+      "created_at": "2026-11-06T22:17:05Z"
+    },
+    {
+      "id": 42303497018,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "8e347f12de19dd824d2e9d366ebc8125152379fb",
+      "head_branch": "main",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303497018",
+      "created_at": "2026-11-06T22:17:05Z"
+    },
+    {
+      "id": 42303479633,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "440bc47b1fd42920c4f42958e9c018d88cb38457",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303479633",
+      "created_at": "2026-11-06T22:16:58Z"
+    },
+    {
+      "id": 42303479629,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "440bc47b1fd42920c4f42958e9c018d88cb38457",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303479629",
+      "created_at": "2026-11-06T22:16:58Z"
+    },
+    {
+      "id": 42303431240,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "7e5470136a1b2eb9d8a0d03af0c0aea3ee436039",
+      "head_branch": "main",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303431240",
+      "created_at": "2026-11-06T22:16:34Z"
+    },
+    {
+      "id": 42303431078,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "7e5470136a1b2eb9d8a0d03af0c0aea3ee436039",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303431078",
+      "created_at": "2026-11-06T22:16:34Z"
+    },
+    {
+      "id": 42303427400,
+      "path": ".github/workflows/deploy-pages.yml",
+      "head_sha": "ad7033d1a22a9019bb18050a74379cdec8f03728",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303427400",
+      "created_at": "2026-11-06T22:16:33Z"
+    },
+    {
+      "id": 42303426253,
+      "path": ".github/workflows/verify-main-integration.yml",
+      "head_sha": "ad7033d1a22a9019bb18050a74379cdec8f03728",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42303426253",
+      "created_at": "2026-11-06T22:16:32Z"
+    },
+    {
+      "id": 41962787638,
+      "path": ".github/workflows/xay-dung-apk-android.yml",
+      "head_sha": "fb5a2f231c0d1ec210a7b2368cc41268695a0508",
+      "head_branch": "main",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/41962787638",
+      "created_at": "2026-11-05T03:37:44Z"
+    },
+    {
+      "id": 41962770440,
+      "path": ".github/workflows/build-ios-unsigned-ipa.yml",
+      "head_sha": "c01073c3fa838a794960112526c2829c8d206160",
+      "head_branch": "cap-nhat/logo-va-phien-ban-apk",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/41962770440",
+      "created_at": "2026-11-05T03:37:34Z"
+    },
+    {
+      "id": 41343413500,
+      "path": ".github/workflows/build-android-apk.yml",
+      "head_sha": "20285a017d16a2e2774cc8e36725f9ffd30baad8",
+      "head_branch": "xay-dung/apk-android-thu-nghiem",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/41343413500",
+      "created_at": "2026-11-01T19:46:24Z"
+    },
+    {
+      "id": 41006554143,
+      "path": ".github/workflows/check-buttons.yml",
+      "head_sha": "02976e9ff35fe63c8655daeb723a234519378d8b",
+      "head_branch": "fix/button-interactions-20261030",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/41006554143",
+      "created_at": "2026-10-30T05:06:25Z"
+    },
+    {
+      "id": 40798560630,
+      "path": ".github/workflows/jekyll-gh-pages.yml",
+      "head_sha": "08b40d34f6bb17826767190b8032c5a825ed2c4c",
+      "head_branch": "NhTBank",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40798560630",
+      "created_at": "2026-10-29T01:08:23Z"
+    },
+    {
+      "id": 40798560623,
+      "path": ".github/workflows/Mau_xay_dung_trien_khai.yml",
+      "head_sha": "08b40d34f6bb17826767190b8032c5a825ed2c4c",
+      "head_branch": "NhTBank",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40798560623",
+      "created_at": "2026-10-29T01:08:23Z"
+    },
+    {
+      "id": 40788649381,
+      "path": "dynamic/codespaces/create_codespaces_prebuilds",
+      "head_sha": "1d7aa9537dff94611b884c7b84fb2d4526d41f99",
+      "head_branch": "main",
+      "event": "dynamic",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40788649381",
+      "created_at": "2026-10-28T23:37:29Z"
+    },
+    {
+      "id": 40764339514,
+      "path": ".github/workflows/verify-platform.yml",
+      "head_sha": "bfb42d897003a9b246f14ccddcc868675e85fd4d",
+      "head_branch": "codex/resilient-transfers-v2-20261029",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40764339514",
+      "created_at": "2026-10-28T20:33:26Z"
+    },
+    {
+      "id": 40368801822,
+      "path": ".github/workflows/build-mobile-previews.yml",
+      "head_sha": "7a10c81fa85e1a4ed95b351a6a80f2b7f93bfcf5",
+      "head_branch": "feature/nhtbank-mobile-ios-2026-10",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40368801822",
+      "created_at": "2026-10-26T17:27:32Z"
+    },
+    {
+      "id": 40328448945,
+      "path": ".github/workflows/deploy-web.yml",
+      "head_sha": "a4a544549dc1f2948b10e568da9c24391f4c7a5c",
+      "head_branch": "codex/jade-redesign-20261026",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40328448945",
+      "created_at": "2026-10-26T13:11:30Z"
+    },
+    {
+      "id": 40210132050,
+      "path": "dynamic/pages/pages-build-deployment",
+      "head_sha": "faf5fda5674a836113f8ff830177ee3ace71216e",
+      "head_branch": "gh-pages",
+      "event": "dynamic",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/40210132050",
+      "created_at": "2026-10-25T16:06:56Z"
+    }
+  ],
+  "latest_jobs": [
+    {
+      "id": 42303579263,
+      "jobs": [
+        {
+          "id": 128187215219,
+          "name": "integration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 42303579263,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v7.0.1",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v7.1.0",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Unit and sandbox gateway tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Backend sandbox security tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Build production web at GitHub Pages subpath",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Install Chromium for E2E",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Test Android and Windows interactions against production build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Archive Playwright evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Post Run actions/setup-node@v7.1.0",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 19
+            },
+            {
+              "name": "Post Run actions/checkout@v7.0.1",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 20
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 21
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 42303579266,
+      "jobs": [
+        {
+          "id": 128187293889,
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 42303579266,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Check out source",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Configure Pages",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Test application",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Build React application for the Pages path",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Keep the deployment static",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Upload website",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Post Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            },
+            {
+              "name": "Post Check out source",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 18
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 19
+            }
+          ]
+        },
+        {
+          "id": 128187464864,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "skipped",
+          "run_id": 42303579266,
+          "logs_url": null,
+          "steps": null
+        }
+      ]
+    },
+    {
+      "id": 42303497042,
+      "jobs": []
+    }
+  ]
+}

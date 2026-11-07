@@ -1,0 +1,5 @@
+
+> nhtbank@1.0.1 preview
+> vite preview frontend --config vite.config.js --host 127.0.0.1 --host 127.0.0.1 --port 4173 --strictPort --base /Ngan_hang_NhTBank/
+
+  ➜  Local:   http://127.0.0.1:4173/Ngan_hang_NhTBank/

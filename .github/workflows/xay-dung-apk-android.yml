@@ -5,6 +5,26 @@ on:
   push:
     branches: [main, cap-nhat/logo-va-phien-ban-apk]
     paths:
+      - 'backend/**'
+      - 'e2e/**'
+      - 'playwright.config.js'
+      - 'scripts/kiem-thu/**'
+      - 'frontend/**'
+      - 'tai-nguyen/android/**'
+      - 'scripts/cau-hinh-apk.mjs'
+      - 'scripts/thong-tin-phien-ban.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+      - 'capacitor.config.json'
+      - '.github/workflows/xay-dung-apk-android.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'e2e/**'
+      - 'playwright.config.js'
+      - 'scripts/kiem-thu/**'
       - 'frontend/**'
       - 'tai-nguyen/android/**'
       - 'scripts/cau-hinh-apk.mjs'
@@ -33,7 +53,7 @@ jobs:
         uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
       - name: Cai dat Java
         uses: actions/setup-java@v6.1.0
         with:
@@ -44,6 +64,7 @@ jobs:
           npm ci
           npm test
           npm run test:hop-dong
+          npm run test:backend
           node --test scripts/kiem-thu/cau-hinh-apk.test.mjs
       - name: Xay dung tai nguyen web
         run: npm run build
@@ -76,6 +97,15 @@ jobs:
           fi
           cmp dist/index.html /tmp/nhtbank-apk-preview-index.html
           NHT_TEST_URL=http://127.0.0.1:4173/ npm run test:e2e -- --max-failures=1
+      - name: Luu bang chung Chromium APK
+        if: ${{ always() && !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: bang-chung-apk-${{ github.sha }}
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 1
       - name: Chuan bi du an Android Capacitor
         run: |
           npx cap add android
@@ -119,6 +149,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Tai len APK va ma SHA256
         uses: actions/upload-artifact@v7.0.2
+        if: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         with:
           name: NhTBank-APK-ThuNghiem-${{ github.run_number }}
           path: |

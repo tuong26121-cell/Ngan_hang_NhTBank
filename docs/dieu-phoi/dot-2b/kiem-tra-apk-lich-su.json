@@ -1,0 +1,19 @@
+{
+  "run_id": 41962787638,
+  "artifact_id": 13385559371,
+  "status": "PASS",
+  "scope": "KNOWN-HISTORICAL ZIP/APK integrity only; not new source, installed device or backend/database acceptance",
+  "apk_sha256": "22c1b1cf0ddd36d918f54bcd051fcd52acb203dc7f366cd6d7a5f62f61cebf21",
+  "build_metadata": "Ma commit: fb5a2f231c0d1ec210a7b2368cc41268695a0508\nLoai ban dung: debug\nUng dung: vn.nhtbank.demo\n",
+  "version": {
+    "version": "1.0.1",
+    "versionCode": 1009,
+    "local": false
+  },
+  "badging_first_lines": [
+    "package: name='vn.nhtbank.demo' versionCode='1009' versionName='1.0.1' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'",
+    "sdkVersion:'23'",
+    "targetSdkVersion:'35'",
+    "uses-permission: name='android.permission.INTERNET'"
+  ]
+}

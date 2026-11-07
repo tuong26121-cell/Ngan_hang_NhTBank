@@ -1,0 +1,6 @@
+PASS YAML/shell/security/storage .github/workflows/build-ios-signed-ipa.yml
+PASS YAML/shell/security/storage .github/workflows/build-ios-unsigned-ipa.yml
+PASS YAML/shell/security/storage .github/workflows/check-buttons.yml
+PASS YAML/shell/security/storage .github/workflows/deploy-pages.yml
+PASS YAML/shell/security/storage .github/workflows/verify-main-integration.yml
+PASS YAML/shell/security/storage .github/workflows/xay-dung-apk-android.yml

@@ -1,0 +1,23 @@
+{
+  "run_id": 42303579263,
+  "head_sha": "ba22b0dc5de7b14553036a19b240390025713c52",
+  "artifact_id": 13545396523,
+  "zip_integrity": "PASS",
+  "entries": [
+    "test-results/acceptance-320.png",
+    "test-results/acceptance-390.png",
+    "test-results/acceptance-360.png",
+    "test-results/acceptance-430.png",
+    "test-results/dashboard-android.png",
+    "test-results/dashboard-desktop.png",
+    "test-results/dashboard-mobile.png",
+    "test-results/login-android.png",
+    "test-results/login-desktop.png",
+    "test-results/login-mobile.png",
+    "test-results/qr-android.png",
+    "test-results/qr-desktop.png",
+    "test-results/qr-mobile.png",
+    "playwright-report/index.html"
+  ],
+  "scope": "Baseline Chromium evidence only; patch CI NOT RUN"
+}

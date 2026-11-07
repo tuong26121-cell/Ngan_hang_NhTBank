@@ -165,3 +165,8 @@ Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2
 ### NB-D2B-03 — hậu kiểm07/11/2026
 
 03→04/05/11/13: [bằng chứng bổ sung](../bang-chung/hau-kiem-ux-20261107/README.md), patch output/group ARIA và contrast hero QR. CI1894c45 success3 workflow; Android lặp5/5; keyboard4/4; lab Web Vitals/heap có số đo và giới hạn. UX-01 PARTIALLY VERIFIED; ACK nhóm nhận PENDING, không chấp thuận release hay nghiệm thu thiết bị thật.
+
+
+## HO-2B-14-01/03/05/13 — 07/11/2026 (Asia/Saigon)
+
+Nhóm14 tiếp quản #45 và ACK hiện vật QA13, đồng bộ e940a9c, giữ UI03 và Auth/API02/06. Bàn giao [OPS-01](dot-2b/ops-01.md), inventory/run/log/artifact lịch sử. Workflow đã giữ/bổ sung backend security, hợp đồng API, Pages/APK production Chromium, APK PR main; thêm E2E regression điều hướng và chờ đúng heading thay marker chung. Local unit70/backend73/contract5/config1/build/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích); run exact-SHA đang kiểm chứng. CI dùng marker không lưu artifact/cache, không deploy Pages; vẫn chạy đủ security/build/tests. Chưa đóng OPS-01 release hoặc Issue #45; protection/allowance/native device/backend/database còn giới hạn. Không dùng Pages hoặc APK lịch sử làm nghiệm thu release mới.

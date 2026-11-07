@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
-import { registerAndLogin, createDemoAccount, loginExisting } from "./auth-helper";
+import {
+  registerAndLogin,
+  createDemoAccount,
+  loginExisting,
+} from "./auth-helper";
 test("complete Sandbox journey without console errors", async ({
   page,
 }, testInfo) => {
@@ -103,9 +107,16 @@ test("complete Sandbox journey without console errors", async ({
   ).toBeVisible();
   await page.getByRole("button", { name: "Về tổng quan" }).click();
   await page.getByRole("button", { name: /Tiền gửi/ }).click();
+  await expect(
+    page.getByRole("heading", { name: "Tiền gửi", exact: true }),
+  ).toBeVisible();
   await expect(page.getByText("BẢN XEM TRƯỚC")).toBeVisible();
   await page.getByRole("button", { name: "Trở về tổng quan" }).click();
+  await expect(page.getByRole("heading", { name: /Xin chào/ })).toBeVisible();
   await page.getByRole("button", { name: /Vay nhanh/ }).click();
+  await expect(
+    page.getByRole("heading", { name: "Vay nhanh", exact: true }),
+  ).toBeVisible();
   await expect(page.getByText("BẢN XEM TRƯỚC")).toBeVisible();
   await page.getByRole("button", { name: "Cá nhân", exact: true }).click();
   await expect(

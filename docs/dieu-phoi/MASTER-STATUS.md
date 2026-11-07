@@ -135,7 +135,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 | TX-01 | 08 + 13 | Atomic transfer, replay và concurrency contract có test cases | Đề xuất / NOT RUN |
 | UX-01 | 03 | Design system tương thích app/web, accessibility review | Đề xuất / chưa nghiệm thu |
 | QA-01 | 13 | Test matrix, PASS/FAIL/BLOCKED và tiêu chuẩn evidence | Đề xuất / test NOT RUN |
-| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; được deploy theo nhiệm vụ đủ điều kiện | Đề xuất / NOT RUN |
+| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; được deploy theo nhiệm vụ đủ điều kiện | BLOCKED — [Đợt 2B](dot-2b/ops-01.md), kiểm chứng CI; release BLOCKED |
 
 ## 6. Checklist nghiệm thu áp dụng cho mọi nhóm
 
@@ -251,3 +251,11 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 ## Đợt2A — xác thực API cục bộ, 07/11/2026
 
 Đã thêm module JOSE xác minh JWT và guard quyền tài nguyên; auth25/25, toàn backend73/73, unit70/70, contract5/5 (148test không cộng trùng), Pagesbuild đạt. [Báo cáo/giới hạn](mo-khoa-auth-20261107.md), [log](bang-chung-auth-20261107/). VERIFIED chỉ module local; APImiddleware/provider/session-revocation/confirmation/DB/ledger chưa tích hợp. SEC/DB/TX và release vẫn BLOCKED. Chưa SQL/deploy/tiền thật.
+
+
+
+## Nhóm 14 — Đợt 2B ngày 07/11/2026 (Asia/Saigon)
+
+Đã tiếp quản #45, đồng bộ main e940a9c và giữ hiện vật Nhóm 03/02/06/13. Sáu workflow được rà soát; backend security đầy đủ, Pages gate Chromium trước deploy, APK PR main/root production E2E, giữ OpenAPI/fixture/wrapper/version/checksum gates. Sửa đồng bộ E2E bằng heading đúng màn hình, thêm regression điều hướng 6 vòng trên 3 profile; không đổi frontend, tăng timeout hoặc retry để che lỗi.
+
+Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Run đúng SHA được cập nhật ở [OPS-01](dot-2b/ops-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.

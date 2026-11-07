@@ -1,16 +1,10 @@
 name: Build NhTBank iOS unsigned IPA
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/nhtbank-unsigned-ipa-20261027
-    paths:
-      - 'frontend/**'
-      - 'package*.json'
-      - 'capacitor.config.json'
-      - '.github/workflows/build-ios-unsigned-ipa.yml'
   pull_request:
+    branches: [main]
     paths:
+      - 'backend/**'
       - 'frontend/**'
       - 'package*.json'
       - 'capacitor.config.json'
@@ -32,7 +26,7 @@ jobs:
         uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
-          cache: npm
+          cache: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') && 'npm' || '' }}
 
       - name: Show build environment
         run: |
@@ -44,6 +38,8 @@ jobs:
         run: |
           npm ci
           npm test
+          npm run test:backend
+          npm run test:hop-dong
           npm run build
 
       - name: Set up Capacitor for iOS
@@ -88,6 +84,7 @@ jobs:
 
       - name: Upload unsigned IPA
         uses: actions/upload-artifact@v7.0.2
+        if: ${{ !contains(github.event.head_commit.message, '[khong-luu-artifact]') }}
         with:
           name: NhTBank-iOS-unsigned-IPA
           path: NhTBank-iOS-unsigned.ipa

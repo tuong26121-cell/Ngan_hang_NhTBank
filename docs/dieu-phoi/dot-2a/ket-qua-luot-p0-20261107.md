@@ -48,3 +48,24 @@
 - Chỉ bổ sung kiểm thử ở lớp hợp đồng, không sửa OpenAPI/schema SQL, không gắn HTTP route, không gọi provider, không động tới tiền hoặc database. Nhóm 10/02/06 vẫn cần quyết định có reviewer; 07↔08 cần ledger/recovery/SQL preflight; 13 chỉ nâng trạng thái sau kiểm tra kết luận CI đúng SHA.
 
 **Trạng thái gate không đổi:** COORD-01 đang review; ARCH-01 / SEC-01 / DB-01 / TX-01 / QA-01 ở mức **BLOCKED hoặc PARTIAL** theo phạm vi. SQL **NOT RUN**.
+
+## Xac minh ket qua cuoi CI/APK ea6b2da – 07/11/2026
+
+Nguon chay da doi chieu dung commit [`ea6b2da48af9ffa248816f7d7c03e1f9d53dfce3`](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/commit/ea6b2da48af9ffa248816f7d7c03e1f9d53dfce3). Snapshot HEAD truoc khi ghi bao cao lan nay: `23d41895adb7a48b13d507bce31bc46b2140abd4`. Lay truc tiep run, job, step, log va artifact metadata tu GitHub.
+
+| Nguon bang chung | Ket qua thuc te | Gioi han |
+| --- | --- | --- |
+| [CI run #42331345217](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345217), job `128278325396` | **COMPLETED / SUCCESS**. Unit, hop dong OpenAPI/fixture, backend security, APK config, build Web va Chromium E2E deu success | Khong thay the SQL/PostgreSQL/ledger/runtime AuthZ hoac device smoke |
+| Log CI | **70 unit PASS; 78 backend PASS; 53 E2E PASS / 10 skipped**. Co canh bao JS bundle chunk >500 kB | 10 skipped khong duoc tinh la PASS; E2E chay tren Chromium profile, khong phai may Android that |
+| CI artifact | [main-integration-playwright #13558010864](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345217/artifacts/13558010864) – 11,332,417 bytes, digest ZIP GitHub `sha256:55e48d2f71385f6b4bf21ebdf27c1c9846d90a8b3f53359529b28d27d92b0471` | Da xac minh metadata va log upload, chua doc/kiem digest lai tung byte artifact |
+| [APK run #42331345281](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345281), job `128278384683` | **COMPLETED / SUCCESS**. `assembleDebug` build successful, `unzip -tq` no errors, package/version check, SHA256 step va upload PASS | APK debug sandbox; chua cai thu, chua xac minh chu ky bang cong cu doc lap tren thiet bi |
+| File APK trong ZIP | `NhTBank-ThuNghiem.apk` SHA256 tinh tai runner: `af568a7bdf516d6ca3a65771b907212809b118927a1e8a88093f7e80f1c58161` | Khong nham SHA256 file APK voi ZIP artifact |
+| [APK artifact #13557806285](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345281/artifacts/13557806285) | `NhTBank-APK-ThuNghiem-19`, 4,271,994 bytes, digest ZIP `sha256:ac0780c080a588917a590062e8e5d8af06526248bdeaf2556792246f6e2d9ad6`; artifact chua expired tai lan doc | GitHub artifact metadata; chua tai/giai nen tinh SHA256 doc lap |
+| [APK Chromium evidence #13557791168](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42331345281/artifacts/13557791168) | Artifact evidence da upload, 11,241,887 bytes, digest `sha256:0009ef28d1ad9cc0a59cd241788c42681de907a9e58bcd95ab1562fe12345fc1` | Khong dung evidence Chromium thay the device smoke |
+
+### Quyet dinh dieu phoi / gate
+
+- **CI va APK debug build gate (pham vi chay tai SHA `ea6b2da`) = PASS.** Da doc log CI va APK job, khong tim thay buoc FAIL can sua code trong scope nay. Vi vay **khong sua ma nguon** trong luot kiem tra nay.
+- **ARCH-01, SEC-01, DB-01, TX-01 va QA-01 tong the van BLOCKED/PARTIAL**: module JWT/AuthZ chua noi HTTP route duoc nghiem thu; SQL v2.1 chua preflight/chay; ledger durable, concurrency/crash, release/rollback va smoke test Android that chua du bang chung.
+- **SQL NOT RUN; giao dich that NOT RUN**. Bao cao nay chi cap nhat bang chung, khong thuc hien migration, khong deploy moi va khong phat hanh.
+- Neu can kiem tra integrity doc lap: tai artifact ZIP dung run/SHA, doi chieu digest ZIP do GitHub cung cap, giai nen `NhTBank-ThuNghiem.apk` va so sanh SHA256 file APK voi gia tri trong log/manifest; xac minh chu ky va package/version tren may tin cay.

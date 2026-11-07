@@ -113,3 +113,7 @@ PARTIAL: bàn giao tài liệu; Website/APK mới BLOCKED. Đã nhận [kết qu
 ## Kiểm chứng production giao diện mới — 07/11/2026
 
 Đã đồng bộ main1894c453775ebb48a28c6111dba737199542bb1c, giữ hệ thiết kế Nhóm03. Build root production exit0; E2E toàn bộ **44 đạt,0 lỗi,10 skipped/54**, exit0,3,4phút.10skip gồm4viewport chỉ chạy desktop và1test contractUI chỉ chạy desktop, không lặp trên2profile mobile. [Log](bang-chung-tiep-quan-20261106/e2e-main-1894c45.log), [exitcode](bang-chung-tiep-quan-20261106/status-main-1894c45.json). Không sửa timeout/assertions để đạt. Đây là lần kiểm chứng mới; giữ nguyên log42đạt/1timeout của Nhóm03, chưa kết luận nguyên nhân timeout lịch sử. Chromium giả lập không thay thiết bị thật; UX/SQL/auth/ledger/releaseP0 vẫn còn mở.
+
+## Đợt2A — xác thực API cục bộ, 07/11/2026
+
+Đã thêm module JOSE xác minh JWT và guard quyền tài nguyên; auth25/25, toàn backend73/73, unit70/70, contract5/5 (148test không cộng trùng), Pagesbuild đạt. [Báo cáo/giới hạn](mo-khoa-auth-20261107.md), [log](bang-chung-auth-20261107/). VERIFIED chỉ module local; APImiddleware/provider/session-revocation/confirmation/DB/ledger chưa tích hợp. SEC/DB/TX và release vẫn BLOCKED. Chưa SQL/deploy/tiền thật.

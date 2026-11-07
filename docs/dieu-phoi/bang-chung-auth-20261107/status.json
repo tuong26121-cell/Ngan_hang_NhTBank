@@ -1,0 +1,49 @@
+[
+  {
+    "name": "auth",
+    "command": [
+      "node",
+      "--test",
+      "backend/tests/xac-thuc-api.test.mjs"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "backend",
+    "command": [
+      "npm",
+      "run",
+      "test:backend"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "contract",
+    "command": [
+      "npm",
+      "run",
+      "test:hop-dong"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--base",
+      "/Ngan_hang_NhTBank/"
+    ],
+    "exit_code": 0
+  }
+]

@@ -11,7 +11,7 @@
     {
       "id": "AUTH-ISSUER",
       "blocking": "activation",
-      "decision": "Chưa chốt issuer/audience/algorithms/JWKS trust/claim mapping/session expiry/revocation; chưa có JWT verifier app."
+      "decision": "Đã có module JOSE local được test; chưa chốt trust issuer/audience/publicJWKS/role source và chính sách expiry/revocation của môi trường; chưa nối middleware/APIv1."
     },
     {
       "id": "TRANSFER-CONFIRMATION",

@@ -157,3 +157,7 @@ Nhóm01 ACK đã đọc/nhận HO-2A-13-01 và HO-2A-13-14; không chấp thuậ
 Tiếp quản Issue #34 theo yêu cầu trực tiếp trong phiên. Nguồn main `7192af6`, phiên bản triển khai truy bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Artifact: [tokens/component specification](../he-thiet-ke.md), [45 tiêu chí](../ui-acceptance.md), [bằng chứng](../bang-chung/dot-2b/). Đã chuẩn bị CSS dùng chung và test contract, giữ nghiệp vụ mô phỏng. Trạng thái nhận: ACK PENDING; không gửi tin nhắn/khẳng định các nhóm đã nhận. UX-01 chưa nghiệm thu toàn bộ: thiết bị thật, bàn phím ảo, hiệu năng và heap cần Nhóm 13 xác minh; API/PRD vẫn cần nhóm 02/10 chốt trước tích hợp.
 
 Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2E42 đạt/1 timeout/8 bỏ qua, ca Android chạy riêng lại1/1 đạt; UI cuối5/5. UX-01 IMPLEMENTED / PARTIALLY VERIFIED, chưa PASS toàn bộ. Chi tiết và giới hạn theo ui-acceptance; không xác nhận ACK thay bên nhận.
+
+## Đợt2A — xác thực API cục bộ, 07/11/2026
+
+Đã thêm module JOSE xác minh JWT và guard quyền tài nguyên; auth25/25, toàn backend73/73, unit70/70, contract5/5 (148test không cộng trùng), Pagesbuild đạt. [Báo cáo/giới hạn](mo-khoa-auth-20261107.md), [log](bang-chung-auth-20261107/). VERIFIED chỉ module local; APImiddleware/provider/session-revocation/confirmation/DB/ledger chưa tích hợp. SEC/DB/TX và release vẫn BLOCKED. Chưa SQL/deploy/tiền thật.

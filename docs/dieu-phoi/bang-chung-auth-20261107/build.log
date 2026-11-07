@@ -1,0 +1,18 @@
+
+> nhtbank@1.0.1 build
+> vite build frontend --config vite.config.js --base /Ngan_hang_NhTBank/
+
+vite v6.4.5 building for production...
+transforming...
+✓ 2005 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/index.html                   0.78 kB │ gzip:   0.46 kB
+../dist/assets/index-Z77I4C6l.css   92.41 kB │ gzip:  19.62 kB
+../dist/assets/index-CtbEeoop.js   512.12 kB │ gzip: 172.45 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 4.36s

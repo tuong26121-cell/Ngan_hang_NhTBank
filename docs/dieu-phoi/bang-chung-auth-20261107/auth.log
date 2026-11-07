@@ -1,0 +1,33 @@
+✔ JWT hợp lệ chỉ nhận roles từ lookup backend, context bất biến (15.14665ms)
+✔ không tin jku/x5u của client và không fetch mạng (3.72348ms)
+✔ issuer sai (2.252187ms)
+✔ audience sai (2.190656ms)
+✔ hết hạn (1.816533ms)
+✔ thiếu exp (1.637288ms)
+✔ iat tương lai (1.687661ms)
+✔ quá tuổi session (2.600172ms)
+✔ subject sai (3.037674ms)
+✔ chữ ký bằng khóa khác bị từ chối (5.180183ms)
+✔ không chấp nhận HS256 hoặc none (3.006533ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn undefined (0.504581ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn  (0.252225ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Basic abc (0.264918ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer x (0.207287ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer xxxxxxxxxxxxx (0.247272ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer abc (0.281505ms)
+✔ thiếu trust config hoặc private/symmetric key không được khởi tạo (1.162541ms)
+✔ lookup principal lỗi không bị nhầm thành token hợp lệ (4.405186ms)
+✔ role không biết, subject bị vô hiệu hoặc lookup trả nhầm principal phải failclosed (4.916679ms)
+✔ không dùng context tự chế, quyền admin hoặc token từ authenticator khác để vượt ownership (2.672036ms)
+✔ context hết hạn hoặc hết hạn trong lúc lookup không được dùng (6.355268ms)
+✔ lỗi clock hoặc public key null không làm lộ lỗi nội bộ (1.038472ms)
+✔ RS256 chỉ hợp lệ với public JWKS và allowlist tương ứng (82.579404ms)
+✔ kid không có trong bộ khóa tin cậy phải bị từ chối (2.908994ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 305.502611

@@ -15,3 +15,9 @@
 Issue updatedAt `2026-11-06T22:17:56Z`, state `OPEN`, assignee rỗng; timeline có3mục. Chỉ ghi lịch sử tiếp nhận theo comment thực đọc; không hiểu timeline rỗng là nhóm chưa từng hoạt động. Bản này vẫn chưa gửi từ phiên hiện tại.
 
 Đã đọc HO-2A-13-01/14 và ACK Đợt4 trong Issue; giữ báo cáo QA/10test mới ở69f2d46. Đây là tiếp nhận có bằng chứng, chưa là sign-off phát hành.
+
+## Đợt2A — xác thực API cục bộ, 07/11/2026
+
+Đã thêm module JOSE xác minh JWT và guard quyền tài nguyên; auth25/25, toàn backend73/73, unit70/70, contract5/5 (148test không cộng trùng), Pagesbuild đạt. [Báo cáo/giới hạn](../mo-khoa-auth-20261107.md), [log](../bang-chung-auth-20261107/). VERIFIED chỉ module local; APImiddleware/provider/session-revocation/confirmation/DB/ledger chưa tích hợp. SEC/DB/TX và release vẫn BLOCKED. Chưa SQL/deploy/tiền thật.
+
+Nội dung mới chưa gửi lên Issue từ phiên này.

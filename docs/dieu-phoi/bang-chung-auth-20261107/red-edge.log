@@ -1,0 +1,77 @@
+✔ JWT hợp lệ chỉ nhận roles từ lookup backend, context bất biến (20.893745ms)
+✔ không tin jku/x5u của client và không fetch mạng (3.000734ms)
+✔ issuer sai (5.977564ms)
+✔ audience sai (2.508264ms)
+✔ hết hạn (2.292336ms)
+✔ thiếu exp (2.47399ms)
+✔ iat tương lai (2.255617ms)
+✔ quá tuổi session (2.393813ms)
+✔ subject sai (4.87507ms)
+✔ chữ ký bằng khóa khác bị từ chối (7.271787ms)
+✔ không chấp nhận HS256 hoặc none (2.416078ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn undefined (0.557783ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn  (0.193465ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Basic abc (0.156632ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer x (0.198117ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer xxxxxxxxxxxxx (0.205732ms)
+✔ từ chối header thiếu/sai định dạng hoặc quá lớn Bearer abc (0.151994ms)
+✔ thiếu trust config hoặc private/symmetric key không được khởi tạo (0.509578ms)
+✔ lookup principal lỗi không bị nhầm thành token hợp lệ (6.134915ms)
+✔ role không biết, subject bị vô hiệu hoặc lookup trả nhầm principal phải failclosed (5.840819ms)
+✔ không dùng context tự chế, quyền admin hoặc token từ authenticator khác để vượt ownership (2.59881ms)
+✖ context hết hạn hoặc hết hạn trong lúc lookup không được dùng (4.199485ms)
+✖ lỗi clock hoặc public key null không làm lộ lỗi nội bộ (1.727382ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 21
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 313.74064
+
+✖ failing tests:
+
+test at backend/tests/xac-thuc-api.test.mjs:65:1
+✖ context hết hạn hoặc hết hạn trong lúc lookup không được dùng (4.199485ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/nhtbank-dieu-phoi-20261106/backend/tests/xac-thuc-api.test.mjs:72:2)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at backend/tests/xac-thuc-api.test.mjs:74:1
+✖ lỗi clock hoặc public key null không làm lộ lỗi nội bộ (1.727382ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /AUTH_CONFIG_REQUIRED/. Input:
+  
+  "TypeError: Cannot read properties of null (reading 'kty')"
+  
+      at TestContext.<anonymous> (file:///workspace/nhtbank-dieu-phoi-20261106/backend/tests/xac-thuc-api.test.mjs:75:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: Cannot read properties of null (reading 'kty')
+        at file:///workspace/nhtbank-dieu-phoi-20261106/backend/lib/xac-thuc-api.mjs:15:63
+        at Array.some (<anonymous>)
+        at createApiAuthenticator (file:///workspace/nhtbank-dieu-phoi-20261106/backend/lib/xac-thuc-api.mjs:15:28)
+        at file:///workspace/nhtbank-dieu-phoi-20261106/backend/tests/xac-thuc-api.test.mjs:75:20
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/nhtbank-dieu-phoi-20261106/backend/tests/xac-thuc-api.test.mjs:75:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18),
+    expected: /AUTH_CONFIG_REQUIRED/,
+    operator: 'throws',
+    diff: 'simple'
+  }

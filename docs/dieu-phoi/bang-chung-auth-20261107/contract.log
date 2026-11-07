@@ -1,0 +1,17 @@
+
+> nhtbank@1.0.1 test:hop-dong
+> node --test scripts/kiem-thu/hop-dong-api.test.mjs
+
+✔ hợp đồng OpenAPI và bộ fixture có thể được kiểm chứng cục bộ (252.226331ms)
+✔ reference bị gãy phải khiến hợp đồng không đạt (8.361318ms)
+✔ cấm resolve URL/file bên ngoài trong validator offline (1.331675ms)
+✔ fixture bị đảo kỳ vọng được phát hiện (151.363709ms)
+✔ thiếu fixture hoặc phiên bản lệch không được nhận đạt (124.142041ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 705.817696

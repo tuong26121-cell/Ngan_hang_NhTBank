@@ -1,0 +1,9 @@
+{
+  "base": "c48e3d2563c5e9e2f2d3fb2ad50e72b68ef6aad6",
+  "files": {
+    "backend/lib/xac-thuc-api.mjs": "aa787c69369bc107714091e7fa2ad3cf50991dd71e379c8e3126277ace0d0c04",
+    "backend/tests/xac-thuc-api.test.mjs": "0be309bff8bbcf1ede9956da8da5b3a93dee871fae26343f9aa286934167606f",
+    "package.json": "040e8d1e2311a9d39421e631fb282cef1a07592970ca0e19f4b2102e9fcb8214",
+    "package-lock.json": "4daecb87c9468f2dacd1d5297ecdb3c05f13c67e6bd21da2f220dffc5a3af018"
+  }
+}

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   canonicalizeTransferRequest,
   createTransferFingerprint,
+  canonicalizeIdempotencyKey,
 } from "../lib/hop-dong-chuyen-tien.mjs";
 const principal = "11111111-1111-4111-8111-111111111111";
 const request = {
@@ -118,4 +119,20 @@ test("principal chưa định danh bị từ chối; utility không phải token
       () => createTransferFingerprint(p, request),
       /VALIDATION_ERROR/,
     );
+});
+
+test("Idempotency-Key giữ nguyên byte, không trim hoặc thay đổi hoa thường", () => {
+  for (const key of ["A", "a", "AbC_019-Z", "Z".repeat(128)]) {
+    assert.equal(canonicalizeIdempotencyKey(key), key);
+  }
+  assert.notEqual(canonicalizeIdempotencyKey("Key"), canonicalizeIdempotencyKey("key"));
+});
+test("Idempotency-Key từ chối key trống, ký tự lạ và quá dài", () => {
+  for (const key of [
+    "", " ", " a", "a ", "a.b", "a/b", "a:b", "a\nb",
+    "é", "你好", "\u0000", "A".repeat(129), 10, null,
+    undefined, {}, ["a"]
+  ]) {
+    assert.throws(() => canonicalizeIdempotencyKey(key), /VALIDATION_ERROR/);
+  }
 });

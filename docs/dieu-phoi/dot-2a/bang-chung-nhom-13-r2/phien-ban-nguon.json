@@ -1,0 +1,15 @@
+{
+  "application_source_commit": "b1c367f95308cfc3f3a270b0b9dc454466fb3c65",
+  "sql_run_source_commit": "1894c453775ebb48a28c6111dba737199542bb1c",
+  "sql_unchanged_after_merge": true,
+  "files": {
+    "scripts/kiem-thu/sql-v21-doc-lap.py": "89c3756c6272a5f9d370e5f77c6d311bb4d5e4643e15988ca34ca469f2ca7307",
+    "backend/lib/xac-thuc-api.mjs": "aa787c69369bc107714091e7fa2ad3cf50991dd71e379c8e3126277ace0d0c04",
+    "backend/lib/hop-dong-chuyen-tien.mjs": "6c6c5f2cc4d336fa23488edc6f1727f2bfe3cc524c76bfe88751e443de1b4008",
+    "backend/tests/xac-thuc-doc-lap.test.mjs": "ff2b15722adfca1e94e4a68657bcfab4bd9c827adc27f4899afbbc8f20eb7679",
+    "backend/tests/hash-chuyen-tien-doc-lap.test.mjs": "9c7fff7f9205d8152ca893915ff2eed2c3206c9e682ce166142972e44a4e0454",
+    "backend/tests/du-lieu-hash-doc-lap.json": "8241d62f0796a9a7493dc0b5826702476624ae0d30eeecfd1bdfd6f1224a1960",
+    "docs/sql-drafts/phien-ban-v21/luoc-do.sql": "2fcd4fc8ef155ed977c649006647c15e6bd3116f6f64b012e8f96e5d0f9984ec",
+    "docs/sql-drafts/phien-ban-v21/kiem-dinh.sql": "9bedb7d40d50bfecefc002805b2f007037112256a5aa35f156c2041689862524"
+  }
+}

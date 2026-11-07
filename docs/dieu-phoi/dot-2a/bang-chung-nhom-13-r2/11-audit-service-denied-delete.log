@@ -1,0 +1,4 @@
+BEGIN
+SET
+ERROR:  42501: permission denied for table audit_events
+LOCATION:  aclcheck_error, aclchk.c:2843

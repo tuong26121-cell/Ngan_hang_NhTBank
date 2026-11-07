@@ -1,0 +1,17 @@
+   ?column?   
+--------------
+ QA13_PID=326
+(1 row)
+
+ pg_sleep 
+----------
+ 
+(1 row)
+
+BEGIN
+ERROR:  23505: duplicate key value violates unique constraint "idempotency_keys_principal_key_operation_scope_idempotency__key"
+DETAIL:  Key (principal_key, operation_scope, idempotency_key)=(user:qa13, primitive-only, ten-connections) already exists.
+SCHEMA NAME:  private
+TABLE NAME:  idempotency_keys
+CONSTRAINT NAME:  idempotency_keys_principal_key_operation_scope_idempotency__key
+LOCATION:  _bt_check_unique, nbtinsert.c:666

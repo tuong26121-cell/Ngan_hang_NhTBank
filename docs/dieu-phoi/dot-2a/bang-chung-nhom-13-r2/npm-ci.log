@@ -1,0 +1,10 @@
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm error code EROFS
+npm error syscall open
+npm error path /home/agent/.npm/_cacache/tmp/a70d7eab
+npm error errno -30
+npm error rofs EROFS: read-only file system, open '/home/agent/.npm/_cacache/tmp/a70d7eab'
+npm error rofs Often virtualized file systems, or other file systems
+npm error rofs that don't support symlinks, give this error.
+npm error Log files were not written due to an error writing to the directory: /home/agent/.npm/_logs
+npm error You can rerun the command with `--loglevel=verbose` to see the logs in your terminal

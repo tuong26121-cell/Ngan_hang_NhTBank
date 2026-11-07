@@ -1,0 +1,8 @@
+BEGIN
+DO
+CREATE SCHEMA
+NOTICE:  42P06: schema "private" already exists, skipping
+LOCATION:  CreateSchemaCommand, schemacmds.c:132
+ERROR:  P0001: private must be empty; do not rerun or replace existing objects
+CONTEXT:  PL/pgSQL function inline_code_block line 12 at RAISE
+LOCATION:  exec_stmt_raise, pl_exec.c:3897

@@ -1,0 +1,12 @@
+BEGIN
+DO
+CREATE TABLE
+CREATE SEQUENCE
+CREATE FUNCTION
+REVOKE
+DO
+DO
+DO
+ROLLBACK
+NOTICE:  00000: Assertions executed; this is not DB-01 acceptance or concurrency evidence
+LOCATION:  exec_stmt_raise, pl_exec.c:3897

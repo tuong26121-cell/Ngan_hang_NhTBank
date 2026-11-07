@@ -1,0 +1,11 @@
+                                                           version                                                            | current_user | session_user | current_database | inet_server_addr 
+------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+------------------+------------------
+ PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit | postgres     | postgres     | postgres         | 
+(1 row)
+
+  system_identifier  
+---------------------
+ 7705317511050293288
+(1 row)
+
+DO

@@ -1,0 +1,6 @@
+BEGIN
+SET
+ERROR:  42501: permission denied for schema private
+LINE 1: select * from private.profiles;
+                      ^
+LOCATION:  aclcheck_error, aclchk.c:2843

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "nfc-1000",
+    "principal": "11111111-1111-4111-8111-111111111111",
+    "request": {
+      "source_account_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "recipient_account_id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "amount": "1000",
+      "currency": "VND",
+      "description": "Café"
+    },
+    "canonical_utf8": "{\"version\":1,\"principal_id\":\"11111111-1111-4111-8111-111111111111\",\"operation_scope\":\"sandbox.transfer.v1\",\"payload\":{\"source_account_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"recipient_account_id\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"amount\":\"1000\",\"currency\":\"VND\",\"description\":\"Café\"}}",
+    "sha256": "00ecc4ce500f5ad764e0c5df5f8c41746538cdaa452ede45cef86a45cbc19643"
+  },
+  {
+    "id": "empty-description",
+    "principal": "11111111-1111-4111-8111-111111111111",
+    "request": {
+      "source_account_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "recipient_account_id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "amount": "1000",
+      "currency": "VND"
+    },
+    "canonical_utf8": "{\"version\":1,\"principal_id\":\"11111111-1111-4111-8111-111111111111\",\"operation_scope\":\"sandbox.transfer.v1\",\"payload\":{\"source_account_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"recipient_account_id\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"amount\":\"1000\",\"currency\":\"VND\",\"description\":\"\"}}",
+    "sha256": "06cfe41c01478f7b63bbda8b76701dc61e33d83d73d7db4dcaee59bfeccf85ac"
+  },
+  {
+    "id": "safe-integer-maximum",
+    "principal": "11111111-1111-4111-8111-111111111111",
+    "request": {
+      "source_account_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "recipient_account_id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "amount": "9007199254740991",
+      "currency": "VND",
+      "description": "😀"
+    },
+    "canonical_utf8": "{\"version\":1,\"principal_id\":\"11111111-1111-4111-8111-111111111111\",\"operation_scope\":\"sandbox.transfer.v1\",\"payload\":{\"source_account_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"recipient_account_id\":\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\"amount\":\"9007199254740991\",\"currency\":\"VND\",\"description\":\"😀\"}}",
+    "sha256": "58576c83c06a64a95235c4345aab0e04b3ca510df73c5a7c6c2705eb95a92b17"
+  }
+]

@@ -1,0 +1,217 @@
+MUTANT auth-role-source: exit=1
+✖ N13-RBAC seam support cannot transfer despite customer claim in signed JWT (7.673165ms)
+✖ N13-RBAC seam operations cannot transfer despite customer claim in signed JWT (2.515662ms)
+✖ N13-RBAC seam risk_analyst cannot transfer despite customer claim in signed JWT (1.813506ms)
+✖ N13-RBAC seam admin cannot transfer despite customer claim in signed JWT (2.644145ms)
+✔ N13-AUTH seam rejects a validly signed token with changed issuer (1.814548ms)
+✔ N13-RBAC seam denies victim resource and forged context; accepts own customer resource (1.352363ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 2
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.178387
+
+✖ failing tests:
+
+test at backend/tests/xac-thuc-doc-lap.test.mjs:25:3
+✖ N13-RBAC seam support cannot transfer despite customer claim in signed JWT (7.673165ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'customer'
+  -   'support'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-k7svqcgy/backend/tests/xac-thuc-doc-lap.test.mjs:28:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'customer' ],
+    expected: [ 'support' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/xac-thuc-doc-lap.test.mjs:25:3
+✖ N13-RBAC seam operations cannot transfer despite customer claim in signed JWT (2.515662ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'customer'
+  -   'operations'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-k7svqcgy/backend/tests/xac-thuc-doc-lap.test.mjs:28:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'customer' ],
+    expected: [ 'operations' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/xac-thuc-doc-lap.test.mjs:25:3
+✖ N13-RBAC seam risk_analyst cannot transfer despite customer claim in signed JWT (1.813506ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'customer'
+  -   'risk_analyst'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-k7svqcgy/backend/tests/xac-thuc-doc-lap.test.mjs:28:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'customer' ],
+    expected: [ 'risk_analyst' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/xac-thuc-doc-lap.test.mjs:25:3
+✖ N13-RBAC seam admin cannot transfer despite customer claim in signed JWT (2.644145ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'customer'
+  -   'admin'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-k7svqcgy/backend/tests/xac-thuc-doc-lap.test.mjs:28:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'customer' ],
+    expected: [ 'admin' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+MUTANT auth-owner-check: exit=1
+✔ N13-RBAC seam support cannot transfer despite customer claim in signed JWT (7.150621ms)
+✔ N13-RBAC seam operations cannot transfer despite customer claim in signed JWT (2.71368ms)
+✔ N13-RBAC seam risk_analyst cannot transfer despite customer claim in signed JWT (1.149668ms)
+✔ N13-RBAC seam admin cannot transfer despite customer claim in signed JWT (1.209339ms)
+✔ N13-AUTH seam rejects a validly signed token with changed issuer (2.337554ms)
+✖ N13-RBAC seam denies victim resource and forged context; accepts own customer resource (1.494567ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.894408
+
+✖ failing tests:
+
+test at backend/tests/xac-thuc-doc-lap.test.mjs:42:1
+✖ N13-RBAC seam denies victim resource and forged context; accepts own customer resource (1.494567ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-uqe6afa6/backend/tests/xac-thuc-doc-lap.test.mjs:46:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+MUTANT fingerprint-scope: exit=1
+✖ N13-IDEM-HASH golden nfc-1000 (1.878084ms)
+✖ N13-IDEM-HASH golden empty-description (0.252099ms)
+✖ N13-IDEM-HASH golden safe-integer-maximum (0.164888ms)
+✔ N13-IDEM-HASH rejects null description and accepts omitted as empty (0.437749ms)
+✔ N13-IDEM-HASH validates raw codepoint limit before NFC and trimming (0.306772ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.427381
+
+✖ failing tests:
+
+test at backend/tests/hash-chuyen-tien-doc-lap.test.mjs:10:3
+✖ N13-IDEM-HASH golden nfc-1000 (1.878084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '7170ce490a8cf8bb9ca6e6e515da2129af812f91b4203792a62ba82273ae2757'
+  - '00ecc4ce500f5ad764e0c5df5f8c41746538cdaa452ede45cef86a45cbc19643'
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-nblj8fm3/backend/tests/hash-chuyen-tien-doc-lap.test.mjs:11:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '7170ce490a8cf8bb9ca6e6e515da2129af812f91b4203792a62ba82273ae2757',
+    expected: '00ecc4ce500f5ad764e0c5df5f8c41746538cdaa452ede45cef86a45cbc19643',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/hash-chuyen-tien-doc-lap.test.mjs:10:3
+✖ N13-IDEM-HASH golden empty-description (0.252099ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '278dd91931ef7251b513d28e6acf1348052610b794300f9072e0ff629ed158f5'
+  - '06cfe41c01478f7b63bbda8b76701dc61e33d83d73d7db4dcaee59bfeccf85ac'
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-nblj8fm3/backend/tests/hash-chuyen-tien-doc-lap.test.mjs:11:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '278dd91931ef7251b513d28e6acf1348052610b794300f9072e0ff629ed158f5',
+    expected: '06cfe41c01478f7b63bbda8b76701dc61e33d83d73d7db4dcaee59bfeccf85ac',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at backend/tests/hash-chuyen-tien-doc-lap.test.mjs:10:3
+✖ N13-IDEM-HASH golden safe-integer-maximum (0.164888ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'f25801c9a503593a14f1ed382ff0b189ef84d68ff696d55a161465a6b35a45ed'
+  - '58576c83c06a64a95235c4345aab0e04b3ca510df73c5a7c6c2705eb95a92b17'
+  
+      at TestContext.<anonymous> (file:///tmp/nhtbank-qa13-r2-nblj8fm3/backend/tests/hash-chuyen-tien-doc-lap.test.mjs:11:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'f25801c9a503593a14f1ed382ff0b189ef84d68ff696d55a161465a6b35a45ed',
+    expected: '58576c83c06a64a95235c4345aab0e04b3ca510df73c5a7c6c2705eb95a92b17',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+

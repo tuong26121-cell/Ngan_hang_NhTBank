@@ -1,0 +1,32 @@
+ĐẠT (tĩnh): Git blob nguồn 20261031_000001_nhtbank_core_schema.draft.sql = 48ed0ab6adec0ffa3091e081924d051e2a6a2bda
+ĐẠT (tĩnh): UTF-8/LF luoc-do.sql
+ĐẠT (tĩnh): Git blob nguồn 20261031_000002_nhtbank_security_assertions.draft.sql = ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379
+ĐẠT (tĩnh): UTF-8/LF kiem-dinh.sql
+ĐẠT (tĩnh): unified diff đúng hai file/đúng bytes
+ĐẠT (tĩnh): git apply --check; exit=0; 
+ĐẠT (tĩnh): git apply thực áp dụng; exit=0; 
+ĐẠT (tĩnh): patch round-trip byte-for-byte luoc-do.sql
+ĐẠT (tĩnh): patch round-trip byte-for-byte kiem-dinh.sql
+ĐẠT (tĩnh): catalog assertions đồng bộ và đứng trước COMMIT
+ĐẠT (tĩnh): core có một transaction ngoài cùng (kiểm tra văn bản)
+ĐẠT (tĩnh): assertions kết thúc ROLLBACK (không hoàn lại sequence)
+ĐẠT (tĩnh): actor UUID snapshot không FK
+ĐẠT (tĩnh): có kiểm tra PG17 MAINTAIN/membership/column/default ACL
+ĐẠT (tĩnh): không đưa testing-v3/reversed vào SQL
+[
+  {
+    "source": "docs/sql-drafts/archive/v2/20261031_000001_nhtbank_core_schema.draft.sql",
+    "source_git_blob": "48ed0ab6adec0ffa3091e081924d051e2a6a2bda",
+    "target": "luoc-do.sql",
+    "target_git_blob": "0c065b9671369ededdefc92e0242d85ff212ecbe",
+    "target_sha256": "2fcd4fc8ef155ed977c649006647c15e6bd3116f6f64b012e8f96e5d0f9984ec"
+  },
+  {
+    "source": "docs/sql-drafts/archive/v2/20261031_000002_nhtbank_security_assertions.draft.sql",
+    "source_git_blob": "ad49155c2d43c12d7a6eda179b6d5b4f6f3bd379",
+    "target": "kiem-dinh.sql",
+    "target_git_blob": "85ebd3a6997d2459afe20eb16fb5b3a86533aa8a",
+    "target_sha256": "9bedb7d40d50bfecefc002805b2f007037112256a5aa35f156c2041689862524"
+  }
+]
+SQL NOT RUN; parser NOT RUN; DB-01 BỊ CHẶN; đây không phải kiểm thử PostgreSQL.

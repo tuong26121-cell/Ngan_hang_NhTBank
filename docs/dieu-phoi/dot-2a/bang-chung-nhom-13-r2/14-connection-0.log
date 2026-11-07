@@ -1,0 +1,18 @@
+   ?column?   
+--------------
+ QA13_PID=322
+(1 row)
+
+ pg_sleep 
+----------
+ 
+(1 row)
+
+BEGIN
+INSERT 0 1
+ pg_sleep 
+----------
+ 
+(1 row)
+
+COMMIT

@@ -1,0 +1,9 @@
+{
+  "container_id": "379dd99c5db6d711223b47629bce5ff1f799de9e4122b09afb9c9414d19b4f9e",
+  "image_id": "sha256:018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9",
+  "label": "nhtbank-qa13-976a97dacb9c",
+  "network": "none",
+  "ports": {},
+  "mounts": [],
+  "postgres_version_binary": "postgres (PostgreSQL) 17.11 (Debian 17.11-1.pgdg12+2)"
+}

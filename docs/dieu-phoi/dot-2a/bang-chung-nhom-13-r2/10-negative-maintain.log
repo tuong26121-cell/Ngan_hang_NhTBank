@@ -1,0 +1,5 @@
+BEGIN
+GRANT
+ERROR:  P0001: GATE-02: effective table ACL service_role, profiles, MAINTAIN
+CONTEXT:  PL/pgSQL function inline_code_block line 77 at RAISE
+LOCATION:  exec_stmt_raise, pl_exec.c:3897

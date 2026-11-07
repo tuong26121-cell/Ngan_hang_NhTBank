@@ -263,3 +263,7 @@ Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E c
 ## Nhóm 09 — tiếp nhận Đợt 2C, bàn giao 07/11/2026 (Asia/Saigon)
 
 Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-tiep-nhan-thong-bao-sepay.md) và [handoff HO-2C-09](nhat-ky-ban-giao.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend mới nhất 75/75, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.
+
+## HO-2A-13-R2-01-14 — 07/11/2026
+
+Nhóm 13 đã review và tự chạy SQL v2.1 của Nhóm 07: 31/31 bước PostgreSQL17.11 local disposable đạt, có preflight identity/role/version và recreate trước DDL, lỗi trước COMMIT rollback schema, negative ACL/RLS/audit, 10 DB PID cùng key cho đúng1 row/9 unique violations. Đây là primitive, không phải chuyển khoản/ledger/crash recovery PASS. [Báo cáo và GATE r2](dot-2a/13-kiem-thu-nen-tang-r2.md); [metadata SQL](dot-2a/bang-chung-nhom-13-r2/ket-qua-sql.json). Source SQL1894c45 không đổi bytes khi đồng bộ b1c367f; module AuthN/AuthZ và fingerprint được test độc lập, backend89/unit70/contract5/build đạt; E2E production53 đạt/10 skip chủ ý. Không HTTPv1/ledger/session lifecycle, full Supabase/exposed schemas vẫn chưa nghiệm thu; GATE tổng thể BLOCKED. Bàn giao01/14, phản hồi07/06/08 qua Issues sau push; #44 OPEN; ACK bên nhận PENDING cho r2.

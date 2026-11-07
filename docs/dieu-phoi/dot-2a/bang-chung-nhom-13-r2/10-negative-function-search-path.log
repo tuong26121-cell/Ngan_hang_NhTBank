@@ -1,0 +1,5 @@
+BEGIN
+ALTER FUNCTION
+ERROR:  P0001: GATE-06: function owner/security/search_path set_updated_at
+CONTEXT:  PL/pgSQL function inline_code_block line 140 at RAISE
+LOCATION:  exec_stmt_raise, pl_exec.c:3897

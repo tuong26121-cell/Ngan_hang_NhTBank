@@ -1,0 +1,114 @@
+{
+  "recorded_at_utc": "2026-11-07T06:52:56.571854+00:00",
+  "source_commit": "b1c367f95308cfc3f3a270b0b9dc454466fb3c65",
+  "runs": [
+    {
+      "command": "python scripts/kiem-thu/sql-v21-doc-lap.py --thuc-hien --dau-ra docs/dieu-phoi/dot-2a/bang-chung-nhom-13-r2",
+      "exit_code": 0,
+      "result": "31/31 checks PASS; negative SQL exits 3 expected; 10 distinct PID, 1 insert/9 unique violations"
+    },
+    {
+      "command": "npm ci (default cache)",
+      "exit_code": 226,
+      "result": "EROFS /home/agent/.npm cache; resolved with /tmp cache"
+    },
+    {
+      "command": "npm ci --cache /tmp/nhtbank-qa13-npm-cache",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:backend",
+      "exit_code": 0,
+      "result": "89 PASS on b1c367f + 11 new QA tests"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "result": "70 PASS"
+    },
+    {
+      "command": "npm run test:hop-dong",
+      "exit_code": 0,
+      "result": "5 PASS"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "chunk >500kB warning"
+    },
+    {
+      "command": "NHT_CHROMIUM_PATH=/usr/bin/chromium NHT_TEST_URL=http://127.0.0.1:4173 npm run test:e2e",
+      "exit_code": 0,
+      "result": "53 PASS, 10 intentional skips; production preview"
+    },
+    {
+      "command": "3 mutants in disposable /tmp copies",
+      "exit_code": 0,
+      "result": "3/3 detected; each mutated suite exited1"
+    }
+  ],
+  "files": {
+    "01-preflight-recovery-origin.log": "d833cf954b208ef75fa7a36921d1cb83fa8bd141b8395c5a3e1d1e7a452230fa",
+    "02-synthetic-fixture-origin.log": "97f2e78dee3b1fcccddf5438ccddd7414226591bca0fbf2178cd9e365d0bf348",
+    "03-preflight-recreated.log": "1133230f824b69cd55cbeee1a14f2f10013bb9608e25fc2ab8f78b90dfa80f50",
+    "04-synthetic-fixture.log": "97f2e78dee3b1fcccddf5438ccddd7414226591bca0fbf2178cd9e365d0bf348",
+    "04b-core-precommit-rejected.log": "1420b626f6e20250bbaeb21ac15df2e7035ecc8211c683a26612c5274fae3ddb",
+    "04c-core-rollback-verified.log": "c14aee5b62ffd744902b84a24398e930998597dda300e71334862f0ef148e50a",
+    "05-core.log": "7dad7e41407ea647326c7376ff4801c51fe9b6bfbb95f30074afcb658e884004",
+    "06-assertions.log": "578a35844d50bbd97c0484bd5652839cab3e1b8abc19462c16ae4bb8a24393da",
+    "07-reapply-rejected.log": "040b709c2bc4a3ab6983ae3bac9cf4cf4966cc08d82dcc86cf59e9ef25e84c26",
+    "08-post-reapply-assertions.log": "578a35844d50bbd97c0484bd5652839cab3e1b8abc19462c16ae4bb8a24393da",
+    "09-audit-actor-deletion.log": "0552c9ee6693161512f3987e0e2e695bc740f44b8737ab2d86bf9f3a92f7cdf6",
+    "10-negative-column.log": "878879a2c3f619c4e1228685c5df127ed6adc487f785cac582b41b89378da6e8",
+    "10-negative-function-execute.log": "3dfc5625312b58521f0fdbbb0e8aad04b052ca0f6df2399eef660c186a41d410",
+    "10-negative-function-search-path.log": "9bc27580a397299c6f160f90a7f53d963d6326e4877284693cdda8b942b95e5b",
+    "10-negative-global-default.log": "6d9bc25b11ab770d94e40ed52f55afc2265f2983bf4abf6825a76d59f27a0589",
+    "10-negative-grant-option.log": "19a1aecf9b8c268cb2647a66befe39e06bcc46fd986a0c3e6fbf41d366dcfb2c",
+    "10-negative-maintain.log": "94c4c7cf79ef556fb4f00dee5a752dba0eecff30df9ec2d7fd2ba9cdebf9a30a",
+    "10-negative-public-table.log": "31681da23f044ca5d0430e7ca38202ea0996b99f3181bb8191d8c10ef7b435ee",
+    "10-negative-rls-disabled.log": "120419520b8de4b775278cb3c8421cbbd40ab91fcfc3d1d79537091339a71347",
+    "10-negative-schema-create.log": "6b8e6405dc1607f25251d89ee099b50b4106a9e77958741701d17464bd270185",
+    "10-negative-sequence-update.log": "8ee4022cd043c26e13fba14e1a869d27768b4e0dc218c103d609e2d5305bafdd",
+    "10-negative-set-role.log": "0425d9494bb2e92267edcd3a8a5db09a04a94878d85d8364fd13b990f48fd77f",
+    "11-audit-service-denied-delete.log": "0bd8d94c9928a7eac20bfc2436e3c207479c107633ef3b5518fe4345fb3ffc94",
+    "11-audit-service-denied-truncate.log": "0bd8d94c9928a7eac20bfc2436e3c207479c107633ef3b5518fe4345fb3ffc94",
+    "11-audit-service-denied-update.log": "0bd8d94c9928a7eac20bfc2436e3c207479c107633ef3b5518fe4345fb3ffc94",
+    "11-client-denied-anon.log": "e7256eeb3eae2e3d13c5d040f80e578fff4cb4a3a1dbb9142254e239f24b46c8",
+    "11-client-denied-authenticated.log": "e7256eeb3eae2e3d13c5d040f80e578fff4cb4a3a1dbb9142254e239f24b46c8",
+    "12-rls-deny-with-temporary-acl.log": "db7668b51edb5b2de8b70a33eed51868479fd1bec27623c98e39a948b11bf9a9",
+    "13-final-assertions.log": "578a35844d50bbd97c0484bd5652839cab3e1b8abc19462c16ae4bb8a24393da",
+    "14-connection-0.log": "0bb0bed99979adf22bb256434aaafae6141a991938bacea998540a91d6fa283e",
+    "14-connection-1.log": "5b051580074c570ba29cb5c89b4fa67a672ba77ae481d3c6aab998d4e9206751",
+    "14-connection-2.log": "99f7fbdfedb9b858fe22e111614826c214e19957a15a65035465669d2ea00d5f",
+    "14-connection-3.log": "ff3d97963d6627057dbf245efb881ff41bd5f04ed58f74690fb5d39e856ee848",
+    "14-connection-4.log": "ee2f6eff888c23e63534029c676ef075862feaa6a9eedb2f81da38a256dcc9d0",
+    "14-connection-5.log": "150df9065b23c7dd6477f6f586a45ca10c11cc51b8196e031e9cbf0fe8ae493d",
+    "14-connection-6.log": "7e4419a182160359bfd019949d288dbaafa343592fc4c27af33107050e7652b6",
+    "14-connection-7.log": "ab066a34163f3853fc05bfe0e18c952594859bd8ec9992220e8779501dd5c58d",
+    "14-connection-8.log": "e870fa17d704a87db2a9820ddbf1a4d6f7fa91e5a16748de37306dfd942f40fb",
+    "14-connection-9.log": "9c5fe62ca612c7c48bb900defdbf4fdccc9f8175fe206a80df5871b2d2069592",
+    "15-concurrent-persisted-count.log": "c14aee5b62ffd744902b84a24398e930998597dda300e71334862f0ef148e50a",
+    "backend-main-moi.log": "661066184290d13daa497f77fd60cb64c887af4821118f69b0f00ee1fdf43efb",
+    "backend.log": "af9f6b72bd813689e4c68406362f9a3f253f720b0ef96e9dd9f4791aa83e695a",
+    "build-main-moi.log": "d32b7effe085d6bb01259cb5083c5082375d441d7c2d4200c61c96b176f7d7b4",
+    "build.log": "59e1d6fa89d697b315b6f918a9e92dbb6a89bc64f15ba6cbe98eade0982082c0",
+    "ci-nguon.txt": "761ec5aa7b8266a9968c134089fc21672ac05ea5ee8f841de61d54272fb33057",
+    "contract-main-moi.log": "65bc36c5d53c10209b76834cd6af9c82505999bc8725a0cbf20f8f04c739a757",
+    "contract.log": "35fe45fc2c7dba6d0b7e7755445182ccd41707257afde34d2ce2f6fb0072cea2",
+    "e2e-main-moi.log": "8bf477c2afe9658722154e57429d804274cbd426a1b3bf3f074c594ad3e3f19e",
+    "e2e-production.log": "9163e60bfff1470966a90d8e310b5d58f6a8e33d0e90f7b4278bbb38ea32aff6",
+    "identity-379dd99c5db6.json": "4d6736dee9afb734fd00d8f1d72ffd9ef57b5eb03f341ec614d0c599f9e5b7fd",
+    "identity-6b1daea9f35b.json": "5c632324d9f325fbaaf87c617229be0e13a6239f92af96d8862cf4359981c3cf",
+    "ket-qua-sql.json": "81be23e9daf91215eb0484ad55cd66f0e2fdc136252920f3c0a0d876ce28b408",
+    "kiem-tra-tinh.log": "cb1c25414375da02e3ef60f4ae912604ad15043a655a8b3c4b137098e0d09639",
+    "mutation-doc-lap.log": "41adddd6970e99e20a471b9f808aa4c29afb728e56b540ffbc50ed1b79142d89",
+    "npm-ci-cache-tmp.log": "0938c836dc0314fca6a454daf32a46109fa05d4c9d1232522a24533e26b49a93",
+    "npm-ci-main-moi.log": "bb04571a1f2c119bacecbe125c541183a7352bfaf776512b5289c8c1ce508cdf",
+    "npm-ci.log": "ea899aa141a602f80213d6c0476759134aad313a6f1b06742912cdabaff1785f",
+    "phien-ban-nguon.json": "c40acceafafa3753820f80d2941d38c703cb4074a6e6337a2522a59fc9f04791",
+    "preview-main-moi.log": "f3c11ee6e8f4dec5107cce88fe2506beae73c5a56f8d270df0e24beb821de355",
+    "preview.log": "f3c11ee6e8f4dec5107cce88fe2506beae73c5a56f8d270df0e24beb821de355",
+    "unit-main-moi.log": "f214aa379d2febfc6665ded84f15190db4101362dc6912f836113e8350e1c2b4",
+    "unit.log": "5967d51175fe0aaecca982072976efaa14e64eeb277eab3641b985c55c5b63e5"
+  }
+}

@@ -1,5 +1,7 @@
 # Nhóm 13 — Đợt 2A: kiểm thử nền tảng v1
 
+> Cập nhật 07/11/2026: xem [kết quả r2](13-kiem-thu-nen-tang-r2.md). SQL v2.1 đã có 31 bước kiểm chứng trên PostgreSQL 17.11 disposable, gồm 10 kết nối unique primitive; thêm golden hash và Auth/RBAC module tests. Các kết luận NOT RUN bên dưới là snapshot r1, không phải trạng thái hiện hành của gói v2.1. Nghiệm thu nền tảng tích hợp vẫn BLOCKED.
+
 Ngày: 2026-11-06. Issue [#44](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/44). Tiếp nhận bởi Codex trong phiên người dùng giao nhiệm vụ; không gán GitHub assignee hoặc tự đóng Issue.
 
 ## Nguồn và phạm vi bằng chứng

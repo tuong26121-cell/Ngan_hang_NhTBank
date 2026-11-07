@@ -1,0 +1,241 @@
+{
+  "source_commit": "1894c453775ebb48a28c6111dba737199542bb1c",
+  "runner_sha256": "89c3756c6272a5f9d370e5f77c6d311bb4d5e4643e15988ca34ca469f2ca7307",
+  "image_id": "sha256:018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9",
+  "repo_digests": [
+    "postgres@sha256:665dc7b37ac52a17e298511414c21d23ffa4e6a6ef6225b3e5d59c7afb35e994"
+  ],
+  "tests": [
+    {
+      "id": "01-preflight-recovery-origin",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "02-synthetic-fixture-origin",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "03-preflight-recreated",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "04-synthetic-fixture",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "04b-core-precommit-rejected",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-02",
+      "status": "PASS"
+    },
+    {
+      "id": "04c-core-rollback-verified",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "05-core",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "06-assertions",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "07-reapply-rejected",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "private must be empty",
+      "status": "PASS"
+    },
+    {
+      "id": "08-post-reapply-assertions",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "09-audit-actor-deletion",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-maintain",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-column",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-public-table",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-schema-create",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-sequence-update",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-function-execute",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-set-role",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-global-default",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-grant-option",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-function-search-path",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "10-negative-rls-disabled",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "GATE-",
+      "status": "PASS"
+    },
+    {
+      "id": "11-client-denied-anon",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "42501",
+      "status": "PASS"
+    },
+    {
+      "id": "11-client-denied-authenticated",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "42501",
+      "status": "PASS"
+    },
+    {
+      "id": "11-audit-service-denied-update",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "42501",
+      "status": "PASS"
+    },
+    {
+      "id": "11-audit-service-denied-delete",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "42501",
+      "status": "PASS"
+    },
+    {
+      "id": "11-audit-service-denied-truncate",
+      "exit_code": 3,
+      "expected_exit": 3,
+      "expected_text": "42501",
+      "status": "PASS"
+    },
+    {
+      "id": "12-rls-deny-with-temporary-acl",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "14-ten-connections-unique-primitive",
+      "backend_pids": [
+        "322",
+        "327",
+        "329",
+        "325",
+        "324",
+        "326",
+        "331",
+        "330",
+        "328",
+        "323"
+      ],
+      "status": "PASS",
+      "scope": "not a transfer test"
+    },
+    {
+      "id": "15-concurrent-persisted-count",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    },
+    {
+      "id": "13-final-assertions",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_text": null,
+      "status": "PASS"
+    }
+  ],
+  "scope": "PostgreSQL17 + synthetic auth.users/roles; not Supabase API/Auth/ledger",
+  "luoc-do.sql": "2fcd4fc8ef155ed977c649006647c15e6bd3116f6f64b012e8f96e5d0f9984ec",
+  "kiem-dinh.sql": "9bedb7d40d50bfecefc002805b2f007037112256a5aa35f156c2041689862524",
+  "cleanup": "verified labelled container removed; tmpfs discarded"
+}

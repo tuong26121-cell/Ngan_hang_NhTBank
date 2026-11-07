@@ -1,0 +1,5 @@
+BEGIN
+GRANT
+ERROR:  P0001: GATE-03: effective sequence privilege service_role, UPDATE
+CONTEXT:  PL/pgSQL function inline_code_block line 118 at RAISE
+LOCATION:  exec_stmt_raise, pl_exec.c:3897

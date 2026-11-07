@@ -1,0 +1,45 @@
+name: Don ba nhanh da nam trong main
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/don-nhanh-cu-20261107.yml']
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify refs and remove only merged branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_main="$GITHUB_SHA"
+          current_main="$(git ls-remote --heads origin refs/heads/main | cut -f1)"
+          test "$current_main" = "$expected_main"
+          targets=(
+            'cap-nhat/logo-va-phien-ban-apk:c01073c3fa838a794960112526c2829c8d206160'
+            'docs/dieu-phoi-14-nhom-20261106:a163a584530630146d907bf107a4c780360eb85a'
+            'may-chu/gia-co-du-lieu-va-webhook:8de6808a69f2cc30889d8cdb1c2d0e2b29dde5f9'
+          )
+          args=(--atomic)
+          for entry in "${targets[@]}"; do
+            name="${entry%%:*}"
+            expected="${entry#*:}"
+            actual="$(git ls-remote --heads origin "refs/heads/$name" | cut -f1)"
+            test "$actual" = "$expected"
+            git merge-base --is-ancestor "$expected" "$expected_main"
+            args+=("--force-with-lease=refs/heads/$name:$expected")
+          done
+          for entry in "${targets[@]}"; do
+            name="${entry%%:*}"
+            args+=(":refs/heads/$name")
+          done
+          git push "${args[@]}" origin
+          for entry in "${targets[@]}"; do
+            name="${entry%%:*}"
+            test -z "$(git ls-remote --heads origin "refs/heads/$name")"
+          done
+          printf 'Da xoa 3 nhanh da nam trong main tai %s\n' "$expected_main" >> "$GITHUB_STEP_SUMMARY"

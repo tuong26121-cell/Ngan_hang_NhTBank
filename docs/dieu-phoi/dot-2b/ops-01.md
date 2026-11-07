@@ -2,7 +2,7 @@
 
 Cập nhật 07/11/2026 (Asia/Saigon), nhiệm vụ Issue #45. Đã tiếp quản và nhận QA Nhóm 13; giữ Issue OPEN khi còn blocker nghiệm thu. Baseline rollback của bản vá: `756a342f2daafd483ec9a205ea6396e1c1f082b1`. Đã đồng bộ các thay đổi đồng thời của Nhóm 03/02/06; giữ nguyên hệ thiết kế, test hợp đồng API và JWT/AuthZ.
 
-**Trạng thái: IN PROGRESS cho kiểm chứng CI; OPS-01 toàn bộ vẫn BLOCKED** vì branch protection chưa đọc được, artifact mới chưa đủ preflight dung lượng/ngân sách, chưa nghiệm thu thiết bị thật hoặc backend/database.
+**Trạng thái: PASS cho kiểm chứng CI compute trên nguồn hợp nhất; OPS-01 toàn bộ vẫn BLOCKED** vì branch protection chưa đọc được, artifact mới chưa đủ preflight dung lượng/ngân sách, chưa nghiệm thu thiết bị thật hoặc backend/database.
 
 ## Kiểm kê và bản vá
 
@@ -67,9 +67,26 @@ Thêm `e2e/dieu-huong-nhanh.spec.js`: 6 vòng dashboard → Tiền gửi → das
 - Chromium artifact13545396523 từ Verify ba22b0d: tải 11,020,448 bytes, ZIP CRC PASS, 13 ảnh + report HTML. [Danh mục](kiem-tra-artifact-ci.json). Không dùng làm PASS cho source bản vá.
 - Signed iOS: NOT RUN trong 260 run lưu giữ đã đọc, không suy rằng chưa từng chạy nếu lịch sử bị xóa.
 
-## Run của bản vá
+## Run của bản vá và nguồn hợp nhất đã xác minh
 
-PENDING: sau push phải truy vấn REST actions/runs theo **head_sha chính xác**, đọc từng job/step, failure logs, artifact list; ghi PASS/FAIL/CANCELLED/BLOCKED/NOT RUN riêng. Không rerun commit cũ để chứng minh code mới. Artifact mới chủ động NOT RUN vì chế độ không lưu trữ.
+Đã push bản vá mã/workflow `d61e7141b04d3a255f4142f74c6b7c503fa254bb` lên main. Sau đó nhóm09 cập nhật main thành `0a363c36b8733bc5b1020ae245582e2844a74586`, giữ nguyên bản vá và thêm 2 security tests SePay. Không thay kết quả của source này bằng source kia.
+
+| Source | Workflow/run | Kết quả thực tế |
+| --- | --- | --- |
+| d61e714 | Verify [42327278585](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327278585), job128265361554 | PASS: unit70/backend73/contract5/config1/build, Chromium47 pass/10 skip |
+| d61e714 | Pages [42327278680](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327278680), build128265362353 | PASS build và các gate; deploy NOT RUN/skipped |
+| d61e714 | APK [42327278606](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327278606), job128265362387 | CANCELLED khi push mới vào cùng concurrency main; không nhận native PASS |
+| 0a363c3 | Verify [42327541861](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541861), job128266211226 | PASS: unit70/backend75/contract5/config1/build, Chromium47 pass/10 skip |
+| 0a363c3 | Pages [42327541807](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541807), build128266323838 | PASS build và các gate; deploy128267356397 NOT RUN/skipped |
+| 0a363c3 | APK [42327541855](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541855), job128266267796 | PASS unit70/backend75/contract5/config1, production-root Chromium47/10, Capacitor, wrapper validation, Gradle compile, ZIP, aapt version và SHA256 |
+
+[Jobs/steps/artifacts source d61e714](ci-d61e714.json), [source0a363c3](ci-0a363c3.json), [trích log d61e714](bang-chung/ci-d61e714.txt), [trích log nguồn hợp nhất](bang-chung/ci-0a363c3.txt). Đã đọc logs của từng job thành công và log APK bị hủy. Log bị hủy có 1 ERR_CONNECTION_REFUSED trong lúc runner dừng, 1 interrupted và trường hợp chưa chạy; kết luận GitHub là CANCELLED, không sử dụng như PASS hoặc chẩn đoán lỗi ứng dụng độc lập.
+
+APK nguồn0a: run_number15, version1.0.1/versionCode1015 được kiểm tra bởi aapt + script phiên bản, BUILD SUCCESSFUL, ZIP không lỗi. SHA256 ghi bởi runner: `5de3f9ba1e995b8db0c2880eb086e063265859d83f44d6d520e5944ce3c99da8`. Package theo cấu hình Capacitor vn.nhtbank.demo; chưa có kiểm chứng signature/cài máy thật. Không gọi đây là bản phát hành.
+
+Đã truy vấn artifact list của cả 6 run: đều rỗng; từng upload step SKIPPED đúng marker. **Upload APK/Website/Playwright NOT RUN, storage preflight BLOCKED**; không có APK mới để tải từ Actions trong lần này. SHA256 của APK mới chỉ có bằng chứng tính trong log runner, chưa thể tải artifact để kiểm tra độc lập. Bằng chứng ZIP/APK đã tải ở mục lịch sử chỉ thuộc fb5a2f2.
+
+Commit bàn giao bằng chứng tiếp theo chỉ thay tài liệu/log, dùng `[skip ci] [khong-luu-artifact] [khong-trien-khai-web]`; CI commit tài liệu NOT RUN, không nhận đây là source mới đã chạy test. Mã/workflow được nghiệm chứng ở các SHA trong bảng trên.
 
 ## Gate và rollback
 

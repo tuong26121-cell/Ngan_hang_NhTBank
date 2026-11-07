@@ -1,0 +1,45 @@
+{
+  "baseline_local_full_e2e": "e940a9c4746978d8c55ec4871796c5dff859d256",
+  "parent_of_pushed_patch": "756a342f2daafd483ec9a205ea6396e1c1f082b1",
+  "ci_source": "d61e7141b04d3a255f4142f74c6b7c503fa254bb",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "passed": 70
+    },
+    "backend": {
+      "status": "PASS",
+      "passed": 73
+    },
+    "api_contract": {
+      "status": "PASS",
+      "passed": 5
+    },
+    "apk_config": {
+      "status": "PASS",
+      "passed": 1
+    },
+    "build": "PASS",
+    "actionlint": "PASS",
+    "e2e": {
+      "status": "PASS",
+      "passed": 47,
+      "skipped": 10,
+      "total": 57
+    }
+  },
+  "files": {
+    "e2e/bank.spec.js": "edfb1ce9b3af54b29f9648dfb659ea09d98bd660a79528890e480c81dab578ca",
+    "e2e/dieu-huong-nhanh.spec.js": "4ad81a03ce1f8fc2419c92f6082a2ef1129c45ad6f373508b5554300e8d344e2",
+    ".github/workflows/build-ios-signed-ipa.yml": "1eca0ea72b53cea1df45c80c1b8cc7e59c5a5834f22686c85a2fa00d58670d0f",
+    ".github/workflows/build-ios-unsigned-ipa.yml": "3df1d0d07da09c53079b30a308f47364de180d79e85f69cf604dd513311a378d",
+    ".github/workflows/check-buttons.yml": "86470c94ef164b787cb2c65e0bb7e9192b28a7cffb8cd360d9efa5d1d10bff56",
+    ".github/workflows/deploy-pages.yml": "6dd796a55edc91b38fc660dc3dcefaf9d9d3b4713b03487981efab157a12e8f2",
+    ".github/workflows/verify-main-integration.yml": "7f10be7e8c512a126dd38ba12b53d8f42e8e0c920cd3ff2d4eb10b17757c8b5b",
+    ".github/workflows/xay-dung-apk-android.yml": "369d0b89f958e9527212a5ee805eb678f2b968a4c94e0ef638734befe6004412"
+  },
+  "limits": [
+    "Full local E2E uses e940a9c plus patch; after merging 756a342, unit/build rerun PASS; full merged-source E2E is being independently verified by exact-SHA CI.",
+    "No production backend/database/device acceptance."
+  ]
+}

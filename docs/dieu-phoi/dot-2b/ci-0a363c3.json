@@ -1,0 +1,373 @@
+{
+  "source_sha": "0a363c36b8733bc5b1020ae245582e2844a74586",
+  "patch_ancestor": "d61e7141b04d3a255f4142f74c6b7c503fa254bb",
+  "scope": "Combined main includes Nhóm14 patch unchanged plus two additional SePay tests. Compute checks passed; upload/cache/deploy intentionally skipped.",
+  "runs": [
+    {
+      "id": 42327541861,
+      "head_sha": "0a363c36b8733bc5b1020ae245582e2844a74586",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541861",
+      "jobs": [
+        {
+          "id": 128266211226,
+          "name": "integration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 42327541861,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v7.0.1",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v7.1.0",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Unit and sandbox gateway tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Kiem thu hop dong OpenAPI va fixture",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Backend sandbox security tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Kiem thu cau hinh APK",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Build production web at GitHub Pages subpath",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Install Chromium for E2E",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Test Android and Windows interactions against production build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "Archive Playwright evidence",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 12
+            },
+            {
+              "name": "Post Run actions/setup-node@v7.1.0",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 23
+            },
+            {
+              "name": "Post Run actions/checkout@v7.0.1",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 24
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 25
+            }
+          ]
+        }
+      ],
+      "artifacts": []
+    },
+    {
+      "id": 42327541807,
+      "head_sha": "0a363c36b8733bc5b1020ae245582e2844a74586",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541807",
+      "jobs": [
+        {
+          "id": 128266323838,
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 42327541807,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Check out source",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Configure Pages",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Test application",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Backend sandbox security tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Kiem thu hop dong API",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Build React application for the Pages path",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Install Chromium for E2E",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Kiem thu goi Website truoc khi trien khai",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "Luu bang chung Chromium",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 12
+            },
+            {
+              "name": "Keep the deployment static",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13
+            },
+            {
+              "name": "Upload website",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 14
+            },
+            {
+              "name": "Post Set up Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 27
+            },
+            {
+              "name": "Post Check out source",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 28
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 29
+            }
+          ]
+        },
+        {
+          "id": 128267356397,
+          "name": "deploy",
+          "status": "completed",
+          "conclusion": "skipped",
+          "run_id": 42327541807,
+          "logs_url": null,
+          "steps": null
+        }
+      ],
+      "artifacts": []
+    },
+    {
+      "id": 42327541855,
+      "head_sha": "0a363c36b8733bc5b1020ae245582e2844a74586",
+      "conclusion": "success",
+      "html_url": "https://github.com/tuong26121-cell/Ngan_hang_NhTBank/actions/runs/42327541855",
+      "jobs": [
+        {
+          "id": 128266267796,
+          "name": "Xay dung APK Android",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 42327541855,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Lay ma nguon",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Cai dat Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Cai dat Java",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Cai dat va kiem thu",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Xay dung tai nguyen web",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "Kiem thu giao dien va nhan phien ban",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Luu bang chung Chromium APK",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 8
+            },
+            {
+              "name": "Chuan bi du an Android Capacitor",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Kiem tra Gradle wrapper",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Bien dich APK thu nghiem",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "Kiem tra APK va ma SHA256",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12
+            },
+            {
+              "name": "Tom tat va huong dan tai APK",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13
+            },
+            {
+              "name": "Tai len APK va ma SHA256",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 14
+            },
+            {
+              "name": "Post Cai dat Java",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 26
+            },
+            {
+              "name": "Post Cai dat Node.js",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 27
+            },
+            {
+              "name": "Post Lay ma nguon",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 28
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 29
+            }
+          ]
+        }
+      ],
+      "artifacts": []
+    }
+  ]
+}

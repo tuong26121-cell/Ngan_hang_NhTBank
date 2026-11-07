@@ -258,7 +258,7 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 
 Đã tiếp quản #45, đồng bộ main e940a9c và giữ hiện vật Nhóm 03/02/06/13. Sáu workflow được rà soát; backend security đầy đủ, Pages gate Chromium trước deploy, APK PR main/root production E2E, giữ OpenAPI/fixture/wrapper/version/checksum gates. Sửa đồng bộ E2E bằng heading đúng màn hình, thêm regression điều hướng 6 vòng trên 3 profile; không đổi frontend, tăng timeout hoặc retry để che lỗi.
 
-Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Run đúng SHA được cập nhật ở [OPS-01](dot-2b/ops-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.
+Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Bản vá main d61e714: Verify/Pages PASS, APK CANCELLED do cập nhật main đồng thời. Nguồn hợp nhất 0a363c3: Verify42327541861, Pages42327541807 và APK42327541855 đều PASS; backend75/75, Chromium47/10, native compile/ZIP/version/SHA256 đạt. Upload artifacts và Pages deploy NOT RUN đúng chế độ kiểm chứng. [OPS-01 với run/job/log theo SHA](dot-2b/ops-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.
 
 ## Nhóm 09 — tiếp nhận Đợt 2C, bàn giao 07/11/2026 (Asia/Saigon)
 

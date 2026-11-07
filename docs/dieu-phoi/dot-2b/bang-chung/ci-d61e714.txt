@@ -1,0 +1,50 @@
+Verify d61e714
+2026-11-07T02:03:45.6179842Z       Tests  70 passed (70)
+2026-11-07T02:03:46.0762659Z # tests 5
+2026-11-07T02:03:46.0762998Z # pass 5
+2026-11-07T02:03:46.0763149Z # fail 0
+2026-11-07T02:03:46.5058445Z # tests 73
+2026-11-07T02:03:46.5059995Z # pass 73
+2026-11-07T02:03:46.5060172Z # fail 0
+2026-11-07T02:03:46.6087424Z # tests 1
+2026-11-07T02:03:46.6088045Z # pass 1
+2026-11-07T02:03:46.6088717Z # fail 0
+2026-11-07T02:03:46.8045535Z vite v6.4.5 building for production...
+2026-11-07T02:03:48.9900887Z ✓ built in 2.17s
+2026-11-07T02:06:27.0899101Z   10 skipped
+2026-11-07T02:06:27.0899436Z   47 passed (2.3m)
+
+Pages build d61e714
+2026-11-07T02:03:50.3687905Z       Tests  70 passed (70)
+2026-11-07T02:03:50.8750346Z # tests 73
+2026-11-07T02:03:50.8750855Z # pass 73
+2026-11-07T02:03:50.8751235Z # fail 0
+2026-11-07T02:03:51.4402131Z # tests 5
+2026-11-07T02:03:51.4402636Z # pass 5
+2026-11-07T02:03:51.4402880Z # fail 0
+2026-11-07T02:03:51.7137302Z vite v6.4.5 building for production...
+2026-11-07T02:03:54.6166869Z ✓ built in 2.88s
+2026-11-07T02:06:46.1463016Z   10 skipped
+2026-11-07T02:06:46.1463321Z   47 passed (2.5m)
+
+APK CANCELLED — source d61e714
+1) [android] › e2e/buttons.spec.js:5:3 › buttons respond in windows layout ───────────────────────
+2026-11-07T02:06:39.6436051Z
+2026-11-07T02:06:39.6436553Z     Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/?view=windows
+2026-11-07T02:06:39.6437228Z     Call log:
+2026-11-07T02:06:39.6437768Z       - navigating to "http://127.0.0.1:4173/?view=windows", waiting until "load"
+2026-11-07T02:06:39.6438205Z
+2026-11-07T02:06:39.6438281Z
+2026-11-07T02:06:39.6438553Z       23 |       else await locator.click();
+2026-11-07T02:06:39.6439144Z       24 |     };
+2026-11-07T02:06:39.6439989Z     > 25 |     await page.goto(`./?view=${view}`);
+2026-11-07T02:06:39.6440549Z          |                ^
+2026-11-07T02:06:39.6441311Z       26 |     await expect(page.locator("html")).toHaveAttribute("data-display", view);
+2026-11-07T02:06:39.6442432Z       27 |     await testInfo.attach("browser-context", {
+2026-11-07T02:06:39.6443247Z       28 |       body: JSON.stringify(
+2026-11-07T02:06:39.6444095Z         at /home/runner/work/Ngan_hang_NhTBank/Ngan_hang_NhTBank/e2e/buttons.spec.js:25:16
+2026-11-07T02:06:39.6444732Z
+2026-11-07T02:06:39.6445891Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-11-07T02:06:39.6447169Z     test-results/buttons-buttons-respond-in-windows-layout-android/test-failed-1.png
+2026-11-07T02:06:39.6448551Z     ─────────────────────────────────────────────────────────────────────────────────
+2026-11-07T02:06:39.8120908Z ##[error]The operation was canceled.

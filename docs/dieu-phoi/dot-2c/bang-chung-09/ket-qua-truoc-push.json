@@ -1,0 +1,31 @@
+{
+  "baseline": "d61e7141b04d3a255f4142f74c6b7c503fa254bb",
+  "results": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:backend"
+      ],
+      "exit_code": 0,
+      "log": "backend-truoc-push.log"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "unit-truoc-push.log"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "build-truoc-push.log"
+    }
+  ]
+}

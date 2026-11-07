@@ -106,3 +106,6 @@ Trước nâng cấp tương lai cần acceptance độc lập 06/13, API/DB/OPS
 E2E ở trên thuộc baseline ba22b0d + test Nhóm 09, trước CSS/UX Đợt 2B; không coi là nghiệm thu UI mới tại 1894c45. Sau đồng bộ chỉ chạy lại backend/unit/build liên quan và lưu kết quả riêng; không sửa hoặc gán kết quả của các nhóm khác thành bằng chứng phiên này.
 
 Kết quả kiểm lại tại baseline 1894c45 + thay đổi Nhóm 09: backend **50/50**, unit **70/70**, build exit 0; xem `bang-chung-09/ket-qua-sau-rebase.json` và ba log `*-sau-rebase.log`. Các lượt 27/27 trước đó giữ nguyên là bằng chứng lịch sử.
+
+
+Chốt bàn giao trên baseline `d61e7141b04d3a255f4142f74c6b7c503fa254bb`: đã giữ module Auth JOSE mới và các sửa E2E/CI của Nhóm 14; chỉ thêm test/tài liệu Nhóm 09. Cài đúng lockfile bằng `npm ci --ignore-scripts --cache /tmp/nhom09-npm-cache`, không sửa dependency. Kiểm trước push: backend **75/75**, unit **70/70**, build exit 0, log `*-truoc-push.log`, metadata `ket-qua-truoc-push.json`. Kết quả 50/50 và E2E cũ ở trên thuộc baseline đã ghi, không được dùng để gán PASS E2E cho HEAD mới. Auth local không thay thế contract ingest/durable work còn thiếu; tích hợp SePay vẫn BLOCKED. Push dùng marker `[khong-luu-artifact] [khong-trien-khai-web]` để giữ kiểm tra CI nhưng không phát hành web hoặc tạo artifact/cache mới theo workflow hiện hành.

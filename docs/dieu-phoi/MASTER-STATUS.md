@@ -262,4 +262,4 @@ Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E c
 
 ## Nhóm 09 — tiếp nhận Đợt 2C, bàn giao 07/11/2026 (Asia/Saigon)
 
-Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-sepay-webhook.md) và [handoff HO-2C-09](HANDOFF-LOG.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend subset 27/27, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.
+Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-sepay-webhook.md) và [handoff HO-2C-09](HANDOFF-LOG.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend mới nhất 75/75, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.

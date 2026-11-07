@@ -173,7 +173,7 @@ Nhóm14 tiếp quản #45 và ACK hiện vật QA13, đồng bộ e940a9c, giữ
 ## HO-2C-09-06070813-20261106 — Nhóm 09 tiếp nhận Issue #40
 
 - Đã tiếp nhận theo yêu cầu trực tiếp của chủ repository; thời điểm bàn giao 07/11/2026 Asia/Saigon, bằng chứng ban đầu 06/11/2026 UTC. Nhóm nhận 01/06/07/08/13: ACK PENDING.
-- [Thiết kế 0.1 và risk register](dot-2c/09-sepay-webhook.md); [log/exit codes](dot-2c/bang-chung-09/). Baseline cuối ba22b0dc5de7b14553036a19b240390025713c52; commit bàn giao tra lịch sử Git của hiện vật.
-- Đã đối chiếu tài liệu SePay hiện hành và draft 06/07/08, bổ sung hai mock tests; backend cuối 27/27 PASS, unit 70/70 PASS, build exit 0. E2E và giới hạn xem kết quả cuối trong hiện vật, không dùng kết quả này để chứng nhận durable recovery.
+- [Thiết kế 0.1 và risk register](dot-2c/09-sepay-webhook.md); [log/exit codes](dot-2c/bang-chung-09/). Baseline kiểm trước push d61e7141b04d3a255f4142f74c6b7c503fa254bb; commit bàn giao tra lịch sử Git của hiện vật.
+- Đã đối chiếu tài liệu SePay hiện hành và draft 06/07/08, bổ sung hai mock tests; backend trước push 75/75 PASS, unit 70/70 PASS, build exit 0. E2E và giới hạn xem kết quả cuối trong hiện vật, không dùng kết quả này để chứng nhận durable recovery.
 - TÍCH HỢP BLOCKED: B09-06/07/08 chưa chốt; B09-ENV chưa có credential/quyền mạng Test Mode. Inbox chỉ ID/hash chưa đủ phục hồi work. Giữ webhook 503, Issue OPEN; SEC/DB/TX chưa nghiệm thu.
 - Cần 06 review source/tenant trust và redaction; 07/08 chốt normalized durable work, namespace/hash, receipt, lease/fencing và retention; 13 kiểm DB concurrency/crash/restore. Không gọi Live, ngân hàng thật, không SQL/deploy backend.

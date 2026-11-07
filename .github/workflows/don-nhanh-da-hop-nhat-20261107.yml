@@ -1,0 +1,39 @@
+name: Don cac nhanh da hop nhat
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/don-nhanh-da-hop-nhat-20261107.yml
+permissions:
+  contents: write
+jobs:
+  don-nhanh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Kiem tra lich su va xoa nhanh cu
+        shell: bash
+        run: |
+          set -euo pipefail
+          targets=(
+            'sua-loi/bo-nho-trinh-duyet-lan-25:0c249cb696a7d895ecdd8f13674ce77a279d1472'
+            'tich-hop/tong-hop-tinh-nang:46a8fdf818fd3f8f59d27d696e1287b41d745991'
+            'xay-dung/apk-android-thu-nghiem:20285a017d16a2e2774cc8e36725f9ffd30baad8'
+          )
+          main_head="$(git ls-remote --heads origin refs/heads/main | cut -f1)"
+          test "$main_head" = "$GITHUB_SHA"
+          leases=()
+          refspecs=()
+          for entry in "${targets[@]}"; do
+            name="${entry%%:*}"
+            expected="${entry#*:}"
+            actual="$(git ls-remote --heads origin "refs/heads/$name" | cut -f1)"
+            test "$actual" = "$expected"
+            git merge-base --is-ancestor "$expected" "$main_head"
+            leases+=("--force-with-lease=refs/heads/$name:$expected")
+            refspecs+=(":refs/heads/$name")
+          done
+          git push --atomic "${leases[@]}" origin "${refspecs[@]}"

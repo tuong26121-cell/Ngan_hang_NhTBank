@@ -1,11 +1,11 @@
 # Đối chiếu giao diện NhTBank · cập nhật 29/10/2026
 
-Bản cập nhật mới nhất tích hợp giao diện NhTBank 1.1; xem mục ngày 29/10/2026 phía dưới. Đây là bản cải tiến theo chuẩn người dùng cung cấp, chưa phải nghiệm thu chính thức. Chuẩn trung tâm: [ui-standard.md](ui-standard.md). Đủ 45 mã (32 P0, 12 P1, 1 P2), khác số cộng 43/30 trong bảng tổng hợp Word gốc.
+Bản cập nhật mới nhất tích hợp giao diện NhTBank 1.1; xem mục ngày 29/10/2026 phía dưới. Đây là bản cải tiến theo chuẩn người dùng cung cấp, chưa phải nghiệm thu chính thức. Chuẩn trung tâm: [tieu-chuan-giao-dien.md](tieu-chuan-giao-dien.md). Đủ 45 mã (32 P0, 12 P1, 1 P2), khác số cộng 43/30 trong bảng tổng hợp Word gốc.
 
 ## Phiên bản và phạm vi
 
 - Website trước sửa: Site commit `3c0ff8a5315e03df47925684fe57a04cae97b6b2`, khớp mã nguồn ứng dụng bảo mật ở GitHub `e5c0891` (PR #3).
-- Bản sửa: commit chứa báo cáo này, xác định đầy đủ bằng `git log -1 --format=%H -- docs/ui-acceptance.md`; PR và phiên bản Sites gắn commit riêng cho từng kho.
+- Bản sửa: commit chứa báo cáo này, xác định đầy đủ bằng `git log -1 --format=%H -- docs/nghiem-thu-giao-dien.md`; PR và phiên bản Sites gắn commit riêng cho từng kho.
 - Chỉ UI/UX, truy cập và kiểm thử; giữ backend, dependencies, cấu trúc giao dịch, PIN demo, số dư và QR cục bộ.
 - Chuẩn nền và trạng thái mới nhất được lưu trong repository; AGENTS yêu cầu mỗi sửa đổi tiếp theo cập nhật đối chiếu tiêu chí bị ảnh hưởng.
 
@@ -104,7 +104,7 @@ Tính từ sRGB của các màu đặc; không thay thế phép đo nền gradie
 
 ## Tích hợp mẫu NhTBank 1.1 — 29/10/2026
 
-- Nền trước sửa: `6131260c0ea3c0c4dcbd73b3a7eff233aabb6c16`; nhánh tính năng `codex/nhtbank-v11-interface`. Commit bản bàn giao là commit chứa mục này, lấy bằng `git log -1 --format=%H -- docs/ui-acceptance.md`.
+- Nền trước sửa: `6131260c0ea3c0c4dcbd73b3a7eff233aabb6c16`; nhánh tính năng `codex/nhtbank-v11-interface`. Commit bản bàn giao là commit chứa mục này, lấy bằng `git log -1 --format=%H -- docs/nghiem-thu-giao-dien.md`.
 - Ảnh trước sửa đã lưu trong `docs/screenshots/dashboard-mobile.png` và `dashboard-desktop.png`. Ảnh mới mang tiền tố `v11-`.
 - Mẫu trực quan chính: tệp `NhTBank-Android.html` trong gói `App NhTBank v1. 1.zip`. Mã mẫu JavaScript đầy đủ và HTML độc lập được giữ nguyên ở `references/nhtbank-v11/`; đã đối chiếu từng byte của 29 tệp nguồn gốc. Không thực hiện các hướng dẫn xuất bản trong tài liệu đính kèm.
 - Tích hợp: CSS xanh lam–tím, torus, thẻ tài khoản, nút biểu tượng nổi, tám tiện ích và QR nổi. Dựng lại biểu tượng Unicode lỗi phông thành SVG. Tận dụng phông Be Vietnam Pro nội bộ, giữ giấy phép. Giao diện React giữ dữ liệu và nghiệp vụ sẵn có; các tiện ích mới chỉ điều hướng đến màn hiện có hoặc mở giải thích bản xem trước.
@@ -175,7 +175,7 @@ Chưa nghiệm thu chính thức: các P0 cần thiết bị thật, rà tương
 
 # Điều tra bổ sung PR #19 — 30/10/2026
 
-Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm tra: head `87c32ac44eef3e5084f4aac60d69ca44234f85a1`; commit bổ sung được nhận diện bằng lịch sử PR #19. Bổ sung project Pixel 7 và bằng chứng tải script/CSS; giữ dữ liệu và ứng dụng hiện có. Chưa tái hiện lỗi người dùng trên thiết bị thật, chưa xác định nguyên nhân gốc, chưa nghiệm thu P0 và không kết luận đã sửa xong. Đối chiếu đủ 45 mã trong báo cáo; không thay trạng thái các phép đo chưa thực hiện.
+Xem [báo cáo nút bấm](dieu-tra-loi-nut-bam-2026-10-30.md). Nguồn kiểm tra: head `87c32ac44eef3e5084f4aac60d69ca44234f85a1`; commit bổ sung được nhận diện bằng lịch sử PR #19. Bổ sung project Pixel 7 và bằng chứng tải script/CSS; giữ dữ liệu và ứng dụng hiện có. Chưa tái hiện lỗi người dùng trên thiết bị thật, chưa xác định nguyên nhân gốc, chưa nghiệm thu P0 và không kết luận đã sửa xong. Đối chiếu đủ 45 mã trong báo cáo; không thay trạng thái các phép đo chưa thực hiện.
 
 ## PR #19 — sửa thao tác chuyển giao diện (30/10/2026)
 
@@ -191,7 +191,7 @@ Xem [báo cáo nút bấm](button-investigation-2026-10-30.md). Nguồn kiểm t
 - Tách riêng ô tạo VietQR qua dịch vụ bên ngoài khỏi QR Sandbox. Không chỉnh sửa dòng tiền và số dư demo.
 - Các tiêu chí UI liên quan: C01 (các nút tạo/copy/tải), C02 (focus), C05 (feedback), A01 (khả dụng trên Android/Windows), B (bố cục), E (riêng tư). **Chưa nghiệm thu thiết bị thật**.
 - Bổ sung kiểm thử Vitest và E2E với phản hồi ảnh bên ngoài được giả lập, tránh phụ thuộc mạng. Kết quả CI sẽ được ghi nhận ở PR; chưa nhận định đạt khi chưa có bằng chứng.
-- Tài liệu chi tiết: [vietqr-studio.md](vietqr-studio.md). Không ảnh hưởng đến 45 tiêu chí nghiệm thu hiện hành của mô phỏng cho tới khi PR được kiểm tra và gộp.
+- Tài liệu chi tiết: [thiet-ke-vietqr.md](thiet-ke-vietqr.md). Không ảnh hưởng đến 45 tiêu chí nghiệm thu hiện hành của mô phỏng cho tới khi PR được kiểm tra và gộp.
 
 ## Bổ sung quét mã QR và thẻ biên nhận v2 · 30/10/2026
 
@@ -310,7 +310,7 @@ Cập nhật bằng chứng A03/C03/D05/G01/G02/G03/G04/G05/H01 trong phạm vi 
 ### Nguồn, phạm vi và trạng thái API
 
 - Source nền: `7192af6`, đã đồng bộ `main` đến `6cce289` và đọc cập nhật contract/design/PRD; commit bàn giao: `git log -1 --format=%H -- frontend/src/App.jsx`. Các bằng chứng cũ phía trên là lịch sử, không thay cho kết quả đợt này.
-- Đã đọc trực tiếp source Website, `docs/dieu-phoi/dot-1/03-design-system.md` (blob `a5c474b455744c5eeaf510721617d8d03fecc8bb`), `02-kien-truc-api-v1.md` (`3cc803fef8bdae87d58aeb5fb16d6538fd9a96a3`), `06-bao-mat-rbac.md` (`bf6fb79de729d5d7efb6204dfb8b32fb18bd84f9`), PRD Nhóm 10 và `ui-standard.md`.
+- Đã đọc trực tiếp source Website, `docs/dieu-phoi/dot-1/03-he-thiet-ke.md` (blob `a5c474b455744c5eeaf510721617d8d03fecc8bb`), `02-kien-truc-api-v1.md` (`3cc803fef8bdae87d58aeb5fb16d6538fd9a96a3`), `06-bao-mat-rbac.md` (`bf6fb79de729d5d7efb6204dfb8b32fb18bd84f9`), PRD Nhóm 10 và `tieu-chuan-giao-dien.md`.
 - Các endpoint `/v1/me`, accounts, transactions, transfers vẫn **PROPOSED**; chưa có contract field-level, Auth server và ledger backend được nghiệm thu. Không tích hợp API, gateway SePay hay dữ liệu thật. ARCH-01/SEC-01/TX-01/DB-01 không được nâng PASS.
 - Giữ token hiện hữu theo mapping Nhóm 03; không dùng bảng màu nháp để thay nhận diện. Không thêm dependency hoặc provider.
 
@@ -381,6 +381,6 @@ CSS auth bổ sung cục bộ được bỏ khi hợp nhất vì Design System N
 - **53 E2E đạt, 10 bỏ qua có chủ đích, 0 lỗi**; [log](bang-chung/website-dot-2b/e2e-hop-nhat.txt). 8 ca viewport và 2 ca computed-token trùng được bỏ qua trên cấu hình mobile/android, đã chạy ở desktop. Ca điều hướng nhanh của Nhóm 14 và 6 ca Website mới đều đạt. Các fixtures API là kiểm tra schema, không là gọi API server.
 - Prettier tệp thay đổi và `git diff --check` đạt. Lint vẫn thiếu script, không báo PASS.
 - Ảnh bản hợp nhất: [trang chủ 320px](bang-chung/website-dot-2b/trang-chu-320-hop-nhat.png), [tiết kiệm desktop](bang-chung/website-dot-2b/tiet-kiem-desktop-hop-nhat.png).
-- Theo preflight CI Nhóm 14 trong `docs/dieu-phoi/dot-2b/ops-01.md`, upload artifact/budget chưa được xác minh. Commit dùng `[khong-luu-artifact] [khong-trien-khai-web]`: giữ toàn bộ test/build/checksum, bỏ upload và deploy Pages. Không coi mã trên main là website công khai đã cập nhật. Kết quả workflow đúng SHA được ghi ở Issue #35 sau push; không sửa workflow để che lỗi test.
+- Theo preflight CI Nhóm 14 trong `docs/dieu-phoi/dot-2b/van-hanh-01.md`, upload artifact/budget chưa được xác minh. Commit dùng `[khong-luu-artifact] [khong-trien-khai-web]`: giữ toàn bộ test/build/checksum, bỏ upload và deploy Pages. Không coi mã trên main là website công khai đã cập nhật. Kết quả workflow đúng SHA được ghi ở Issue #35 sau push; không sửa workflow để che lỗi test.
 
 Giới hạn còn nguyên: API chưa đủ gate tích hợp, tiết kiệm/vay chỉ preview, thiết bị thật/Safari/bàn phím ảo/text zoom và hiệu suất dài hạn chưa nghiệm thu. Giữ Issue #35 mở cho phần phụ thuộc.

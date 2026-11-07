@@ -116,7 +116,7 @@ Giữ D2-01..06 trong [đề xuất Đợt2](de-xuat-dot-2.md), không tạo l�
 5. **D2-05 /08↔07:** ledger conservation, atomic claim/commit/replay trước balance, hash canonicalization/conflict/wait/failure/retention/crash, review hai vòng.
 6. **D2-06 /13:** review độc lập version/hunk/gate, runner v2/PG17 disposable preflight rồi SQL/AuthZ/10 connection/fault injection/log.
 
-03/14 review UI tokens/CI song song;04/05/09/11/12 chờ contract trước tích hợp. Handoff NB-NT-D1-20261106 trong [HANDOFF-LOG](HANDOFF-LOG.md) là ARTIFACT READY / ACK PENDING; tài liệu không tự gửi nhận việc.
+03/14 review UI tokens/CI song song;04/05/09/11/12 chờ contract trước tích hợp. Handoff NB-NT-D1-20261106 trong [HANDOFF-LOG](nhat-ky-ban-giao.md) là ARTIFACT READY / ACK PENDING; tài liệu không tự gửi nhận việc.
 
 ## Lựa chọn tiếp tục
 

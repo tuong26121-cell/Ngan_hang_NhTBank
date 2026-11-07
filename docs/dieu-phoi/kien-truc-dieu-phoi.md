@@ -47,6 +47,6 @@ flowchart TD
 
 ## Phụ lục điều phối v2 (2026-11-05, PROPOSED)
 
-- Nguồn phụ thuộc chi tiết là `MASTER-STATUS.md` v2, mục 2; sơ đồ trong tài liệu này chỉ thể hiện ràng buộc chính.
+- Nguồn phụ thuộc chi tiết là `tong-quan-trang-thai.md` v2, mục 2; sơ đồ trong tài liệu này chỉ thể hiện ràng buộc chính.
 - Cặp 07 (DB) và 08 (Backend) trao đổi schema draft ↔ transaction/idempotency contract hai vòng; 06 và 13 phản biện.
 - Gate: ARCH-01, SEC-01, DB-01, TX-01, UX-01. Chưa có gate nào được xác minh là PASS.

@@ -78,7 +78,7 @@ Role membership baseline cố ý nghiêm: bất kỳ role khác reachable qua `p
 
 ## Transaction, idempotency và webhook — bàn giao Nhóm 08
 
-Đã đọc `docs/dieu-phoi/dot-1/08-transfer-idempotency.md` blob `472221e2a8442c8537f3d659968c8f8f5fc8ccf9` và Nhóm 06 blob `bf6fb79de729d5d7efb6204dfb8b32fb18bd84f9` trên main. Đây là đối chiếu đầu vào tài liệu, không giả định nhóm khác đã phản hồi.
+Đã đọc `docs/dieu-phoi/dot-1/08-chong-trung-chuyen-tien.md` blob `472221e2a8442c8537f3d659968c8f8f5fc8ccf9` và Nhóm 06 blob `bf6fb79de729d5d7efb6204dfb8b32fb18bd84f9` trên main. Đây là đối chiếu đầu vào tài liệu, không giả định nhóm khác đã phản hồi.
 
 Vòng 1: v2.1 cung cấp unique namespace `(principal_key, operation_scope, idempotency_key)`, request hash 32 bytes, status `started/completed/failed`, `resource_id` và `expires_at`. Unique không tự kiểm payload mismatch, không tự lưu receipt, không tự enforce state machine. `expires_at` không xóa uniqueness; không thêm TTL cleanup hay tự tái sử dụng key. `resource_id` hiện không FK/typed resource vì ledger chưa thiết kế; không ép nó trỏ vào provider-import table.
 

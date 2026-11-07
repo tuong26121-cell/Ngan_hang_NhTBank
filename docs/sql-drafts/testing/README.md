@@ -17,7 +17,7 @@
 ## Files
 
 - `run-local.sh` — guarded runner; requires `psql` and an explicitly supplied local connection URL.
-- `TEST_MATRIX.md` — coverage, expected behavior and test gaps.
+- `ma-tran-kiem-thu.md` — coverage, expected behavior and test gaps.
 - SQL under `../` — the active v3 core and security assertions.
 
 ## Requirements
@@ -81,7 +81,7 @@ This stops local services but retains local data. If you intentionally want to d
 
 ## Expected result and reporting
 
-Use `TEST_MATRIX.md` to record each test as PASS, FAIL, or NOT RUN. A SQL script passing does not prove application authorization, concurrent request handling, real webhook signature verification, or regulatory compliance. Those require separate backend integration/security tests.
+Use `ma-tran-kiem-thu.md` to record each test as PASS, FAIL, or NOT RUN. A SQL script passing does not prove application authorization, concurrent request handling, real webhook signature verification, or regulatory compliance. Those require separate backend integration/security tests.
 
 ## Current status
 

@@ -40,8 +40,8 @@ Các câu mang tính **ghi nhận lịch sử** như “trong đợt ngày X ch�
 ## 5. Đầu mối
 
 - [Hướng dẫn root AGENTS](../../AGENTS.md)
-- [MASTER-STATUS](MASTER-STATUS.md)
+- [MASTER-STATUS](tong-quan-trang-thai.md)
 - [Bảng giao việc](bang-giao-viec-20261106.md)
 - [Hướng dẫn phân công](huong-dan-phan-cong.md)
-- [Quyết định](DECISIONS.md)
+- [Quyết định](quyet-dinh-du-an.md)
 - GitHub Issues [#32–#45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues)

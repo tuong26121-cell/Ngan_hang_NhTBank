@@ -14,7 +14,7 @@
 
 ## Nguồn xác minh
 - Repository: `tuong26121-cell/Ngan_hang_NhTBank`.
-- Tài liệu nguồn: `docs/dieu-phoi/MASTER-STATUS.md` trên `main` (tài liệu nhánh cũ chỉ là lịch sử).
+- Tài liệu nguồn: `docs/dieu-phoi/tong-quan-trang-thai.md` trên `main` (tài liệu nhánh cũ chỉ là lịch sử).
 - Đã kiểm tra trực tiếp GitHub Issues #32–#45: 14/14 OPEN, không có bình luận xác nhận tiếp nhận tại thời điểm đọc; không có GitHub assignee được xác minh cho 14 nhóm.
 - Trong một lần đối chiếu hiện tại, nhánh `codex/nhtbank-sql-hardening-20261031` trả `404`; tuy nhiên hai file `docs/sql-drafts/archive/v2/` trong `main` có SHA giữ nguyên như mốc A3.5.
 - Mọi test/build/migration/deploy ở bản phân công này đều `NOT RUN` nếu thiếu log thực thi; việc đánh giá readiness chỉ dựa trên khả năng khởi động **thiết kế**, không phải sẵn sàng tích hợp.
@@ -29,7 +29,7 @@
 |---|---|---|---|---|---|---|
 | 01 | [#32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) | P0 | BAT DAU NGAY | Không | Chuẩn hoá bảng giao việc, evidence index, handoff | DANG DIEU PHOI TRONG CHAT HIEN TAI |
 | 02 | [#33](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/33) | P0 | BAT DAU NGAY - NHAP | 01; 10 để chốt | Kiểm kê frontend/backend, tạo architecture v1 và API skeleton, đánh dấu các quy tắc chờ Nhóm 10 | CHUA XAC NHAN |
-| 03 | [#34](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/34) | P1 | BAT DAU NGAY - NHAP | 02,10 để chốt | Đọc docs/ui-standard.md; lập token và component accessibility draft | CHUA XAC NHAN |
+| 03 | [#34](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/34) | P1 | BAT DAU NGAY - NHAP | 02,10 để chốt | Đọc docs/tieu-chuan-giao-dien.md; lập token và component accessibility draft | CHUA XAC NHAN |
 | 04 | [#35](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/35) | P1 | CHO CONTRACT DE TICH HOP | 02,03,06,08 | Kiểm kê và sửa UI hiện có, sitemap, lỗi UX trực tiếp `main`; API chưa chốt thì mock hợp đồng | CHUA XAC NHAN |
 | 05 | [#36](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/36) | P1 | CHO CONTRACT DE TICH HOP | 02,03,06,08 | Kiểm kê/sửa màn hình và APK workflow, được chạy build phù hợp; chưa chốt API thì dùng mock | CHUA XAC NHAN |
 | 06 | [#37](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/37) | P0 | BAT DAU NGAY - NHAP | 02,10 để chốt | Lập threat model và RBAC draft theo mô phỏng; yêu cầu phản biện nhóm 13 | CHUA XAC NHAN |

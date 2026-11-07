@@ -21,7 +21,7 @@
 
 - P0 C01/C02/C05: nút tạo, sao chép, tải ảnh và điều kiện đồng ý có nhãn/feedback. Cần nghiệm thu cảm ứng và bàn phím trên thiết bị thật.
 - P0 về riêng tư/phân tách trạng thái: không gửi dữ liệu qua mạng trước hành động chủ động; không lấy PIN demo làm xác thực ngân hàng.
-- Các tiêu chí A–H khác trong `docs/ui-standard.md`: chưa nghiệm thu đầy đủ; xem `docs/ui-acceptance.md`.
+- Các tiêu chí A–H khác trong `docs/tieu-chuan-giao-dien.md`: chưa nghiệm thu đầy đủ; xem `docs/nghiem-thu-giao-dien.md`.
 
 ## Cảnh báo
 

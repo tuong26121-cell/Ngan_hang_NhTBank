@@ -6,7 +6,7 @@
 - Frontend `React 18.3.1 / Vite 6.4.5` theo `package.json`; `frontend/src/App.jsx` giu balance/transfers trong React memory.
 - `frontend/src/lib/demoAuth.js` dung tai khoan demo thiet bi; `AuthGate.jsx` xu ly dang nhap local.
 - `backend/sepay-sandbox-server.mjs` la gateway Test Mode, co GET /healthz, GET /api/transactions va POST /api/webhooks/sepay; webhook co chu ky nhung luu ben vung chua co -> tra 503.
-- `docs/backend-supabase-architecture-plan.md` chi la kien truc de xuat, khong la backend production da chay.
+- `docs/ke-hoach-kien-truc-backend-supabase.md` chi la kien truc de xuat, khong la backend production da chay.
 
 ## Ranh gioi de xuat
 ```text

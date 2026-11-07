@@ -135,7 +135,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 | TX-01 | 08 + 13 | Atomic transfer, replay và concurrency contract có test cases | Đề xuất / NOT RUN |
 | UX-01 | 03 | Design system tương thích app/web, accessibility review | Đề xuất / chưa nghiệm thu |
 | QA-01 | 13 | Test matrix, PASS/FAIL/BLOCKED và tiêu chuẩn evidence | Đề xuất / test NOT RUN |
-| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; được deploy theo nhiệm vụ đủ điều kiện | BLOCKED — [Đợt 2B](dot-2b/ops-01.md), kiểm chứng CI; release BLOCKED |
+| OPS-01 | 14 | CI/CD, tách môi trường, rollback, chi phí; được deploy theo nhiệm vụ đủ điều kiện | BLOCKED — [Đợt 2B](dot-2b/van-hanh-01.md), kiểm chứng CI; release BLOCKED |
 
 ## 6. Checklist nghiệm thu áp dụng cho mọi nhóm
 
@@ -242,7 +242,7 @@ Nguồn đầu phiên main7192af6. Chủrepository đã giao Nhóm01 thực hi�
 Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng dụng mới BLOCKED. Không tạo tag/version, APK, checksum hoặc URL phát hành mới. Giữ package 1.0.1; artifact lịch sử không được nhận làm release mới. Tiếp theo: owner 13 cung cấp nghiệm thu cuối đúng phạm vi; 01/14 khóa version/changelog; 14 baseline rollback và environment; 05/14 artifact/signature/icon/package/version/device. Tham chiếu [bàn giao chi tiết](ban-giao-dot-4-20261106.md).
 ## Nhóm 03 — Đợt 2B thực thi ngày 06/11/2026
 
-Đã tiếp quản #34 trong phiên theo yêu cầu chủ repository, sửa giao diện trên main. Artifact: [hệ thiết kế](../he-thiet-ke.md), [45 tiêu chí và giới hạn nghiệm thu](../ui-acceptance.md), [log/ảnh](../bang-chung/dot-2b/). Tokens/component contract AVAILABLE; bàn giao 04/05/11/13 ACK PENDING. UX-01 chưa nghiệm thu toàn bộ do thiếu kiểm tra thiết bị thật/bàn phím ảo/hiệu năng/heap; không chốt API/PRD thay nhóm 02/10. Kết quả test/build tách biệt và ghi theo log cuối trong artifact, không tự nâng gate backend/SQL.
+Đã tiếp quản #34 trong phiên theo yêu cầu chủ repository, sửa giao diện trên main. Artifact: [hệ thiết kế](../he-thiet-ke.md), [45 tiêu chí và giới hạn nghiệm thu](../nghiem-thu-giao-dien.md), [log/ảnh](../bang-chung/dot-2b/). Tokens/component contract AVAILABLE; bàn giao 04/05/11/13 ACK PENDING. UX-01 chưa nghiệm thu toàn bộ do thiếu kiểm tra thiết bị thật/bàn phím ảo/hiệu năng/heap; không chốt API/PRD thay nhóm 02/10. Kết quả test/build tách biệt và ghi theo log cuối trong artifact, không tự nâng gate backend/SQL.
 
 ## Kiểm chứng production giao diện mới — 07/11/2026
 
@@ -258,8 +258,8 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 
 Đã tiếp quản #45, đồng bộ main e940a9c và giữ hiện vật Nhóm 03/02/06/13. Sáu workflow được rà soát; backend security đầy đủ, Pages gate Chromium trước deploy, APK PR main/root production E2E, giữ OpenAPI/fixture/wrapper/version/checksum gates. Sửa đồng bộ E2E bằng heading đúng màn hình, thêm regression điều hướng 6 vòng trên 3 profile; không đổi frontend, tăng timeout hoặc retry để che lỗi.
 
-Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Bản vá main d61e714: Verify/Pages PASS, APK CANCELLED do cập nhật main đồng thời. Nguồn hợp nhất 0a363c3: Verify42327541861, Pages42327541807 và APK42327541855 đều PASS; backend75/75, Chromium47/10, native compile/ZIP/version/SHA256 đạt. Upload artifacts và Pages deploy NOT RUN đúng chế độ kiểm chứng. [OPS-01 với run/job/log theo SHA](dot-2b/ops-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.
+Local unit70/backend73/contract5/APK config1/build/static/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích). Commit kiểm chứng dùng `[khong-luu-artifact] [khong-trien-khai-web]`: chạy đủ tests/build/security, không tạo cache/artifact mới hoặc deploy Pages. Bản vá main d61e714: Verify/Pages PASS, APK CANCELLED do cập nhật main đồng thời. Nguồn hợp nhất 0a363c3: Verify42327541861, Pages42327541807 và APK42327541855 đều PASS; backend75/75, Chromium47/10, native compile/ZIP/version/SHA256 đạt. Upload artifacts và Pages deploy NOT RUN đúng chế độ kiểm chứng. [OPS-01 với run/job/log theo SHA](dot-2b/van-hanh-01.md). OPS-01 nghiệm thu release vẫn BLOCKED do protection/allowance/device/backend/database chưa đủ; Issue #45 OPEN.
 
 ## Nhóm 09 — tiếp nhận Đợt 2C, bàn giao 07/11/2026 (Asia/Saigon)
 
-Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-sepay-webhook.md) và [handoff HO-2C-09](HANDOFF-LOG.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend mới nhất 75/75, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.
+Issue #40 đã được tiếp nhận trong phiên theo yêu cầu chủ repository. [Artifact 0.1](dot-2c/09-tiep-nhan-thong-bao-sepay.md) và [handoff HO-2C-09](nhat-ky-ban-giao.md) có tài liệu SePay, event contract đề xuất, state machine, risk register và evidence. Backend mới nhất 75/75, unit 70/70 và build đạt; E2E xem kết quả cuối trong artifact. Contract 06/07/08 vẫn draft: **TÍCH HỢP BLOCKED**, ACK nhóm nhận PENDING, không nâng SEC-01/DB-01/TX-01 lên PASS. Giữ 503 khi chưa có durable work/inbox; chưa kết nối Test Mode, không Live.

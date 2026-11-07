@@ -40,10 +40,10 @@ Quyền trên là **ủy quyền thao tác GitHub và quy trình phát triển**
 
 ## Chuẩn giao diện bắt buộc
 
-- Dùng `docs/ui-standard.md` làm chuẩn cho sửa đổi UI/UX; đối chiếu 45 mã A01–H06.
-- Cập nhật `docs/ui-acceptance.md` sau thay đổi, có commit/bằng chứng và mục chưa kiểm tra.
+- Dùng `docs/tieu-chuan-giao-dien.md` làm chuẩn cho sửa đổi UI/UX; đối chiếu 45 mã A01–H06.
+- Cập nhật `docs/nghiem-thu-giao-dien.md` sau thay đổi, có commit/bằng chứng và mục chưa kiểm tra.
 - Duy trì hỗ trợ điện thoại, bàn phím, focus rõ ràng và `prefers-reduced-motion`. Không nghiệm thu nếu còn blocker P0 chưa xử lý.
 
 ## Điều phối 14 nhóm
 
-Nguồn hiện hành: [quy chế thực thi](docs/dieu-phoi/quy-che-thuc-thi.md), [MASTER-STATUS](docs/dieu-phoi/MASTER-STATUS.md), [bảng giao việc](docs/dieu-phoi/bang-giao-viec-20261106.md) và GitHub Issues #32–45. Các đoạn giới hạn ở phiên bản tài liệu cũ chỉ còn giá trị lịch sử; quy chế này quyết định quyền thao tác hiện hành.
+Nguồn hiện hành: [quy chế thực thi](docs/dieu-phoi/quy-che-thuc-thi.md), [MASTER-STATUS](docs/dieu-phoi/tong-quan-trang-thai.md), [bảng giao việc](docs/dieu-phoi/bang-giao-viec-20261106.md) và GitHub Issues #32–45. Các đoạn giới hạn ở phiên bản tài liệu cũ chỉ còn giá trị lịch sử; quy chế này quyết định quyền thao tác hiện hành.

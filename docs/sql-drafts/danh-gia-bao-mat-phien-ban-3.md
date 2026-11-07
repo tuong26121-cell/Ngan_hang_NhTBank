@@ -10,7 +10,7 @@
 - `docs/sql-drafts/20261031_000001_nhtbank_core_schema.draft.sql`
 - `docs/sql-drafts/20261031_000002_nhtbank_security_assertions.draft.sql`
 - `docs/sql-drafts/testing/README.md`
-- `docs/sql-drafts/testing/TEST_MATRIX.md`
+- `docs/sql-drafts/testing/ma-tran-kiem-thu.md`
 - `docs/sql-drafts/testing/run-local.sh`
 
 ## Findings remediated in this review

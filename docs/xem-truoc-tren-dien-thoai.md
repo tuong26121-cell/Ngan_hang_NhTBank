@@ -24,4 +24,4 @@ Workflow tạo **App.app cho iOS Simulator** trên macOS, có thể tải về t
 - Cùng một ứng dụng web đáp ứng; hiện chưa tạo hai deployment URL độc lập. Bản web gốc được README khai báo tại https://nhtbank-web-tuong.vercel.app/.
 
 ## Nghiệm thu
-Theo chuẩn `docs/ui-standard.md` đã có, toàn bộ P0 phải có bằng chứng thử thực tế. Các mục chưa chạy trên máy Android/iPhone, tốc độ thực (LCP/INP/CLS), bàn phím ảo, QR và toàn bộ quy trình gói ứng dụng cần giữ trạng thái **chưa xác minh**. Không đưa bản prototype vào luồng chính trước khi kiểm thử `npm test`, `npm run build`, `npm run test:e2e` và các yêu cầu A01–H06.
+Theo chuẩn `docs/tieu-chuan-giao-dien.md` đã có, toàn bộ P0 phải có bằng chứng thử thực tế. Các mục chưa chạy trên máy Android/iPhone, tốc độ thực (LCP/INP/CLS), bàn phím ảo, QR và toàn bộ quy trình gói ứng dụng cần giữ trạng thái **chưa xác minh**. Không đưa bản prototype vào luồng chính trước khi kiểm thử `npm test`, `npm run build`, `npm run test:e2e` và các yêu cầu A01–H06.

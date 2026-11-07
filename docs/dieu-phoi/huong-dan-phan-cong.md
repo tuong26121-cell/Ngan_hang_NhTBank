@@ -5,7 +5,7 @@
 ## Nguon
 - Repo: tuong26121-cell/Ngan_hang_NhTBank.
 - Nguồn tài liệu hiện hành: nhánh `main`, thư mục `docs/dieu-phoi/` (nhánh tài liệu cũ chỉ giữ lịch sử).
-- Tai lieu: MASTER-STATUS.md v2, ARCHITECTURE.md, DECISIONS.md, HANDOFF-LOG.md, ROADMAP.md.
+- Tai lieu: tong-quan-trang-thai.md v2, kien-truc-dieu-phoi.md, quyet-dinh-du-an.md, nhat-ky-ban-giao.md, lo-trinh-phat-trien.md.
 - Trang thai nhiem vu: PROPOSED. Test, SQL, APK build: NOT RUN neu khong co log.
 
 ## Hang doi cong viec

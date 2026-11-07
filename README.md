@@ -115,17 +115,17 @@ e2e/              Playwright desktop + mobile
 AGENTS.md         Quy tắc cho các lần phát triển sau
 ```
 
-Chi tiết: [Kiến trúc và phạm vi](docs/architecture.md). Dữ liệu phiên chỉ giữ trong bộ nhớ; không lưu vào trình duyệt, không yêu cầu biến môi trường hoặc thông tin bí mật.
+Chi tiết: [Kiến trúc và phạm vi](docs/kien-truc-he-thong.md). Dữ liệu phiên chỉ giữ trong bộ nhớ; không lưu vào trình duyệt, không yêu cầu biến môi trường hoặc thông tin bí mật.
 
 ## Kiểm tra và ảnh giao diện
 
-[Đối chiếu 45 tiêu chí giao diện](docs/ui-acceptance.md) · [Biên bản kiểm tra](docs/validation.md) · [Giao diện điện thoại 1.1](docs/screenshots/v11-android.png) · [Giao diện máy tính 1.1](docs/screenshots/v11-windows.png).
+[Đối chiếu 45 tiêu chí giao diện](docs/nghiem-thu-giao-dien.md) · [Biên bản kiểm tra](docs/kiem-chung-chuc-nang.md) · [Giao diện điện thoại 1.1](docs/screenshots/v11-android.png) · [Giao diện máy tính 1.1](docs/screenshots/v11-windows.png).
 
 Các kết quả Chromium và viewport mô phỏng được ghi trong biên bản; chưa thay thế việc thử trên thiết bị Android/iOS thật.
 
 ## Cập nhật bảo mật
 
-Xem [ghi chép cập nhật cho issue #2](docs/security-update.md). Các công cụ phát triển được nâng phiên bản; `postcss-selector-parser` được khóa ở 7.1.6 qua npm override để giữ Tailwind 3 và hạn chế thay đổi giao diện. QR cục bộ dùng `qrcode`; `jsqr` chỉ dùng kiểm thử giải mã. PIN công khai vẫn chỉ là thao tác trải nghiệm demo.
+Xem [ghi chép cập nhật cho issue #2](docs/cap-nhat-bao-mat.md). Các công cụ phát triển được nâng phiên bản; `postcss-selector-parser` được khóa ở 7.1.6 qua npm override để giữ Tailwind 3 và hạn chế thay đổi giao diện. QR cục bộ dùng `qrcode`; `jsqr` chỉ dùng kiểm thử giải mã. PIN công khai vẫn chỉ là thao tác trải nghiệm demo.
 
 ## Logo Android va phien ban APK
 

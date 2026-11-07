@@ -5,7 +5,7 @@
 ## Hien trang duoc doi chieu
 - `frontend/src/App.jsx`: dang nhap demo; man tong quan, chuyen tien, nap demo, QR, lich su, ho so; so du va giao dich la `useState`.
 - `frontend/src/lib/bank.js`: so tien so nguyen VND, toi thieu 1.000 VND, so tai khoan 6–19 chu so, nguoi nhan 2–80 ky tu, noi dung toi da 120 ky tu; PIN demo `123456`.
-- `docs/architecture.md`: tien gui va vay nhanh la preview, QR demo `NHTBANK_SANDBOX:`, khong xac nhan tien ve.
+- `docs/kien-truc-he-thong.md`: tien gui va vay nhanh la preview, QR demo `NHTBANK_SANDBOX:`, khong xac nhan tien ve.
 
 ## MVP bat buoc (P0)
 | Ma | Tinh nang | Quy tac nghiep vu | Ket qua nghiem thu thiet ke |

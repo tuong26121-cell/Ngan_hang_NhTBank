@@ -101,7 +101,7 @@ Trước nâng cấp tương lai cần acceptance độc lập 06/13, API/DB/OPS
 
 ## Đồng bộ trước push
 
-`main` tiến tới `1894c453775ebb48a28c6111dba737199542bb1c` trong khi chạy kiểm thử. Đã rebase, giữ cả các handoff/trạng thái mới của nhóm khác. Đọc thêm `dot-2c/contract-sepay-admin-ai.md`, `dot-2a/phan-quyen-va-giao-dich.md`, `docs/sql-drafts/phien-ban-v21/ban-giao-a36.md`: đã có thêm contract review và SQL v2.1 hardening tĩnh, nhưng source vẫn ghi SEC/DB/TX BLOCKED; chưa chốt durable work/lease/namespace/retention hoặc có DB runtime. Vì vậy chưa mở tích hợp. SHA/contract draft trước đó được giữ làm lịch sử, không đại diện nguồn mới.
+`main` tiến tới `1894c453775ebb48a28c6111dba737199542bb1c` trong khi chạy kiểm thử. Đã rebase, giữ cả các handoff/trạng thái mới của nhóm khác. Đọc thêm `dot-2c/hop-dong-sepay-quan-tri-ai.md`, `dot-2a/phan-quyen-va-giao-dich.md`, `docs/sql-drafts/phien-ban-v21/ban-giao-a36.md`: đã có thêm contract review và SQL v2.1 hardening tĩnh, nhưng source vẫn ghi SEC/DB/TX BLOCKED; chưa chốt durable work/lease/namespace/retention hoặc có DB runtime. Vì vậy chưa mở tích hợp. SHA/contract draft trước đó được giữ làm lịch sử, không đại diện nguồn mới.
 
 E2E ở trên thuộc baseline ba22b0d + test Nhóm 09, trước CSS/UX Đợt 2B; không coi là nghiệm thu UI mới tại 1894c45. Sau đồng bộ chỉ chạy lại backend/unit/build liên quan và lưu kết quả riêng; không sửa hoặc gán kết quả của các nhóm khác thành bằng chứng phiên này.
 

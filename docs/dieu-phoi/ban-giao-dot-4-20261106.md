@@ -13,7 +13,7 @@ Nguồn kiểm tra: main 7192af6c28b51b56806b0b9c6827d2d0604bbc8a. Phiên bản 
 | SEC-01 | Chưa có sign-off cuối. PIN công khai, xác thực local demo không phải bảo mật ngân hàng | 06/13 nghiệm thu đúng phạm vi demo |
 | DB-01 / TX-01 | SQL A3.6 final diff/GATE provenance và persistent transfer/concurrency chưa nghiệm thu; NOT RUN | 07/08/13 cung cấp log môi trường disposable và review |
 | UX-01 | Chưa có nghiệm thu cuối toàn bộ tiêu chí/thiết bị thật | 03/04/05/13 cung cấp evidence |
-| QA-01 | Issue #44 mới xác nhận đang làm Đợt 2A; 13-qa-test-matrix.md là bản nháp, TEST:QA-01..12 NOT RUN cho phạm vi mới; không tìm thấy nghiệm thu cuối trong nguồn điều phối đã đọc | 13 bàn giao báo cáo cuối đúng SHA, scope và blocker |
+| QA-01 | Issue #44 mới xác nhận đang làm Đợt 2A; 13-ma-tran-kiem-thu.md là bản nháp, TEST:QA-01..12 NOT RUN cho phạm vi mới; không tìm thấy nghiệm thu cuối trong nguồn điều phối đã đọc | 13 bàn giao báo cáo cuối đúng SHA, scope và blocker |
 | CI/E2E | Connector fetch_commit_workflow_runs(HEAD) trả []; combined status trả []; chưa chứng minh CI HEAD đạt. Run 42192443494 job 127807488858 success, kể cả unit/backend/build/E2E, là bằng chứng lịch sử riêng | 14/13 CI và E2E thành công đúng release SHA; đọc artifact/log |
 | OPS-01 / Website | BLOCKED; github-pages là đích ghi trong workflow nhưng chưa có deployment mới được nghiệm thu và rollback target được xác minh | 14 xác minh environment, quyền, baseline và smoke test trước phát hành |
 | APK | BLOCKED; không build/phát hành mới khi QA còn thiếu và source local không khớp. Thiếu aapt/apksigner/adb trong PATH | 05/14 build đúng SHA, xác minh package/version/icon/signature, thiết bị thật |
@@ -56,7 +56,7 @@ Chưa hoàn thành/nghiệm thu: auth/session server và MFA, ledger/persistent 
 Dữ liệu auth demo ở localStorage; xóa dữ liệu trình duyệt có thể mất tài khoản. Giao dịch phiên không đại diện số dư thật. QR Studio tùy chọn có ranh giới bên thứ ba/QR có thể dùng bên ngoài; cần review riêng trước công bố scope.
 Không phát hành demo như ngân hàng được cấp phép. Không có giao dịch tiền thật, không triển khai backend hoặc SQL. Phạm vi được bàn giao đợt này: tài liệu, kiểm kê bằng chứng và danh sách blocker; không có bản ứng dụng mới được phát hành.
 
-Nguồn: Issue #44/comment 6681799103; MASTER-STATUS; HANDOFF-LOG; dot-1/13-qa-test-matrix.md; workflow deploy-pages/xay-dung-apk-android/verify-main-integration; package/config tại SHA nêu trên. Owner mở khóa: 13 QA cuối; 01 scope/version; 14 CI/deploy/artifact/recovery; 05 Android; 06/07/08 security/data/transfer.
+Nguồn: Issue #44/comment 6681799103; MASTER-STATUS; HANDOFF-LOG; dot-1/13-ma-tran-kiem-thu.md; workflow deploy-pages/xay-dung-apk-android/verify-main-integration; package/config tại SHA nêu trên. Owner mở khóa: 13 QA cuối; 01 scope/version; 14 CI/deploy/artifact/recovery; 05 Android; 06/07/08 security/data/transfer.
 
 
 ## Cập nhật xác minh ngày 07/11/2026 (Asia/Saigon)

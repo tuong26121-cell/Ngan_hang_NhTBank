@@ -15,14 +15,14 @@
 | Nhom | Issue | Tai lieu tren main | Tiep nhan |
 |---|---|---|---|
 | 01 | [#32](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/32) | [01-dieu-phoi.md](dot-1/01-dieu-phoi.md) | DRAFT / Nhóm 01 đang điều phối trong chat; không đại diện ACK nhóm khác |
-| 10 | [#41](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/41) | [10-nghiep-vu-mvp.md](dot-1/10-nghiep-vu-mvp.md) | DRAFT / chưa có tiếp nhận |
+| 10 | [#41](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/41) | [10-nghiep-vu-phien-ban-dau.md](dot-1/10-nghiep-vu-phien-ban-dau.md) | DRAFT / chưa có tiếp nhận |
 | 02 | [#33](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/33) | [02-kien-truc-api-v1.md](dot-1/02-kien-truc-api-v1.md) | DRAFT / chưa có tiếp nhận |
 | 06 | [#37](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/37) | [06-bao-mat-rbac.md](dot-1/06-bao-mat-rbac.md) | DRAFT / chưa có tiếp nhận |
 | 07 | [#38](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/38) | [07-sql-v21-a36.md](dot-1/07-sql-v21-a36.md) | DRAFT / chưa có tiếp nhận |
-| 08 | [#39](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/39) | [08-transfer-idempotency.md](dot-1/08-transfer-idempotency.md) | DRAFT / chưa có tiếp nhận |
-| 13 | [#44](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/44) | [13-qa-test-matrix.md](dot-1/13-qa-test-matrix.md) | DRAFT / chưa có tiếp nhận |
-| 03 | [#34](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/34) | [03-design-system.md](dot-1/03-design-system.md) | DRAFT / chưa có tiếp nhận |
-| 14 | [#45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45) | [14-ci-inventory.md](dot-1/14-ci-inventory.md) | DRAFT / chưa có tiếp nhận |
+| 08 | [#39](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/39) | [08-chong-trung-chuyen-tien.md](dot-1/08-chong-trung-chuyen-tien.md) | DRAFT / chưa có tiếp nhận |
+| 13 | [#44](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/44) | [13-ma-tran-kiem-thu.md](dot-1/13-ma-tran-kiem-thu.md) | DRAFT / chưa có tiếp nhận |
+| 03 | [#34](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/34) | [03-he-thiet-ke.md](dot-1/03-he-thiet-ke.md) | DRAFT / chưa có tiếp nhận |
+| 14 | [#45](https://github.com/tuong26121-cell/Ngan_hang_NhTBank/issues/45) | [14-kiem-ke-quy-trinh-kiem-thu.md](dot-1/14-kiem-ke-quy-trinh-kiem-thu.md) | DRAFT / chưa có tiếp nhận |
 
 ## 3. Dot 2A - Chot hop dong nen tang P0
 

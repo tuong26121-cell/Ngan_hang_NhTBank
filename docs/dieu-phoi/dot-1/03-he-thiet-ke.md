@@ -3,9 +3,9 @@
 > Phân loại: BAN NHAP THIET KE/REVIEW. Tai lieu duoc viet dua tren source GitHub main ngay 2026-11-06. Khong coi la code da tich hop, test da PASS, hay 14 nhom AI da nhan viec. Quyen thuc thi theo ../quy-che-thuc-thi.md.
 
 ## Nguon
-- `docs/ui-standard.md`: 45 criteria A01–H06; P0 32, P1 12, P2 1 (theo tai lieu).
+- `docs/tieu-chuan-giao-dien.md`: 45 criteria A01–H06; P0 32, P1 12, P2 1 (theo tai lieu).
 - `frontend/src/reference-theme.css`: hien co gradient cyan/blue/violet, light-mode; `frontend/src/components/ui.jsx` co shared controls.
-- `docs/ui-acceptance.md`: can ghi evidence theo tung code sau khi sua, khong chuyen PASS chi nho CSS.
+- `docs/nghiem-thu-giao-dien.md`: can ghi evidence theo tung code sau khi sua, khong chuyen PASS chi nho CSS.
 
 ## Token nhap de thong nhat (khong phai CSS da cap nhat)
 | Token | De xuat | Ghi chu |
@@ -40,7 +40,7 @@ Chỉ kiểm kê và lập bản nháp mapping, không đổi CSS/runtime trong 
 | vùng chạm | styles.css `.button` min-width/min-height44px; icon-button44px | Kiểm tra kích thước DOM khi responsive trước acceptance |
 | motion | MotionConfig reducedMotion=user và media query cả hai CSS | Kiểm thử reduce với component/animation thực tế |
 
-Giữ 45 tiêu chí A01–H06 ở trạng thái nghiệm thu có bằng chứng riêng; việc kiểm kê token không thay `docs/ui-acceptance.md` thành đạt và không tạo thay đổi giao diện cần chạy thiết bị lại.
+Giữ 45 tiêu chí A01–H06 ở trạng thái nghiệm thu có bằng chứng riêng; việc kiểm kê token không thay `docs/nghiem-thu-giao-dien.md` thành đạt và không tạo thay đổi giao diện cần chạy thiết bị lại.
 
 ## Giới hạn C05
 

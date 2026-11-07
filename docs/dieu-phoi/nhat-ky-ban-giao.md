@@ -35,7 +35,7 @@ Trạng thái: PROPOSED
 
 ## Quy tắc bàn giao v2 (đang áp dụng cho điều phối)
 
-Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version artifact, bằng chứng, trạng thái và nhóm nhận. Mẫu đầy đủ xem `MASTER-STATUS.md` v2 mục 8. Các dòng handoff khởi tạo ở trên **chưa được gửi**, không tạo ra nhiệm vụ tự động.
+Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version artifact, bằng chứng, trạng thái và nhóm nhận. Mẫu đầy đủ xem `tong-quan-trang-thai.md` v2 mục 8. Các dòng handoff khởi tạo ở trên **chưa được gửi**, không tạo ra nhiệm vụ tự động.
 
 ## Ghi nhan phan cong tren GitHub – 2026-11-06
 
@@ -82,14 +82,14 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 | ID | Bên gửi → nhận | Tài liệu | Tiếp nhận |
 |---|---|---|---|
 | NB-D1-01 | 01→10/02 | [Điều phối](dot-1/01-dieu-phoi.md) | ACK PENDING |
-| NB-D1-02 | 10→02/06/08 | [MVP](dot-1/10-nghiep-vu-mvp.md) | ACK PENDING |
+| NB-D1-02 | 10→02/06/08 | [MVP](dot-1/10-nghiep-vu-phien-ban-dau.md) | ACK PENDING |
 | NB-D1-03 | 02→06/07/08 | [API](dot-1/02-kien-truc-api-v1.md) | ACK PENDING |
 | NB-D1-04 | 06→07/08/13 | [RBAC](dot-1/06-bao-mat-rbac.md) | ACK PENDING |
 | NB-D1-05 | 07→08/13 | [SQL A3.6](dot-1/07-sql-v21-a36.md) | ACK PENDING; diff chưa hoàn tất |
-| NB-D1-06 | 08→07/13 | [Idempotency](dot-1/08-transfer-idempotency.md) | ACK PENDING |
-| NB-D1-07 | 13→07/08/14 | [QA](dot-1/13-qa-test-matrix.md) | ACK PENDING, tests NOT RUN |
-| NB-D1-08 | 03→04/05 | [UI](dot-1/03-design-system.md) | ACK PENDING |
-| NB-D1-09 | 14→01/05/13 | [CI](dot-1/14-ci-inventory.md) | ACK PENDING |
+| NB-D1-06 | 08→07/13 | [Idempotency](dot-1/08-chong-trung-chuyen-tien.md) | ACK PENDING |
+| NB-D1-07 | 13→07/08/14 | [QA](dot-1/13-ma-tran-kiem-thu.md) | ACK PENDING, tests NOT RUN |
+| NB-D1-08 | 03→04/05 | [UI](dot-1/03-he-thiet-ke.md) | ACK PENDING |
+| NB-D1-09 | 14→01/05/13 | [CI](dot-1/14-kiem-ke-quy-trinh-kiem-thu.md) | ACK PENDING |
 Đây là phiếu chuyển giao do Nhóm 01 đề xuất, không phải đã có xác nhận của nhóm nhận; xem [Đợt 2](de-xuat-dot-2.md).
 
 ## HO-D1-R2-20261106 — phản biện và kiểm chứng thực tế trong phiên
@@ -120,14 +120,14 @@ Khi gửi nhiệm vụ cần có `Gate-ID`, tiêu chí nghiệm thu, version art
 
 | Handoff-ID | Từ → nhận dự kiến | Artifact đầu vào tại source commit ở trên | Việc / điều kiện nhận |
 | --- | --- | --- | --- |
-| NB-NT-D1-10 | 01→10/02 | dot-1/10-nghiep-vu-mvp.md | D2-01, owner review scope/fee/min-max/retention |
+| NB-NT-D1-10 | 01→10/02 | dot-1/10-nghiep-vu-phien-ban-dau.md | D2-01, owner review scope/fee/min-max/retention |
 | NB-NT-D1-02 | 10→02/06 | dot-1/02-kien-truc-api-v1.md | D2-02, field/error/auth contract có version |
 | NB-NT-D1-06 | 02→06/07/08/13 | dot-1/06-bao-mat-rbac.md | D2-03, principal/session/endpoint permission review |
 | NB-NT-D1-07 | 06→07/08/13 | dot-1/07-sql-v21-a36.md | D2-04, final unified diff + gate-definition provenance |
-| NB-NT-D1-08 | 07↔08→13 | dot-1/08-transfer-idempotency.md | D2-05, ledger/hash/replay/rollback hai vòng |
-| NB-NT-D1-13 | 07/08→13/14 | dot-1/13-qa-test-matrix.md | D2-06, review độc lập + runner/preflight/evidence |
-| NB-NT-D1-03 | 03→04/05/13 | dot-1/03-design-system.md | Token mapping/45 tiêu chí, UX review riêng |
-| NB-NT-D1-14 | 14→01/13 | dot-1/14-ci-inventory.md | Run/SHA/log/artifact; không suy gate từ CI xanh |
+| NB-NT-D1-08 | 07↔08→13 | dot-1/08-chong-trung-chuyen-tien.md | D2-05, ledger/hash/replay/rollback hai vòng |
+| NB-NT-D1-13 | 07/08→13/14 | dot-1/13-ma-tran-kiem-thu.md | D2-06, review độc lập + runner/preflight/evidence |
+| NB-NT-D1-03 | 03→04/05/13 | dot-1/03-he-thiet-ke.md | Token mapping/45 tiêu chí, UX review riêng |
+| NB-NT-D1-14 | 14→01/13 | dot-1/14-kiem-ke-quy-trinh-kiem-thu.md | Run/SHA/log/artifact; không suy gate từ CI xanh |
 
 **Đóng handoff:** người/agent nhận ACK có danh tính, phạm vi, source version và thời điểm; reviewer ghi kết quả trên đúng artifact. Sửa Issue trong lượt nghiệm thu chỉ cập nhật hồ sơ, không đại diện nhóm nhận ACK.
 ## HO-2A-13-01 / HO-2A-13-14 — 2026-11-06
@@ -154,7 +154,7 @@ Quyết định Đợt 4 vẫn PARTIAL: tài liệu được cập nhật; ứng
 Nhóm01 ACK đã đọc/nhận HO-2A-13-01 và HO-2A-13-14; không chấp thuận release. Nguồn `main@ba22b0dc5de7b14553036a19b240390025713c52`; [báo cáo](ket-qua-dot-3-20261107.md) có tám gate,11 thành phần, D3-01..09, owner/Issue, acceptance và bằng chứng. CI SHA295eff3 xác minh unit70/backend25/build/E2E43 đạt,8 skipped; SQL/Auth app/ledger/concurrency/APK tích hợp vẫn chưa nghiệm thu. Đợt3 BLOCKED. Gửi công việc qua Issues #32–45; ACK riêng của bên nhận còn chờ, không gửi lệnh sang các cuộc trò chuyện khác. Quyền ghi main và chạy kiểm thử theo yêu cầu hiện hành; không chạy migration chưa review hoặc giao dịch thật.
 ## NB-D2B-03 — 06/11/2026 — Nhóm 03 → 04/05/11/13
 
-Tiếp quản Issue #34 theo yêu cầu trực tiếp trong phiên. Nguồn main `7192af6`, phiên bản triển khai truy bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Artifact: [tokens/component specification](../he-thiet-ke.md), [45 tiêu chí](../ui-acceptance.md), [bằng chứng](../bang-chung/dot-2b/). Đã chuẩn bị CSS dùng chung và test contract, giữ nghiệp vụ mô phỏng. Trạng thái nhận: ACK PENDING; không gửi tin nhắn/khẳng định các nhóm đã nhận. UX-01 chưa nghiệm thu toàn bộ: thiết bị thật, bàn phím ảo, hiệu năng và heap cần Nhóm 13 xác minh; API/PRD vẫn cần nhóm 02/10 chốt trước tích hợp.
+Tiếp quản Issue #34 theo yêu cầu trực tiếp trong phiên. Nguồn main `7192af6`, phiên bản triển khai truy bằng `git log -1 --format=%H -- frontend/src/he-thiet-ke.css`. Artifact: [tokens/component specification](../he-thiet-ke.md), [45 tiêu chí](../nghiem-thu-giao-dien.md), [bằng chứng](../bang-chung/dot-2b/). Đã chuẩn bị CSS dùng chung và test contract, giữ nghiệp vụ mô phỏng. Trạng thái nhận: ACK PENDING; không gửi tin nhắn/khẳng định các nhóm đã nhận. UX-01 chưa nghiệm thu toàn bộ: thiết bị thật, bàn phím ảo, hiệu năng và heap cần Nhóm 13 xác minh; API/PRD vẫn cần nhóm 02/10 chốt trước tích hợp.
 
 Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2E42 đạt/1 timeout/8 bỏ qua, ca Android chạy riêng lại1/1 đạt; UI cuối5/5. UX-01 IMPLEMENTED / PARTIALLY VERIFIED, chưa PASS toàn bộ. Chi tiết và giới hạn theo ui-acceptance; không xác nhận ACK thay bên nhận.
 
@@ -169,11 +169,11 @@ Kết quả NB-D2B-03 chốt 07/11/2026 Asia/Saigon: unit70/70; build đạt; E2
 
 ## HO-2B-14-01/03/05/13 — 07/11/2026 (Asia/Saigon)
 
-Nhóm14 tiếp quản #45 và ACK hiện vật QA13, đồng bộ e940a9c, giữ UI03 và Auth/API02/06. Bàn giao [OPS-01](dot-2b/ops-01.md), inventory/run/log/artifact lịch sử. Workflow đã giữ/bổ sung backend security, hợp đồng API, Pages/APK production Chromium, APK PR main; thêm E2E regression điều hướng và chờ đúng heading thay marker chung. Local unit70/backend73/contract5/config1/build/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích); exact-SHA d61e714 Verify/Pages PASS, APK CANCELLED; main hợp nhất0a363c3 Verify/Pages/APK PASS (backend75, Chromium47/10, native compile/ZIP/version/SHA256). Upload/deploy NOT RUN theo marker; đã đọc job/step/log và artifact lists rỗng. CI dùng marker không lưu artifact/cache, không deploy Pages; vẫn chạy đủ security/build/tests. Chưa đóng OPS-01 release hoặc Issue #45; protection/allowance/native device/backend/database còn giới hạn. Không dùng Pages hoặc APK lịch sử làm nghiệm thu release mới.
+Nhóm14 tiếp quản #45 và ACK hiện vật QA13, đồng bộ e940a9c, giữ UI03 và Auth/API02/06. Bàn giao [OPS-01](dot-2b/van-hanh-01.md), inventory/run/log/artifact lịch sử. Workflow đã giữ/bổ sung backend security, hợp đồng API, Pages/APK production Chromium, APK PR main; thêm E2E regression điều hướng và chờ đúng heading thay marker chung. Local unit70/backend73/contract5/config1/build/actionlint PASS; E2E cuối PASS 47/57 (10 skip có chủ đích); exact-SHA d61e714 Verify/Pages PASS, APK CANCELLED; main hợp nhất0a363c3 Verify/Pages/APK PASS (backend75, Chromium47/10, native compile/ZIP/version/SHA256). Upload/deploy NOT RUN theo marker; đã đọc job/step/log và artifact lists rỗng. CI dùng marker không lưu artifact/cache, không deploy Pages; vẫn chạy đủ security/build/tests. Chưa đóng OPS-01 release hoặc Issue #45; protection/allowance/native device/backend/database còn giới hạn. Không dùng Pages hoặc APK lịch sử làm nghiệm thu release mới.
 ## HO-2C-09-06070813-20261106 — Nhóm 09 tiếp nhận Issue #40
 
 - Đã tiếp nhận theo yêu cầu trực tiếp của chủ repository; thời điểm bàn giao 07/11/2026 Asia/Saigon, bằng chứng ban đầu 06/11/2026 UTC. Nhóm nhận 01/06/07/08/13: ACK PENDING.
-- [Thiết kế 0.1 và risk register](dot-2c/09-sepay-webhook.md); [log/exit codes](dot-2c/bang-chung-09/). Baseline kiểm trước push d61e7141b04d3a255f4142f74c6b7c503fa254bb; commit bàn giao tra lịch sử Git của hiện vật.
+- [Thiết kế 0.1 và risk register](dot-2c/09-tiep-nhan-thong-bao-sepay.md); [log/exit codes](dot-2c/bang-chung-09/). Baseline kiểm trước push d61e7141b04d3a255f4142f74c6b7c503fa254bb; commit bàn giao tra lịch sử Git của hiện vật.
 - Đã đối chiếu tài liệu SePay hiện hành và draft 06/07/08, bổ sung hai mock tests; backend trước push 75/75 PASS, unit 70/70 PASS, build exit 0. E2E và giới hạn xem kết quả cuối trong hiện vật, không dùng kết quả này để chứng nhận durable recovery.
 - TÍCH HỢP BLOCKED: B09-06/07/08 chưa chốt; B09-ENV chưa có credential/quyền mạng Test Mode. Inbox chỉ ID/hash chưa đủ phục hồi work. Giữ webhook 503, Issue OPEN; SEC/DB/TX chưa nghiệm thu.
 - Cần 06 review source/tenant trust và redaction; 07/08 chốt normalized durable work, namespace/hash, receipt, lease/fencing và retention; 13 kiểm DB concurrency/crash/restore. Không gọi Live, ngân hàng thật, không SQL/deploy backend.

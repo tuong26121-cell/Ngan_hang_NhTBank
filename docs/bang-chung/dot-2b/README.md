@@ -10,6 +10,6 @@ Nguồn main trước sửa: 7192af6. Kiểm thử local Linux, Chromium `/usr/b
 - `ui-cuoi.log`: chạy lại 4 viewport và contract sau chỉnh tương phản nhãn phiên bản/header và thẻ tài khoản.
 - Ảnh `sau-*.png`: ảnh cuối từ acceptance, full-page; thanh điều hướng cố định nằm ở vị trí viewport lúc chụp.
 
-Không đo LCP/INP/CLS/heap, bàn phím ảo thật, Safari hoặc native APK trong đợt này. UX-01 chưa nghiệm thu toàn bộ. Đối chiếu từng mã tại ../../ui-acceptance.md. Không dùng ảnh/test làm chứng cứ xác nhận tiền thật.
+Không đo LCP/INP/CLS/heap, bàn phím ảo thật, Safari hoặc native APK trong đợt này. UX-01 chưa nghiệm thu toàn bộ. Đối chiếu từng mã tại ../../nghiem-thu-giao-dien.md. Không dùng ảnh/test làm chứng cứ xác nhận tiền thật.
 
 Kết quả cuối: unit 70/70; build đạt; E2E toàn bộ 42 đạt / 1 timeout Android / 8 skipped. Ca Android chạy riêng lại 1/1 đạt trong 33,4 giây, không thay assertions/timeout. UI cuối 5/5 đạt. Giữ nguyên bằng chứng lần lỗi, chưa kết luận nguyên nhân timeout. Mốc chốt báo cáo 07/11/2026 Asia/Saigon.

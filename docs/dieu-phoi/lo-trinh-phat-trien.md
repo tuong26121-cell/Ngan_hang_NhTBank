@@ -75,7 +75,7 @@ CI nguồn 7192af6 đã đọc log: unit70/backend15/E2E43 đạt,8 skipped; Pag
 - **Đợt 3:** 03/04/05/14 – Design System, Website, Android, CI/CD; có thể viết mã, chạy build/CI và cập nhật `main` ngay khi phạm vi rõ; chỉ mở tích hợp có phụ thuộc khi contract và security gate phù hợp.
 - **Đợt 4:** 09/11/12 – SePay Sandbox, Admin, AI Assistant.
 
-**Gate điều phối:** COORD-01, ARCH-01, SEC-01, DB-01, TX-01, UX-01, QA-01, OPS-01. Toàn bộ đang ở mức thiết kế/đề xuất; không có test được chạy trong lượt cập nhật. Chi tiết điều kiện nằm tại `MASTER-STATUS.md` v2 mục 5.
+**Gate điều phối:** COORD-01, ARCH-01, SEC-01, DB-01, TX-01, UX-01, QA-01, OPS-01. Toàn bộ đang ở mức thiết kế/đề xuất; không có test được chạy trong lượt cập nhật. Chi tiết điều kiện nằm tại `tong-quan-trang-thai.md` v2 mục 5.
 
 > **Quyền đang áp dụng 2026-11-06:** Tài liệu này tuân thủ [quy chế thực thi](quy-che-thuc-thi.md): được trực tiếp sửa GitHub/`main`, chạy Actions/CI/APK/E2E và deploy theo nhiệm vụ; SQL cần xác minh môi trường và migration; giao dịch tiền thật cần xác nhận riêng từng giao dịch. Phần lịch sử không thay thế bằng chứng thực tế.
 

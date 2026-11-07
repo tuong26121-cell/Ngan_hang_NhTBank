@@ -24,20 +24,21 @@ jobs:
             'docs/dieu-phoi-14-nhom-20261106:a163a584530630146d907bf107a4c780360eb85a'
             'may-chu/gia-co-du-lieu-va-webhook:8de6808a69f2cc30889d8cdb1c2d0e2b29dde5f9'
           )
-          args=(--atomic)
+          leases=()
+          refspecs=()
           for entry in "${targets[@]}"; do
             name="${entry%%:*}"
             expected="${entry#*:}"
             actual="$(git ls-remote --heads origin "refs/heads/$name" | cut -f1)"
             test "$actual" = "$expected"
             git merge-base --is-ancestor "$expected" "$expected_main"
-            args+=("--force-with-lease=refs/heads/$name:$expected")
+            leases+=("--force-with-lease=refs/heads/$name:$expected")
           done
           for entry in "${targets[@]}"; do
             name="${entry%%:*}"
-            args+=(":refs/heads/$name")
+            refspecs+=(":refs/heads/$name")
           done
-          git push "${args[@]}" origin
+          git push --atomic "${leases[@]}" origin "${refspecs[@]}"
           for entry in "${targets[@]}"; do
             name="${entry%%:*}"
             test -z "$(git ls-remote --heads origin "refs/heads/$name")"
